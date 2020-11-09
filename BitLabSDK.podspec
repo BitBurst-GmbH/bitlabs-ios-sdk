@@ -6,10 +6,10 @@
 # To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
 
-Pod::Spec.new do |s|
-  s.name             = 'BitLabSDK'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of BitLabSDK.'
+Pod::Spec.new do |spec|
+  spec.name             = 'BitLabSDK'
+  spec.version          = '0.1.0'
+  spec.summary          = 'A short description of BitLabSDK.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,20 +17,20 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = <<-DESC
+  spec.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/Frank Marx/BitLabSDK'
+  spec.homepage         = 'https://github.com/Frank Marx/BitLabSDK'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Frank Marx' => 'marxfr@web.de' }
-  s.source           = { :git => 'https://github.com/Frank Marx/BitLabSDK.git', :tag => s.version.to_s }
+  spec.license          = { :type => 'MIT', :file => 'LICENSE' }
+  spec.author           = { 'Frank Marx' => 'marxfr@web.de' }
+  spec.source           = { :git => 'https://github.com/Frank Marx/BitLabSDK.git', :tag => spec.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  spec.ios.deployment_target = '12.0'
 
-  s.source_files = 'BitLabSDK/Classes/**/*'
+  spec.source_files = 'BitLabSDK/Classes/**/*'
   
   # s.resource_bundles = {
   #   'BitLabSDK' => ['BitLabSDK/Assets/*.png']
@@ -38,5 +38,6 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  spec.dependency 'Alamofire', '~> 5.2'
 end
+

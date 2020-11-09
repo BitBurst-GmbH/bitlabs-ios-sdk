@@ -1,0 +1,6 @@
+framework module BitLabSDK {
+  umbrella header "BitLabSDK-umbrella.h"
+
+  export *
+  module * { export * }
+}
