@@ -26,6 +26,8 @@ class ViewController: UIViewController {
         
         let rs = RestService.instance
         
+        var i = 2
+        
     }
     
 }
