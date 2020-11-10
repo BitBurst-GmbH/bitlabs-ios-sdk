@@ -11,6 +11,9 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let token = "6c7083df-b97e-4d29-9d90-798fd088bc08"
+    var restService: RestService?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -24,10 +27,17 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let rs = RestService.instance
+        restService = RestService.Init(token: token, uid: "marxfr")
         
-        var i = 2
-        
+        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
+            switch result {
+            case .success(let checkSurveyResponse):
+                debugPrint(checkSurveyResponse)
+            case .failure(let error):
+                debugPrint(error)
+            }
+        }
+
     }
     
 }

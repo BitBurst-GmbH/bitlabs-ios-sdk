@@ -2,20 +2,13 @@ PODS:
   - Alamofire (5.4.0)
   - BitLabSDK (0.1.0):
     - Alamofire (~> 5.2)
-  - FBSnapshotTestCase (2.1.4):
-    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
-  - FBSnapshotTestCase/Core (2.1.4)
-  - FBSnapshotTestCase/SwiftSupport (2.1.4):
-    - FBSnapshotTestCase/Core
 
 DEPENDENCIES:
   - BitLabSDK (from `../`)
-  - FBSnapshotTestCase (~> 2.1.4)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - FBSnapshotTestCase
 
 EXTERNAL SOURCES:
   BitLabSDK:
@@ -23,9 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  BitLabSDK: 72a4c725707f14753956311d2ccd8c2e5d56f103
-  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  BitLabSDK: 6ac3e7f15150e8af7e26fbe6aa19f53f91aedafa
 
-PODFILE CHECKSUM: 0a106ce865d18f7ba04c1c1c9aa9a5c27caff979
+PODFILE CHECKSUM: 90063112c511e9028323af153cff10a3a5ca8cc0
 
 COCOAPODS: 1.10.0
