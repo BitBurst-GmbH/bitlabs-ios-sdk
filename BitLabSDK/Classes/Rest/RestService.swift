@@ -24,6 +24,7 @@ public class RestService {
         public static let urlCheckSurveys = "https://api.bitlabs.ai/v1/client?platform=%1"
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
+
     }
     
     var token: String = ""
@@ -67,9 +68,9 @@ public class RestService {
             .validate(contentType: ["application/json"])
             .responseJSON { response in
                 switch response.result {
-                case .success(let data):
-                    let dict = data as! Dictionary<String, String>
-//                    let entity = self.decodeCheckSurveyResponse(json: data as! Dictionary<String, String>)
+                case .success(let json):
+                    let dict = json as! NSDictionary
+                    let entity = self.decodeCheckSurveyResponse(json: dict)
    
                     let responseModel = CheckSurveyReponse()
                     let result: Result<CheckSurveyReponse, AFError> = .success(responseModel)
@@ -91,15 +92,17 @@ public class RestService {
 
 extension RestService {
 
-    func decodeCheckSurveyResponse(json: Data) -> CheckSurveyReponse {
+    func decodeCheckSurveyResponse(json: NSDictionary) -> Result<CheckSurveyReponse,Error> {
         var entity = CheckSurveyReponse()
-        
-        let jsonDecoder = JSONDecoder()
-        do {
-            let e = try jsonDecoder.decode( CheckSurveyReponse.self, from: json)
-        } catch let error as Error {
-            var i = 2
+        var result: Result<CheckSurveyReponse,Error> = .success(entity)
+        guard let status = json["status"] as? String else {
+            let error = BitlabError.MissingStatusCodeInResponse
+            result = .failure(error)
+            return result
         }
+        
+        
+        
         
         //                    do {
         //                  //      let jsonDecoder = JSONDecoder()
@@ -109,7 +112,7 @@ extension RestService {
         //                    }
         
         
-        return entity
+        return result
     }
     
     

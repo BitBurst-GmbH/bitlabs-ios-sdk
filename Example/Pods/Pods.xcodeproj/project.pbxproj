@@ -41,6 +41,8 @@
 		ABA85887A41495358C83CE3F3030EDEA /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4D233027C8491F55B2473FCDA12389 /* CachedResponseHandler.swift */; };
 		AFDD0FEF25DA941CE295C74DA7383C62 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0FF301302A2A77E95697F2B5692FA5E /* Alamofire.framework */; };
 		B1505D7A255AA2F600F9BEAE /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1505D79255AA2F600F9BEAE /* ResponseModels.swift */; };
+		B1505D86255AB00E00F9BEAE /* BitLabError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1505D85255AB00E00F9BEAE /* BitLabError.swift */; };
+		B1505D96255BF31F00F9BEAE /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1505D95255BF31F00F9BEAE /* GlobalConstants.swift */; };
 		B68FBDFDDF9CD40E8221B2A07E7A0C70 /* Pods-BitLabSDK_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F43074F3DE479A6465642D6B6AE588C /* Pods-BitLabSDK_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BADD088AA2C195E89A0833ED75529ABC /* BitLabSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 88E9BCB10FDEF84D5588AA41D788A592 /* BitLabSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BCA4709AD34055CDA9D184F6DDEB07C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AC44BC108255F6766BF5383BF088F46 /* Foundation.framework */; };
@@ -147,6 +149,8 @@
 		A6F2B77F50C8E86FDD27C5A573013C07 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		B0EBFC4256A48F45E26B860D38479E52 /* Combine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Combine.swift; path = Source/Combine.swift; sourceTree = "<group>"; };
 		B1505D79255AA2F600F9BEAE /* ResponseModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResponseModels.swift; path = BitLabSDK/Classes/Rest/ResponseModels.swift; sourceTree = "<group>"; };
+		B1505D85255AB00E00F9BEAE /* BitLabError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitLabError.swift; path = BitLabSDK/Classes/Rest/BitLabError.swift; sourceTree = "<group>"; };
+		B1505D95255BF31F00F9BEAE /* GlobalConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GlobalConstants.swift; path = BitLabSDK/Classes/Rest/GlobalConstants.swift; sourceTree = "<group>"; };
 		B19D62C3B0AFBE64D5FAC288F2999EE3 /* Pods-BitLabSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitLabSDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		B32EC54AFBB13B33A43B4AC3FB69666C /* Pods-BitLabSDK_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitLabSDK_Tests-umbrella.h"; sourceTree = "<group>"; };
 		B4A1BF39D9BFA3FB09EF546BFE498B67 /* Pods-BitLabSDK_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitLabSDK_Example-dummy.m"; sourceTree = "<group>"; };
@@ -343,6 +347,8 @@
 		AB0222D149870A1818FF46F237252FCF /* BitLabSDK */ = {
 			isa = PBXGroup;
 			children = (
+				B1505D95255BF31F00F9BEAE /* GlobalConstants.swift */,
+				B1505D85255AB00E00F9BEAE /* BitLabError.swift */,
 				B1505D79255AA2F600F9BEAE /* ResponseModels.swift */,
 				C262C78E6E094BF39CBC47E8DF1FBC44 /* RestService.swift */,
 				9D366DA7989C2F11D61A6AAFDD2A7079 /* Pod */,
@@ -644,7 +650,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1505D86255AB00E00F9BEAE /* BitLabError.swift in Sources */,
 				7A145DF007A15FD63FC7A1D98A97BE07 /* BitLabSDK-dummy.m in Sources */,
+				B1505D96255BF31F00F9BEAE /* GlobalConstants.swift in Sources */,
 				F2B45BC7C609E6EC29C554D21176C0A9 /* RestService.swift in Sources */,
 				B1505D7A255AA2F600F9BEAE /* ResponseModels.swift in Sources */,
 			);
