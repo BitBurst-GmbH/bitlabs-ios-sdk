@@ -7,6 +7,7 @@
 
 import Alamofire
 import Foundation
+import SwiftyJSON
 
 
 public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,AFError>) -> Void
