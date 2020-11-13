@@ -6,16 +6,23 @@
 //
 
 import Foundation
-import Alamofire
+import SwiftyJSON
 
 
-public struct CheckSurveyReponse : Decodable {
+public struct CheckSurveyReponse {
     public var hasSurveys: Bool
-    public var traceId: String
-    
-    public init() {
+
+    static func buildFromJSON(json: Dictionary<String,JSON>) -> CheckSurveyReponse {
+        var this = CheckSurveyReponse()
+        guard let _ = json["has_surveys"]?.bool else {
+            this.hasSurveys = false
+            return this
+        }
+        this.hasSurveys = true
+        return this
+    }
+    init() {
         hasSurveys = false
-        traceId = ""
     }
     
 }

@@ -11,5 +11,7 @@ public enum BitlabError: Error {
     
     case InvalidStatusCode(String)
     case MissingStatusCodeInResponse
+    case MissingResponseData
+    case InconsitentJSON(String)
     case InconsitentReponse(String)
 }

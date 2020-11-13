@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 
-public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,AFError>) -> Void
+public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,Error>) -> Void
 
 public enum Platform: String, CaseIterable {
     case MOBILE = "MOBILE"
@@ -46,7 +46,7 @@ public class RestService {
         
     }
     
-    public func checkForSurveys(forPlatform p:Platform, completion: @escaping                   checkSurveyResponseHandler ) {
+    public func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler ) {
         let completionHandler = completion
         var url = Constants.baseURL
         url = url.appendingPathComponent("check")
@@ -57,66 +57,73 @@ public class RestService {
         components.queryItems = [query]
         let checkSurveyURL = components.url!
         let headers = assembleHeaders(appToken: token, userId: userId)
-       
-        /*
-         Alamofire.request(.GET, "https://httpbin.org/get", headers: headers)
-                   .responseJSON { response in
-                       debugPrint(response)
-                   }
-         */
+
         AF.request( checkSurveyURL, headers: headers)
             .validate(statusCode: 200...200)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                switch response.result {
-                case .success(let json):
-                    let dict = json as! NSDictionary
-                    let entity = self.decodeCheckSurveyResponse(json: dict)
-   
-                    let responseModel = CheckSurveyReponse()
-                    let result: Result<CheckSurveyReponse, AFError> = .success(responseModel)
-                    completionHandler(result)
+             switch response.result {
+                case .success:
+                    let data = response.data!
+                    let jsonData = self.decodeCheckSurveyResponse(json: data)
+                    switch jsonData {
+                        case .success(let dataDict):
+                            let entity = CheckSurveyReponse.buildFromJSON(json: dataDict)
+                            let result: Result<CheckSurveyReponse, Error> = .success(entity)
+                            completionHandler(result)
+                        case .failure(let error):
+                            let result: Result<CheckSurveyReponse, Error> = .failure(error)
+                            completionHandler(result)
+                            //
+                    }
                 case .failure(let error):
-                    let result: Result<CheckSurveyReponse, AFError> = .failure(error)
+                    let result: Result<CheckSurveyReponse, Error> = .failure(error)
                     completionHandler(result)
                 }
-                
-            debugPrint(response)
         }
-
     }
-    
-    
 }
 
 
 
 extension RestService {
 
-    func decodeCheckSurveyResponse(json: NSDictionary) -> Result<CheckSurveyReponse,Error> {
-        var entity = CheckSurveyReponse()
-        var result: Result<CheckSurveyReponse,Error> = .success(entity)
-        guard let status = json["status"] as? String else {
-            let error = BitlabError.MissingStatusCodeInResponse
-            result = .failure(error)
+    func decodeCheckSurveyResponse(json: Data) -> Result<Dictionary<String,JSON>, BitlabError> {
+
+        do {
+            let responseJSON = try JSON(data: json)
+            guard let statusCode = responseJSON["status"].string else {
+                let error = BitlabError.MissingStatusCodeInResponse
+                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+                return result
+            }
+
+            if statusCode != "success" {
+                let error = BitlabError.InvalidStatusCode(statusCode)
+                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+                return result
+            }
+
+            guard let _ = responseJSON["data"].dictionary else {
+                let error = BitlabError.MissingResponseData
+                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+                return result
+            }
+
+            let jsonData = responseJSON["data"].dictionary
+            let result: Result<Dictionary<String,JSON>,BitlabError> = .success(jsonData!)
             return result
+
+        } catch {
+            let encodedString = json.base64EncodedString()
+            let error = BitlabError.InconsitentJSON(encodedString)
+            let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+            return result
+
         }
-        
-        
-        
-        
-        //                    do {
-        //                  //      let jsonDecoder = JSONDecoder()
-        //                  //      let entity = try jsonDecoder.decode( CheckSurveyReponse.self, from: data as! Data)
-        //                    } catch DecodingError.dataCorrupted(let error) {
-        //
-        //                    }
-        
-        
-        return result
+
     }
-    
-    
+
     func assembleHeaders(appToken: String, userId: String) -> HTTPHeaders {
         var headers = HTTPHeaders()
         
