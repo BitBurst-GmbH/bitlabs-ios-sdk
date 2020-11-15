@@ -13,3 +13,9 @@ enum ResponseStatusCodes: String, CaseIterable {
    case successStatusCode = "success"
     
 }
+
+enum Colors: String {
+    case colorDark = "colorDark"
+    case colorLight = "colorLight"
+    case colorAccent = "colorAccent"
+}

@@ -11,6 +11,7 @@ import SwiftyJSON
 
 
 public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,Error>) -> Void
+public typealias retrieveSettingsResponseHandler = (Result<RetrieveSettingsResponse,Error>) -> Void
 
 public enum Platform: String, CaseIterable {
     case MOBILE = "MOBILE"
@@ -23,6 +24,7 @@ public class RestService {
     public enum Constants {
         public static let baseURL = URL(string: "https://api.bitlabs.ai/v1/client")!
         public static let urlCheckSurveys = "https://api.bitlabs.ai/v1/client?platform=%1"
+        public static let retrieveSettingsURL = URL(string: "https://api.bitlabs.ai/v1/client/settings")!
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
 
@@ -45,6 +47,12 @@ public class RestService {
     private init() {
         
     }
+    
+    public func retrieveSettings(completion: retrieveSettingsResponseHandler) {
+        
+        let headers = assembleHeaders(appToken: token, userId: userId)
+    }
+    
     
     public func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler ) {
         let completionHandler = completion
