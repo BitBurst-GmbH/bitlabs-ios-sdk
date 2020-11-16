@@ -32,10 +32,13 @@ TODO: Add long description of the pod here.
 
   spec.source_files = 'BitLabSDK/Classes/Rest/**/*.swift'
   
-  # s.resource_bundles = {
-  #   'BitLabSDK' => ['BitLabSDK/Assets/*.png']
-  # }
+#  spec.resource_bundles = {
+#     'BitLabSDK' => ['BitLabSDK/Classes/Assets/**/*']
+#  }
+  # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
+  spec.resources = ['BitLabSDK/Classes/**/*.{xcassets}']
 
+  
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   spec.dependency 'Alamofire', '~> 5.2'

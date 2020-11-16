@@ -28,17 +28,50 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         restService = RestService.Init(token: token, uid: "marxfr")
-        
-        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
+//
+//        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
+//            switch result {
+//            case .success(let checkSurveyResponse):
+//                debugPrint(checkSurveyResponse)
+//            case .failure(let error):
+//                debugPrint(error)
+//            }
+//        }
+
+    }
+    
+    
+    @IBAction func checkForSurveys( _ sender: UIButton ) {
+        restService?.checkForSurveys(forPlatform: .MOBILE) { result in
             switch result {
-            case .success(let checkSurveyResponse):
-                debugPrint(checkSurveyResponse)
+            case .success(let entity):
+                debugPrint(entity)
             case .failure(let error):
                 debugPrint(error)
+                
+            }
+            
+        }
+    }
+    
+    @IBAction func retrieveSettings( _ sender: UIButton) {
+        restService?.retrieveSettings() { result in
+            switch result {
+            case .success(let entity):
+                debugPrint(entity)
+            case .failure(let error):
+                debugPrint(error)
+                
             }
         }
-
+        
     }
     
 }
 
+
+extension ViewController {
+    
+    
+    
+}

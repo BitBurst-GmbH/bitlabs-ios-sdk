@@ -19,7 +19,7 @@ public enum Platform: String, CaseIterable {
 }
 
 
-public class RestService {
+public class RestService: BaseRestService {
     
     public enum Constants {
         public static let baseURL = URL(string: "https://api.bitlabs.ai/v1/client")!
@@ -44,13 +44,40 @@ public class RestService {
         userId = uid
     }
     
-    private init() {
-        
+    override private init() {
+        super.init()
     }
     
-    public func retrieveSettings(completion: retrieveSettingsResponseHandler) {
-        
+    public func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler) {
+        let completionHandler = completion
         let headers = assembleHeaders(appToken: token, userId: userId)
+    
+        AF.request( Constants.retrieveSettingsURL, headers: headers)
+            .validate(statusCode: 200...200)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                switch response.result {
+                   case .success:
+                       let data = response.data!
+                       let jsonData = self.decodeResponse(json: data)
+                       switch jsonData {
+                           case .success(let dataDict):
+                               let entity = RetrieveSettingsResponse.buildFromJSON(json: dataDict)
+                               let result: Result<RetrieveSettingsResponse, Error> = .success(entity)
+                               completionHandler(result)
+                           case .failure(let error):
+                               let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
+                               completionHandler(result)
+                               //
+                       }
+                   case .failure(let error):
+                       let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
+                       completionHandler(result)
+                   }
+
+            }
+    
+    
     }
     
     
@@ -73,7 +100,7 @@ public class RestService {
              switch response.result {
                 case .success:
                     let data = response.data!
-                    let jsonData = self.decodeCheckSurveyResponse(json: data)
+                    let jsonData = self.decodeResponse(json: data)
                     switch jsonData {
                         case .success(let dataDict):
                             let entity = CheckSurveyReponse.buildFromJSON(json: dataDict)
@@ -95,21 +122,20 @@ public class RestService {
 
 
 extension RestService {
-
-    func decodeCheckSurveyResponse(json: Data) -> Result<Dictionary<String,JSON>, BitlabError> {
+    
+    func decodeResponse(json: Data) -> Result<Dictionary<String,JSON>, BitlabError> {
 
         do {
             let responseJSON = try JSON(data: json)
-            guard let statusCode = responseJSON["status"].string else {
-                let error = BitlabError.MissingStatusCodeInResponse
-                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
-                return result
-            }
-
-            if statusCode != "success" {
-                let error = BitlabError.InvalidStatusCode(statusCode)
-                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
-                return result
+            
+            let statusCodeResult = checkStatusCode(json: responseJSON)
+            switch statusCodeResult {
+            case .failure(let error):
+                let r: Result<Dictionary<String,JSON>, BitlabError> = .failure(error as! BitlabError)
+            return r
+            case .success(let code):
+                debugPrint("Status code is: \(code.rawValue)")
+                //
             }
 
             guard let _ = responseJSON["data"].dictionary else {

@@ -5,8 +5,9 @@
 //  Created by Frank Marx on 10.11.20.
 //
 
-import Foundation
+import UIKit
 import SwiftyJSON
+
 
 
 public struct CheckSurveyReponse {
@@ -29,8 +30,9 @@ public struct CheckSurveyReponse {
 
 public struct Currency {
     public var format: String
-    public var exchangeFactor: Double
+    public var exchangeFactor: String
     public var iconURL: String
+    
 }
 
 public struct Visual {
@@ -39,9 +41,15 @@ public struct Visual {
     public var colorAccent: UIColor
     
     init() {
-        colorDark = UIColor(named: Colors.colorDark.rawValue)!
-        colorLight = UIColor(named: Colors.colorLight.rawValue)!
-        colorAccent = UIColor(named: Colors.colorAccent.rawValue)!
+        colorDark = UIColor(hex: "#000000ff")!
+        colorLight = UIColor(hex: "#ffee88ff")!
+        colorAccent = UIColor(hex: "#aa4488ff")!
+    }
+    
+    init( colorDark: UIColor, colorLight: UIColor, colorAccent: UIColor) {
+        self.colorDark = colorDark
+        self.colorLight = colorLight
+        self.colorAccent = colorAccent
     }
     
 }
@@ -49,5 +57,46 @@ public struct Visual {
 
 public struct RetrieveSettingsResponse {
     public var visual: Visual
-    public var currency: Currency
+    public var currency: Currency? = nil
+    
+    static func buildFromJSON(json: Dictionary<String,JSON>) -> RetrieveSettingsResponse {
+        var this = RetrieveSettingsResponse()
+        guard let visual = json["visual"]?.dictionary else {
+            this.visual = Visual()
+            return this
+        }
+        
+        guard let currency = json["currency"]?.dictionary else {
+            this.visual = Visual()
+            return this
+        }
+        
+        this.visual = this.buildVisual(json: visual)
+        this.currency = this.buildCurrency(json: currency)
+        return this
+    }
+    
+    func buildCurrency(json: Dictionary<String,JSON>) -> Currency {
+        let format = json["format"]!.string!
+        let exchangeFactor = json["exchange_factor"]!.string!
+        let iconURL = json["icon_url"]!.string!
+        let currency = Currency(format: format, exchangeFactor: exchangeFactor, iconURL: iconURL)
+        return currency
+    }
+    
+    
+    func buildVisual(json: Dictionary<String,JSON>) -> Visual {
+        let colorDark = UIColor(hex:  json["color_dark"]!.string! + "ff")!
+        let colorLight = UIColor(hex: json["color_light"]!.string! + "ff")!
+        let colorAccent = UIColor(hex: json["color_accent"]!.string! + "ff")!
+        var visual = Visual(colorDark: colorDark, colorLight: colorLight, colorAccent: colorAccent)
+    
+        return visual
+    }
+    
+    public init() {
+        visual = Visual()
+    }
+    
+    
 }

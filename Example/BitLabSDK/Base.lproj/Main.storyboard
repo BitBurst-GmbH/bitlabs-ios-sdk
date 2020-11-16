@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +18,36 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76S-j2-aeQ" userLabel="RetrieveSettingsButton">
+                                <rect key="frame" x="75" y="437" width="225" height="30"/>
+                                <state key="normal" title="Retrieve Settings"/>
+                                <connections>
+                                    <action selector="retrieveSettings:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rxk-jU-LmG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa" userLabel="CheckForSurveysButton">
+                                <rect key="frame" x="75" y="377" width="225" height="30"/>
+                                <state key="normal" title="Check for Surveys"/>
+                                <connections>
+                                    <action selector="checkForSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="awW-3T-7KV"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="76S-j2-aeQ" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.6" id="Ab4-1w-5XC"/>
+                            <constraint firstItem="76S-j2-aeQ" firstAttribute="top" secondItem="XLQ-xN-lTa" secondAttribute="bottom" constant="30" id="AcF-Jj-8Ys"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="76S-j2-aeQ" secondAttribute="bottom" constant="200" id="KbY-jH-8GN"/>
+                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.6" id="PF9-tQ-8uJ"/>
+                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sX2-ui-iN2"/>
+                            <constraint firstItem="76S-j2-aeQ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xp5-7J-Y4O"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-20" y="121"/>
         </scene>
     </scenes>
 </document>
