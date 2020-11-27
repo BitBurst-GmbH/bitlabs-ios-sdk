@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     let token = "6c7083df-b97e-4d29-9d90-798fd088bc08"
     var restService: RestService?
+    var browserDelegagte: BrowserDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         restService = RestService.Init(token: token, uid: "marxfr")
+        browserDelegagte = BrowserDelegate.instance
 //
 //        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
 //            switch result {
@@ -64,6 +66,13 @@ class ViewController: UIViewController {
                 
             }
         }
+        
+    }
+    
+    @IBAction func showWebView(_ sender: UIButton) {
+        let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
+    
+        present( sfController!, animated: true)
         
     }
     
