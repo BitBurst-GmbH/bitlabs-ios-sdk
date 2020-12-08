@@ -70,9 +70,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showWebView(_ sender: UIButton) {
-        let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
+      //  let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
     
-        present( sfController!, animated: true)
+        browserDelegagte?.show(parent: self, withUserId: "marxfr", token: token)
+        
+       // present( sfController!, animated: true)
         
     }
     

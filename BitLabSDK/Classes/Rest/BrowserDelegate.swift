@@ -7,8 +7,9 @@
 
 import UIKit
 import SafariServices
+import WebKit
 
-public class BrowserDelegate {
+public class BrowserDelegate: NSObject {
     
     public enum Constants {
         public static let baseURL = "https://web.bitlabs.ai"
@@ -19,9 +20,21 @@ public class BrowserDelegate {
     
     public static var instance = BrowserDelegate()
     
-    var safariVC: SFSafariViewController?
+    var observation: NSKeyValueObservation?
     
-    private init() {
+    var wkWebView: WKWebView
+    var safariController: SFSafariViewController?
+    weak var parentViewController: UIViewController?
+    
+    var shadowWebView: WKWebView
+    
+    override private init() {
+        wkWebView = WKWebView()
+        wkWebView.allowsBackForwardNavigationGestures = true
+        
+       // let config = WKWebViewConfiguration()
+        shadowWebView = WKWebView()
+
     }
     
     /*
@@ -32,19 +45,25 @@ public class BrowserDelegate {
      let checkSurveyURL = components.url!
      let headers = assembleHeaders(appToken: token, userId: userId)
      */
-    public func show(parent: UIView, withUserId userId : String, token: String ) -> SFSafariViewController?  {
+    public func show(parent: UIViewController, withUserId userId : String, token: String )   {
         let url = buildURL(userId: userId, apiToken: token)
         
         guard let u = url else {
             debugPrint("| Invalid url")
-            return nil
+            return
         }
+       
+        shadowWebView.navigationDelegate = self
         
-        safariVC = SFSafariViewController(url: u)
-                
-        var i = 2
+        wkWebView.uiDelegate = self
+        wkWebView.navigationDelegate = self
         
-        return safariVC
+        parent.view = wkWebView
+        parentViewController = parent
+        
+        let urlRequest = URLRequest(url: u)
+        wkWebView.load(urlRequest)
+
     }
      
     
@@ -66,3 +85,80 @@ public class BrowserDelegate {
     
     
 }
+
+
+extension BrowserDelegate: WKUIDelegate {
+    
+    
+}
+
+
+extension BrowserDelegate: WKNavigationDelegate {
+    
+    
+    public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
+        print(#function)
+    }
+    
+    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print(#function)
+        if webView != shadowWebView { return }
+        
+        let url = shadowWebView.url?.absoluteURL
+      //  parentViewController!.view = wkWebView
+        
+        var i = 2
+        
+    }
+    
+    public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        var i = 2
+        decisionHandler(.allow)
+        
+    }
+    
+//    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//
+//        let progress = change?[NSKeyValueChangeKey.newKey] as! Double
+//        if progress >= 1.0 {
+//                let url = shadowWebView.url!
+//
+//                if !UIApplication.shared.canOpenURL(url) {
+//                    return
+//                }
+//
+//
+//        } }
+    
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            let urlRequest = navigationAction.request
+    
+            observation = shadowWebView.observe( \WKWebView.estimatedProgress , options: [.new ]) { object, change in
+                guard let progress = change.newValue else { return }
+                
+                if progress >= 1.0 {
+                    let url = self.shadowWebView.url!
+
+                    if !UIApplication.shared.canOpenURL(url) {
+                           return
+                    }
+                        // TODO: Open Safari with URL
+                    self.safariController = SFSafariViewController(url: url)
+                    self.parentViewController?.present( self.safariController!, animated: true)
+                }
+            }
+            shadowWebView.load(urlRequest)
+        }
+        return nil
+    }
+    
+    
+    private func displaySafariController(withURL url: URL) {
+        safariController = SFSafariViewController(url: url)
+        parentViewController?.present(safariController!, animated: true)
+    }
+
+    
+}
+ 
