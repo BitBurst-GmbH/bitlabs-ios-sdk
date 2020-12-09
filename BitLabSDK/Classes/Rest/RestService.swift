@@ -34,7 +34,7 @@ public class RestService: BaseRestService {
     var userId: String = ""
     
     
-    public static func Init(token: String, uid: String) ->  RestService{
+    static func Init(token: String, uid: String) ->  RestService{
         let this = RestService(appToken: token, uid: uid)
         return this
     }

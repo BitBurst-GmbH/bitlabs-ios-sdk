@@ -34,7 +34,7 @@ public class BrowserDelegate: NSObject {
         shadowWebView = WKWebView()
     }
 
-    public func show(parent: UIViewController, withUserId userId : String, token: String )   {
+    func show(parent: UIViewController, withUserId userId : String, token: String )   {
         let url = buildURL(userId: userId, apiToken: token)
         
         guard let u = url else {
@@ -108,8 +108,7 @@ extension BrowserDelegate: WKNavigationDelegate {
                     self.parentViewController?.present( self.safariController!, animated: true)
                 }
             }
-            let ur = URLRequest(url: URL(string: "https://www.google.de")!)
-            shadowWebView.load(ur)
+            shadowWebView.load(urlRequest)
         }
         return nil
     }
