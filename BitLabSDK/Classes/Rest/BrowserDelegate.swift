@@ -18,7 +18,7 @@ public class BrowserDelegate: NSObject {
 
     }
     
-    public static var instance = BrowserDelegate()
+    public static let instance = BrowserDelegate()
     
     var observation: NSKeyValueObservation?
     
@@ -31,20 +31,9 @@ public class BrowserDelegate: NSObject {
     override private init() {
         wkWebView = WKWebView()
         wkWebView.allowsBackForwardNavigationGestures = true
-        
-       // let config = WKWebViewConfiguration()
         shadowWebView = WKWebView()
-
     }
-    
-    /*
-     var components = URLComponents(string: url.absoluteString)!
-     let query = URLQueryItem(name: "platform", value: p.rawValue)
-     
-     components.queryItems = [query]
-     let checkSurveyURL = components.url!
-     let headers = assembleHeaders(appToken: token, userId: userId)
-     */
+
     public func show(parent: UIViewController, withUserId userId : String, token: String )   {
         let url = buildURL(userId: userId, apiToken: token)
         
@@ -54,7 +43,6 @@ public class BrowserDelegate: NSObject {
         }
        
         shadowWebView.navigationDelegate = self
-        
         wkWebView.uiDelegate = self
         wkWebView.navigationDelegate = self
         
@@ -86,49 +74,22 @@ public class BrowserDelegate: NSObject {
     
 }
 
-
 extension BrowserDelegate: WKUIDelegate {
-    
     
 }
 
-
 extension BrowserDelegate: WKNavigationDelegate {
     
-    
-    public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
-        print(#function)
-    }
-    
-    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        print(#function)
-        if webView != shadowWebView { return }
-        
-        let url = shadowWebView.url?.absoluteURL
-      //  parentViewController!.view = wkWebView
-        
-        var i = 2
-        
-    }
-    
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        var i = 2
         decisionHandler(.allow)
-        
     }
-    
-//    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-//
-//        let progress = change?[NSKeyValueChangeKey.newKey] as! Double
-//        if progress >= 1.0 {
-//                let url = shadowWebView.url!
-//
-//                if !UIApplication.shared.canOpenURL(url) {
-//                    return
-//                }
-//
-//
-//        } }
+
+    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+          print(#function)
+          if webView != shadowWebView { return }
+          
+          let url = shadowWebView.url?.absoluteURL
+      }
     
     public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil {
@@ -143,22 +104,14 @@ extension BrowserDelegate: WKNavigationDelegate {
                     if !UIApplication.shared.canOpenURL(url) {
                            return
                     }
-                        // TODO: Open Safari with URL
                     self.safariController = SFSafariViewController(url: url)
                     self.parentViewController?.present( self.safariController!, animated: true)
                 }
             }
-            shadowWebView.load(urlRequest)
+            let ur = URLRequest(url: URL(string: "https://www.google.de")!)
+            shadowWebView.load(ur)
         }
         return nil
     }
-    
-    
-    private func displaySafariController(withURL url: URL) {
-        safariController = SFSafariViewController(url: url)
-        parentViewController?.present(safariController!, animated: true)
-    }
-
-    
 }
  

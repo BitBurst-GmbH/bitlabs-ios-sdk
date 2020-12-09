@@ -51,6 +51,8 @@
 		A9C7B29D4878F1690BBE3F8195CF0313 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E87DBBD165C6CE7D037B13665FF3F0F3 /* CFNetwork.framework */; };
 		ABA85887A41495358C83CE3F3030EDEA /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC66D611517240FF53F929274E4E03F /* CachedResponseHandler.swift */; };
 		AEC2166BED5A7D405CBA064213EC93F7 /* ResponseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690B0940493A5957035A2BA7F60F4BCD /* ResponseModels.swift */; };
+		B1440D1D2580C55A00F2CA91 /* BitLabInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1440D1C2580C55A00F2CA91 /* BitLabInterface.swift */; };
+		B1440D242580C71800F2CA91 /* BitLabFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1440D232580C71800F2CA91 /* BitLabFacade.swift */; };
 		B1DACFC525679EF500FB2A0B /* BrowserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DACFC425679EF500FB2A0B /* BrowserDelegate.swift */; };
 		BF4C06037164F88C44C2EA94B5AEBA99 /* BaseRestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AD181584B9D7192499B29E09790DD2 /* BaseRestService.swift */; };
 		C1C5B050B55C15103ABC81769551A283 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E25D522087AC32353392178D82BDBA /* Response.swift */; };
@@ -176,6 +178,8 @@
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5BD27A73B62F9F98A101EDD19C51CA0 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		ACEB8E8EE9AFAA50241B0C80A0C72A88 /* BitLabSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BitLabSDK-dummy.m"; sourceTree = "<group>"; };
+		B1440D1C2580C55A00F2CA91 /* BitLabInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitLabInterface.swift; sourceTree = "<group>"; };
+		B1440D232580C71800F2CA91 /* BitLabFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitLabFacade.swift; sourceTree = "<group>"; };
 		B1977FEB800513F7C7BEE19A404012A7 /* BitLabSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BitLabSDK.modulemap; sourceTree = "<group>"; };
 		B19D62C3B0AFBE64D5FAC288F2999EE3 /* Pods-BitLabSDK_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitLabSDK_Tests-dummy.m"; sourceTree = "<group>"; };
 		B1DACFC425679EF500FB2A0B /* BrowserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BrowserDelegate.swift; path = BitLabSDK/Classes/Rest/BrowserDelegate.swift; sourceTree = "<group>"; };
@@ -291,6 +295,8 @@
 				B5FBD8BE3CA11CB33EA21182DD2D7FEB /* Pod */,
 				AA45B1C8928F27CC06CBBD0679DD119A /* Support Files */,
 				B1DACFC425679EF500FB2A0B /* BrowserDelegate.swift */,
+				B1440D1C2580C55A00F2CA91 /* BitLabInterface.swift */,
+				B1440D232580C71800F2CA91 /* BitLabFacade.swift */,
 			);
 			name = BitLabSDK;
 			path = ../..;
@@ -767,7 +773,9 @@
 				BF4C06037164F88C44C2EA94B5AEBA99 /* BaseRestService.swift in Sources */,
 				52E2852369FCE18C69E8A1DF8C26AA7E /* BitLabError.swift in Sources */,
 				4C013C3C5801121741051FEC0EE27328 /* BitLabSDK-dummy.m in Sources */,
+				B1440D242580C71800F2CA91 /* BitLabFacade.swift in Sources */,
 				5B97CF6E7936715880A49483DE56F566 /* GlobalConstants.swift in Sources */,
+				B1440D1D2580C55A00F2CA91 /* BitLabInterface.swift in Sources */,
 				AEC2166BED5A7D405CBA064213EC93F7 /* ResponseModels.swift in Sources */,
 				8B7CF2EB5BEB53005D65A21BE49F1B6F /* RestService.swift in Sources */,
 				9B8A20A7C7C191DDBCFB36BFF33F020C /* UIColor+Extension.swift in Sources */,

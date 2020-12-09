@@ -12,8 +12,10 @@ import UIKit
 class ViewController: UIViewController {
 
     let token = "6c7083df-b97e-4d29-9d90-798fd088bc08"
-    var restService: RestService?
-    var browserDelegagte: BrowserDelegate?
+  //  var restService: RestService?
+  //  var browserDelegagte: BrowserDelegate?
+    
+    var bitLabSDK: BitLabInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +30,10 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        restService = RestService.Init(token: token, uid: "marxfr")
-        browserDelegagte = BrowserDelegate.instance
+        bitLabSDK = BitLabFacade.Init(token: token, uid: "marxfr")
+        
+      //  restService = RestService.Init(token: token, uid: "marxfr")
+      //  browserDelegagte = BrowserDelegate.instance
 //
 //        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
 //            switch result {
@@ -44,7 +48,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {
-        restService?.checkForSurveys(forPlatform: .MOBILE) { result in
+        bitLabSDK?.checkForSurveys(forPlatform: .MOBILE) { result in
             switch result {
             case .success(let entity):
                 debugPrint(entity)
@@ -57,7 +61,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func retrieveSettings( _ sender: UIButton) {
-        restService?.retrieveSettings() { result in
+        bitLabSDK?.retrieveSettings() { result in
             switch result {
             case .success(let entity):
                 debugPrint(entity)
@@ -72,7 +76,7 @@ class ViewController: UIViewController {
     @IBAction func showWebView(_ sender: UIButton) {
       //  let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
     
-        browserDelegagte?.show(parent: self, withUserId: "marxfr", token: token)
+        bitLabSDK?.show(parent: self, withUserId: "marxfr", token: token)
         
        // present( sfController!, animated: true)
         

@@ -14,8 +14,12 @@ protocol ResponseStatusCheck {
     func checkStatusCode(json: JSON) -> Result<ResponseStatusCodes, Error>
 }
 
-
 public class BaseRestService: ResponseStatusCheck {
+    
+    init() {
+        
+    }
+    
     
     func checkStatusCode(json: JSON) -> Result<ResponseStatusCodes, Error> {
       
@@ -35,21 +39,5 @@ public class BaseRestService: ResponseStatusCheck {
         
         return result
     }
-
-    /*
-     let responseJSON = try JSON(data: json)
-     guard let statusCode = responseJSON["status"].string else {
-         let error = BitlabError.MissingStatusCodeInResponse
-         let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
-         return result
-     }
-
-     if statusCode != "success" {
-         let error = BitlabError.InvalidStatusCode(statusCode)
-         let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
-         return result
-     }
-     
-     */
     
 }
