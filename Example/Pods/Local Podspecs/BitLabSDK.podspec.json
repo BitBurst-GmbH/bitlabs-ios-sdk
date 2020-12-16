@@ -20,7 +20,7 @@
   },
   "source_files": "BitLabSDK/Classes/Rest/**/*.swift",
   "resources": [
-    "BitLabSDK/Classes/**/*.{xcassets}"
+    "BitLabSDK/Classes/**/*.{xib}"
   ],
   "dependencies": {
     "Alamofire": [

@@ -36,7 +36,7 @@ TODO: Add long description of the pod here.
 #     'BitLabSDK' => ['BitLabSDK/Classes/Assets/**/*']
 #  }
   # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
-  spec.resources = ['BitLabSDK/Classes/**/*.{xcassets}']
+  spec.resources = ['BitLabSDK/Classes/**/*.{xib}']
 
   
   # s.public_header_files = 'Pod/Classes/**/*.h'
