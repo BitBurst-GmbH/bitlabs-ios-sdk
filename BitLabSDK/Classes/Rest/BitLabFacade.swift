@@ -37,8 +37,8 @@ public class BitLabFacade: BitLabInterface {
         restService.checkForSurveys(forPlatform: p, completion: ch)
     }
     
-    public func show(parent p: UIViewController, withUserId userId : String, token t: String ) {
-        browserDelegate.show(parent: p, withUserId: userId, token: t)
+    public func show(parent p: UIViewController, withUserId userId : String, token t: String, visual: Visual? ) {
+        browserDelegate.show(parent: p, withUserId: userId, token: t, visual: visual)
     }
 }
 

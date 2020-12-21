@@ -6,9 +6,12 @@
 //
 
 import UIKit
+import WebKit
 
 class WebViewController: UIViewController {
 
+    weak var delegate: WebViewControllerDelegate?
+    
     enum Constants {
         static let xibName = String(describing: WebViewController.self)
         static let bundle = Bundle(for: WebViewController.self)
@@ -16,7 +19,9 @@ class WebViewController: UIViewController {
     
     @IBOutlet weak var topBar: UIView?
     @IBOutlet weak var closeButton: UIButton?
+    @IBOutlet weak var navigateBackButton: UIButton?
     
+    @IBOutlet weak var webView: WKWebView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +41,14 @@ class WebViewController: UIViewController {
     }
   
 
+    @IBAction func handleCloseAction( _ sender: UIButton) {
+        self.delegate?.handleCloseAction?(self)
+    }
+    
+    @IBAction func handleBackNavigationAction(_ sender: UIButton) {
+        self.delegate?.handleNavigateBackAction?(self)
+    }
+    
     /*
     // MARK: - Navigation
 

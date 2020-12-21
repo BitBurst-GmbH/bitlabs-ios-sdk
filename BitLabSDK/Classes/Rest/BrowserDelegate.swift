@@ -10,6 +10,12 @@ import UIKit
 import SafariServices
 import WebKit
 
+@objc
+protocol WebViewControllerDelegate {
+    @objc optional func handleCloseAction( _ webViewController: WebViewController)
+    @objc optional func handleNavigateBackAction( _ webViewController: WebViewController)
+}
+
 public class BrowserDelegate: NSObject {
     
     public enum Constants {
@@ -31,8 +37,9 @@ public class BrowserDelegate: NSObject {
     let urlRegEx = "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)"
     
     var observation: NSKeyValueObservation?
+    var visual = Visual()
     
-    var wkWebView: WKWebView
+   // var wkWebView: WKWebView
     var safariController: SFSafariViewController?
     weak var parentViewController: UIViewController?
     
@@ -41,19 +48,12 @@ public class BrowserDelegate: NSObject {
     var shadowWebView: WKWebView
     
     override private init() {
-        webViewController = WebViewController()
-        wkWebView = WKWebView()
-        wkWebView.allowsBackForwardNavigationGestures = true
         shadowWebView = WKWebView()
+        webViewController = WebViewController()
         super.init()
-//        do {
-//            let result = try checkForNetworkAndSurveyId(urlToCheck: exampleURL)
-//        } catch {
-//            // should never happen
-//        }
-        
     }
 
+    
     // TODO: Implement the check for the BitLabs - URL
     private func containsBitLabURL(url: String ) -> Bool {
         return url.starts(with: Constants.baseURL)
@@ -85,7 +85,7 @@ public class BrowserDelegate: NSObject {
     }
     
     
-    func show(parent: UIViewController, withUserId userId : String, token: String )   {
+    func show(parent: UIViewController, withUserId userId : String, token: String, visual: Visual? )   {
         let url = buildURL(userId: userId, apiToken: token)
         
         guard let u = url else {
@@ -93,18 +93,23 @@ public class BrowserDelegate: NSObject {
             return
         }
        
+        if visual != nil {
+            self.visual = visual!
+        }
+        
         shadowWebView.navigationDelegate = self
-        wkWebView.uiDelegate = self
-        wkWebView.navigationDelegate = self
-    
+     
+        webViewController.delegate = self
+        webViewController.modalPresentationStyle = .fullScreen
         parent.present(webViewController, animated: true)
-    //    parent.addChildViewController(webViewController)
-   //     let wView = webViewController.view
-    // parent.view = webViewController.view
         parentViewController = parent
+
+        webViewController.webView?.uiDelegate = self
+        webViewController.webView?.navigationDelegate = self
+
         
         let urlRequest = URLRequest(url: u)
-        wkWebView.load(urlRequest)
+        webViewController.webView!.load(urlRequest)
 
     }
      
@@ -148,15 +153,13 @@ extension BrowserDelegate: WKNavigationDelegate {
         }
         
         if containsBitLabURL(url: urlStr!) {
-            //configureLayoutOne
-            decisionHandler(.allow)
-            return
-        } else {
-            // configureLayoutTwo
+            configureLayoutOne()
             decisionHandler(.allow)
             return
         }
         
+        let textColor = calculateTextColor(visual: visual)
+        configureLayoutTwo()
         do {
             guard let result = try checkForNetworkAndSurveyId(urlToCheck: urlStr!) else {
                 decisionHandler(.allow)
@@ -171,6 +174,55 @@ extension BrowserDelegate: WKNavigationDelegate {
         decisionHandler(.allow)
     }
 
+    func calculateTextColor( visual: Visual) -> UIColor {
+        let baseColor = visual.colorLight.cgColor
+        let components = baseColor.components
+        
+        let red = components![0]
+        let green = components![1]
+        let blue = components![2]
+        
+        let calcRed = red * 0.299
+        let calcGreen = green * 0.587
+        let calcBlue = blue * 0.114
+        
+        let calcSum = calcRed + calcGreen + calcBlue
+        
+        if calcSum >= 186 {
+            return UIColor.black
+        } else {
+            return UIColor.white
+        }
+    }
+    
+    func configureLayoutOne() {
+        
+        let textColor = calculateTextColor(visual: visual)
+        
+        webViewController.topBar?.isHidden = false
+        webViewController.topBar?.backgroundColor = visual.colorLight
+        webViewController.closeButton?.isHidden = false
+        webViewController.closeButton?.isUserInteractionEnabled = true
+        webViewController.closeButton?.tintColor = textColor
+        
+        webViewController.navigateBackButton?.isHidden = true
+        webViewController.navigateBackButton?.isUserInteractionEnabled = false
+    }
+    
+    func configureLayoutTwo() {
+        let textColor = calculateTextColor(visual: visual)
+        
+        webViewController.topBar?.isHidden = false
+        webViewController.topBar?.backgroundColor = visual.colorLight
+        
+        webViewController.navigateBackButton?.isHidden = false
+        webViewController.navigateBackButton?.isUserInteractionEnabled = true
+        webViewController.navigateBackButton?.tintColor = textColor
+        
+        webViewController.closeButton?.isHidden = true
+        webViewController.closeButton?.isUserInteractionEnabled = false
+    }
+    
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
           print(#function)
           if webView != shadowWebView { return }
@@ -203,3 +255,19 @@ extension BrowserDelegate: WKNavigationDelegate {
 
 }
  
+extension BrowserDelegate: WebViewControllerDelegate {
+    
+    func handleCloseAction(_ webViewController: WebViewController) {
+        webViewController.dismiss(animated: true )
+    }
+    
+    func handleNavigateBackAction(_ webViewController: WebViewController) {
+        // TODO: Implement
+        var i = 2
+    }
+    
+    func confirmLeaving(_ webViewController: WebViewController ) {
+        
+    }
+    
+}

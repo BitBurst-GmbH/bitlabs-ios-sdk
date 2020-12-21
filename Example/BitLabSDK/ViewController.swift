@@ -76,7 +76,17 @@ class ViewController: UIViewController {
     @IBAction func showWebView(_ sender: UIButton) {
       //  let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
     
-        bitLabSDK?.show(parent: self, withUserId: "marxfr", token: token)
+        bitLabSDK?.retrieveSettings() { result in
+            switch result {
+            case .success(let entity):
+                debugPrint(entity)
+                self.bitLabSDK?.show(parent: self, withUserId: "marxfr", token: self.token, visual: entity.visual)
+            case .failure(let error):
+                debugPrint(error)
+                
+            }
+        }
+       
         
        // present( sfController!, animated: true)
         

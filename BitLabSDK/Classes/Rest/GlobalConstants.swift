@@ -19,3 +19,12 @@ enum Colors: String {
     case colorLight = "colorLight"
     case colorAccent = "colorAccent"
 }
+
+
+enum LeaveReson: String {
+    case sensitive = "SENSITIVE"
+    case uninteresting = "UNINTERESTING"
+    case technical = "TECHNICAL"
+    case tooLong = "TOO_LONG"
+    case other = "OTHER"
+}

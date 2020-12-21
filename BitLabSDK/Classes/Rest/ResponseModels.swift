@@ -39,17 +39,20 @@ public struct Visual {
     public var colorDark: UIColor
     public var colorLight: UIColor
     public var colorAccent: UIColor
+    public var mode: String
     
     init() {
         colorDark = UIColor(hex: "#000000ff")!
         colorLight = UIColor(hex: "#ffee88ff")!
         colorAccent = UIColor(hex: "#aa4488ff")!
+        mode = "OFFEREWALL"
     }
     
-    init( colorDark: UIColor, colorLight: UIColor, colorAccent: UIColor) {
+    init( colorDark: UIColor, colorLight: UIColor, colorAccent: UIColor, mode: String) {
         self.colorDark = colorDark
         self.colorLight = colorLight
         self.colorAccent = colorAccent
+        self.mode = mode
     }
     
 }
@@ -89,7 +92,9 @@ public struct RetrieveSettingsResponse {
         let colorDark = UIColor(hex:  json["color_dark"]!.string! + "ff")!
         let colorLight = UIColor(hex: json["color_light"]!.string! + "ff")!
         let colorAccent = UIColor(hex: json["color_accent"]!.string! + "ff")!
-        var visual = Visual(colorDark: colorDark, colorLight: colorLight, colorAccent: colorAccent)
+        let mode = String( json["mode"]!.string!)
+        var visual = Visual(colorDark: colorDark, colorLight: colorLight,
+                            colorAccent: colorAccent,mode: mode)
     
         return visual
     }

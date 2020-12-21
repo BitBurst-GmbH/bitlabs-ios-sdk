@@ -12,6 +12,7 @@ import SwiftyJSON
 
 public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,Error>) -> Void
 public typealias retrieveSettingsResponseHandler = (Result<RetrieveSettingsResponse,Error>) -> Void
+public typealias leaveSurveyResponseHandler = () -> Void
 
 public enum Platform: String, CaseIterable {
     case MOBILE = "MOBILE"
@@ -47,7 +48,7 @@ public class RestService: BaseRestService {
     override private init() {
         super.init()
     }
-    
+       
     public func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler) {
         let completionHandler = completion
         let headers = assembleHeaders(appToken: token, userId: userId)
@@ -79,7 +80,10 @@ public class RestService: BaseRestService {
     
     
     }
-    
+
+    func leaveSurvey( networkId: String, surveyId: String, completion: @escaping leaveSurveyResponseHandler) {
+        let completion = completion
+    }
     
     public func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler ) {
         let completionHandler = completion
