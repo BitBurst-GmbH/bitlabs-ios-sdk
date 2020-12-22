@@ -24,7 +24,7 @@ public class BrowserDelegate: NSObject {
         public static let userIdHeader = "X-User-Id"
         public static let urlStartsWith = "web.bitlabs.ai"
         
-
+       
     }
     
     let exampleURL = "https://api.bitlabs.ai/v1/client/networks/12345/surveys/34334/leave"
@@ -201,6 +201,7 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.topBar?.isHidden = false
         webViewController.topBar?.backgroundColor = visual.colorLight
+        
         webViewController.closeButton?.isHidden = false
         webViewController.closeButton?.isUserInteractionEnabled = true
         webViewController.closeButton?.tintColor = textColor
