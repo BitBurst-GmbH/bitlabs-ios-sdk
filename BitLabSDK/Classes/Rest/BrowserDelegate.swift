@@ -197,14 +197,14 @@ extension BrowserDelegate: WKNavigationDelegate {
     
     func configureLayoutOne() {
         
-        let textColor = calculateTextColor(visual: visual)
+        //let textColor = calculateTextColor(visual: visual)
         
         webViewController.topBar?.isHidden = false
-        webViewController.topBar?.backgroundColor = visual.colorLight
+        webViewController.topBar?.backgroundColor = UIColor.clear
         
         webViewController.closeButton?.isHidden = false
         webViewController.closeButton?.isUserInteractionEnabled = true
-        webViewController.closeButton?.tintColor = textColor
+        webViewController.closeButton?.tintColor = UIColor.darkGray
         
         webViewController.navigateBackButton?.isHidden = true
         webViewController.navigateBackButton?.isUserInteractionEnabled = false
