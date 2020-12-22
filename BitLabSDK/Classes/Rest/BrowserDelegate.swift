@@ -199,7 +199,7 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         //let textColor = calculateTextColor(visual: visual)
         
-        webViewController.topBar?.isHidden = false
+        webViewController.topBar?.isHidden = true
         webViewController.topBar?.backgroundColor = UIColor.clear
         
         webViewController.closeButton?.isHidden = false
