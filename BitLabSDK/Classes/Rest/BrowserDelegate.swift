@@ -97,6 +97,10 @@ public class BrowserDelegate: NSObject {
             self.visual = visual!
         }
         
+        if webViewController.isBeingPresented {
+            return
+        }
+        
         shadowWebView.navigationDelegate = self
      
         webViewController.delegate = self

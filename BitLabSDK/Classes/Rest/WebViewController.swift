@@ -18,6 +18,7 @@ class WebViewController: UIViewController {
     }
     
     @IBOutlet weak var topBar: UIView?
+    @IBOutlet weak var closeButtonBar: UIView?
     @IBOutlet weak var closeButton: UIButton?
     @IBOutlet weak var navigateBackButton: UIButton?
     

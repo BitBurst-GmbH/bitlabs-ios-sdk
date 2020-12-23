@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="BitLabSDK" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="SoK-Wq-vse" id="NBp-Lu-Hkc"/>
+                <outlet property="closeButtonBar" destination="EtR-HN-3zP" id="Wcc-Ju-eWP"/>
                 <outlet property="navigateBackButton" destination="FaJ-5E-f48" id="ejA-TN-XEU"/>
                 <outlet property="topBar" destination="OnT-Nt-hTT" id="HW3-lQ-pk8"/>
                 <outlet property="view" destination="Bt2-0X-RvR" id="gma-Fw-Tjx"/>
@@ -23,10 +24,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OnT-Nt-hTT" userLabel="topBarView">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="22.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaJ-5E-f48" userLabel="navigateBackButton">
-                            <rect key="frame" x="5" y="-4" width="30" height="30"/>
+                            <rect key="frame" x="5" y="7.5" width="30" height="30"/>
                             <state key="normal" title="&lt;"/>
                             <connections>
                                 <action selector="handleBackNavigationAction:" destination="-1" eventType="touchUpInside" id="1BW-zU-Fvh"/>
@@ -40,34 +41,46 @@
                     </constraints>
                 </view>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m7b-oF-T0w" userLabel="webView">
-                    <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoK-Wq-vse" userLabel="closeButton">
-                    <rect key="frame" x="374" y="50" width="25" height="29"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                    <state key="normal" image="multiply.circle" catalog="system"/>
-                    <connections>
-                        <action selector="handleCloseAction:" destination="-1" eventType="touchUpInside" id="oT1-t1-myJ"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtR-HN-3zP" userLabel="closeButtonBarView">
+                    <rect key="frame" x="0.0" y="10" width="414" height="107.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoK-Wq-vse" userLabel="closeButton">
+                            <rect key="frame" x="384" y="39.5" width="25" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <state key="normal" image="multiply.circle" catalog="system"/>
+                            <connections>
+                                <action selector="handleCloseAction:" destination="-1" eventType="touchUpInside" id="oT1-t1-myJ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="SoK-Wq-vse" firstAttribute="centerY" secondItem="EtR-HN-3zP" secondAttribute="centerY" id="DC9-Vt-jsA"/>
+                        <constraint firstAttribute="trailing" secondItem="SoK-Wq-vse" secondAttribute="trailing" constant="5" id="cu3-Ot-gsl"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="kLV-T8-SwN"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="SoK-Wq-vse" secondAttribute="trailing" constant="15" id="02d-D8-JDI"/>
-                <constraint firstItem="m7b-oF-T0w" firstAttribute="leading" secondItem="kLV-T8-SwN" secondAttribute="leading" id="6er-8T-bN0"/>
-                <constraint firstItem="OnT-Nt-hTT" firstAttribute="height" secondItem="Bt2-0X-RvR" secondAttribute="height" multiplier="0.025" id="70a-8k-Zgi"/>
+                <constraint firstItem="OnT-Nt-hTT" firstAttribute="height" secondItem="Bt2-0X-RvR" secondAttribute="height" multiplier="0.05" id="70a-8k-Zgi"/>
                 <constraint firstItem="OnT-Nt-hTT" firstAttribute="width" secondItem="Bt2-0X-RvR" secondAttribute="width" id="8cQ-4t-yZ7"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="centerX" secondItem="kLV-T8-SwN" secondAttribute="centerX" id="9kN-qT-33l"/>
                 <constraint firstItem="OnT-Nt-hTT" firstAttribute="centerX" secondItem="Bt2-0X-RvR" secondAttribute="centerX" id="Aiy-mV-EaP"/>
-                <constraint firstItem="m7b-oF-T0w" firstAttribute="centerY" secondItem="kLV-T8-SwN" secondAttribute="centerY" id="S9J-1d-vsM"/>
-                <constraint firstItem="m7b-oF-T0w" firstAttribute="height" secondItem="Bt2-0X-RvR" secondAttribute="height" id="aQ0-q4-W6w"/>
+                <constraint firstItem="m7b-oF-T0w" firstAttribute="top" secondItem="Bt2-0X-RvR" secondAttribute="top" id="HfO-J8-9Sd"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="width" secondItem="m7b-oF-T0w" secondAttribute="width" id="Kaf-3T-Y1P"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="height" secondItem="m7b-oF-T0w" secondAttribute="height" multiplier="0.12" id="b9m-3t-UAz"/>
+                <constraint firstAttribute="bottom" secondItem="m7b-oF-T0w" secondAttribute="bottom" id="gd2-Ld-z9E"/>
                 <constraint firstAttribute="top" secondItem="OnT-Nt-hTT" secondAttribute="top" id="ik2-cB-2UX"/>
-                <constraint firstItem="SoK-Wq-vse" firstAttribute="top" secondItem="m7b-oF-T0w" secondAttribute="top" constant="45" id="k5k-gM-Lta"/>
-                <constraint firstItem="m7b-oF-T0w" firstAttribute="centerX" secondItem="kLV-T8-SwN" secondAttribute="centerX" id="pJI-OX-nbC"/>
+                <constraint firstItem="m7b-oF-T0w" firstAttribute="width" secondItem="Bt2-0X-RvR" secondAttribute="width" id="qIf-Z7-UfX"/>
+                <constraint firstItem="m7b-oF-T0w" firstAttribute="centerX" secondItem="kLV-T8-SwN" secondAttribute="centerX" id="vmN-D5-8RQ"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="top" secondItem="m7b-oF-T0w" secondAttribute="top" constant="10" id="y27-bF-tGN"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
