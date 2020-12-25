@@ -48,10 +48,10 @@
                     </wkWebViewConfiguration>
                 </wkWebView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EtR-HN-3zP" userLabel="closeButtonBarView">
-                    <rect key="frame" x="0.0" y="10" width="414" height="107.5"/>
+                    <rect key="frame" x="331" y="10" width="83" height="107.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoK-Wq-vse" userLabel="closeButton">
-                            <rect key="frame" x="384" y="39.5" width="25" height="29"/>
+                            <rect key="frame" x="53" y="39.5" width="25" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <state key="normal" image="multiply.circle" catalog="system"/>
                             <connections>
@@ -71,10 +71,10 @@
             <constraints>
                 <constraint firstItem="OnT-Nt-hTT" firstAttribute="height" secondItem="Bt2-0X-RvR" secondAttribute="height" multiplier="0.05" id="70a-8k-Zgi"/>
                 <constraint firstItem="OnT-Nt-hTT" firstAttribute="width" secondItem="Bt2-0X-RvR" secondAttribute="width" id="8cQ-4t-yZ7"/>
-                <constraint firstItem="EtR-HN-3zP" firstAttribute="centerX" secondItem="kLV-T8-SwN" secondAttribute="centerX" id="9kN-qT-33l"/>
                 <constraint firstItem="OnT-Nt-hTT" firstAttribute="centerX" secondItem="Bt2-0X-RvR" secondAttribute="centerX" id="Aiy-mV-EaP"/>
                 <constraint firstItem="m7b-oF-T0w" firstAttribute="top" secondItem="Bt2-0X-RvR" secondAttribute="top" id="HfO-J8-9Sd"/>
-                <constraint firstItem="EtR-HN-3zP" firstAttribute="width" secondItem="m7b-oF-T0w" secondAttribute="width" id="Kaf-3T-Y1P"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="width" secondItem="m7b-oF-T0w" secondAttribute="width" multiplier="0.2" id="Kaf-3T-Y1P"/>
+                <constraint firstItem="EtR-HN-3zP" firstAttribute="trailing" secondItem="m7b-oF-T0w" secondAttribute="trailing" id="TKP-0h-d6B"/>
                 <constraint firstItem="EtR-HN-3zP" firstAttribute="height" secondItem="m7b-oF-T0w" secondAttribute="height" multiplier="0.12" id="b9m-3t-UAz"/>
                 <constraint firstAttribute="bottom" secondItem="m7b-oF-T0w" secondAttribute="bottom" id="gd2-Ld-z9E"/>
                 <constraint firstAttribute="top" secondItem="OnT-Nt-hTT" secondAttribute="top" id="ik2-cB-2UX"/>
