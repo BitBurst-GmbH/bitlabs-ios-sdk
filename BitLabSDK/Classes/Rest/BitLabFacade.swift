@@ -21,6 +21,7 @@ public class BitLabFacade: BitLabInterface {
         uid = u
         restService = RestService.Init(token: token, uid: uid)
         browserDelegate = BrowserDelegate.instance
+        browserDelegate.restService = restService
     }
     
     public static func Init(token: String, uid: String) ->  BitLabInterface {
@@ -40,6 +41,11 @@ public class BitLabFacade: BitLabInterface {
     public func show(parent p: UIViewController, withUserId userId : String, token t: String, visual: Visual? ) {
         browserDelegate.show(parent: p, withUserId: userId, token: t, visual: visual)
     }
+    
+    public func show(parent p: UIViewController) {
+        
+    }
+    
 }
 
 /*

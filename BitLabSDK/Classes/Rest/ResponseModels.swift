@@ -57,6 +57,9 @@ public struct Visual {
     
 }
 
+struct LeaveReasonData {
+    var reason: String
+}
 
 public struct RetrieveSettingsResponse {
     public var visual: Visual

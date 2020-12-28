@@ -16,6 +16,12 @@ protocol WebViewControllerDelegate {
     @objc optional func handleNavigateBackAction( _ webViewController: WebViewController)
 }
 
+
+protocol WebViewControllerNavigationDelegate: class{
+    func handleLeaveSurvey( controller: UIViewController, reason: LeaveReason)
+    func handleCloseAction( controller: WebViewController)
+}
+
 public class BrowserDelegate: NSObject {
     
     public enum Constants {
@@ -34,12 +40,14 @@ public class BrowserDelegate: NSObject {
     var networkID = ""
     var surveryID = ""
     
+    var currentLayout: Layout = .LAYOUT_ONE
+    var restService: RestService?
+    
     let urlRegEx = "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)"
     
     var observation: NSKeyValueObservation?
     var visual = Visual()
-    
-   // var wkWebView: WKWebView
+ 
     var safariController: SFSafariViewController?
     weak var parentViewController: UIViewController?
     
@@ -50,6 +58,7 @@ public class BrowserDelegate: NSObject {
     override private init() {
         shadowWebView = WKWebView()
         webViewController = WebViewController()
+        webViewController.visual = visual
         super.init()
     }
 
@@ -101,8 +110,12 @@ public class BrowserDelegate: NSObject {
             return
         }
         
+        if visual != nil {
+            webViewController.visual = visual!
+        }
+        
         shadowWebView.navigationDelegate = self
-     
+      
         webViewController.delegate = self
         webViewController.modalPresentationStyle = .fullScreen
         parent.present(webViewController, animated: true)
@@ -143,9 +156,11 @@ extension BrowserDelegate: WKUIDelegate {
 
 extension BrowserDelegate: WKNavigationDelegate {
     
-    
     public func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
-        var i = 2
+    
+        if currentLayout == .LAYOUT_TWO {
+            webViewController.navigateBackButton?.isEnabled = true
+        }
     }
     
     public func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -201,10 +216,11 @@ extension BrowserDelegate: WKNavigationDelegate {
     
     func configureLayoutOne() {
         
-        //let textColor = calculateTextColor(visual: visual)
+        webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(1000)
+        webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(999)
         
         webViewController.topBar?.isHidden = true
-        webViewController.topBar?.backgroundColor = UIColor.clear
+        webViewController.topBar?.backgroundColor = UIColor.green
         
         webViewController.closeButton?.isHidden = false
         webViewController.closeButton?.isUserInteractionEnabled = true
@@ -212,11 +228,17 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.navigateBackButton?.isHidden = true
         webViewController.navigateBackButton?.isUserInteractionEnabled = false
+        
+        currentLayout = .LAYOUT_ONE
     }
     
     func configureLayoutTwo() {
         let textColor = calculateTextColor(visual: visual)
         
+        webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(999)
+        webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(1000)
+        
+        webViewController.navigateBackButton?.isEnabled = false
         webViewController.topBar?.isHidden = false
         webViewController.topBar?.backgroundColor = visual.colorLight
         
@@ -226,6 +248,8 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.closeButton?.isHidden = true
         webViewController.closeButton?.isUserInteractionEnabled = false
+        
+        currentLayout = .LAYOUT_TWO
     }
     
     public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
@@ -260,19 +284,16 @@ extension BrowserDelegate: WKNavigationDelegate {
 
 }
  
-extension BrowserDelegate: WebViewControllerDelegate {
+extension BrowserDelegate: WebViewControllerNavigationDelegate {
+    func handleLeaveSurvey(controller: UIViewController , reason: LeaveReason) {
+        guard let rs = restService else { return }
+        
+        rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
+            controller.dismiss(animated: true, completion: nil)
+        }
+    }
     
-    func handleCloseAction(_ webViewController: WebViewController) {
+    func handleCloseAction(controller: WebViewController) {
         webViewController.dismiss(animated: true )
     }
-    
-    func handleNavigateBackAction(_ webViewController: WebViewController) {
-        // TODO: Implement
-        var i = 2
-    }
-    
-    func confirmLeaving(_ webViewController: WebViewController ) {
-        
-    }
-    
 }

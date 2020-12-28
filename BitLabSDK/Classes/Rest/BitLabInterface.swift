@@ -19,5 +19,7 @@ public protocol BitLabInterface {
     // Browser - Based methods
     
     func show(parent: UIViewController, withUserId userId : String, token: String, visual: Visual? )
+ 
+    func show(parent: UIViewController)
     
 }
