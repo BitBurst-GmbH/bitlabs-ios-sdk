@@ -92,11 +92,23 @@ public struct RetrieveSettingsResponse {
     
     
     func buildVisual(json: Dictionary<String,JSON>) -> Visual {
-        let colorDark = UIColor(hex:  json["color_dark"]!.string! + "ff")!
-        let colorLight = UIColor(hex: json["color_light"]!.string! + "ff")!
-        let colorAccent = UIColor(hex: json["color_accent"]!.string! + "ff")!
+        var colorDark = visual.colorDark
+        var colorLight = visual.colorLight
+        var colorAccent = visual.colorAccent
+        
+        if let cDark = json["color_dark"] {
+            colorDark = UIColor(hex: cDark.string! + "ff")!
+        }
+        if let cLight = json["color_light"] {
+            colorLight = UIColor(hex: cLight.string! + "ff")!
+        }
+     
+        if let cAccent = json["color_accent"] {
+            colorAccent = UIColor(hex: cAccent.string! + "ff")!
+        }
+
         let mode = String( json["mode"]!.string!)
-        var visual = Visual(colorDark: colorDark, colorLight: colorLight,
+        let visual = Visual(colorDark: colorDark, colorLight: colorLight,
                             colorAccent: colorAccent,mode: mode)
     
         return visual

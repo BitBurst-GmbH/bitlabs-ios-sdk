@@ -33,9 +33,7 @@ public class BrowserDelegate: NSObject {
         
        
     }
-    
-    let exampleURL = "https://api.bitlabs.ai/v1/client/networks/12345/surveys/34334/leave"
-    let noURL = "https://api.bitlabs.ai/v1/client/networkss/12345/surveyss/34334/leave"
+ 
     public static let instance = BrowserDelegate()
     
     var networkID = ""
