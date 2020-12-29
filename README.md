@@ -22,7 +22,7 @@ pod 'BitLabSDK'
 
 ## Author
 
-Frank Marx, marxfr@web.de
+Frank Marx, info@frankmarx.info
 
 ## License
 

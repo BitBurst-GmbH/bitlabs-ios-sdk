@@ -26,6 +26,7 @@ public class BrowserDelegate: NSObject {
     
     public enum Constants {
         public static let baseURL = "https://web.bitlabs.ai"
+      //  public static let baseURL = "https://bitburst.net/"
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
         public static let urlStartsWith = "web.bitlabs.ai"
@@ -151,7 +152,32 @@ public class BrowserDelegate: NSObject {
 }
 
 extension BrowserDelegate: WKUIDelegate {
+    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil {
+            let urlRequest = navigationAction.request
     
+            observation = shadowWebView.observe( \WKWebView.estimatedProgress , options: [.new ]) { object, change in
+                guard let progress = change.newValue else { return }
+                
+                if progress >= 1.0 {
+                    let url = self.shadowWebView.url!
+                    if !UIApplication.shared.canOpenURL(url) {
+                           return
+                    }
+                    self.safariController = SFSafariViewController(url: url)
+                    if let webVC = UIApplication.shared.keyWindow?.rootViewController?.presentedViewController as? WebViewController {
+                        webVC.present( self.safariController!, animated: true)
+                    } else {
+                        self.parentViewController?.present( self.safariController!, animated: true)
+                    }
+             
+                }
+            }
+            shadowWebView.load(urlRequest)
+        }
+        return nil
+    }
+
 }
 
 extension BrowserDelegate: WKNavigationDelegate {
@@ -192,7 +218,8 @@ extension BrowserDelegate: WKNavigationDelegate {
         }
         decisionHandler(.allow)
     }
-
+    
+    
     func calculateTextColor( visual: Visual) -> UIColor {
         let baseColor = visual.colorLight.cgColor
         let components = baseColor.components
@@ -258,28 +285,6 @@ extension BrowserDelegate: WKNavigationDelegate {
           
           let url = shadowWebView.url?.absoluteURL
       }
-    
-    public func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
-        if navigationAction.targetFrame == nil {
-            let urlRequest = navigationAction.request
-    
-            observation = shadowWebView.observe( \WKWebView.estimatedProgress , options: [.new ]) { object, change in
-                guard let progress = change.newValue else { return }
-                
-                if progress >= 1.0 {
-                    let url = self.shadowWebView.url!
-
-                    if !UIApplication.shared.canOpenURL(url) {
-                           return
-                    }
-                    self.safariController = SFSafariViewController(url: url)
-                    self.parentViewController?.present( self.safariController!, animated: true)
-                }
-            }
-            shadowWebView.load(urlRequest)
-        }
-        return nil
-    }
     
 
 }
