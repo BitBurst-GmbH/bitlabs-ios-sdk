@@ -26,7 +26,6 @@ public class BrowserDelegate: NSObject {
     
     public enum Constants {
         public static let baseURL = "https://web.bitlabs.ai"
-      //  public static let baseURL = "https://bitburst.net/"
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
         public static let urlStartsWith = "web.bitlabs.ai"
@@ -39,8 +38,13 @@ public class BrowserDelegate: NSObject {
     var networkID = ""
     var surveryID = ""
     
+    var userId = ""
+    var token = ""
+    
     var currentLayout: Layout = .LAYOUT_ONE
     var restService: RestService?
+    
+    var navigateToInitialPage: WKNavigation? = nil
     
     let urlRegEx = "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)"
     
@@ -95,6 +99,8 @@ public class BrowserDelegate: NSObject {
     
     func show(parent: UIViewController, withUserId userId : String, token: String, visual: Visual? )   {
         let url = buildURL(userId: userId, apiToken: token)
+        self.userId = userId
+        self.token = token
         
         guard let u = url else {
             debugPrint("| Invalid url")
@@ -241,9 +247,9 @@ extension BrowserDelegate: WKNavigationDelegate {
     
     func configureLayoutOne() {
         
-        webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(1000)
         webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(999)
-        
+        webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(1000)
+       
         webViewController.topBar?.isHidden = true
         webViewController.topBar?.backgroundColor = UIColor.green
         
@@ -253,13 +259,16 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.navigateBackButton?.isHidden = true
         webViewController.navigateBackButton?.isUserInteractionEnabled = false
+    
+//        webViewController.webViewToSafeArea?.isActive = true
+//        webViewController.webViewToTopBarBottom?.isActive = false
         
         currentLayout = .LAYOUT_ONE
     }
     
     func configureLayoutTwo() {
         let textColor = calculateTextColor(visual: visual)
-        
+
         webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(999)
         webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(1000)
         
@@ -273,6 +282,9 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.closeButton?.isHidden = true
         webViewController.closeButton?.isUserInteractionEnabled = false
+
+//        webViewController.webViewToSafeArea?.isActive = false
+//        webViewController.webViewToTopBarBottom?.isActive = true
         
         currentLayout = .LAYOUT_TWO
     }
@@ -291,8 +303,20 @@ extension BrowserDelegate: WebViewControllerNavigationDelegate {
     func handleLeaveSurvey(controller: UIViewController , reason: LeaveReason) {
         guard let rs = restService else { return }
         
-        rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
+        guard let wvc = controller as? WebViewController else {
+            debugPrint("| Provided controller is not of type WebViewController")
             controller.dismiss(animated: true, completion: nil)
+            return
+        }
+        wvc.navigateBackButton?.isEnabled = false
+        
+        rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
+            
+            let url = self.buildURL(userId: self.userId, apiToken: self.token)
+            let urlRequest = URLRequest(url: url!)
+
+            self.configureLayoutOne()
+            self.navigateToInitialPage = wvc.webView!.load(urlRequest)
         }
     }
     
