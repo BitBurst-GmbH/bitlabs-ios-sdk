@@ -106,7 +106,7 @@ public class BrowserDelegate: NSObject {
             debugPrint("| Invalid url")
             return
         }
-       
+        
         if visual != nil {
             self.visual = visual!
         }
@@ -259,9 +259,6 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.navigateBackButton?.isHidden = true
         webViewController.navigateBackButton?.isUserInteractionEnabled = false
-    
-//        webViewController.webViewToSafeArea?.isActive = true
-//        webViewController.webViewToTopBarBottom?.isActive = false
         
         currentLayout = .LAYOUT_ONE
     }
@@ -282,21 +279,10 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.closeButton?.isHidden = true
         webViewController.closeButton?.isUserInteractionEnabled = false
-
-//        webViewController.webViewToSafeArea?.isActive = false
-//        webViewController.webViewToTopBarBottom?.isActive = true
         
         currentLayout = .LAYOUT_TWO
     }
     
-    public func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-          print(#function)
-          if webView != shadowWebView { return }
-          
-          let url = shadowWebView.url?.absoluteURL
-      }
-    
-
 }
  
 extension BrowserDelegate: WebViewControllerNavigationDelegate {

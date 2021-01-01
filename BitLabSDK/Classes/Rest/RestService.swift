@@ -43,9 +43,19 @@ public class RestService: BaseRestService {
     var token: String = ""
     var userId: String = ""
     
+    var visual = Visual()
+    
     
     static func Init(token: String, uid: String) ->  RestService{
         let this = RestService(appToken: token, uid: uid)
+        this.retrieveSettings{ result in
+            switch result {
+            case .success(let data):
+                this.visual = data.visual
+            case .failure(let error):
+                this.visual = Visual()
+            }
+        }
         return this
     }
     

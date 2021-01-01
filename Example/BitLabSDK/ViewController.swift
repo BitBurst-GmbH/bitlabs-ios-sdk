@@ -80,7 +80,7 @@ class ViewController: UIViewController {
             switch result {
             case .success(let entity):
                 debugPrint(entity)
-                self.bitLabSDK?.show(parent: self, withUserId: "marxfr", token: self.token, visual: entity.visual)
+                self.bitLabSDK?.show(parent: self)
             case .failure(let error):
                 debugPrint(error)
                 

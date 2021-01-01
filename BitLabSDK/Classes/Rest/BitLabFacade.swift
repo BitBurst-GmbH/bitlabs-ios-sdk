@@ -38,24 +38,8 @@ public class BitLabFacade: BitLabInterface {
         restService.checkForSurveys(forPlatform: p, completion: ch)
     }
     
-    public func show(parent p: UIViewController, withUserId userId : String, token t: String, visual: Visual? ) {
-        browserDelegate.show(parent: p, withUserId: userId, token: t, visual: visual)
-    }
-    
     public func show(parent p: UIViewController) {
-        
+        browserDelegate.show(parent: p, withUserId: uid, token: token, visual: restService.visual)
     }
     
 }
-
-/*
- // Rest - Based methods
- func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler)
- 
- func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler )
- 
- // Browser - Based methods
- 
- func show(parent: UIViewController, withUserId userId : String, token: String )
- 
- */
