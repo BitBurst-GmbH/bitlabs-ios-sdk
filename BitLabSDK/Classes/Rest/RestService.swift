@@ -53,6 +53,7 @@ public class RestService: BaseRestService {
             case .success(let data):
                 this.visual = data.visual
             case .failure(let error):
+                debugPrint("| Error quering settings: \(error.localizedDescription)")
                 this.visual = Visual()
             }
         }
