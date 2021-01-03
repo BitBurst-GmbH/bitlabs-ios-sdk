@@ -16,11 +16,6 @@ protocol ResponseStatusCheck {
 
 public class BaseRestService: ResponseStatusCheck {
     
-    init() {
-        
-    }
-    
-    
     func checkStatusCode(json: JSON) -> Result<ResponseStatusCodes, Error> {
       
         guard let statusCode = json["status"].string else {

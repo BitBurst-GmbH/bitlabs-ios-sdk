@@ -89,7 +89,6 @@ public class RestService: BaseRestService {
                            case .failure(let error):
                                let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
                                completionHandler(result)
-                               //
                        }
                    case .failure(let error):
                        let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
@@ -155,7 +154,6 @@ public class RestService: BaseRestService {
                         case .failure(let error):
                             let result: Result<CheckSurveyReponse, Error> = .failure(error)
                             completionHandler(result)
-                            //
                     }
                 case .failure(let error):
                     let result: Result<CheckSurveyReponse, Error> = .failure(error)
@@ -181,7 +179,6 @@ extension RestService {
             return r
             case .success(let code):
                 debugPrint("Status code is: \(code.rawValue)")
-                //
             }
 
             guard let _ = responseJSON["data"].dictionary else {

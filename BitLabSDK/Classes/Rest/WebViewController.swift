@@ -31,11 +31,6 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        let v = self.view
-        
-        var i = 2
     }
     
     required init?(coder: NSCoder) {

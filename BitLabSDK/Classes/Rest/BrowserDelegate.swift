@@ -6,7 +6,6 @@
 //
 
 import UIKit
-//import Regex
 import SafariServices
 import WebKit
 
@@ -65,8 +64,6 @@ public class BrowserDelegate: NSObject {
         super.init()
     }
 
-    
-    // TODO: Implement the check for the BitLabs - URL
     private func containsBitLabURL(url: String ) -> Bool {
         return url.starts(with: Constants.baseURL)
     }
@@ -206,8 +203,7 @@ extension BrowserDelegate: WKNavigationDelegate {
             decisionHandler(.allow)
             return
         }
-        
-        let textColor = calculateTextColor(visual: visual)
+      
         configureLayoutTwo()
         do {
             guard let result = try checkForNetworkAndSurveyId(urlToCheck: urlStr!) else {
@@ -269,7 +265,7 @@ extension BrowserDelegate: WKNavigationDelegate {
         webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(999)
         webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(1000)
         
-        webViewController.navigateBackButton?.isEnabled = false
+        webViewController.navigateBackButton?.isEnabled = true
         webViewController.topBar?.isHidden = false
         webViewController.topBar?.backgroundColor = visual.colorLight
         
