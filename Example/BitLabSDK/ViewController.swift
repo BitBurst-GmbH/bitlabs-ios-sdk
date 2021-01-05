@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {
-        bitLabSDK?.checkForSurveys(forPlatform: .MOBILE) { result in
+        bitLabSDK?.checkForSurveys() { result in
             switch result {
             case .success(let entity):
                 debugPrint(entity)
@@ -74,22 +74,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showWebView(_ sender: UIButton) {
-      //  let sfController = browserDelegagte?.show(parent: self.view, withUserId: "marxfr", token: token)
-    
-        bitLabSDK?.retrieveSettings() { result in
-            switch result {
-            case .success(let entity):
-                debugPrint(entity)
-                self.bitLabSDK?.show(parent: self)
-            case .failure(let error):
-                debugPrint(error)
-                
-            }
-        }
-       
-        
-       // present( sfController!, animated: true)
-        
+        self.bitLabSDK?.show(parent: self)
     }
     
 }

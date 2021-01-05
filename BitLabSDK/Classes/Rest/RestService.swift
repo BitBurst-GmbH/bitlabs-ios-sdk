@@ -126,13 +126,14 @@ public class RestService: BaseRestService {
     
     }
     
-    public func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler ) {
+    public func checkForSurveys(completion: @escaping checkSurveyResponseHandler ) {
         let completionHandler = completion
         var url = Constants.baseURL
         url = url.appendingPathComponent("check")
         
         var components = URLComponents(string: url.absoluteString)!
-        let query = URLQueryItem(name: "platform", value: p.rawValue)
+        let platformCurrent = determinePlatform()
+        let query = URLQueryItem(name: "platform", value: platformCurrent.rawValue)
         
         components.queryItems = [query]
         let checkSurveyURL = components.url!
@@ -166,6 +167,19 @@ public class RestService: BaseRestService {
 
 
 extension RestService {
+    
+    func determinePlatform() -> Platform {
+        let currentDevice = UIDevice.current
+        switch currentDevice.userInterfaceIdiom {
+        case .pad:
+            return .TABLET
+        case .phone:
+            return .MOBILE
+        default:
+            return .MOBILE
+        }
+    }
+    
     
     func decodeResponse(json: Data) -> Result<Dictionary<String,JSON>, BitlabError> {
 

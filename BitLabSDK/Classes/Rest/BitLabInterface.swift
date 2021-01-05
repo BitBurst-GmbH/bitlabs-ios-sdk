@@ -14,7 +14,7 @@ public protocol BitLabInterface {
     // Rest - Based methods
     func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler)
     
-    func checkForSurveys(forPlatform p:Platform, completion: @escaping checkSurveyResponseHandler )
+    func checkForSurveys(completion: @escaping checkSurveyResponseHandler)
     
     // Browser - Based methods
     func show(parent: UIViewController)

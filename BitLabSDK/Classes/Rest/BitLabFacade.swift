@@ -34,8 +34,8 @@ public class BitLabFacade: BitLabInterface {
         restService.retrieveSettings(completion: ch)
     }
     
-    public func checkForSurveys(forPlatform p:Platform, completion ch: @escaping checkSurveyResponseHandler ) {
-        restService.checkForSurveys(forPlatform: p, completion: ch)
+    public func checkForSurveys(completion ch: @escaping checkSurveyResponseHandler ) {
+        restService.checkForSurveys(completion: ch)
     }
     
     public func show(parent p: UIViewController) {
