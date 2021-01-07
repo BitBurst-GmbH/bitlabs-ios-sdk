@@ -20,7 +20,9 @@
   },
   "source_files": "BitLabSDK/Classes/Rest/**/*.swift",
   "resources": [
-    "BitLabSDK/Classes/**/*.{xib}"
+    "BitLabSDK/Classes/**/*.{xib}",
+    "BitLabSDK/Localizations/en.lproj/Localizable.strings",
+    "BitLabSDK/Localizations/de-DE.lproj/Localizable.strings"
   ],
   "dependencies": {
     "Alamofire": [

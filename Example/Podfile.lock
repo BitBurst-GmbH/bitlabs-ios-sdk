@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.4.0)
+  - Alamofire (5.4.1)
   - BitLabSDK (0.1.0):
     - Alamofire (~> 5.2)
     - SwiftyJSON (~> 5.0)
@@ -18,8 +18,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
-  BitLabSDK: e5d77c0d271b548230c12c220fae2624b612927e
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  BitLabSDK: f457ee10c7a7f913dcdb7f3ec08d252f829c6813
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
 PODFILE CHECKSUM: 9ca89deadde06c9c4e43a9179602d84ab15b1b78

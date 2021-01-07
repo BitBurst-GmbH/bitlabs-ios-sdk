@@ -18,6 +18,11 @@ class WebViewController: UIViewController {
     var currentLayout: Layout!
     var leaveOptionsMenu: UIAlertController!
     var visual = Visual()
+    let podBundle = Bundle.init(for: WebViewController.self )
+    /*
+     
+     let t = NSLocalizedString("test", bundle: podBundle, value: "", comment: "")
+     */
     
     @IBOutlet weak var topBar: UIView?
     @IBOutlet weak var closeButtonBar: UIView?
@@ -48,17 +53,20 @@ class WebViewController: UIViewController {
     }
     
     @IBAction func handleBackNavigationAction(_ sender: UIButton) {
-        leaveOptionsMenu = UIAlertController(title: "Leave", message: "Choose a reason for leaving the survey", preferredStyle: .alert)
+        let leaveTitle = NSLocalizedString( "LEAVE_TITLE", bundle: podBundle, value: "", comment: "")
+        leaveOptionsMenu = UIAlertController(title: "Leave", message: leaveTitle , preferredStyle: .alert)
         
         leaveOptionsMenu.view.tintColor = visual.colorAccent
         
         for reason in LeaveReason.allCases {
-            let reasonEntry = UIAlertAction(title: reason.rawValue, style: .default, handler: { _ in
+            let translatedTextValue = NSLocalizedString( reason.rawValue, bundle: podBundle, value: "", comment: "")
+            let reasonEntry = UIAlertAction(title: translatedTextValue, style: .default, handler: { _ in
                 self.delegate?.handleLeaveSurvey(controller: self , reason: reason)
             })
             leaveOptionsMenu.addAction(reasonEntry)
         }
-        let continueSurvey = UIAlertAction(title: "Continue the survey", style: .cancel, handler: nil)
+        let translatedValue = NSLocalizedString( "CONTINUE_SURVEY", bundle: podBundle, value: "", comment: "")
+        let continueSurvey = UIAlertAction(title: translatedValue, style: .cancel, handler: nil)
         leaveOptionsMenu.addAction(continueSurvey)
         
         self.present(leaveOptionsMenu, animated: true, completion: nil)

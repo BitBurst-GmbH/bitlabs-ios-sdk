@@ -27,11 +27,11 @@ enum Colors: String {
 
 
 enum LeaveReason: String, CaseIterable {
-    case tooSensitive = "Too sensitive"
-    case uninteresting = "Uninteresting"
-    case technical = "Technical issues"
-    case tooLong = "Too long"
-    case otherReasons = "Other reasons"
+    case tooSensitive = "TOO_SENSITIVE"
+    case uninteresting = "UNINSTERESTING"
+    case technical = "TECHNICAL_ISSUES"
+    case tooLong = "TOO_LONG"
+    case otherReasons = "OTHER_REASONS"
 }
 
 

@@ -32,11 +32,11 @@ TODO: Add long description of the pod here.
 
   spec.source_files = 'BitLabSDK/Classes/Rest/**/*.swift'
   
-#  spec.resource_bundles = {
-#     'BitLabSDK' => ['BitLabSDK/Classes/Assets/**/*']
-#  }
+ # spec.resource_bundles = {
+ #     'BitLabSDK' => [ 'BitLabSDK/Classes/**/*.{xib}' , 'BitLabSDK/Classes/Localizations/*.lproj/*.strings' ]
+ # }
   # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
-  spec.resources = ['BitLabSDK/Classes/**/*.{xib}']
+ spec.resources = ['BitLabSDK/Classes/**/*.{xib}' , 'BitLabSDK/Localizations/en.lproj/Localizable.strings' , 'BitLabSDK/Localizations/de-DE.lproj/Localizable.strings']
 
   
   # s.public_header_files = 'Pod/Classes/**/*.h'

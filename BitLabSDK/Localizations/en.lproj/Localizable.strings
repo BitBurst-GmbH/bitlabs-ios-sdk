@@ -1,0 +1,17 @@
+/* 
+  File.strings
+  Pods
+
+  Created by Frank Marx on 07.01.21.
+  
+*/
+
+"TOO_SENSITIVE" = "Too sensitiveöäö" ;
+"UNINSTERESTING" = "Uninteresting" ;
+"TECHNICAL_ISSUES" = "Technical issues" ;
+"TOO_LONG" = "Too long" ;
+"OTHER_REASONS" = "Hasenjagd" ;
+"CONTINUE_SURVEY" = "Continue with survey";
+"LEAVE_TITLE" = "Choose a reason for leaving the survey";
+
+
