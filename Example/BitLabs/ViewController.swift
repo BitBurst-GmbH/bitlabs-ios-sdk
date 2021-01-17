@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     let token = "6c7083df-b97e-4d29-9d90-798fd088bc08"
     let uid = "YOUR_USER_ID"
     
-    var bitlabs: BitLabsInterface?
+    var bitlabs: BitLabs?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +28,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bitlabs = BitLabsFacade.Init(token: token, uid: uid)
+        bitlabs = BitLabs.Init(token: token, uid: uid)
     }
     
     

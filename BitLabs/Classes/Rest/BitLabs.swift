@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class BitLabsFacade: BitLabsInterface {
+public class BitLabs {
     
     let restService: RestService
     let browserDelegate: BrowserDelegate
@@ -24,8 +24,8 @@ public class BitLabsFacade: BitLabsInterface {
         browserDelegate.restService = restService
     }
     
-    public static func Init(token: String, uid: String) ->  BitLabsInterface {
-        let this = BitLabsFacade(token: token, uid: uid)
+    public static func Init(token: String, uid: String) ->  BitLabs {
+        let this = BitLabs(token: token, uid: uid)
         return this
     }
     
