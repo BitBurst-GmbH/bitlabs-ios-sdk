@@ -9,7 +9,7 @@ import UIKit
 
 
 
-public protocol BitLabInterface {
+public protocol BitLabsInterface {
     
     // Rest - Based methods
     func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler)

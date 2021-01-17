@@ -19,13 +19,13 @@ public class BaseRestService: ResponseStatusCheck {
     func checkStatusCode(json: JSON) -> Result<ResponseStatusCodes, Error> {
       
         guard let statusCode = json["status"].string else {
-            let error = BitlabError.InvalidStatusCode("Status code is missing")
+            let error = BitLabsError.InvalidStatusCode("Status code is missing")
             let result: Result<ResponseStatusCodes,Error> = .failure(error)
             return result
         }
         
         if statusCode != "success" {
-            let error = BitlabError.InvalidStatusCode(statusCode)
+            let error = BitLabsError.InvalidStatusCode(statusCode)
             let result: Result<ResponseStatusCodes,Error> = .failure(error)
             return result
         }

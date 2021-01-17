@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BitlabError: Error {
+public enum BitLabsError: Error {
     
     case InvalidStatusCode(String)
     case MissingStatusCodeInResponse

@@ -181,7 +181,7 @@ extension RestService {
     }
     
     
-    func decodeResponse(json: Data) -> Result<Dictionary<String,JSON>, BitlabError> {
+    func decodeResponse(json: Data) -> Result<Dictionary<String,JSON>, BitLabsError> {
 
         do {
             let responseJSON = try JSON(data: json)
@@ -189,26 +189,26 @@ extension RestService {
             let statusCodeResult = checkStatusCode(json: responseJSON)
             switch statusCodeResult {
             case .failure(let error):
-                let r: Result<Dictionary<String,JSON>, BitlabError> = .failure(error as! BitlabError)
+                let r: Result<Dictionary<String,JSON>, BitLabsError> = .failure(error as! BitLabsError)
             return r
             case .success(let code):
                 debugPrint("Status code is: \(code.rawValue)")
             }
 
             guard let _ = responseJSON["data"].dictionary else {
-                let error = BitlabError.MissingResponseData
-                let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+                let error = BitLabsError.MissingResponseData
+                let result: Result<Dictionary<String,JSON>,BitLabsError> = .failure(error)
                 return result
             }
 
             let jsonData = responseJSON["data"].dictionary
-            let result: Result<Dictionary<String,JSON>,BitlabError> = .success(jsonData!)
+            let result: Result<Dictionary<String,JSON>,BitLabsError> = .success(jsonData!)
             return result
 
         } catch {
             let encodedString = json.base64EncodedString()
-            let error = BitlabError.InconsitentJSON(encodedString)
-            let result: Result<Dictionary<String,JSON>,BitlabError> = .failure(error)
+            let error = BitLabsError.InconsitentJSON(encodedString)
+            let result: Result<Dictionary<String,JSON>,BitLabsError> = .failure(error)
             return result
 
         }
