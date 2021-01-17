@@ -12,10 +12,9 @@ import UIKit
 class ViewController: UIViewController {
 
     let token = "6c7083df-b97e-4d29-9d90-798fd088bc08"
-  //  var restService: RestService?
-  //  var browserDelegagte: BrowserDelegate?
+    let uid = "YOUR_USER_ID"
     
-    var bitLabSDK: BitLabsInterface?
+    var bitlabs: BitLabsInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,52 +28,36 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        bitLabSDK = BitLabsFacade.Init(token: token, uid: "marxfr")
-        
-      //  restService = RestService.Init(token: token, uid: "marxfr")
-      //  browserDelegagte = BrowserDelegate.instance
-//
-//        restService?.checkForSurveys(forPlatform: Platform.MOBILE) { result in
-//            switch result {
-//            case .success(let checkSurveyResponse):
-//                debugPrint(checkSurveyResponse)
-//            case .failure(let error):
-//                debugPrint(error)
-//            }
-//        }
-
+        bitlabs = BitLabsFacade.Init(token: token, uid: uid)
     }
     
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {
-        bitLabSDK?.checkForSurveys() { result in
+        bitlabs?.checkForSurveys() { result in
             switch result {
             case .success(let entity):
                 debugPrint(entity)
             case .failure(let error):
                 debugPrint(error)
-                
             }
             
         }
     }
     
     @IBAction func retrieveSettings( _ sender: UIButton) {
-        bitLabSDK?.retrieveSettings() { result in
+        bitlabs?.retrieveSettings() { result in
             switch result {
             case .success(let entity):
                 debugPrint(entity)
             case .failure(let error):
                 debugPrint(error)
-                
             }
         }
         
     }
     
     @IBAction func showWebView(_ sender: UIButton) {
-        self.bitLabSDK?.show(parent: self)
+        self.bitlabs?.show(parent: self)
     }
     
 }
