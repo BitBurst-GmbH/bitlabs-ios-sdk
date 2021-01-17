@@ -44,18 +44,6 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func retrieveSettings( _ sender: UIButton) {
-        bitlabs?.retrieveSettings() { result in
-            switch result {
-            case .success(let entity):
-                debugPrint(entity)
-            case .failure(let error):
-                debugPrint(error)
-            }
-        }
-        
-    }
-    
     @IBAction func showWebView(_ sender: UIButton) {
         self.bitlabs?.show(parent: self)
     }

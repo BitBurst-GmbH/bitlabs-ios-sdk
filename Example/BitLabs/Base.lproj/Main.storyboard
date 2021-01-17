@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BitLabSDK_Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BitLabs_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -19,13 +19,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="76S-j2-aeQ" userLabel="RetrieveSettingsButton">
-                                <rect key="frame" x="75" y="437" width="225" height="30"/>
-                                <state key="normal" title="Retrieve Settings"/>
-                                <connections>
-                                    <action selector="retrieveSettings:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rxk-jU-LmG"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa" userLabel="CheckForSurveysButton">
                                 <rect key="frame" x="75" y="377" width="225" height="30"/>
                                 <state key="normal" title="Check for Surveys"/>
@@ -43,15 +36,12 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="76S-j2-aeQ" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.6" id="Ab4-1w-5XC"/>
-                            <constraint firstItem="76S-j2-aeQ" firstAttribute="top" secondItem="XLQ-xN-lTa" secondAttribute="bottom" constant="30" id="AcF-Jj-8Ys"/>
                             <constraint firstItem="XLQ-xN-lTa" firstAttribute="top" secondItem="kVb-5N-F6j" secondAttribute="bottom" constant="60" id="Em0-Jp-RSs"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="76S-j2-aeQ" secondAttribute="bottom" constant="200" id="KbY-jH-8GN"/>
                             <constraint firstItem="XLQ-xN-lTa" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.6" id="PF9-tQ-8uJ"/>
                             <constraint firstItem="kVb-5N-F6j" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" id="kVB-U3-ZQu"/>
                             <constraint firstItem="kVb-5N-F6j" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qGd-30-JR7"/>
                             <constraint firstItem="XLQ-xN-lTa" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sX2-ui-iN2"/>
-                            <constraint firstItem="76S-j2-aeQ" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="xp5-7J-Y4O"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="XLQ-xN-lTa" secondAttribute="bottom" constant="260" id="tAm-ax-lRC"/>
                         </constraints>
                     </view>
                 </viewController>
