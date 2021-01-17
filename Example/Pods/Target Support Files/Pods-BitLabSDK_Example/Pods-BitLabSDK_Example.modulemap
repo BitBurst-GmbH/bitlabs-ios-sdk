@@ -1,6 +1,0 @@
-framework module Pods_BitLabSDK_Example {
-  umbrella header "Pods-BitLabSDK_Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		584DD584AF40534AD0CF0E3B /* Pods_BitLabSDK_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D28758158006FA0E11C3277F /* Pods_BitLabSDK_Tests.framework */; };
+		01D659A3370B874A600D6486 /* Pods_BitLabs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27D335D6397D7ED617CE5C72 /* Pods_BitLabs_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		CC8B2DAD45C748A4D87B1DFE /* Pods_BitLabSDK_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEDC5D7861BB275263AE08AF /* Pods_BitLabSDK_Example.framework */; };
+		92ED6836E6A3275ABEAE788A /* Pods_BitLabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12B7996E8F62F85A46C785D2 /* Pods_BitLabs_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,8 +29,11 @@
 
 /* Begin PBXFileReference section */
 		0A63A087A1680888EAADB8AC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		12B7996E8F62F85A46C785D2 /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		184C7B18D23F95DCCCEECC5A /* Pods-BitLabSDK_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabSDK_Example.debug.xcconfig"; path = "Target Support Files/Pods-BitLabSDK_Example/Pods-BitLabSDK_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		27D335D6397D7ED617CE5C72 /* Pods_BitLabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		310B2E7BCEC2EC87A0646B51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		3613ABA4D09D05963EF0DFD3 /* Pods-BitLabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Tests.release.xcconfig"; path = "Target Support Files/Pods-BitLabs_Tests/Pods-BitLabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* BitLabs_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitLabs_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -41,12 +44,13 @@
 		607FACE51AFB9204008FA782 /* BitLabs_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitLabs_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		6DABDE98325D67BF95B33F38 /* Pods-BitLabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		6F237B3072084AB9846BC6E5 /* Pods-BitLabSDK_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabSDK_Tests.debug.xcconfig"; path = "Target Support Files/Pods-BitLabSDK_Tests/Pods-BitLabSDK_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		8094DEDEF2E225726CDB0CA2 /* Pods-BitLabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example.release.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example.release.xcconfig"; sourceTree = "<group>"; };
+		8E297FF2612812EC332B77A4 /* Pods-BitLabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Tests.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Tests/Pods-BitLabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		97C0F086ACF212D12EF6C105 /* Pods-BitLabSDK_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabSDK_Example.release.xcconfig"; path = "Target Support Files/Pods-BitLabSDK_Example/Pods-BitLabSDK_Example.release.xcconfig"; sourceTree = "<group>"; };
 		B1A3ED2D25A7686A0098E723 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		CC1DA5F0A81E797468AB7815 /* Pods-BitLabSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-BitLabSDK_Tests/Pods-BitLabSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D28758158006FA0E11C3277F /* Pods_BitLabSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EEDC5D7861BB275263AE08AF /* Pods_BitLabSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -55,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC8B2DAD45C748A4D87B1DFE /* Pods_BitLabSDK_Example.framework in Frameworks */,
+				92ED6836E6A3275ABEAE788A /* Pods_BitLabs_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				584DD584AF40534AD0CF0E3B /* Pods_BitLabSDK_Tests.framework in Frameworks */,
+				01D659A3370B874A600D6486 /* Pods_BitLabs_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +151,10 @@
 				97C0F086ACF212D12EF6C105 /* Pods-BitLabSDK_Example.release.xcconfig */,
 				6F237B3072084AB9846BC6E5 /* Pods-BitLabSDK_Tests.debug.xcconfig */,
 				CC1DA5F0A81E797468AB7815 /* Pods-BitLabSDK_Tests.release.xcconfig */,
+				6DABDE98325D67BF95B33F38 /* Pods-BitLabs_Example.debug.xcconfig */,
+				8094DEDEF2E225726CDB0CA2 /* Pods-BitLabs_Example.release.xcconfig */,
+				8E297FF2612812EC332B77A4 /* Pods-BitLabs_Tests.debug.xcconfig */,
+				3613ABA4D09D05963EF0DFD3 /* Pods-BitLabs_Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -154,8 +162,8 @@
 		F9CF5453FF09FFEE9949C321 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EEDC5D7861BB275263AE08AF /* Pods_BitLabSDK_Example.framework */,
-				D28758158006FA0E11C3277F /* Pods_BitLabSDK_Tests.framework */,
+				12B7996E8F62F85A46C785D2 /* Pods_BitLabs_Example.framework */,
+				27D335D6397D7ED617CE5C72 /* Pods_BitLabs_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -270,7 +278,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BitLabSDK_Example/Pods-BitLabSDK_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -283,7 +291,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabSDK_Example/Pods-BitLabSDK_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		695909B9B5D1B600BE9FC792 /* [CP] Check Pods Manifest.lock */ = {
@@ -301,7 +309,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BitLabSDK_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BitLabs_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -323,7 +331,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BitLabSDK_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-BitLabs_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -482,7 +490,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 184C7B18D23F95DCCCEECC5A /* Pods-BitLabSDK_Example.debug.xcconfig */;
+			baseConfigurationReference = 6DABDE98325D67BF95B33F38 /* Pods-BitLabs_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BitLabs/Info.plist;
@@ -498,7 +506,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 97C0F086ACF212D12EF6C105 /* Pods-BitLabSDK_Example.release.xcconfig */;
+			baseConfigurationReference = 8094DEDEF2E225726CDB0CA2 /* Pods-BitLabs_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = BitLabs/Info.plist;
@@ -514,7 +522,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F237B3072084AB9846BC6E5 /* Pods-BitLabSDK_Tests.debug.xcconfig */;
+			baseConfigurationReference = 8E297FF2612812EC332B77A4 /* Pods-BitLabs_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
@@ -536,7 +544,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC1DA5F0A81E797468AB7815 /* Pods-BitLabSDK_Tests.release.xcconfig */;
+			baseConfigurationReference = 3613ABA4D09D05963EF0DFD3 /* Pods-BitLabs_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
