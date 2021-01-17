@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   //  var restService: RestService?
   //  var browserDelegagte: BrowserDelegate?
     
-    var bitLabSDK: BitLabInterface?
+    var bitLabSDK: BitLabsInterface?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        bitLabSDK = BitLabFacade.Init(token: token, uid: "marxfr")
+        bitLabSDK = BitLabsFacade.Init(token: token, uid: "marxfr")
         
       //  restService = RestService.Init(token: token, uid: "marxfr")
       //  browserDelegagte = BrowserDelegate.instance
