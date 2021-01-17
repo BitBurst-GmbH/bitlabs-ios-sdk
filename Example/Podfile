@@ -2,7 +2,7 @@ use_frameworks!
 platform :ios, "13.0"
 
 target 'BitLabSDK_Example' do
-  pod 'BitLabSDK', :path => '../'
+  pod 'BitLabs', :path => '../'
 
   target 'BitLabSDK_Tests' do
     inherit! :search_paths

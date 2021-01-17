@@ -1,0 +1,6 @@
+framework module BitLabs {
+  umbrella header "BitLabs-umbrella.h"
+
+  export *
+  module * { export * }
+}

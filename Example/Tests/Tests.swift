@@ -1,5 +1,5 @@
 import XCTest
-import BitLabSDK
+import BitLabs
 
 class Tests: XCTestCase {
     

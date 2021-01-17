@@ -6,7 +6,7 @@
 //  Copyright (c) 2020 Frank Marx. All rights reserved.
 //
 
-import BitLabSDK
+import BitLabs
 import UIKit
 
 class ViewController: UIViewController {

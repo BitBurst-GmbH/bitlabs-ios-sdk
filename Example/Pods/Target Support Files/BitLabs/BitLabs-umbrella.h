@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double BitLabSDKVersionNumber;
-FOUNDATION_EXPORT const unsigned char BitLabSDKVersionString[];
+FOUNDATION_EXPORT double BitLabsVersionNumber;
+FOUNDATION_EXPORT const unsigned char BitLabsVersionString[];
 

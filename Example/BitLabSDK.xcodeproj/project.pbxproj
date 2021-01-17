@@ -47,7 +47,7 @@
 		CC1DA5F0A81E797468AB7815 /* Pods-BitLabSDK_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabSDK_Tests.release.xcconfig"; path = "Target Support Files/Pods-BitLabSDK_Tests/Pods-BitLabSDK_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D28758158006FA0E11C3277F /* Pods_BitLabSDK_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabSDK_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEDC5D7861BB275263AE08AF /* Pods_BitLabSDK_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabSDK_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		FE274F2C9DC8CAD206EC0C89 /* BitLabSDK.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabSDK.podspec; path = ../BitLabSDK.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +133,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				FE274F2C9DC8CAD206EC0C89 /* BitLabSDK.podspec */,
+				FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */,
 				0A63A087A1680888EAADB8AC /* README.md */,
 				310B2E7BCEC2EC87A0646B51 /* LICENSE */,
 			);
@@ -272,13 +272,13 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-BitLabSDK_Example/Pods-BitLabSDK_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BitLabSDK/BitLabSDK.framework",
+				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabs.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

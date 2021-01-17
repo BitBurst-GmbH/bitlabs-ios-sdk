@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
-## BitLabSDK
+## BitLabs
 
 Copyright (c) 2020 Frank Marx <marxfr@web.de>
 
