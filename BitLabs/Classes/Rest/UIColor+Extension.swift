@@ -1,8 +1,8 @@
 //
 //  UIColor+Extension.swift
-//  BitLabSDK
+//  BitLabs
 //
-//  Created by Frank Marx on 16.11.20.
+//  Created by BitBurst GmbH on 14.11.20.
 //
 
 import UIKit

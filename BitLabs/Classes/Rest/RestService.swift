@@ -1,8 +1,8 @@
 //
 //  RestService.swift
-//  BitLabSDK
+//  BitLabs
 //
-//  Created by Frank Marx on 09.11.20.
+//  Created by BitBurst GmbH on 14.11.20.
 //
 
 import Alamofire

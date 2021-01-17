@@ -1,8 +1,8 @@
 //
-//  BitLabFacade.swift
-//  BitLabSDK
+//  BitLabs.swift
+//  BitLabs
 //
-//  Created by Frank Marx on 09.12.20.
+//  Created by BitBurst GmbH on 14.11.20.
 //
 
 import UIKit

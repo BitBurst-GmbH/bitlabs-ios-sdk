@@ -1,9 +1,10 @@
 //
-//  BitLabError.swift
-//  BitLabSDK
+//  BitLabsError.swift
+//  BitLabs
 //
-//  Created by Frank Marx on 10.11.20.
+//  Created by BitBurst GmbH on 14.11.20.
 //
+
 
 import Foundation
 

@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 ## BitLabs
 
-Copyright (c) 2020 Frank Marx <marxfr@web.de>
+Copyright (c) 2020 BitBurst GmbH <bitlabs@bitburst.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

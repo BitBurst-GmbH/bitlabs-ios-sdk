@@ -2,7 +2,7 @@
 //  WebViewController.swift
 //  Alamofire
 //
-//  Created by Frank Marx on 16.12.20.
+//  Created by BitBurst GmbH on 14.11.20.
 //
 
 import UIKit

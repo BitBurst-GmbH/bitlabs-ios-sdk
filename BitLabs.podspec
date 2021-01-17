@@ -1,5 +1,5 @@
 #
-# Be sure to run `pod lib lint BitLabSDK.podspec' to ensure this is a
+# Be sure to run `pod lib lint BitLabs.podspec' to ensure this is a
 # valid spec before submitting.
 #
 # Any lines starting with a # are optional, but their use is encouraged
@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
   spec.name             = 'BitLabs'
   spec.version          = '1.0.0'
-  spec.summary          = 'A short description of BitLabSDK.'
+  spec.summary          = 'A short description of BitLabs.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,22 +21,22 @@ Pod::Spec.new do |spec|
 TODO: Add long description of the pod here.
                        DESC
 
-  spec.homepage         = 'https://github.com/Frank Marx/BitLabSDK'
+  spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   spec.license          = { :type => 'MIT', :file => 'LICENSE' }
-  spec.author           = { 'Frank Marx' => 'marxfr@web.de' }
-  spec.source           = { :git => 'https://github.com/Frank Marx/BitLabSDK.git', :tag => spec.version.to_s }
+  spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
+  spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   spec.ios.deployment_target = '12.0'
 
-  spec.source_files = 'BitLabSDK/Classes/Rest/**/*.swift'
+  spec.source_files = 'BitLabs/Classes/Rest/**/*.swift'
   
  # spec.resource_bundles = {
- #     'BitLabSDK' => [ 'BitLabSDK/Classes/**/*.{xib}' , 'BitLabSDK/Classes/Localizations/*.lproj/*.strings' ]
+ #     'BitLabs' => [ 'BitLabs/Classes/**/*.{xib}' , 'BitLabs/Classes/Localizations/*.lproj/*.strings' ]
  # }
   # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
- spec.resources = ['BitLabSDK/Classes/**/*.{xib}' , 'BitLabSDK/Localizations/en.lproj/Localizable.strings' , 'BitLabSDK/Localizations/de-DE.lproj/Localizable.strings']
+ spec.resources = ['BitLabs/Classes/**/*.{xib}' , 'BitLabs/Localizations/en.lproj/Localizable.strings' , 'BitLabs/Localizations/de-DE.lproj/Localizable.strings']
 
   
   # s.public_header_files = 'Pod/Classes/**/*.h'

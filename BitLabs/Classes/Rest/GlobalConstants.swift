@@ -1,8 +1,8 @@
 //
 //  GlobalConstants.swift
-//  BitLabSDK
+//  BitLabs
 //
-//  Created by Frank Marx on 11.11.20.
+//  Created by BitBurst GmbH on 11.11.20.
 //
 
 import Foundation

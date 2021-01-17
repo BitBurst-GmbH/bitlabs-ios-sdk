@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  BitLabSDK
+//  BitLabs
 //
-//  Created by Frank Marx on 11/09/2020.
-//  Copyright (c) 2020 Frank Marx. All rights reserved.
+//  Created by BitBurst GmbH on 11/09/2020.
+//  Copyright (c) 2021 BitBurst GmbH. All rights reserved.
 //
 
 import UIKit

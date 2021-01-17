@@ -1,28 +1,28 @@
 {
   "name": "BitLabs",
   "version": "1.0.0",
-  "summary": "A short description of BitLabSDK.",
+  "summary": "A short description of BitLabs.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/Frank Marx/BitLabSDK",
+  "homepage": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "Frank Marx": "marxfr@web.de"
+    "BitBurst GmbH": "bitlabs@bitburst.net"
   },
   "source": {
-    "git": "https://github.com/Frank Marx/BitLabSDK.git",
+    "git": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git",
     "tag": "1.0.0"
   },
   "platforms": {
     "ios": "12.0"
   },
-  "source_files": "BitLabSDK/Classes/Rest/**/*.swift",
+  "source_files": "BitLabs/Classes/Rest/**/*.swift",
   "resources": [
-    "BitLabSDK/Classes/**/*.{xib}",
-    "BitLabSDK/Localizations/en.lproj/Localizable.strings",
-    "BitLabSDK/Localizations/de-DE.lproj/Localizable.strings"
+    "BitLabs/Classes/**/*.{xib}",
+    "BitLabs/Localizations/en.lproj/Localizable.strings",
+    "BitLabs/Localizations/de-DE.lproj/Localizable.strings"
   ],
   "dependencies": {
     "Alamofire": [
