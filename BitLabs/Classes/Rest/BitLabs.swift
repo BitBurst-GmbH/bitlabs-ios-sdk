@@ -8,7 +8,7 @@
 import UIKit
 
 
-public class BitLabs {
+@objc public class BitLabs : NSObject {
     
     let restService: RestService
     let browserDelegate: BrowserDelegate
@@ -24,22 +24,17 @@ public class BitLabs {
         browserDelegate.restService = restService
     }
     
-    public static func Init(token: String, uid: String) ->  BitLabs {
+    @objc public static func Init(token: String, uid: String) ->  BitLabs {
         let this = BitLabs(token: token, uid: uid)
         return this
-    }
-    
-    
-    public func retrieveSettings(completion ch: @escaping retrieveSettingsResponseHandler) {
-        restService.retrieveSettings(completion: ch)
     }
     
     public func checkForSurveys(completion ch: @escaping checkSurveyResponseHandler ) {
         restService.checkForSurveys(completion: ch)
     }
     
-    public func show(parent p: UIViewController) {
-        browserDelegate.show(parent: p, withUserId: uid, token: token, visual: restService.visual)
+    @objc public func show(parent p: UIViewController) {
+        browserDelegate.show(parent: p, withUserId: uid, token: token)
     }
     
 }

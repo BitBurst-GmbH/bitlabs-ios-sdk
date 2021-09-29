@@ -48,7 +48,6 @@ public class BrowserDelegate: NSObject {
     let urlRegEx = "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)"
     
     var observation: NSKeyValueObservation?
-    var visual = Visual()
  
     var safariController: SFSafariViewController?
     weak var parentViewController: UIViewController?
@@ -60,7 +59,6 @@ public class BrowserDelegate: NSObject {
     override private init() {
         shadowWebView = WKWebView()
         webViewController = WebViewController()
-        webViewController.visual = visual
         super.init()
     }
 
@@ -94,7 +92,7 @@ public class BrowserDelegate: NSObject {
     }
     
     
-    func show(parent: UIViewController, withUserId userId : String, token: String, visual: Visual? )   {
+    func show(parent: UIViewController, withUserId userId : String, token: String)   {
         let url = buildURL(userId: userId, apiToken: token)
         self.userId = userId
         self.token = token
@@ -104,16 +102,8 @@ public class BrowserDelegate: NSObject {
             return
         }
         
-        if visual != nil {
-            self.visual = visual!
-        }
-        
         if webViewController.isBeingPresented {
             return
-        }
-        
-        if visual != nil {
-            webViewController.visual = visual!
         }
         
         shadowWebView.navigationDelegate = self
@@ -219,28 +209,6 @@ extension BrowserDelegate: WKNavigationDelegate {
         decisionHandler(.allow)
     }
     
-    
-    func calculateTextColor( visual: Visual) -> UIColor {
-        let baseColor = visual.colorLight.cgColor
-        let components = baseColor.components
-        
-        let red = components![0]
-        let green = components![1]
-        let blue = components![2]
-        
-        let calcRed = red * 0.299
-        let calcGreen = green * 0.587
-        let calcBlue = blue * 0.114
-        
-        let calcSum = calcRed + calcGreen + calcBlue
-        
-        if calcSum >= 186 {
-            return UIColor.black
-        } else {
-            return UIColor.white
-        }
-    }
-    
     func configureLayoutOne() {
         
         webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(999)
@@ -260,18 +228,15 @@ extension BrowserDelegate: WKNavigationDelegate {
     }
     
     func configureLayoutTwo() {
-        let textColor = calculateTextColor(visual: visual)
 
         webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(999)
         webViewController.webViewToTopBarBottom?.priority = UILayoutPriority(1000)
         
         webViewController.navigateBackButton?.isEnabled = true
         webViewController.topBar?.isHidden = false
-        webViewController.topBar?.backgroundColor = visual.colorLight
         
         webViewController.navigateBackButton?.isHidden = false
         webViewController.navigateBackButton?.isUserInteractionEnabled = true
-        webViewController.navigateBackButton?.tintColor = textColor
         
         webViewController.closeButton?.isHidden = true
         webViewController.closeButton?.isUserInteractionEnabled = false

@@ -11,7 +11,6 @@ import SwiftyJSON
 
 
 public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,Error>) -> Void
-public typealias retrieveSettingsResponseHandler = (Result<RetrieveSettingsResponse,Error>) -> Void
 public typealias leaveSurveyResponseHandler = () -> Void
 
 
@@ -33,7 +32,6 @@ public class RestService: BaseRestService {
     public enum Constants {
         public static let baseURL = URL(string: "https://api.bitlabs.ai/v1/client")!
         public static let urlCheckSurveys = "https://api.bitlabs.ai/v1/client?platform=%1"
-        public static let retrieveSettingsURL = URL(string: "https://api.bitlabs.ai/v1/client/settings")!
         public static let leaveSurveyReasonURLString = String("https://api.bitlabs.ai/v1/client/networks/{NETWORK_ID}/surveys/{SURVEY_ID}/leave")
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
@@ -42,22 +40,10 @@ public class RestService: BaseRestService {
     
     var token: String = ""
     var userId: String = ""
-    
-    var visual = Visual()
-    
+
     
     static func Init(token: String, uid: String) ->  RestService{
-        let this = RestService(appToken: token, uid: uid)
-        this.retrieveSettings{ result in
-            switch result {
-            case .success(let data):
-                this.visual = data.visual
-            case .failure(let error):
-                debugPrint("| Error quering settings: \(error.localizedDescription)")
-                this.visual = Visual()
-            }
-        }
-        return this
+        return RestService(appToken: token, uid: uid)
     }
     
     private init(appToken: String, uid: String) {
@@ -67,37 +53,6 @@ public class RestService: BaseRestService {
     
     override private init() {
         super.init()
-    }
-       
-    public func retrieveSettings(completion: @escaping retrieveSettingsResponseHandler) {
-        let completionHandler = completion
-        let headers = assembleHeaders(appToken: token, userId: userId)
-    
-        AF.request( Constants.retrieveSettingsURL, headers: headers)
-            .validate(statusCode: 200...200)
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                switch response.result {
-                   case .success:
-                       let data = response.data!
-                       let jsonData = self.decodeResponse(json: data)
-                       switch jsonData {
-                           case .success(let dataDict):
-                               let entity = RetrieveSettingsResponse.buildFromJSON(json: dataDict)
-                               let result: Result<RetrieveSettingsResponse, Error> = .success(entity)
-                               completionHandler(result)
-                           case .failure(let error):
-                               let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
-                               completionHandler(result)
-                       }
-                   case .failure(let error):
-                       let result: Result<RetrieveSettingsResponse, Error> = .failure(error)
-                       completionHandler(result)
-                   }
-
-            }
-    
-    
     }
 
     func leaveSurvey( networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping leaveSurveyResponseHandler) {

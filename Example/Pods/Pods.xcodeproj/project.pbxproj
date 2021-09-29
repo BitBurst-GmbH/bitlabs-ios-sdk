@@ -58,7 +58,6 @@
 		B83DBEC7847958F3B5AF18B7B119665D /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F012DFC02D010D378B58F9AF8DB147 /* GlobalConstants.swift */; };
 		C1C5B050B55C15103ABC81769551A283 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E25D522087AC32353392178D82BDBA /* Response.swift */; };
 		C1F1DB6A9CBDE584D09BA1613AAD4F9D /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3F3C68E98D730FBC335B13B96CB350 /* Alamofire.swift */; };
-		C5E5839CEFB810778A774C11DEB10D2A /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6A68172A9872AD2C1F52E091AD81D6 /* UIColor+Extension.swift */; };
 		C6D5A4B4028B2C43380C9FA58BD5C8CA /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 761B58645A08D1392AF0CE609C1CBCF0 /* Alamofire-dummy.m */; };
 		D03F1F02DE8606E6057D57866611BEBF /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4170C26029E359684F30A18E482B8408 /* MultipartUpload.swift */; };
 		D14066FAE94E304798E43651E5886D13 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57616C83B8F1087E008C8C0F7210BB10 /* ParameterEncoding.swift */; };
@@ -208,7 +207,6 @@
 		E87DBBD165C6CE7D037B13665FF3F0F3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		EC8B6D3F1C76445141286113080DD81D /* Pods_BitLabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDB69947B5CEC6833E339CC5BFF18B2E /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
-		EF6A68172A9872AD2C1F52E091AD81D6 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Extension.swift"; path = "BitLabs/Classes/Rest/UIColor+Extension.swift"; sourceTree = "<group>"; };
 		EF99EE842D449EB0D6D3AC0FE59DE4A8 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1AE0D54E18207DC6975002E39DA96DC /* Pods-BitLabs_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitLabs_Example-umbrella.h"; sourceTree = "<group>"; };
 		F1CC13198E141CFFD0916E597DFFB627 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
@@ -406,7 +404,6 @@
 				35F012DFC02D010D378B58F9AF8DB147 /* GlobalConstants.swift */,
 				803F7CEC2F850EB1449E581AA916D261 /* ResponseModels.swift */,
 				A38704AFC4358CBA976EB10E2148758C /* RestService.swift */,
-				EF6A68172A9872AD2C1F52E091AD81D6 /* UIColor+Extension.swift */,
 				53F6989AC7744DE4CD99357C9E8187A8 /* WebViewController.swift */,
 				C130C84B31B6393CBEE412CB8C48AFEF /* Classes */,
 				C09903BEDF3BF28254D35AE78D57EC6E /* Localizations */,
@@ -794,7 +791,6 @@
 				B83DBEC7847958F3B5AF18B7B119665D /* GlobalConstants.swift in Sources */,
 				A8388833AEF7C7DBBAF127F47C2B1165 /* ResponseModels.swift in Sources */,
 				B4F7ACE58D1D9C5FF8EF53E84CE8BCFC /* RestService.swift in Sources */,
-				C5E5839CEFB810778A774C11DEB10D2A /* UIColor+Extension.swift in Sources */,
 				48B74BA7BDA684A8A1A4D8AA33FE453E /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

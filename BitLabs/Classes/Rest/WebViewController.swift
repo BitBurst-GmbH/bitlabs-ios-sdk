@@ -17,13 +17,8 @@ class WebViewController: UIViewController {
     weak var delegate: WebViewControllerNavigationDelegate?
     var currentLayout: Layout!
     var leaveOptionsMenu: UIAlertController!
-    var visual = Visual()
     let podBundle = Bundle.init(for: WebViewController.self )
-    /*
-     
-     let t = NSLocalizedString("test", bundle: podBundle, value: "", comment: "")
-     */
-    
+
     @IBOutlet weak var topBar: UIView?
     @IBOutlet weak var closeButtonBar: UIView?
     @IBOutlet weak var closeButton: UIButton?
@@ -55,8 +50,6 @@ class WebViewController: UIViewController {
     @IBAction func handleBackNavigationAction(_ sender: UIButton) {
         let leaveTitle = NSLocalizedString( "LEAVE_TITLE", bundle: podBundle, value: "", comment: "")
         leaveOptionsMenu = UIAlertController(title: "Leave", message: leaveTitle , preferredStyle: .alert)
-        
-        leaveOptionsMenu.view.tintColor = visual.colorAccent
         
         for reason in LeaveReason.allCases {
             let translatedTextValue = NSLocalizedString( reason.rawValue, bundle: podBundle, value: "", comment: "")

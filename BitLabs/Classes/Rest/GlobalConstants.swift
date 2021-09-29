@@ -7,24 +7,14 @@
 
 import Foundation
 
-
 enum ResponseStatusCodes: String, CaseIterable {
-    
    case successStatusCode = "success"
-    
 }
 
 enum Layout: String, CaseIterable {
     case LAYOUT_ONE = "LAYOUT_ONE"
     case LAYOUT_TWO = "LAYOUT_TWO"
 }
-
-enum Colors: String {
-    case colorDark = "colorDark"
-    case colorLight = "colorLight"
-    case colorAccent = "colorAccent"
-}
-
 
 enum LeaveReason: String, CaseIterable {
     case tooSensitive = "TOO_SENSITIVE"
@@ -33,5 +23,3 @@ enum LeaveReason: String, CaseIterable {
     case tooLong = "TOO_LONG"
     case otherReasons = "OTHER_REASONS"
 }
-
-
