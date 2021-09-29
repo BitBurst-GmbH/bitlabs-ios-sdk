@@ -15,10 +15,12 @@ import UIKit
     
     var token: String
     var uid: String
+    var tags: Dictionary<String, Any>
     
     private init(token t: String, uid u: String) {
         token = t
         uid = u
+        tags = [:]
         restService = RestService.Init(token: token, uid: uid)
         browserDelegate = BrowserDelegate.instance
         browserDelegate.restService = restService
@@ -29,12 +31,16 @@ import UIKit
         return this
     }
     
-    public func checkForSurveys(completion ch: @escaping checkSurveyResponseHandler ) {
+    @objc public func setTags(t: Dictionary<String, Any>){
+        tags = t
+    }
+    
+    @objc public func checkForSurveys(completion ch: @escaping checkSurveyResponseHandler ) {
         restService.checkForSurveys(completion: ch)
     }
     
     @objc public func show(parent p: UIViewController) {
-        browserDelegate.show(parent: p, withUserId: uid, token: token)
+        browserDelegate.show(parent: p, withUserId: uid, token: token, tags: tags)
     }
     
 }

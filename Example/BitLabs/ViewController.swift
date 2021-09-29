@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bitlabs = BitLabs.Init(token: token, uid: uid)
+        bitlabs?.setTags(t: ["userType": "New", "isPremium": false])
     }
     
     

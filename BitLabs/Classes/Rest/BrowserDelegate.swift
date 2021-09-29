@@ -28,8 +28,6 @@ public class BrowserDelegate: NSObject {
         public static let apiTokenHeader = "X-Api-Token"
         public static let userIdHeader = "X-User-Id"
         public static let urlStartsWith = "web.bitlabs.ai"
-        
-       
     }
  
     public static let instance = BrowserDelegate()
@@ -39,6 +37,7 @@ public class BrowserDelegate: NSObject {
     
     var userId = ""
     var token = ""
+    var tags:Dictionary<String, Any> = [:]
     
     var currentLayout: Layout = .LAYOUT_ONE
     var restService: RestService?
@@ -92,10 +91,12 @@ public class BrowserDelegate: NSObject {
     }
     
     
-    func show(parent: UIViewController, withUserId userId : String, token: String)   {
-        let url = buildURL(userId: userId, apiToken: token)
+    func show(parent: UIViewController, withUserId userId : String, token: String, tags: Dictionary<String, Any>)   {
+        let url = buildURL(userId: userId, apiToken: token, tags: tags)
+        print(url);
         self.userId = userId
         self.token = token
+        self.tags = tags
         
         guard let u = url else {
             debugPrint("| Invalid url")
@@ -123,11 +124,15 @@ public class BrowserDelegate: NSObject {
     }
      
     
-    func buildURL(userId: String, apiToken: String) -> URL? {
+    func buildURL(userId: String, apiToken: String, tags: Dictionary<String, Any>) -> URL? {
         var components = URLComponents(string: Constants.baseURL)!
         let queryUUID = URLQueryItem(name: "uid", value: userId)
         let queryAPIToken = URLQueryItem(name: "token", value: apiToken)
         components.queryItems = [queryUUID, queryAPIToken]
+        
+        tags.forEach {
+            components.queryItems?.append(URLQueryItem(name: $0, value: String(describing: $1)))
+        }
         
         do {
             let url = try components.asURL()
@@ -259,7 +264,7 @@ extension BrowserDelegate: WebViewControllerNavigationDelegate {
         
         rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
             
-            let url = self.buildURL(userId: self.userId, apiToken: self.token)
+            let url = self.buildURL(userId: self.userId, apiToken: self.token, tags: self.tags)
             let urlRequest = URLRequest(url: url!)
 
             self.configureLayoutOne()

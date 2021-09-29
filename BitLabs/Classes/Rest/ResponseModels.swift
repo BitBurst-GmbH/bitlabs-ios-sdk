@@ -22,7 +22,6 @@ public struct CheckSurveyReponse {
         this.hasSurveys = hasSurveys
         return this
     }
-    
     init() {
         hasSurveys = false
     }
