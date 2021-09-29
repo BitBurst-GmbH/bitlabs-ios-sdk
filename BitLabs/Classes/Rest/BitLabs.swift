@@ -35,8 +35,8 @@ import UIKit
         tags = t
     }
     
-    @objc public func checkForSurveys(completion ch: @escaping checkSurveyResponseHandler ) {
-        restService.checkForSurveys(completion: ch)
+    @objc public func hasSurveys(completionHandler: @escaping (Bool)-> ()) {
+        restService.checkForSurveys(completionHandler: completionHandler)
     }
     
     @objc public func show(parent p: UIViewController) {

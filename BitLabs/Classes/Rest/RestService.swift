@@ -9,8 +9,6 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
-
-public typealias checkSurveyResponseHandler = (Result<CheckSurveyReponse,Error>) -> Void
 public typealias leaveSurveyResponseHandler = () -> Void
 
 
@@ -81,8 +79,7 @@ public class RestService: BaseRestService {
     
     }
     
-    public func checkForSurveys(completion: @escaping checkSurveyResponseHandler ) {
-        let completionHandler = completion
+    public func checkForSurveys(completionHandler: @escaping (Bool)-> ()) {
         var url = Constants.baseURL
         url = url.appendingPathComponent("check")
         
@@ -105,15 +102,12 @@ public class RestService: BaseRestService {
                     switch jsonData {
                         case .success(let dataDict):
                             let entity = CheckSurveyReponse.buildFromJSON(json: dataDict)
-                            let result: Result<CheckSurveyReponse, Error> = .success(entity)
-                            completionHandler(result)
-                        case .failure(let error):
-                            let result: Result<CheckSurveyReponse, Error> = .failure(error)
-                            completionHandler(result)
+                            completionHandler(entity.hasSurveys)
+                        case .failure(_):
+                            completionHandler(false)
                     }
-                case .failure(let error):
-                    let result: Result<CheckSurveyReponse, Error> = .failure(error)
-                    completionHandler(result)
+                case .failure(_):
+                    completionHandler(false)
                 }
         }
     }
@@ -180,5 +174,6 @@ extension RestService {
     }
     
 }
+
 
 

@@ -34,18 +34,13 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {
-        bitlabs?.checkForSurveys() { result in
+        bitlabs?.hasSurveys() { result in
             switch result {
-            case .success(let result):
-                if (result.hasSurveys) {
-                    debugPrint("Surveys available!")
-                } else {
-                    debugPrint("No surveys available!")
-                }
-            case .failure(let error):
-                debugPrint(error)
+            case true:
+                debugPrint("Surveys available!")
+            case false:
+                debugPrint("No surveys available!")
             }
-            
         }
     }
     
