@@ -49,7 +49,8 @@ class WebViewController: UIViewController {
     
     @IBAction func handleBackNavigationAction(_ sender: UIButton) {
         let leaveTitle = NSLocalizedString( "LEAVE_TITLE", bundle: podBundle, value: "", comment: "")
-        leaveOptionsMenu = UIAlertController(title: "Leave", message: leaveTitle , preferredStyle: .alert)
+        let leaveDescription = NSLocalizedString( "LEAVE_DESC", bundle: podBundle, value: "", comment: "")
+        leaveOptionsMenu = UIAlertController(title: leaveTitle, message: leaveDescription , preferredStyle: .alert)
         
         for reason in LeaveReason.allCases {
             let translatedTextValue = NSLocalizedString( reason.rawValue, bundle: podBundle, value: "", comment: "")

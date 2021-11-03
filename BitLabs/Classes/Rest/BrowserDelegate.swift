@@ -16,7 +16,7 @@ protocol WebViewControllerDelegate {
 }
 
 
-protocol WebViewControllerNavigationDelegate: class{
+protocol WebViewControllerNavigationDelegate: AnyObject{
     func handleLeaveSurvey( controller: UIViewController, reason: LeaveReason)
     func handleCloseAction( controller: WebViewController)
 }
@@ -80,7 +80,7 @@ public class BrowserDelegate: NSObject {
         }
         
         let pathComponents = url.pathComponents
-        guard let networksIndex = pathComponents.index(of: "networks"), let surveysIndex = pathComponents.index(of: "surveys") else {
+        guard let networksIndex = pathComponents.firstIndex(of: "networks"), let surveysIndex = pathComponents.firstIndex(of: "surveys") else {
             return nil
         }
         
@@ -93,7 +93,6 @@ public class BrowserDelegate: NSObject {
     
     func show(parent: UIViewController, withUserId userId : String, token: String, tags: Dictionary<String, Any>)   {
         let url = buildURL(userId: userId, apiToken: token, tags: tags)
-        print(url);
         self.userId = userId
         self.token = token
         self.tags = tags
