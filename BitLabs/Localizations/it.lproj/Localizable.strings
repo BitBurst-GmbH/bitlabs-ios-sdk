@@ -1,0 +1,16 @@
+/* 
+  File.strings
+  Pods
+
+  Created by BitBurst GmbH on 07.01.21.
+  
+*/
+
+"TOO_SENSITIVE" = "Troppo sensibile" ;
+"UNINSTERESTING" = "Poco interessante" ;
+"TECHNICAL_ISSUES" = "Problemi tecnici" ;
+"TOO_LONG" = "Troppo lungo" ;
+"OTHER_REASONS" = "Altro motivo" ;
+"CONTINUE_SURVEY" = "Continua con il sondaggio";
+"LEAVE_TITLE" = "Lascia il sondaggio";
+"LEAVE_DESC" = "Scegli un motivo per lasciare il sondaggio";

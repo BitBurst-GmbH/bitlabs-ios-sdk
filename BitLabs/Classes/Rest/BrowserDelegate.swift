@@ -37,7 +37,7 @@ public class BrowserDelegate: NSObject {
     
     var userId = ""
     var token = ""
-    var tags:Dictionary<String, Any> = [:]
+    var tags: Dictionary<String, Any> = [:]
     
     var currentLayout: Layout = .LAYOUT_ONE
     var restService: RestService?
@@ -116,10 +116,8 @@ public class BrowserDelegate: NSObject {
         webViewController.webView?.uiDelegate = self
         webViewController.webView?.navigationDelegate = self
 
-        
         let urlRequest = URLRequest(url: u)
         webViewController.webView!.load(urlRequest)
-
     }
      
     

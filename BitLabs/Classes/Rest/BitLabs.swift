@@ -35,6 +35,10 @@ import UIKit
         tags = t
     }
     
+    @objc public func appendTag(key: String, value: String){
+        tags[key] = value
+    }
+    
     @objc public func hasSurveys(completionHandler: @escaping (Bool)-> ()) {
         restService.checkForSurveys(completionHandler: completionHandler)
     }

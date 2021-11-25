@@ -1,0 +1,16 @@
+/* 
+  File.strings
+  Pods
+
+  Created by BitBurst GmbH on 07.01.21.
+  
+*/
+
+"TOO_SENSITIVE" = "Trop sensible" ;
+"UNINSTERESTING" = "Inintéressant" ;
+"TECHNICAL_ISSUES" = "Problèmes techniques" ;
+"TOO_LONG" = "Trop long" ;
+"OTHER_REASONS" = "Autre raison" ;
+"CONTINUE_SURVEY" = "Continuer l'enquête" ;
+"LEAVE_TITLE" = "Quitter l'enquête" ;
+"LEAVE_DESC" = "Choisissez une raison pour quitter l'enquête" ;
