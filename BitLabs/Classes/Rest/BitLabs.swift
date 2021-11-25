@@ -43,8 +43,12 @@ import UIKit
         restService.checkForSurveys(completionHandler: completionHandler)
     }
     
+    @objc public func onReward(completionHandler: @escaping (Float)-> ()) {
+        browserDelegate.onRewardHandler = completionHandler
+    }
+    
     @objc public func show(parent p: UIViewController) {
-        browserDelegate.show(parent: p, withUserId: uid, token: token, tags: tags)
+        browserDelegate.show(parent: p, withUserId: uid, token: token, tags: tags, bitlabs: self)
     }
     
 }

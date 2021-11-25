@@ -41,6 +41,8 @@ public class BrowserDelegate: NSObject {
     
     var currentLayout: Layout = .LAYOUT_ONE
     var restService: RestService?
+    var bitlabs: BitLabs?
+    var onRewardHandler: ((Float)-> ())?
     
     var navigateToInitialPage: WKNavigation? = nil
     
@@ -65,7 +67,7 @@ public class BrowserDelegate: NSObject {
         return url.starts(with: Constants.baseURL)
     }
     
-    private func checkForNetworkAndSurveyId( urlToCheck: String) throws -> (networkId: String, surveyId: String)?{
+    private func checkForNetworkAndSurveyId(urlToCheck: String) throws -> (networkId: String, surveyId: String)?{
         
         let regEx = try NSRegularExpression(pattern: urlRegEx, options: .caseInsensitive)
         let range = NSMakeRange(0, urlToCheck.count)
@@ -90,12 +92,18 @@ public class BrowserDelegate: NSObject {
         return (networkId: networkId , surveyId: surveyId)
     }
     
+    func getQueryStringParameter(url: String, param: String) -> String? {
+      guard let url = URLComponents(string: url) else { return nil }
+      return url.queryItems?.first(where: { $0.name == param })?.value
+    }
     
-    func show(parent: UIViewController, withUserId userId : String, token: String, tags: Dictionary<String, Any>)   {
+    func show(parent: UIViewController, withUserId userId : String, token: String, tags: Dictionary<String, Any>, bitlabs: BitLabs)   {
+
         let url = buildURL(userId: userId, apiToken: token, tags: tags)
         self.userId = userId
         self.token = token
         self.tags = tags
+        self.bitlabs = bitlabs
         
         guard let u = url else {
             debugPrint("| Invalid url")
@@ -188,6 +196,11 @@ extension BrowserDelegate: WKNavigationDelegate {
         if urlStr == nil {
             decisionHandler(.allow)
             return
+        }
+        
+        if (urlStr!.contains("survey/complete") || urlStr!.contains("survey/screenout")){
+            let value = getQueryStringParameter(url: urlStr!, param: "val")
+            onRewardHandler!((value! as NSString).floatValue)
         }
         
         if containsBitLabURL(url: urlStr!) {
