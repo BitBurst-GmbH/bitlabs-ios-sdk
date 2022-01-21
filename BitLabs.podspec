@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'BitLabs'
-  spec.version          = '0.1.0'
-  spec.summary          = 'A short description of BitLabs.'
+  spec.version          = '0.1.1'
+  spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,13 +17,11 @@ Pod::Spec.new do |spec|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  spec.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
 
   spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  spec.license          = { :type => 'MIT', :file => 'LICENSE' }
+  spec.license          = 'Commercial'
   spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
   spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
@@ -41,7 +39,7 @@ TODO: Add long description of the pod here.
   
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  spec.dependency 'Alamofire', '~> 5.2'
-  spec.dependency 'SwiftyJSON' , '~> 5.0'
+  spec.dependency 'Alamofire', '~> 5.5'
+  spec.dependency 'SwiftyJSON' , '~> 5.0.1'
 end
 
