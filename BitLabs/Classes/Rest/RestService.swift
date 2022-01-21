@@ -91,10 +91,12 @@ public class RestService: BaseRestService {
         let checkSurveyURL = components.url!
         let headers = assembleHeaders(appToken: token, userId: userId)
 
+        struct DecodableType: Decodable { let url: String }
+        
         AF.request( checkSurveyURL, headers: headers)
             .validate(statusCode: 200...200)
             .validate(contentType: ["application/json"])
-            .responseJSON { response in
+            .responseDecodable(of: DecodableType.self) { response in
              switch response.result {
                 case .success:
                     let data = response.data!

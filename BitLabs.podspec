@@ -36,10 +36,11 @@ Pod::Spec.new do |spec|
   # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
  spec.resources = ['BitLabs/Classes/**/*.{xib}' , 'BitLabs/Localizations/en.lproj/Localizable.strings' , 'BitLabs/Localizations/de-DE.lproj/Localizable.strings']
 
+ spec.swift_version = '4.0'
   
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  spec.dependency 'Alamofire', '~> 5.5'
-  spec.dependency 'SwiftyJSON' , '~> 5.0.1'
+ # s.public_header_files = 'Pod/Classes/**/*.h'
+ # s.frameworks = 'UIKit', 'MapKit'
+ spec.dependency 'Alamofire', '~> 5.5'
+ spec.dependency 'SwiftyJSON' , '~> 5.0.1'
 end
 
