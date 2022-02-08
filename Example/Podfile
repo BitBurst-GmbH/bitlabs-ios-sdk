@@ -2,6 +2,9 @@ use_frameworks!
 platform :ios, "13.0"
 
 target 'BitLabs_Example' do
+  
+  pod 'Alamofire', '~> 5.5'
+  pod 'SwiftyJSON', '~> 5.0.1'
   pod 'BitLabs', :path => '../'
 
   target 'BitLabs_Tests' do

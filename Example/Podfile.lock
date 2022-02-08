@@ -1,12 +1,14 @@
 PODS:
   - Alamofire (5.5.0)
-  - BitLabs (0.1.0):
-    - Alamofire (~> 5.2)
-    - SwiftyJSON (~> 5.0)
+  - BitLabs (0.1.1):
+    - Alamofire (~> 5.5)
+    - SwiftyJSON (~> 5.0.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.5)
   - BitLabs (from `../`)
+  - SwiftyJSON (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -19,9 +21,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  BitLabs: e7e6321d5f786722e6c0854392bf0d90a40c4dbf
+  BitLabs: 592f996acd94dcde19caba8d49c9b57ec0feb88a
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: ed1946ba5c4f5f502d8ba24a84de3afaf2d6ac53
+PODFILE CHECKSUM: caf439f9c7049519fef29f19b2f2e213fe7faf5b
 
 COCOAPODS: 1.11.2

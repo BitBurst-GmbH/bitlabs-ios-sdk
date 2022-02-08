@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'BitLabs'
-  spec.version          = '0.1.1'
+  spec.version          = '0.1.2'
   spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
 
 # This description is used to generate tags and improve search results.
@@ -41,6 +41,6 @@ Pod::Spec.new do |spec|
  # s.public_header_files = 'Pod/Classes/**/*.h'
  # s.frameworks = 'UIKit', 'MapKit'
  spec.dependency 'Alamofire', '~> 5.5'
- spec.dependency 'SwiftyJSON' , '~> 5.0.1'
+ spec.dependency 'SwiftyJSON', '~> 5.0.1'
 end
 
