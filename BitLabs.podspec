@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name             = 'BitLabs'
-  spec.version          = '0.1.2'
+  spec.version          = '0.1.3'
   spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |spec|
   spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  spec.ios.deployment_target = '12.0'
+  spec.ios.deployment_target = '11.0'
 
   spec.source_files = 'BitLabs/Classes/Rest/**/*.swift'
   
@@ -36,7 +36,7 @@ Pod::Spec.new do |spec|
   # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
  spec.resources = ['BitLabs/Classes/**/*.{xib}' , 'BitLabs/Localizations/en.lproj/Localizable.strings' , 'BitLabs/Localizations/de-DE.lproj/Localizable.strings']
 
- spec.swift_version = '4.0'
+ spec.swift_version = '5.0'
   
  # s.public_header_files = 'Pod/Classes/**/*.h'
  # s.frameworks = 'UIKit', 'MapKit'
