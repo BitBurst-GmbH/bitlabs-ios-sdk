@@ -199,8 +199,8 @@ extension BrowserDelegate: WKNavigationDelegate {
         }
         
         if (urlStr!.contains("survey/complete") || urlStr!.contains("survey/screenout")){
-            let value = getQueryStringParameter(url: urlStr!, param: "val")
-            onRewardHandler!((value! as NSString).floatValue)
+            let value = getQueryStringParameter(url: urlStr!, param: "val") ?? "0"
+            onRewardHandler!((value as NSString).floatValue)
         }
         
         if containsBitLabURL(url: urlStr!) {
@@ -230,7 +230,6 @@ extension BrowserDelegate: WKNavigationDelegate {
         webViewController.webViewToSafeArea?.priority = UILayoutPriority.init(1000)
        
         webViewController.topBar?.isHidden = true
-        webViewController.topBar?.backgroundColor = UIColor.green
         
         webViewController.closeButton?.isHidden = false
         webViewController.closeButton?.isUserInteractionEnabled = true
@@ -249,6 +248,7 @@ extension BrowserDelegate: WKNavigationDelegate {
         
         webViewController.navigateBackButton?.isEnabled = true
         webViewController.topBar?.isHidden = false
+        webViewController.topBar?.backgroundColor = UIColor.white
         
         webViewController.navigateBackButton?.isHidden = false
         webViewController.navigateBackButton?.isUserInteractionEnabled = true
