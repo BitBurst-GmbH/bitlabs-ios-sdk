@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (5.5.0)
-  - BitLabs (0.1.4):
+  - BitLabs (0.1.5):
     - Alamofire (~> 5.5)
     - SwiftyJSON (~> 5.0.1)
   - SwiftyJSON (5.0.1)
@@ -21,7 +21,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  BitLabs: f2f9b47f6e9f1757ea55b4dbed299d9dcde618f6
+  BitLabs: c59bf19e111f28e7f2ab3eeabd643ead4ac3b608
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
 PODFILE CHECKSUM: 5c6150be999d18d5f3d66a65245ae61b7b17d039

@@ -198,7 +198,7 @@ extension BrowserDelegate: WKNavigationDelegate {
             return
         }
         
-        if (urlStr!.contains("survey/complete") || urlStr!.contains("survey/screenout")){
+        if ((urlStr!.contains("survey/complete") || urlStr!.contains("survey/screenout")) && onRewardHandler != nil){
             let value = getQueryStringParameter(url: urlStr!, param: "val") ?? "0"
             onRewardHandler!((value as NSString).floatValue)
         }
