@@ -69,7 +69,6 @@ public class RestService: BaseRestService {
             .response{ resp in
                 switch resp.result {
                 case .success(let data):
-                    debugPrint(data as Any)
                     completion()
                 case .failure(let error):
                     debugPrint(error)
@@ -91,9 +90,13 @@ public class RestService: BaseRestService {
         let checkSurveyURL = components.url!
         let headers = assembleHeaders(appToken: token, userId: userId)
 
-        struct DecodableType: Decodable { let url: String }
+        struct DecodableType: Decodable {
+            let data: JSON
+            let status: String
+            let trace_id: String
+        }
         
-        AF.request( checkSurveyURL, headers: headers)
+        AF.request(checkSurveyURL, headers: headers)
             .validate(statusCode: 200...200)
             .validate(contentType: ["application/json"])
             .responseDecodable(of: DecodableType.self) { response in
@@ -139,11 +142,11 @@ extension RestService {
             
             let statusCodeResult = checkStatusCode(json: responseJSON)
             switch statusCodeResult {
-            case .failure(let error):
-                let r: Result<Dictionary<String,JSON>, BitLabsError> = .failure(error as! BitLabsError)
-            return r
-            case .success(let code):
-                debugPrint("Status code is: \(code.rawValue)")
+                case .failure(let error):
+                    let r: Result<Dictionary<String,JSON>, BitLabsError> = .failure(error as! BitLabsError)
+                return r
+                case .success(let code):
+                    debugPrint("Status code is: \(code.rawValue)")
             }
 
             guard let _ = responseJSON["data"].dictionary else {
