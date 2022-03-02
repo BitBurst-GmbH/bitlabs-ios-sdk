@@ -28,11 +28,11 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bitlabs = BitLabs.Init(token: token, uid: uid)
-        bitlabs?.setTags(t: ["userType": "New", "isPremium": false])
-        bitlabs?.onReward(completionHandler: { payout in
+        bitlabs = BitLabs(token: token, uid: uid)
+        bitlabs?.setTags(["userType": "New", "isPremium": false])
+        bitlabs?.setOnRewardCompletionHandler { payout in
             debugPrint("You earned: \(payout)")
-        })
+        }
     }
     
     
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showWebView(_ sender: UIButton) {
-        self.bitlabs?.show(parent: self)
+        self.bitlabs?.launchOfferWall(parent: self)
     }
     
 }
