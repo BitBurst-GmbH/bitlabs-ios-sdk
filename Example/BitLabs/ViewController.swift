@@ -40,9 +40,9 @@ class ViewController: UIViewController {
         bitlabs?.hasSurveys() { result in
             switch result {
             case true:
-                debugPrint("Surveys available!")
+                print("[Example] Surveys available!")
             case false:
-                debugPrint("No surveys available!")
+                print("[Example] No surveys available!")
             }
         }
     }

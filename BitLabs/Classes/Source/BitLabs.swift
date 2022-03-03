@@ -16,12 +16,14 @@ import UIKit
 	
 	// TODO: Change to BitLabsAPI and use only Alamofire
 	let restService: RestService
+	let bitlabsAPI: BitLabsAPI
 	let browserDelegate = BrowserDelegate.instance
 	
 	@objc public init(token: String, uid: String) {
 		self.token = token
 		self.uid = uid
 		restService = RestService.Init(token: token, uid: uid)
+		bitlabsAPI = BitLabsAPI(token, uid)
 		browserDelegate.restService = restService
 	}
 	
@@ -34,7 +36,7 @@ import UIKit
 	}
 	
 	@objc public func hasSurveys(_ completionHandler: @escaping (Bool) -> ()) {
-		restService.checkForSurveys(completionHandler: completionHandler)
+		bitlabsAPI.checkSurveys(completionHandler)
 	}
 	
 	@objc public func setOnRewardCompletionHandler(_ completionHandler: @escaping (Float)-> ()) {
