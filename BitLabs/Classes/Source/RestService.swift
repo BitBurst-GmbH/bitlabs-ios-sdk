@@ -7,7 +7,7 @@
 
 import Alamofire
 import Foundation
-import SwiftyJSON
+
 
 public typealias leaveSurveyResponseHandler = () -> Void
 
@@ -19,13 +19,7 @@ let leaveReasonCodes: Dictionary<LeaveReason, String> = [ .tooSensitive: "SENSIT
                                                           .otherReasons: "OTHER"]
 
 
-public enum Platform: String, CaseIterable {
-    case MOBILE = "MOBILE"
-    case TABLET = "TABLET"
-}
-
-
-public class RestService: BaseRestService {
+public class RestService {
     
     public enum Constants {
         public static let baseURL = URL(string: "https://api.bitlabs.ai/v1/client")!
@@ -47,10 +41,6 @@ public class RestService: BaseRestService {
     private init(appToken: String, uid: String) {
         token = appToken
         userId = uid
-    }
-    
-    override private init() {
-        super.init()
     }
 
     func leaveSurvey( networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping leaveSurveyResponseHandler) {
@@ -77,98 +67,11 @@ public class RestService: BaseRestService {
             }
     
     }
-    
-    public func checkForSurveys(completionHandler: @escaping (Bool)-> ()) {
-        var url = Constants.baseURL
-        url = url.appendingPathComponent("check")
-        
-        var components = URLComponents(string: url.absoluteString)!
-        let platformCurrent = determinePlatform()
-        let query = URLQueryItem(name: "platform", value: platformCurrent.rawValue)
-        
-        components.queryItems = [query]
-        let checkSurveyURL = components.url!
-        let headers = assembleHeaders(appToken: token, userId: userId)
-
-        struct DecodableType: Decodable {
-            let data: JSON
-            let status: String
-            let trace_id: String
-        }
-        
-        AF.request(checkSurveyURL, headers: headers)
-            .validate(statusCode: 200...200)
-            .validate(contentType: ["application/json"])
-            .responseDecodable(of: DecodableType.self) { response in
-             switch response.result {
-                case .success:
-                    let data = response.data!
-                    let jsonData = self.decodeResponse(json: data)
-                    switch jsonData {
-                        case .success(let dataDict):
-                            let entity = CheckSurveyReponse.buildFromJSON(json: dataDict)
-                            completionHandler(entity.hasSurveys)
-                        case .failure(_):
-                            completionHandler(false)
-                    }
-                case .failure(_):
-                    completionHandler(false)
-                }
-        }
-    }
 }
 
 
 
 extension RestService {
-    
-    func determinePlatform() -> Platform {
-        let currentDevice = UIDevice.current
-        switch currentDevice.userInterfaceIdiom {
-        case .pad:
-            return .TABLET
-        case .phone:
-            return .MOBILE
-        default:
-            return .MOBILE
-        }
-    }
-    
-    
-    func decodeResponse(json: Data) -> Result<Dictionary<String,JSON>, BitLabsError> {
-
-        do {
-            let responseJSON = try JSON(data: json)
-            
-            let statusCodeResult = checkStatusCode(json: responseJSON)
-            switch statusCodeResult {
-                case .failure(let error):
-                    let r: Result<Dictionary<String,JSON>, BitLabsError> = .failure(error as! BitLabsError)
-                return r
-                case .success(let code):
-                    debugPrint("Status code is: \(code.rawValue)")
-            }
-
-            guard let _ = responseJSON["data"].dictionary else {
-                let error = BitLabsError.MissingResponseData
-                let result: Result<Dictionary<String,JSON>,BitLabsError> = .failure(error)
-                return result
-            }
-
-            let jsonData = responseJSON["data"].dictionary
-            let result: Result<Dictionary<String,JSON>,BitLabsError> = .success(jsonData!)
-            return result
-
-        } catch {
-            let encodedString = json.base64EncodedString()
-            let error = BitLabsError.InconsitentJSON(encodedString)
-            let result: Result<Dictionary<String,JSON>,BitLabsError> = .failure(error)
-            return result
-
-        }
-
-    }
-
     func assembleHeaders(appToken: String, userId: String) -> HTTPHeaders {
         var headers = HTTPHeaders()
         
@@ -177,7 +80,6 @@ extension RestService {
         
         return headers
     }
-    
 }
 
 

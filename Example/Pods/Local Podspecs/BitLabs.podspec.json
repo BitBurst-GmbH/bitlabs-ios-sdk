@@ -15,7 +15,7 @@
   "platforms": {
     "ios": "11.0"
   },
-  "source_files": "BitLabs/Classes/Rest/**/*.swift",
+  "source_files": "BitLabs/Classes/**/*.swift",
   "resources": [
     "BitLabs/Classes/**/*.{xib}",
     "BitLabs/Localizations/en.lproj/Localizable.strings",
@@ -25,9 +25,6 @@
   "dependencies": {
     "Alamofire": [
       "~> 5.5"
-    ],
-    "SwiftyJSON": [
-      "~> 5.0.1"
     ]
   },
   "swift_version": "5.0"

@@ -32,7 +32,7 @@ enum BitLabsRouter {
 	var parameters: Parameters {
 		switch self {
 		case .checkSurveys(let fingerprint):
-			return ["platform": "MOBILE", "sc_fingerprint": fingerprint]
+			return ["platform": getPlatform(), "sc_fingerprint": fingerprint]
 		}
 	}
 }
@@ -47,5 +47,14 @@ extension BitLabsRouter: URLRequestConvertible {
 		request = try URLEncoding(destination: .methodDependent).encode(request, with: parameters)
 	
 		return request
+	}
+	
+	func getPlatform() -> String {
+		switch UIDevice.current.userInterfaceIdiom {
+		case .pad:
+			return "TABLET"
+		default:
+			return "MOBILE"
+		}
 	}
 }
