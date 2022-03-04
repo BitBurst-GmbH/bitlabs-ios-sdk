@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    let token = "YOUR-TOKEN"
     let uid = "YOUR_USER_ID"
     
     var bitlabs: BitLabs?
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {
-        bitlabs?.hasSurveys() { result in
+        bitlabs?.checkSurveys { result in
             switch result {
             case true:
                 print("[Example] Surveys available!")

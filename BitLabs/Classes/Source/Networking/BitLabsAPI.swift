@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 
+/// A class to manage connection with the BitLabs API.
 class BitLabsAPI {
 
 	private let token: String
@@ -20,7 +21,12 @@ class BitLabsAPI {
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
 	}
 	
-	public func checkSurveys(_ completion: @escaping (Bool) -> ()) {
+	/// Checks whether there are available surveys or qualification questions in the backend.
+	///
+	/// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
+	/// - Parameter completion: The closure to when an object is returned.
+	/// - Parameter hasSurveys:  True if surveys or qualification questions are found. False otherwise.
+	public func checkSurveys(_ completion: @escaping (_ hasSurveys: Bool) -> ()) {
 		AF.request(BitLabsRouter.checkSurveys(""), interceptor: BitLabsRequestInterceptor(token, userId))
 			.responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
 				switch response.result {

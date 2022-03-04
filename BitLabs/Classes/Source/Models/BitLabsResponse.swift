@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This struct is most likely used in all API repsonses in BitLabs API
 struct BitLabsResponse: Decodable {
 	let data: CheckSurveysResponse?
 	let error: ErrorResponse?
@@ -14,6 +15,7 @@ struct BitLabsResponse: Decodable {
 	let traceId: String
 }
 
+/// - Tag: CheckSurveysResponse
 struct CheckSurveysResponse: Decodable {
 	let hasSurveys: Bool
 }
