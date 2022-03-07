@@ -125,6 +125,7 @@ public class BrowserDelegate: NSObject {
         webViewController.webView?.navigationDelegate = self
 
         let urlRequest = URLRequest(url: u)
+		print("[BITLABS] \(u)")
         webViewController.webView!.load(urlRequest)
     }
      
@@ -133,7 +134,12 @@ public class BrowserDelegate: NSObject {
         var components = URLComponents(string: Constants.baseURL)!
         let queryUUID = URLQueryItem(name: "uid", value: userId)
         let queryAPIToken = URLQueryItem(name: "token", value: apiToken)
-        components.queryItems = [queryUUID, queryAPIToken]
+		let queryOS = URLQueryItem(name: "os", value: "IOS")
+		
+		
+		
+		let querySDK = URLQueryItem(name: "sdk", value: "NATIVE")
+        components.queryItems = [queryUUID, queryAPIToken, queryOS, querySDK]
         
         tags.forEach {
             components.queryItems?.append(URLQueryItem(name: $0, value: String(describing: $1)))
