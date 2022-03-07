@@ -10,6 +10,7 @@ import Alamofire
 
 enum BitLabsRouter {
 	case checkSurveys(_ fingerprint: String = "")
+	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
 	
 	private var baseURL: String {
 		return "https://api.bitlabs.ai/v1/client"
@@ -19,6 +20,8 @@ enum BitLabsRouter {
 		switch self {
 		case .checkSurveys:
 			return "check"
+		case .leaveSurvey(let networkId, let surveyId, _):
+			return "networks/\(networkId)/surveys/\(surveyId)/leave"
 		}
 	}
 	
@@ -26,13 +29,17 @@ enum BitLabsRouter {
 		switch self {
 		case .checkSurveys:
 			return .get
+		case .leaveSurvey:
+			return .post
 		}
 	}
 	
-	var parameters: Parameters {
+	var parameters: [String: String] {
 		switch self {
 		case .checkSurveys(let fingerprint):
 			return ["platform": getPlatform(), "sc_fingerprint": fingerprint]
+		case .leaveSurvey(_,_, let reason):
+			return ["reason": reason.rawValue]
 		}
 	}
 }
@@ -44,7 +51,13 @@ extension BitLabsRouter: URLRequestConvertible {
 		var request = URLRequest(url: url)
 		request.method = method
 		
-		request = try URLEncoding(destination: .methodDependent).encode(request, with: parameters)
+		if method == .get {
+			request = try URLEncodedFormParameterEncoder()
+				.encode(parameters, into: request)
+		} else if method == .post {
+			request = try JSONParameterEncoder().encode(parameters, into: request)
+			request.setValue("application/json", forHTTPHeaderField: "Accept")
+		}
 	
 		return request
 	}

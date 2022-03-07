@@ -17,9 +17,9 @@ enum Layout: String, CaseIterable {
 }
 
 enum LeaveReason: String, CaseIterable {
-    case tooSensitive = "TOO_SENSITIVE"
-    case uninteresting = "UNINSTERESTING"
-    case technical = "TECHNICAL_ISSUES"
+    case tooSensitive = "SENSITIVE"
+    case uninteresting = "UNINTERESTING"
+    case technical = "TECHNICAL"
     case tooLong = "TOO_LONG"
-    case otherReasons = "OTHER_REASONS"
+    case otherReasons = "OTHER"
 }

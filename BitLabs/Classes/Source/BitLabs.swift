@@ -15,17 +15,14 @@ import UIKit
 	
 	private var tags: [String: Any] = [:]
 	
-	// TODO: Change to BitLabsAPI and use only Alamofire
-	let restService: RestService
 	let bitlabsAPI: BitLabsAPI
 	let browserDelegate = BrowserDelegate.instance
 	
 	@objc public init(token: String, uid: String) {
 		self.token = token
 		self.uid = uid
-		restService = RestService.Init(token: token, uid: uid)
 		bitlabsAPI = BitLabsAPI(token, uid)
-		browserDelegate.restService = restService
+		browserDelegate.bitlabsAPI = bitlabsAPI
 	}
 	
 	@objc public func setTags(_ tags: [String: Any]) {

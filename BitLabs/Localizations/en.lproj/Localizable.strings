@@ -6,11 +6,12 @@
   
 */
 
-"TOO_SENSITIVE" = "Too sensitive" ;
-"UNINSTERESTING" = "Uninteresting" ;
-"TECHNICAL_ISSUES" = "Technical issues" ;
+"SENSITIVE" = "Too sensitive" ;
+"UNINTERESTING" = "Uninteresting" ;
+"TECHNICAL" = "Technical issues" ;
 "TOO_LONG" = "Too long" ;
-"OTHER_REASONS" = "Other Reason" ;
+"OTHER" = "Other Reason" ;
+
 "CONTINUE_SURVEY" = "Continue with survey";
 "LEAVE_TITLE" = "Leave Survey";
 "LEAVE_DESC" = "Choose a reason for leaving the survey";

@@ -15,10 +15,13 @@ class BitLabsAPI {
 	private let userId: String
 	private let decoder = JSONDecoder()
 	
+	private let session: Session
+	
 	init(_ token: String, _ userId: String) {
 		self.token = token
 		self.userId = userId
 		decoder.keyDecodingStrategy = .convertFromSnakeCase
+		session = Session(interceptor: BitLabsRequestInterceptor(token, userId))
 	}
 	
 	/// Checks whether there are available surveys or qualification questions in the backend.
@@ -27,7 +30,7 @@ class BitLabsAPI {
 	/// - Parameter completion: The closure to when an object is returned.
 	/// - Parameter hasSurveys:  True if surveys or qualification questions are found. False otherwise.
 	public func checkSurveys(_ completion: @escaping (_ hasSurveys: Bool) -> ()) {
-		AF.request(BitLabsRouter.checkSurveys(""), interceptor: BitLabsRequestInterceptor(token, userId))
+		session.request(BitLabsRouter.checkSurveys(""))
 			.responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
 				switch response.result {
 				case .success(let blResponse):
@@ -42,5 +45,23 @@ class BitLabsAPI {
 					completion(false)
 				}
 			}
+	}
+	
+	func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping (Bool) -> ()) {
+		session.request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason)).responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
+			switch response.result {
+			case .success(let blResponse):
+				if blResponse.status == "success" {
+					print("[BitLabs] Left survey successfully.")
+					completion(true)
+				} else {
+					print("[BitLabs] Error: \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+					completion(false)
+				}
+			case .failure(let error):
+				print("[BitLabs] Technical \(error.errorDescription ?? "")")
+				completion(false)
+			}
+		}
 	}
 }

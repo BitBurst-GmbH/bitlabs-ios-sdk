@@ -21,6 +21,15 @@ class BitLabsRequestInterceptor: RequestInterceptor {
 	func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
 		var request = urlRequest
 		
+//		if let url = request.url {
+//			print("\(url.absoluteURL)")
+//		}
+//
+//		if request.method == .post, let data = request.httpBody {
+//			print("Body:")
+//			print(String(decoding: data, as: UTF8.self))
+//		}
+		
 		request.setValue(token, forHTTPHeaderField: "X-Api-Token")
 		request.setValue(userId, forHTTPHeaderField: "X-User-Id")
 		

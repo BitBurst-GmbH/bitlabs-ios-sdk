@@ -40,7 +40,7 @@ public class BrowserDelegate: NSObject {
     var tags: Dictionary<String, Any> = [:]
     
     var currentLayout: Layout = .LAYOUT_ONE
-    var restService: RestService?
+    var bitlabsAPI: BitLabsAPI?
     var bitlabs: BitLabs?
     var onRewardHandler: ((Float)-> ())?
     
@@ -263,7 +263,7 @@ extension BrowserDelegate: WKNavigationDelegate {
  
 extension BrowserDelegate: WebViewControllerNavigationDelegate {
     func handleLeaveSurvey(controller: UIViewController , reason: LeaveReason) {
-        guard let rs = restService else { return }
+        guard let bitlabsAPI = bitlabsAPI else { return }
         
         guard let wvc = controller as? WebViewController else {
             debugPrint("| Provided controller is not of type WebViewController")
@@ -272,7 +272,7 @@ extension BrowserDelegate: WebViewControllerNavigationDelegate {
         }
         wvc.navigateBackButton?.isEnabled = false
         
-        rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
+        bitlabsAPI.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) { _ in
             
             let url = self.buildURL(userId: self.userId, apiToken: self.token, tags: self.tags)
             let urlRequest = URLRequest(url: url!)
