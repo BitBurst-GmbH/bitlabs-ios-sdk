@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    let token = "YOUR_APP_TOKEN"
     let uid = "YOUR_USER_ID"
     
     var bitlabs: BitLabs?

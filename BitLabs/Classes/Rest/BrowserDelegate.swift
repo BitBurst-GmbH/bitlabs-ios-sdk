@@ -37,6 +37,7 @@ public class BrowserDelegate: NSObject {
     
     var userId = ""
     var token = ""
+    var sdk = ""
     var tags: Dictionary<String, Any> = [:]
     
     var currentLayout: Layout = .LAYOUT_ONE
@@ -97,12 +98,13 @@ public class BrowserDelegate: NSObject {
       return url.queryItems?.first(where: { $0.name == param })?.value
     }
     
-    func show(parent: UIViewController, withUserId userId : String, token: String, tags: Dictionary<String, Any>, bitlabs: BitLabs)   {
+    func show(parent: UIViewController, withUserId userId : String, token: String, sdk: String, tags: Dictionary<String, Any>, bitlabs: BitLabs)   {
 
-        let url = buildURL(userId: userId, apiToken: token, tags: tags)
+        let url = buildURL(userId: userId, apiToken: token, tags: tags, sdk: sdk)
         self.userId = userId
         self.token = token
         self.tags = tags
+        self.sdk = sdk
         self.bitlabs = bitlabs
         
         guard let u = url else {
@@ -130,15 +132,13 @@ public class BrowserDelegate: NSObject {
     }
      
     
-    func buildURL(userId: String, apiToken: String, tags: Dictionary<String, Any>) -> URL? {
+    func buildURL(userId: String, apiToken: String, tags: Dictionary<String, Any>, sdk: String) -> URL? {
         var components = URLComponents(string: Constants.baseURL)!
         let queryUUID = URLQueryItem(name: "uid", value: userId)
         let queryAPIToken = URLQueryItem(name: "token", value: apiToken)
 		let queryOS = URLQueryItem(name: "os", value: "IOS")
-		
-		
-		
-		let querySDK = URLQueryItem(name: "sdk", value: "NATIVE")
+		let querySDK = URLQueryItem(name: "sdk", value: sdk)
+        
         components.queryItems = [queryUUID, queryAPIToken, queryOS, querySDK]
         
         tags.forEach {
@@ -280,7 +280,7 @@ extension BrowserDelegate: WebViewControllerNavigationDelegate {
         
         rs.leaveSurvey(networkId: networkID, surveyId: surveryID, reason: reason) {
             
-            let url = self.buildURL(userId: self.userId, apiToken: self.token, tags: self.tags)
+            let url = self.buildURL(userId: self.userId, apiToken: self.token, tags: self.tags, sdk: self.sdk)
             let urlRequest = URLRequest(url: url!)
 
             self.configureLayoutOne()
