@@ -47,8 +47,8 @@ import UIKit
         browserDelegate.onRewardHandler = completionHandler
     }
     
-    @objc public func show(parent p: UIViewController) {
-        browserDelegate.show(parent: p, withUserId: uid, token: token, tags: tags, bitlabs: self)
+    @objc public func show(parent p: UIViewController, sdk: String = "NATIVE") {
+        browserDelegate.show(parent: p, withUserId: uid, token: token, sdk: sdk, tags: tags, bitlabs: self)
     }
     
 }
