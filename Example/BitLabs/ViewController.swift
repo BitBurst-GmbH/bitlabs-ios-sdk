@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         bitlabs = BitLabs(token: token, uid: uid)
         bitlabs?.setTags(["userType": "New", "isPremium": false])
-        bitlabs?.setOnRewardCompletionHandler { payout in
+        bitlabs?.setOnRewardHandler { payout in
             debugPrint("You earned: \(payout)")
         }
     }

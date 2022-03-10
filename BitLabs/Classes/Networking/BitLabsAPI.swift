@@ -59,7 +59,7 @@ class BitLabsAPI {
 					completion(false)
 				}
 			case .failure(let error):
-				print("[BitLabs] Technical \(error.errorDescription ?? "")")
+				print("[BitLabs] Technical Error: \(error)")
 				completion(false)
 			}
 		}

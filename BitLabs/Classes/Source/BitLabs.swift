@@ -9,20 +9,21 @@ import UIKit
 
 
 /// The main class including all the tools available to add SDK features into your code.
-@objc public class BitLabs: NSObject {
+@objc public class BitLabs: NSObject, WebViewDelegate {
+    
 	private let token: String
 	private let uid: String
 	
 	private var tags: [String: Any] = [:]
+    
+    private var onReward: ((Float) -> ())?
 	
 	let bitlabsAPI: BitLabsAPI
-	let browserDelegate = BrowserDelegate.instance
 	
 	@objc public init(token: String, uid: String) {
 		self.token = token
 		self.uid = uid
 		bitlabsAPI = BitLabsAPI(token, uid)
-		browserDelegate.bitlabsAPI = bitlabsAPI
 	}
 	
 	@objc public func setTags(_ tags: [String: Any]) {
@@ -43,11 +44,28 @@ import UIKit
 		bitlabsAPI.checkSurveys(completionHandler)
 	}
 	
-	@objc public func setOnRewardCompletionHandler(_ completionHandler: @escaping (Float)-> ()) {
-		browserDelegate.onRewardHandler = completionHandler
+	@objc public func setOnRewardHandler(_ onRewardHandler: @escaping (Float)-> ()) {
+        onReward = onRewardHandler
 	}
 	
 	@objc public func launchOfferWall(parent: UIViewController) {
-		browserDelegate.show(parent: parent, withUserId: uid, token: token, tags: tags, bitlabs: self)
+        let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: Bundle(for: WebViewController.self))
+        
+        webViewController.uid = uid
+        webViewController.token = token
+        webViewController.tags = tags
+        webViewController.bitLabsDelegate = self
+        
+        webViewController.modalPresentationStyle = .overFullScreen
+        
+        parent.present(webViewController, animated: true)
 	}
+    
+    func onReward(_ value: Float) {
+        onReward?(value)
+    }
+    
+    func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ())) {
+        bitlabsAPI.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
+    }
 }
