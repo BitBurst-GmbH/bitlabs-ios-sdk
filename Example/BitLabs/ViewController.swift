@@ -11,8 +11,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    let token = "YOUR-TOKEN"
-    let uid = "YOUR_USER_ID"
+    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    let uid = "YOUR_USER_ID1"
     
     var bitlabs: BitLabs?
     
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         bitlabs = BitLabs(token: token, uid: uid)
         bitlabs?.setTags(["userType": "New", "isPremium": false])
-        bitlabs?.setOnRewardHandler { payout in
+        bitlabs?.setRewardCompletionHandler { payout in
             debugPrint("You earned: \(payout)")
         }
     }
@@ -47,8 +47,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func showWebView(_ sender: UIButton) {
-        self.bitlabs?.launchOfferWall(parent: self)
+    @IBAction func showOfferWall(_ sender: UIButton) {
+        bitlabs?.launchOfferWall(parent: self)
     }
-    
 }

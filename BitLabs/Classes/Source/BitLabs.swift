@@ -9,6 +9,7 @@ import UIKit
 
 
 /// The main class including all the tools available to add SDK features into your code.
+/// - Tag: BitLabs
 @objc public class BitLabs: NSObject, WebViewDelegate {
     
 	private let token: String
@@ -25,11 +26,19 @@ import UIKit
 		self.uid = uid
 		bitlabsAPI = BitLabsAPI(token, uid)
 	}
-	
+    
+    /// Sets the tags.
+    ///
+    /// - Warning: This will replace the currently stored tags with the newly input ones.
+    /// - Parameter tags: The dictionary of tags to store in the [BitLabs](x-source-tag://BitLabs) Class
 	@objc public func setTags(_ tags: [String: Any]) {
 		self.tags = tags
 	}
-	
+    
+    /// Adds a new tag to the current tags.
+    /// - Parameters:
+    ///   - key: The key of the tag.
+    ///   - value: The value of the tag.
 	@objc public func addTag(key: String, value: String) {
 		tags[key] = value
 	}
@@ -43,29 +52,33 @@ import UIKit
 	@objc public func checkSurveys(_ completionHandler: @escaping (_ hasSurveys: Bool) -> ()) {
 		bitlabsAPI.checkSurveys(completionHandler)
 	}
-	
-	@objc public func setOnRewardHandler(_ onRewardHandler: @escaping (Float)-> ()) {
-        onReward = onRewardHandler
+    
+    /// Stores the reward completion closure to use on every reward completion.
+    /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
+	@objc public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {
+        onReward = rewardCompletionHandler
 	}
-	
+    
+    /// Presents a ViewController with a WebKitViewController to show the Offerwall.
+    /// - Parameter parent: The presenting ViewController
 	@objc public func launchOfferWall(parent: UIViewController) {
-        let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: Bundle(for: WebViewController.self))
+        let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
         
         webViewController.uid = uid
         webViewController.token = token
         webViewController.tags = tags
-        webViewController.bitLabsDelegate = self
+        webViewController.delegate = self
         
         webViewController.modalPresentationStyle = .overFullScreen
         
         parent.present(webViewController, animated: true)
 	}
     
-    func onReward(_ value: Float) {
+    func rewardCompleted(_ value: Float) {
         onReward?(value)
     }
     
-    func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ())) {
+    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ())) {
         bitlabsAPI.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
     }
 }

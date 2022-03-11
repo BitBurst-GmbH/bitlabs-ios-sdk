@@ -8,20 +8,33 @@
 import UIKit
 import WebKit
 
+/// This delegate is to help a class execute some functions to which it doesn't have access
 protocol WebViewDelegate {
-    func onReward(_ value: Float)
-    func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ()))
+    /// The completion handler that will execute immediately after the user is rewarded.
+    ///  - Parameter value: The amount of the reward.
+    func rewardCompleted(_ value: Float)
+    
+    /// Sends the leave reason to the BitLabs API
+    ///
+    /// - Parameters:
+    ///  - networkId: The ID of the network of the survey.
+    ///  - surveyId: The ID of the survey.
+    ///  - reason: The reason the user left the survey.
+    ///  - completion: The completion closure to execute after the leave request is executed.
+    ///
+    /// - Tag: sendLeaveSurveyRequest
+    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ()))
 }
 
 class WebViewController: UIViewController {
-	
-	@IBOutlet weak var topBarView: UIView?
-	@IBOutlet weak var closeView: UIView?
     
-	@IBOutlet weak var closeBtn: UIButton?
+    @IBOutlet weak var topBarView: UIView?
+    @IBOutlet weak var closeView: UIView?
+    
+    @IBOutlet weak var closeBtn: UIButton?
     @IBOutlet weak var backBtn: UIButton?
     
-	@IBOutlet weak var webView: WKWebView?
+    @IBOutlet weak var webView: WKWebView?
     @IBOutlet weak var webtTopSafeTopConstraint: NSLayoutConstraint!
     
     var uid = ""
@@ -30,42 +43,39 @@ class WebViewController: UIViewController {
     var networkId = ""
     var tags: [String: Any] = [:]
     
-    var bitLabsDelegate: WebViewDelegate?
+    var delegate: WebViewDelegate?
     
-	override func viewDidLoad() {
-		super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         webView?.navigationDelegate = self
-
-        loadOfferwall()
-	}
-    
-	@IBAction func closeBtnPressed(_ sender: UIButton) {
-		dismiss(animated: true)
-	}
-	
-	@IBAction func backBtnPressed(_sender: UIButton) {
-        let podBundle = Bundle(for: WebViewController.self)
-        let leaveTitle = NSLocalizedString( "LEAVE_TITLE", bundle: podBundle, value: "", comment: "")
-        let leaveDescription = NSLocalizedString( "LEAVE_DESC", bundle: podBundle, value: "", comment: "")
         
-        let leaveAlertController = UIAlertController(title: leaveTitle, message: leaveDescription, preferredStyle: .alert)
+        loadOfferwall()
+    }
+    
+    @IBAction func closeBtnPressed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func backBtnPressed(_sender: UIButton) {
+        let leaveAlertController = UIAlertController(
+            title: Strings.leaveTitle,
+            message: Strings.leaveDescription,
+            preferredStyle: .alert)
         
         for reason in LeaveReason.allCases {
-            let translatedTextValue = NSLocalizedString(reason.rawValue, bundle: podBundle, value: "", comment: "")
-            let reasonEntry = UIAlertAction(title: translatedTextValue, style: .default) { lol in
-                self.leaveSurvey(reason: reason)
+            let reasonEntry = UIAlertAction(title: Strings.localized(reason.rawValue), style: .default) { _ in
+                self.sendLeaveRequest(reason: reason)
             }
             leaveAlertController.addAction(reasonEntry)
         }
         
-        let localizedContinue = NSLocalizedString("CONTINUE_SURVEY", bundle: podBundle, value: "", comment: "")
-        let continueSurvey = UIAlertAction(title: localizedContinue, style: .cancel)
-        leaveAlertController.addAction(continueSurvey)
+        leaveAlertController.addAction(UIAlertAction(title: Strings.continueSurvey, style: .cancel))
         present(leaveAlertController, animated: true)
-	}
+    }
     
-    func loadOfferwall() {
+    /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
+    private func loadOfferwall() {
         guard let url = generateURL() else {
             print("[BitLabs] Error generating URL...")
             dismiss(animated: true)
@@ -75,11 +85,11 @@ class WebViewController: UIViewController {
         webView?.load(URLRequest(url: url))
     }
     
+    /// Generates the URL the BitLabs Offerwall
+    /// - Tag: generateURL
+    /// - Returns: The generated URL
     private func generateURL() -> URL? {
-        
-        guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else {
-            return nil
-        }
+        guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else { return nil }
         
         var queryItems = [
             URLQueryItem(name: "uid", value: uid),
@@ -94,11 +104,12 @@ class WebViewController: UIViewController {
         return urlComponents.url
     }
     
-    func leaveSurvey(reason: LeaveReason) {
-        bitLabsDelegate?.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason) { _ in
+    /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
+    /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
+    private func sendLeaveRequest(reason: LeaveReason) {
+        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) { _ in
             self.loadOfferwall()
         }
-        
     }
 }
 
@@ -111,7 +122,7 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         if url.contains("survey/complete") || url.contains("survey/screenout") {
-            bitLabsDelegate?.onReward(Float(URLComponents(string: url)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0)
+            delegate?.rewardCompleted(Float(URLComponents(string: url)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0)
         }
         
         let isPageOfferwall = url.starts(with: "https://web.bitlabs.ai")
@@ -122,19 +133,19 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         configureUI(isPageOfferwall)
-     
+        
         decisionHandler(.allow)
     }
     
+    /// Extracts the Network ID and Survey ID for the current Survey and User.
+    ///
+    /// It checks whether the URL has the `networks` and `surveys` endpoints. If it has, it exctracts both IDs from it.
+    /// - Parameter url: The URL from which the IDs should be extracted.
+    /// - Returns: The `networkId` and `surveyId`extracted from `url`. It return nil in case the `url` doesn't have the IDs.
     private func getNetworkAndSurveyId(fromURL url: String) -> (networkId: String, surveyId: String)? {
         do {
-            let regex = try NSRegularExpression(
-                pattern: "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)",
-                options: .caseInsensitive)
-            let matches = regex.matches(
-                in: url,
-                options: .withTransparentBounds,
-                range: NSMakeRange(0, url.count))
+            let regex = try NSRegularExpression(pattern: "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)", options: .caseInsensitive)
+            let matches = regex.matches(in: url, options: .withTransparentBounds, range: NSMakeRange(0, url.count))
             
             if matches.isEmpty { return nil }
             
@@ -146,11 +157,15 @@ extension WebViewController: WKNavigationDelegate {
             
             return (components[network+1], components[survey+1])
         } catch(let error) {
-            print("[BitLabs] Error Extracting NetworkId and SurveyId:  \(error)")
+            print("[BitLabs] Error Extracting NetworkId and SurveyId. Reference: \(error)")
             return nil
         }
     }
     
+    /// Applies UI changes according to the data it has.
+    ///
+    /// If the page is the Offerwall, the `topBarView` will be hidden. Otherwise, it will be visible.
+    /// - Parameter isPageOfferwall: The bool to determine whether the current page is the Offerwall.
     private func configureUI(_ isPageOfferwall: Bool) {
         UIView.animate(withDuration: 1) {
             if isPageOfferwall {
