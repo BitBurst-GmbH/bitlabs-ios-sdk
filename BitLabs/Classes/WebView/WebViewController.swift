@@ -59,18 +59,18 @@ class WebViewController: UIViewController {
     
     @IBAction func backBtnPressed(_sender: UIButton) {
         let leaveAlertController = UIAlertController(
-            title: Strings.leaveTitle,
-            message: Strings.leaveDescription,
+            title: Localized.leaveTitle,
+            message: Localized.leaveDescription,
             preferredStyle: .alert)
         
         for reason in LeaveReason.allCases {
-            let reasonEntry = UIAlertAction(title: Strings.localized(reason.rawValue), style: .default) { _ in
+            let reasonEntry = UIAlertAction(title: reason.rawValue.localized, style: .default) { _ in
                 self.sendLeaveRequest(reason: reason)
             }
             leaveAlertController.addAction(reasonEntry)
         }
         
-        leaveAlertController.addAction(UIAlertAction(title: Strings.continueSurvey, style: .cancel))
+        leaveAlertController.addAction(UIAlertAction(title: Localized.continueSurvey, style: .cancel))
         present(leaveAlertController, animated: true)
     }
     

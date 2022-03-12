@@ -8,6 +8,8 @@
 import UIKit
 
 
+let bundle = Bundle(for: BitLabs.self)
+
 /// The main class including all the tools available to add SDK features into your code.
 /// - Tag: BitLabs
 @objc public class BitLabs: NSObject, WebViewDelegate {
