@@ -116,7 +116,7 @@
 		20AC5D0C27DB614600D74363 /* LeaveReason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveReason.swift; sourceTree = "<group>"; };
 		20E1274B27D7B53A00A4B4FA /* BitLabsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsResponse.swift; sourceTree = "<group>"; };
 		20E1274F27D7B53A00A4B4FA /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		20E1275327D7B53A00A4B4FA /* BitLabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabs.swift; sourceTree = "<group>"; };
+		20E1275327D7B53A00A4B4FA /* BitLabs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BitLabs.swift; path = BitLabs/Classes/BitLabs.swift; sourceTree = "<group>"; };
 		20E1275527D7B53A00A4B4FA /* BitLabsRequestInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsRequestInterceptor.swift; sourceTree = "<group>"; };
 		20E1275627D7B53A00A4B4FA /* BitLabsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsRouter.swift; sourceTree = "<group>"; };
 		20E1275727D7B53A00A4B4FA /* BitLabsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsAPI.swift; sourceTree = "<group>"; };
@@ -255,14 +255,13 @@
 			path = BitLabs/Classes/WebView;
 			sourceTree = "<group>";
 		};
-		20E1275127D7B53A00A4B4FA /* Source */ = {
+		20E1275127D7B53A00A4B4FA /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				20E1275327D7B53A00A4B4FA /* BitLabs.swift */,
 				20AC5D0A27DB4C6200D74363 /* Localized.swift */,
 			);
-			name = Source;
-			path = BitLabs/Classes/Source;
+			name = Utilities;
+			path = BitLabs/Classes/Utilities;
 			sourceTree = "<group>";
 		};
 		20E1275427D7B53A00A4B4FA /* Networking */ = {
@@ -294,9 +293,10 @@
 		3B9D392FDC9FCEE34BACF3B6B35C6974 /* BitLabs */ = {
 			isa = PBXGroup;
 			children = (
+				20E1275327D7B53A00A4B4FA /* BitLabs.swift */,
 				20E1274A27D7B53A00A4B4FA /* Models */,
 				20E1275427D7B53A00A4B4FA /* Networking */,
-				20E1275127D7B53A00A4B4FA /* Source */,
+				20E1275127D7B53A00A4B4FA /* Utilities */,
 				20E1274C27D7B53A00A4B4FA /* WebView */,
 				43C8A8F35BC82D61ADC0FB86323EDE4B /* Localizations */,
 				482335EAF2C96D51F17A2B1D8A424581 /* Pod */,

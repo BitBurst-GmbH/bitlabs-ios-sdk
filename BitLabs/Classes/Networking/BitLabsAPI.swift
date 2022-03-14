@@ -27,9 +27,8 @@ class BitLabsAPI {
 	/// Checks whether there are available surveys or qualification questions in the backend.
 	///
 	/// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
-	/// - Parameter completion: The closure to when an object is returned.
-	/// - Parameter hasSurveys:  True if surveys or qualification questions are found. False otherwise.
-	public func checkSurveys(_ completion: @escaping (_ hasSurveys: Bool) -> ()) {
+	/// - Parameter completion: The closure to execute after a response for this request is received.
+	public func checkSurveys(_ completion: @escaping (Bool) -> ()) {
 		session.request(BitLabsRouter.checkSurveys(""))
 			.responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
 				switch response.result {
@@ -46,7 +45,15 @@ class BitLabsAPI {
 				}
 			}
 	}
-	
+    
+    /// This request reports the termination of a survey with a reason given by the user.
+    ///
+    /// This endpoint is optional but it is important to use it as source for feedback in real-time to filter out bad surveys to improve the overall UX for all users.
+    /// - Parameters:
+    ///   - networkId: The ID of the Network this survey belongs to, this is a path component..
+    ///   - surveyId: The ID of the terminated Survey, this is a path component.
+    ///   - reason: The reason given by the user. See [LeaveReason](x-source-tag://LeaveReason).
+    ///   - completion: The closure to execute after a response for this request is received.
 	func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping (Bool) -> ()) {
 		session.request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason)).responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
 			switch response.result {
