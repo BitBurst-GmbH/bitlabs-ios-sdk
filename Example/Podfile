@@ -3,12 +3,11 @@ platform :ios, "11.0"
 
 target 'BitLabs_Example' do
   
-  pod 'Alamofire', '~> 5.5'
   pod 'BitLabs', :path => '../'
-
+  
   target 'BitLabs_Tests' do
     inherit! :search_paths
-
-  #  pod 'FBSnapshotTestCase' , '~> 2.1.4'
+    
+    #  pod 'FBSnapshotTestCase' , '~> 2.1.4'
   end
 end

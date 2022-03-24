@@ -4,7 +4,6 @@ PODS:
     - Alamofire (~> 5.5)
 
 DEPENDENCIES:
-  - Alamofire (~> 5.5)
   - BitLabs (from `../`)
 
 SPEC REPOS:
@@ -19,6 +18,6 @@ SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   BitLabs: f9318728c1fc94aedd577e186646b2791af295bc
 
-PODFILE CHECKSUM: 12f5633e89126c044478885efd4078ba7c00f89e
+PODFILE CHECKSUM: 09bcd0bb3fb92f4a491eedaf1b63b50544c89899
 
 COCOAPODS: 1.11.2

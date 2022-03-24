@@ -28,13 +28,13 @@ protocol WebViewDelegate {
 
 class WebViewController: UIViewController {
     
-    @IBOutlet weak var topBarView: UIView?
-    @IBOutlet weak var closeView: UIView?
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var closeView: UIView!
     
-    @IBOutlet weak var closeBtn: UIButton?
-    @IBOutlet weak var backBtn: UIButton?
+    @IBOutlet weak var closeBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     
-    @IBOutlet weak var webView: WKWebView?
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var webtTopSafeTopConstraint: NSLayoutConstraint!
     
     var uid = ""
@@ -48,7 +48,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webView?.navigationDelegate = self
+        webView.navigationDelegate = self
         
         loadOfferwall()
     }
@@ -167,16 +167,8 @@ extension WebViewController: WKNavigationDelegate {
     /// If the page is the Offerwall, the `topBarView` will be hidden. Otherwise, it will be visible.
     /// - Parameter isPageOfferwall: The bool to determine whether the current page is the Offerwall.
     private func configureUI(_ isPageOfferwall: Bool) {
-        UIView.animate(withDuration: 1) {
-            if isPageOfferwall {
-                self.topBarView?.isHidden = true
-                self.closeView?.isHidden = false
-                self.webtTopSafeTopConstraint.constant = 0
-            } else {
-                self.topBarView?.isHidden = false
-                self.closeView?.isHidden = true
-                self.webtTopSafeTopConstraint.constant = self.topBarView?.frame.height ?? 0
-            }
-        }
+        topBarView.isHidden = isPageOfferwall
+        closeView.isHidden = !isPageOfferwall
+        webtTopSafeTopConstraint.constant = isPageOfferwall ? 0:topBarView.frame.height
     }
 }
