@@ -30,9 +30,7 @@ class WebViewController: UIViewController {
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var closeView: UIView!
-    
-    @IBOutlet weak var closeBtn: UIButton!
-    @IBOutlet weak var backBtn: UIButton!
+
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var webtTopSafeTopConstraint: NSLayoutConstraint!
