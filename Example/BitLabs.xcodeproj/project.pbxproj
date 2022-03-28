@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		1206C8C62FBB151D0628C3AF /* Pods_BitLabs_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA053320D48B0799F882634E /* Pods_BitLabs_Tests.framework */; };
+		2037A45727F1F94A00C4B982 /* Pods_BitLabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		965E0241C3413F0EE14267C3 /* Pods_BitLabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				965E0241C3413F0EE14267C3 /* Pods_BitLabs_Example.framework in Frameworks */,
+				2037A45727F1F94A00C4B982 /* Pods_BitLabs_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

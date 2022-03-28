@@ -40,7 +40,7 @@ class WebViewController: UIViewController {
     var surveyId = ""
     var networkId = ""
     var tags: [String: Any] = [:]
-    
+    var reward: Float = 0.0
     var delegate: WebViewDelegate?
     
     override func viewDidLoad() {
@@ -49,6 +49,14 @@ class WebViewController: UIViewController {
         webView.navigationDelegate = self
         
         loadOfferwall()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if #available(iOS 13.0, *) {
+            isModalInPresentation = true
+        }
+        super.viewDidDisappear(animated)
+        delegate?.rewardCompleted(reward)
     }
     
     @IBAction func closeBtnPressed(_ sender: UIButton) {
@@ -120,7 +128,7 @@ extension WebViewController: WKNavigationDelegate {
         }
         
         if url.contains("survey/complete") || url.contains("survey/screenout") {
-            delegate?.rewardCompleted(Float(URLComponents(string: url)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0)
+            reward += Float(URLComponents(string: url)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0
         }
         
         let isPageOfferwall = url.starts(with: "https://web.bitlabs.ai")
@@ -134,6 +142,7 @@ extension WebViewController: WKNavigationDelegate {
         
         decisionHandler(.allow)
     }
+    
     
     /// Extracts the Network ID and Survey ID for the current Survey and User.
     ///
