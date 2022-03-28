@@ -85,7 +85,7 @@ let bundle = Bundle(for: BitLabs.self)
         onReward?(value)
     }
     
-    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ())) {
+    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
     }
     

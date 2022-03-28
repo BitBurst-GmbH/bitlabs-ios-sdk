@@ -23,25 +23,27 @@ protocol WebViewDelegate {
     ///  - completion: The completion closure to execute after the leave request is executed.
     ///
     /// - Tag: sendLeaveSurveyRequest
-    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping ((Bool) -> ()))
+    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ())
 }
 
 class WebViewController: UIViewController {
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var closeView: UIView!
-
+    
     
     @IBOutlet weak var webView: WKWebView!
-    @IBOutlet weak var webtTopSafeTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     
     var uid = ""
     var token = ""
     var surveyId = ""
     var networkId = ""
     var tags: [String: Any] = [:]
-    var reward: Float = 0.0
+    
     var delegate: WebViewDelegate?
+    
+    private var reward: Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +54,6 @@ class WebViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        if #available(iOS 13.0, *) {
-            isModalInPresentation = true
-        }
         super.viewDidDisappear(animated)
         delegate?.rewardCompleted(reward)
     }
@@ -113,7 +112,7 @@ class WebViewController: UIViewController {
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
     /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
     private func sendLeaveRequest(reason: LeaveReason) {
-        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) { _ in
+        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) { 
             self.loadOfferwall()
         }
     }
@@ -176,6 +175,6 @@ extension WebViewController: WKNavigationDelegate {
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
         closeView.isHidden = !isPageOfferwall
-        webtTopSafeTopConstraint.constant = isPageOfferwall ? 0:topBarView.frame.height
+        webTopSafeTopConstraint.constant = isPageOfferwall ? 0:topBarView.frame.height
     }
 }
