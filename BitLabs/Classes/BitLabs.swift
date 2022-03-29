@@ -11,6 +11,8 @@ import UIKit
 let bundle = Bundle(for: BitLabs.self)
 
 /// The main class including all the tools available to add SDK features into your code.
+///
+/// This is a singleton object, so you'll have one `shared` instance throughout the whole main process(app lifecycle)
 /// - Tag: BitLabs
 @objc public class BitLabs: NSObject, WebViewDelegate {
     public static let shared = BitLabs()
@@ -26,13 +28,17 @@ let bundle = Bundle(for: BitLabs.self)
     
     private override init() {}
     
+    /// This is the essential function. Without it, the library will not function properly.
+    /// So make sure you call it before using the library's functions
+    /// - parameter token Your App Token, found in your [BitLabs Dashboard](https://dashboard.bitlabs.ai/).
+    /// - parameter uid The id of the current user, this id is for you to keep track of which user got what.
     @objc public func configure(token: String, uid: String) {
         self.token = token
         self.uid = uid
         bitlabsAPI = BitLabsAPI(token, uid)
     }
     
-    /// Sets the tags.
+    /// Sets the tags which will be used as query parameters in the Offerwall URL.
     ///
     /// - Warning: This will replace the currently stored tags with the newly input ones.
     /// - Parameter tags: The dictionary of tags to store in the [BitLabs](x-source-tag://BitLabs) Class
