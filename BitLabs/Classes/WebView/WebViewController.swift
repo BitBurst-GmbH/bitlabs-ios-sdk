@@ -36,6 +36,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     
     var uid = ""
+    var sdk = ""
     var token = ""
     var surveyId = ""
     var networkId = ""
@@ -98,7 +99,9 @@ class WebViewController: UIViewController {
         
         var queryItems = [
             URLQueryItem(name: "uid", value: uid),
-            URLQueryItem(name: "token", value: token)]
+            URLQueryItem(name: "token", value: token),
+            URLQueryItem(name: "os", value: "IOS"),
+            URLQueryItem(name: "sdk", value: sdk)]
         
         tags.forEach { tag in
             queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))

@@ -66,13 +66,14 @@ let bundle = Bundle(for: BitLabs.self)
     
     /// Presents a ViewController with a WebKitViewController to show the Offerwall.
     /// - Parameter parent: The presenting ViewController
-    @objc public func launchOfferWall(parent: UIViewController) {
+    @objc public func launchOfferWall(parent: UIViewController, sdk: String = "NATIVE") {
         ifConfigured {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.token = token
+            webViewController.sdk = sdk
             webViewController.tags = tags
+            webViewController.token = token
             webViewController.delegate = self
             
             webViewController.modalPresentationStyle = .overFullScreen

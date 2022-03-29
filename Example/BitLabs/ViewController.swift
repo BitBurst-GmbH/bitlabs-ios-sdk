@@ -11,8 +11,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
-    let uid = "YOUR_USER_ID1"
+    let token = "YOUR_APP_TOKEN"
+    let uid = "YOUR_USER_ID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,8 +28,8 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         BitLabs.shared.configure(token: token, uid: uid)
         BitLabs.shared.setTags(["userType": "New", "isPremium": false])
-        BitLabs.shared.setRewardCompletionHandler { payout in
-            print("[Example] You earned: \(payout)")
+        BitLabs.shared.setRewardCompletionHandler { reward in
+            print("[Example] You earned: \(reward)")
         }
     }
     

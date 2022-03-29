@@ -36,7 +36,7 @@ class BitLabsAPI {
                     if let hasSurveys = blResponse.data?.hasSurveys {
                         completion(hasSurveys)
                     } else {
-                        print("[BitLabs] Leave Survey \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                        print("[BitLabs] Check Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
                         completion(false)
                     }
                 case .failure(let error):
