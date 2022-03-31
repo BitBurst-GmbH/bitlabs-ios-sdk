@@ -18,28 +18,20 @@ Pod::Spec.new do |spec|
     spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
     # s.social_media_url  = 'https://twitter.com/<TWITTER_USERNAME>'
     
+    spec.swift_version = '5.0'
+    spec.ios.deployment_target = '11.0'
+    spec.dependency 'Alamofire', '~> 5.5'
+    
     spec.default_subspec = 'Core'
     
-    spec.ios.deployment_target = '11.0'
-    
-    spec.source_files = 'BitLabs/Classes/**/*.swift'
-    
-    spec.resources = ['BitLabs/Classes/**/*.xib', 'BitLabs/Localizations/**/*.strings']
-    
-    spec.subspec 'Core' do |sp|
-        sp.source_files = 'BitLabs/Classes/Shared/**/*.swift', 'BitLabs/Classes/Core/*.swift'
-        sp.resources = ['BitLabs/Classes/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+    spec.subspec 'Core' do |core|
+        core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
+        core.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
     end
     
-    spec.subspec 'Unity' do |sp|
-        sp.source_files = 'BitLabs/Classes/Shared/**/*.swift', 'BitLabs/Classes/Unity/*.swift'
-        sp.resources = ['BitLabs/Classes/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+    spec.subspec 'Unity' do |unity|
+        unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
+        unity.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
     end
-        
-    spec.swift_version = '5.0'
-    
-    # s.public_header_files = 'Pod/Classes/**/*.h'
-    # s.frameworks = 'UIKit', 'MapKit'
-    spec.dependency 'Alamofire', '~> 5.5'
 end
 
