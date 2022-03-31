@@ -12,14 +12,14 @@
     "git": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git",
     "tag": "0.1.7"
   },
+  "default_subspecs": "Core",
   "platforms": {
     "ios": "11.0"
   },
   "source_files": "BitLabs/Classes/**/*.swift",
   "resources": [
-    "BitLabs/Classes/**/*.{xib}",
-    "BitLabs/Localizations/en.lproj/Localizable.strings",
-    "BitLabs/Localizations/de-DE.lproj/Localizable.strings"
+    "BitLabs/Classes/**/*.xib",
+    "BitLabs/Localizations/**/*.strings"
   ],
   "swift_versions": "5.0",
   "dependencies": {
@@ -27,5 +27,29 @@
       "~> 5.5"
     ]
   },
+  "subspecs": [
+    {
+      "name": "Core",
+      "source_files": [
+        "BitLabs/Classes/Shared/**/*.swift",
+        "BitLabs/Classes/Core/*.swift"
+      ],
+      "resources": [
+        "BitLabs/Classes/Shared/**/*.xib",
+        "BitLabs/Localizations/**/*.strings"
+      ]
+    },
+    {
+      "name": "Unity",
+      "source_files": [
+        "BitLabs/Classes/Shared/**/*.swift",
+        "BitLabs/Classes/Unity/*.swift"
+      ],
+      "resources": [
+        "BitLabs/Classes/Shared/**/*.xib",
+        "BitLabs/Localizations/**/*.strings"
+      ]
+    }
+  ],
   "swift_version": "5.0"
 }

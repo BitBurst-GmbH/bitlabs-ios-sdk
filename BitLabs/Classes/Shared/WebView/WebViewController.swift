@@ -108,6 +108,7 @@ class WebViewController: UIViewController {
         }
         
         urlComponents.queryItems = queryItems
+        print(urlComponents.url?.absoluteString ?? "")
         
         return urlComponents.url
     }
