@@ -7,39 +7,31 @@
 #
 
 Pod::Spec.new do |spec|
-  spec.name             = 'BitLabs'
-  spec.version          = '0.1.7'
-  spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
-
-  spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  spec.license          = 'Commercial'
-  spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
-  spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  spec.ios.deployment_target = '11.0'
-
-  spec.source_files = 'BitLabs/Classes/**/*.swift'
-  
- # spec.resource_bundles = {
- #     'BitLabs' => [ 'BitLabs/Classes/**/*.{xib}' , 'BitLabs/Classes/Localizations/*.lproj/*.strings' ]
- # }
-  # s.resources = ['UICommon/Classes/**/*.{xib}', 'UICommon/Classes/**/*.{xcassets}']
- spec.resources = ['BitLabs/Classes/**/*.{xib}' , 'BitLabs/Localizations/en.lproj/Localizable.strings' , 'BitLabs/Localizations/de-DE.lproj/Localizable.strings']
-
- spec.swift_version = '5.0'
-  
- # s.public_header_files = 'Pod/Classes/**/*.h'
- # s.frameworks = 'UIKit', 'MapKit'
- spec.dependency 'Alamofire', '~> 5.5'
+    spec.name             = 'BitLabs'
+    spec.version          = '0.1.7'
+    spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
+    spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
+    spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
+    # s.screenshots       = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+    spec.license          = 'Commercial'
+    spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
+    spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
+    # s.social_media_url  = 'https://twitter.com/<TWITTER_USERNAME>'
+    
+    spec.swift_version = '5.0'
+    spec.ios.deployment_target = '11.0'
+    spec.dependency 'Alamofire', '~> 5.5'
+    
+    spec.default_subspec = 'Core'
+    
+    spec.subspec 'Core' do |core|
+        core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
+        core.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+    end
+    
+    spec.subspec 'Unity' do |unity|
+        unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
+        unity.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+    end
 end
 

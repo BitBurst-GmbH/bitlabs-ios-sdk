@@ -11,18 +11,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let token = "YOUR_APP_TOKEN"
+    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
     let uid = "YOUR_USER_ID"
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -33,13 +23,11 @@ class ViewController: UIViewController {
         }
     }
     
-    
     @IBAction func checkForSurveys( _ sender: UIButton ) {
         BitLabs.shared.checkSurveys { result in
-            switch result {
-            case true:
+            if result {
                 print("[Example] Surveys available!")
-            case false:
+            } else {
                 print("[Example] No surveys available!")
             }
         }
