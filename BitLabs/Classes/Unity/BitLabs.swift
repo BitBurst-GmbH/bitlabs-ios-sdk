@@ -12,7 +12,7 @@ import UIKit
 /// This is a singleton object, so you'll have one `shared` instance throughout the whole main process(app lifecycle)
 /// - Tag: BitLabs
 @objc public class BitLabs: NSObject, WebViewDelegate {
-    public static let shared = BitLabs()
+    @objc public static let shared = BitLabs()
     
     private var token = ""
     private var uid = ""
