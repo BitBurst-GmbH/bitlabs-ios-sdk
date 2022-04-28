@@ -21,6 +21,11 @@ class ViewController: UIViewController {
         BitLabs.shared.setRewardCompletionHandler { reward in
             print("[Example] You earned: \(reward)")
         }
+        BitLabs.shared.getSurveys { surveys in
+            print("[Example] \(String(describing: surveys))")
+            
+            surveys?[0].open(parent: self)
+        }
     }
     
     @IBAction func checkForSurveys( _ sender: UIButton ) {

@@ -29,8 +29,9 @@ class BitLabsAPI {
     /// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
     /// - Parameter completion: The closure to execute after a response for this request is received.
     public func checkSurveys(_ completion: @escaping (Bool) -> ()) {
-        session.request(BitLabsRouter.checkSurveys(""))
-            .responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
+        session
+            .request(BitLabsRouter.checkSurveys(""))
+            .responseDecodable(of: BitLabsResponse<CheckSurveysResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let hasSurveys = blResponse.data?.hasSurveys {
@@ -55,7 +56,9 @@ class BitLabsAPI {
     ///   - reason: The reason given by the user. See [LeaveReason](x-source-tag://LeaveReason).
     ///   - completion: The closure to execute after a response for this request is received.
     func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping () -> ()) {
-        session.request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason)).responseDecodable(of: BitLabsResponse.self, decoder: decoder) { response in
+        session
+            .request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason))
+            .responseDecodable(of: BitLabsResponse<String>.self, decoder: decoder) { response in
             switch response.result {
             case .success(let blResponse):
                 if blResponse.status == "success" {
@@ -70,5 +73,24 @@ class BitLabsAPI {
                 completion()
             }
         }
+    }
+    
+    func getSurveys(_ completion: @escaping ([Survey]?) -> ()) {
+        session
+            .request(BitLabsRouter.getSurveys)
+            .responseDecodable(of: BitLabsResponse<GetActionsResponse>.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let blResponse):
+                    if blResponse.status == "success" {
+                        completion(blResponse.data?.surveys)
+                    } else {
+                        print("[BitLabs] Get Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                        completion(nil)
+                    }
+                case .failure(let error):
+                    print("[BitLabs] Failure: \(error)")
+                    completion(nil)
+                }
+            }
     }
 }
