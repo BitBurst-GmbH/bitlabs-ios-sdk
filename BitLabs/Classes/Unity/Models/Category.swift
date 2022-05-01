@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Category: Decodable {
+@objc class Category: NSObject, Codable {
     let name: String
     let iconUrl: String
 }

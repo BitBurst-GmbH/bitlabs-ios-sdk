@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Details: Decodable {
+@objc class Details: NSObject, Codable {
     let category: Category
 }

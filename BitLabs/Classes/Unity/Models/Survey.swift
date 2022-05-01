@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Survey: Decodable {
+@objc public class Survey: NSObject, Codable {
     let networkId: Int
     let id: Int
     let cpi: String
