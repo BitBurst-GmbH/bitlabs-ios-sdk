@@ -61,6 +61,10 @@ import UIKit
         ifConfigured { bitlabsAPI?.checkSurveys(completionHandler) }
     }
     
+    @objc public func getSurveys(_ completionHandler: @escaping ([Survey]?)-> ()) {
+        ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
+    }
+    
     /// Stores the reward completion closure to use on every reward completion.
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
     @objc public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {

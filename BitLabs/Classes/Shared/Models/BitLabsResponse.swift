@@ -8,24 +8,10 @@
 import Foundation
 
 /// This struct is most likely used in all API repsonses in BitLabs API
-struct BitLabsResponse: Decodable {
-	let data: CheckSurveysResponse?
+struct BitLabsResponse<T: Decodable>: Decodable {
+	let data: T?
 	let error: ErrorResponse?
 	let status: String
 	let traceId: String
-}
-
-/// - Tag: CheckSurveysResponse
-struct CheckSurveysResponse: Decodable {
-	let hasSurveys: Bool
-}
-
-struct ErrorResponse: Decodable {
-	let details: Details
-}
-
-struct Details: Decodable {
-	let http: String
-	let msg: String
 }
 

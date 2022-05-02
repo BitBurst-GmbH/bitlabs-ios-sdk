@@ -61,6 +61,10 @@ public class BitLabs: WebViewDelegate {
         ifConfigured { bitlabsAPI?.checkSurveys(completionHandler) }
     }
     
+    public func getSurveys(_ completionHandler: @escaping ([Survey]?) -> ()) {
+        ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
+    }
+    
     /// Stores the reward completion closure to use on every reward completion.
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
     public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {
