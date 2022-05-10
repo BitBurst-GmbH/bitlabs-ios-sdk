@@ -10,4 +10,8 @@ import Foundation
 @objc class Category: NSObject, Codable {
     let name: String
     let iconUrl: String
+    
+    @objc public func asDictionary() -> [String: Any] {
+        return toDictionary()
+    }
 }

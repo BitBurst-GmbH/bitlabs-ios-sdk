@@ -23,4 +23,8 @@ import Foundation
     public func open(parent: UIViewController) {
         BitLabs.shared.launchOfferWall(parent: parent)
     }
+    
+    @objc public func asDictionary() -> [String: Any] {
+        return toDictionary()
+    }
 }

@@ -9,4 +9,8 @@ import Foundation
 
 @objc class Details: NSObject, Codable {
     let category: Category
+    
+    @objc public func asDictionary() -> [String: Any] {
+        return toDictionary()
+    }
 }

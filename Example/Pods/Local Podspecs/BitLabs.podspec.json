@@ -1,6 +1,6 @@
 {
   "name": "BitLabs",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "summary": "BitLabs - monetize your app with rewarded surveys.",
   "description": "BitLabs offers the opportunity to monetize your app with rewarded surveys easily.",
   "homepage": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git",
-    "tag": "2.1.1"
+    "tag": "2.2.0"
   },
   "swift_versions": "5.0",
   "platforms": {
