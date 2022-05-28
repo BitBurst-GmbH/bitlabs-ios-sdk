@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let token = "YOUR-APP-TOKEN"
+    let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
     let uid = "YOUR-USER-ID"
     
     override func viewDidAppear(_ animated: Bool) {
@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         BitLabs.shared.getSurveys { surveys in
             print("[Example] \(String(describing: surveys))")
             
-            surveys?[0].open(parent: self)
+            surveys?.first?.open(parent: self)
         }
     }
     

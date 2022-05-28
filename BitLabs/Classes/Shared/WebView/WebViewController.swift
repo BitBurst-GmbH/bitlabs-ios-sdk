@@ -28,8 +28,8 @@ protocol WebViewDelegate {
 
 class WebViewController: UIViewController {
     
-    @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var closeView: UIView!
+    @IBOutlet weak var topBarView: UIView!
     
     
     @IBOutlet weak var webView: WKWebView!
@@ -49,6 +49,7 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        webView.uiDelegate = self
         webView.navigationDelegate = self
         
         loadOfferwall()
@@ -82,13 +83,13 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        guard let url = generateURL() else {
-            print("[BitLabs] Error generating URL...")
-            dismiss(animated: true)
+        if let url = generateURL() {
+            webView?.load(URLRequest(url: url))
             return
         }
         
-        webView?.load(URLRequest(url: url))
+        print("[BitLabs] Error generating URL...")
+        dismiss(animated: true)
     }
     
     /// Generates the URL the BitLabs Offerwall
@@ -115,7 +116,9 @@ class WebViewController: UIViewController {
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
     /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
     private func sendLeaveRequest(reason: LeaveReason) {
-        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) { 
+        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) {
+            self.networkId = ""
+            self.surveyId = ""
             self.loadOfferwall()
         }
     }
@@ -135,9 +138,8 @@ extension WebViewController: WKNavigationDelegate {
         
         let isPageOfferwall = url.starts(with: "https://web.bitlabs.ai")
         
-        if !isPageOfferwall, let result = getNetworkAndSurveyId(fromURL: url) {
-            networkId = result.networkId
-            surveyId = result.surveyId
+        if !isPageOfferwall{
+            getNetworkAndSurveyId(fromURL: url)
         }
         
         configureUI(isPageOfferwall)
@@ -151,23 +153,27 @@ extension WebViewController: WKNavigationDelegate {
     /// It checks whether the URL has the `networks` and `surveys` endpoints. If it has, it exctracts both IDs from it.
     /// - Parameter url: The URL from which the IDs should be extracted.
     /// - Returns: The `networkId` and `surveyId`extracted from `url`. It return nil in case the `url` doesn't have the IDs.
-    private func getNetworkAndSurveyId(fromURL url: String) -> (networkId: String, surveyId: String)? {
+    private func getNetworkAndSurveyId(fromURL url: String) {
+        guard networkId.isEmpty, surveyId.isEmpty else { return }
+        
         do {
             let regex = try NSRegularExpression(pattern: "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)", options: .caseInsensitive)
             let matches = regex.matches(in: url, options: .withTransparentBounds, range: NSMakeRange(0, url.count))
             
-            if matches.isEmpty { return nil }
+            if matches.isEmpty { return }
             
             guard let url = URL(string: url) else { throw NSError() }
             
             let components = url.pathComponents
             
-            guard let network = components.firstIndex(of: "networks"), let survey = components.firstIndex(of: "surveys") else { throw NSError() }
+            guard let network = components.firstIndex(of: "networks"),
+                  let survey = components.firstIndex(of: "surveys")
+            else { throw NSError() }
             
-            return (components[network+1], components[survey+1])
+            networkId = components[network+1]
+            surveyId = components[survey+1]
         } catch(let error) {
             print("[BitLabs] Error Extracting NetworkId and SurveyId. Reference: \(error)")
-            return nil
         }
     }
     
@@ -178,6 +184,15 @@ extension WebViewController: WKNavigationDelegate {
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
         closeView.isHidden = !isPageOfferwall
-        webTopSafeTopConstraint.constant = isPageOfferwall ? 0:topBarView.frame.height
+        webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
+    }
+}
+
+extension WebViewController: WKUIDelegate {
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
+            UIApplication.shared.open(url)
+        }
+        return nil
     }
 }
