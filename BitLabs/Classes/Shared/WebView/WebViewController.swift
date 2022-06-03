@@ -16,11 +16,10 @@ protocol WebViewDelegate {
     
     /// Sends the leave reason to the BitLabs API
     ///
-    /// - Parameters:
-    ///  - networkId: The ID of the network of the survey.
-    ///  - surveyId: The ID of the survey.
-    ///  - reason: The reason the user left the survey.
-    ///  - completion: The completion closure to execute after the leave request is executed.
+    ///  - Parameter networkId: The ID of the network of the survey.
+    ///  - Parameter surveyId: The ID of the survey.
+    ///  - Parameter reason: The reason the user left the survey.
+    ///  - Parameter completion: The completion closure to execute after the leave request is executed.
     ///
     /// - Tag: sendLeaveSurveyRequest
     func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ())
@@ -40,6 +39,7 @@ class WebViewController: UIViewController {
     var token = ""
     var surveyId = ""
     var networkId = ""
+    var hasOffers = false
     var tags: [String: Any] = [:]
     
     var delegate: WebViewDelegate?
@@ -127,19 +127,29 @@ class WebViewController: UIViewController {
 extension WebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
-        guard let url = navigationAction.request.url?.absoluteString else {
+        guard let url = navigationAction.request.url else {
             decisionHandler(.allow)
             return
         }
         
-        if url.contains("survey/complete") || url.contains("survey/screenout") {
-            reward += Float(URLComponents(string: url)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0
+        if hasOffers, UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+            print("[BitLabs] Redirected to browser. No need to open it locally")
+            decisionHandler(.cancel)
+            dismiss(animated: true)
+            return
         }
         
-        let isPageOfferwall = url.starts(with: "https://web.bitlabs.ai")
+        let urlStr = url.absoluteString
         
-        if !isPageOfferwall{
-            getNetworkAndSurveyId(fromURL: url)
+        if urlStr.contains("survey/complete") || urlStr.contains("survey/screenout") {
+            reward += Float(URLComponents(string: urlStr)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0
+        }
+        
+        let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
+        
+        if !isPageOfferwall {
+            getNetworkAndSurveyId(fromURL: urlStr)
         }
         
         configureUI(isPageOfferwall)

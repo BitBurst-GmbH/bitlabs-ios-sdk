@@ -67,6 +67,8 @@
 		BB8FB38D211BA13FE6D8E59863A11418 /* Pods-BitLabs_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FD428A0F3637AE81D3CE9665313842 /* Pods-BitLabs_Tests-dummy.m */; };
 		BC0ECA8F22DEDE8886E189CD0EAA1197 /* URLRequest+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F89094F10FCB5CD6FAFD56DF1BE1D1 /* URLRequest+Alamofire.swift */; };
 		C314DCAC6FDA6F76A19566B1D42344FB /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2692AEE8A6DF299ABA4D0D95C43FDC7 /* Details.swift */; };
+		C752130528490CC300A48201 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C752130428490CC300A48201 /* Offer.swift */; };
+		C752130728490DDD00A48201 /* GetOffersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C752130628490DDD00A48201 /* GetOffersResponse.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
 		D235B12EF3FB07FC7C0C1960FD78D9CC /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8165299D2F73045BABBD2FCF98A85EAF /* Error.swift */; };
@@ -188,6 +190,8 @@
 		BDF1F67D4470AC46B80B387ACC74592E /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		BF87A57E6FA889318BDA6600D97F1754 /* CheckSurveysResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckSurveysResponse.swift; sourceTree = "<group>"; };
 		C317CAA4F2337FF0A55F807FA1B1D2A2 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
+		C752130428490CC300A48201 /* Offer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		C752130628490DDD00A48201 /* GetOffersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOffersResponse.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
 		D0B41CCCDFCF0C04AF8C2DD34A7D594B /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 				69EF16B752520910B54BF3CEE977B837 /* Question.swift */,
 				E707EB7CEB8C64FB487DA5452479AB0C /* RestrictionReason.swift */,
 				516C935A07AE53FF011E37EF216AF2E8 /* StartBonus.swift */,
+				C752130428490CC300A48201 /* Offer.swift */,
+				C752130628490DDD00A48201 /* GetOffersResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -757,6 +763,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0FCEBF76794F92242356F5E5B6C4056 /* Answer.swift in Sources */,
+				C752130728490DDD00A48201 /* GetOffersResponse.swift in Sources */,
 				7C23FC1259E28854BEC15C4BC952D94C /* BitLabs.swift in Sources */,
 				0CADF3D8301276A7ACBAECF3AF51D57A /* BitLabs-dummy.m in Sources */,
 				7573A1D469BEA6D8E44D59B2FB9E6982 /* BitLabsAPI.swift in Sources */,
@@ -774,6 +781,7 @@
 				7A575450D906194AADDC32FC22A00628 /* Qualification.swift in Sources */,
 				94F39287BC78BD0640504D4BC5896F96 /* Question.swift in Sources */,
 				56835FC8A0938B9F2EBE3E0C6C34592B /* RestrictionReason.swift in Sources */,
+				C752130528490CC300A48201 /* Offer.swift in Sources */,
 				5BB319F7A0A573EE5BDD629A7BDFA097 /* StartBonus.swift in Sources */,
 				4047EE9EBD3634B535278A5BAF342982 /* Survey.swift in Sources */,
 				974298DF301DDD8BE70E063DC23E9958 /* WebViewController.swift in Sources */,

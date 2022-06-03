@@ -14,8 +14,9 @@ import UIKit
 public class BitLabs: WebViewDelegate {
     public static let shared = BitLabs()
     
-    private var token = ""
     private var uid = ""
+    private var token = ""
+    private var hasOffers = false
     
     private var tags: [String: Any] = [:]
     
@@ -32,7 +33,10 @@ public class BitLabs: WebViewDelegate {
     public func configure(token: String, uid: String) {
         self.token = token
         self.uid = uid
+        
         bitlabsAPI = BitLabsAPI(token, uid)
+        
+        getHasOffers()
     }
     
     /// Sets the tags which will be used as query parameters in the Offerwall URL.
@@ -82,6 +86,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.tags = tags
             webViewController.token = token
             webViewController.delegate = self
+            webViewController.hasOffers = hasOffers
             
             webViewController.modalPresentationStyle = .overFullScreen
             
@@ -95,6 +100,13 @@ public class BitLabs: WebViewDelegate {
     
     func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
+    }
+    
+    private func getHasOffers() {
+        bitlabsAPI?.getHasOffers { hasOffers in
+            self.hasOffers = hasOffers ?? false
+            print("has offers: \(self.hasOffers)")
+        }
     }
     
     private func ifConfigured(block: () -> ()) {
