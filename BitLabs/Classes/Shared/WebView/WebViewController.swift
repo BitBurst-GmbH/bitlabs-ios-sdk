@@ -36,6 +36,7 @@ class WebViewController: UIViewController {
     
     var uid = ""
     var sdk = ""
+    var adId = ""
     var token = ""
     var surveyId = ""
     var networkId = ""
@@ -104,11 +105,17 @@ class WebViewController: UIViewController {
             URLQueryItem(name: "os", value: "IOS"),
             URLQueryItem(name: "sdk", value: sdk)]
         
+        if !adId.isEmpty {
+            queryItems.append(URLQueryItem(name: "maid", value: adId))
+        }
+        
         tags.forEach { tag in
             queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))
         }
         
         urlComponents.queryItems = queryItems
+        
+        print(urlComponents.url?.absoluteString)
         
         return urlComponents.url
     }

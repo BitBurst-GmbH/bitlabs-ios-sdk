@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AdSupport
+import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
 ///
@@ -15,6 +17,7 @@ public class BitLabs: WebViewDelegate {
     public static let shared = BitLabs()
     
     private var uid = ""
+    private var adId = ""
     private var token = ""
     private var hasOffers = false
     
@@ -37,6 +40,27 @@ public class BitLabs: WebViewDelegate {
         bitlabsAPI = BitLabsAPI(token, uid)
         
         getHasOffers()
+        
+        guard #available(iOS 14, *),case .authorized = ATTrackingManager.trackingAuthorizationStatus
+        else { return }
+        
+        adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    public func requestTrackingAuthorization() {
+        print("[Ad ID] Before Request \(adId)")
+        guard #available(iOS 14, *) else { return }
+        
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                self.adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+                print("[Ad ID] Authorized \(self.adId)")
+            default:
+                break
+            }
+            print("[Ad ID] After Request \(self.adId)")
+        }
     }
     
     /// Sets the tags which will be used as query parameters in the Offerwall URL.
@@ -86,6 +110,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.tags = tags
             webViewController.token = token
             webViewController.delegate = self
+            webViewController.adId = adId
             webViewController.hasOffers = hasOffers
             
             webViewController.modalPresentationStyle = .overFullScreen

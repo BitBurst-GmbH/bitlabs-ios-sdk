@@ -20,7 +20,11 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func checkForSurveys( _ sender: UIButton ) {
+    @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
+        BitLabs.shared.requestTrackingAuthorization()
+    }
+    
+    @IBAction func checkForSurveys(_ sender: UIButton ) {
         BitLabs.shared.checkSurveys { result in
             if result {
                 print("[Example] Surveys available!")

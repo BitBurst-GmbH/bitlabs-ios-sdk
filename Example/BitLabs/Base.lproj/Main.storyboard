@@ -19,15 +19,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa" userLabel="CheckForSurveysButton">
-                                <rect key="frame" x="75" y="268.5" width="225" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa">
+                                <rect key="frame" x="136.5" y="268.5" width="102" height="30"/>
                                 <state key="normal" title="Check Surveys"/>
                                 <connections>
                                     <action selector="checkForSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="awW-3T-7KV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVb-5N-F6j">
-                                <rect key="frame" x="37.5" y="318.5" width="300" height="30"/>
+                                <rect key="frame" x="129.5" y="318.5" width="116" height="30"/>
                                 <state key="normal" title="Launch Offerwall"/>
                                 <connections>
                                     <action selector="showOfferWall:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Wj-Sj-VJI"/>
@@ -40,13 +40,20 @@
                                     <action selector="getSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BxD-cJ-bsp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hk7-s4-apI">
+                                <rect key="frame" x="116.5" y="218.5" width="142" height="30"/>
+                                <state key="normal" title="Authororize Tracking"/>
+                                <connections>
+                                    <action selector="requestTrackingAuthorization:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F25-ae-0b9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kVb-5N-F6j" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="1DO-Gz-NNf"/>
+                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="top" secondItem="hk7-s4-apI" secondAttribute="bottom" constant="20" id="5hh-zF-WhY"/>
                             <constraint firstItem="7pI-gV-ajL" firstAttribute="top" secondItem="kVb-5N-F6j" secondAttribute="bottom" constant="20" id="Bms-dR-sJB"/>
-                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.6" id="PF9-tQ-8uJ"/>
-                            <constraint firstItem="kVb-5N-F6j" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.8" id="kVB-U3-ZQu"/>
+                            <constraint firstItem="hk7-s4-apI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="QQV-Bz-HAH"/>
                             <constraint firstItem="7pI-gV-ajL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="oq3-Ik-oXw"/>
                             <constraint firstItem="kVb-5N-F6j" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qGd-30-JR7"/>
                             <constraint firstItem="XLQ-xN-lTa" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sX2-ui-iN2"/>
