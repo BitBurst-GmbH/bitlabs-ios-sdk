@@ -20,7 +20,6 @@ public class BitLabs: WebViewDelegate {
     private var adId = ""
     private var token = ""
     private var hasOffers = false
-    
     private var tags: [String: Any] = [:]
     
     private var onReward: ((Float) -> ())?
@@ -41,25 +40,22 @@ public class BitLabs: WebViewDelegate {
         
         getHasOffers()
         
-        guard #available(iOS 14, *),case .authorized = ATTrackingManager.trackingAuthorizationStatus
+        guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
     
     public func requestTrackingAuthorization() {
-        print("[Ad ID] Before Request \(adId)")
         guard #available(iOS 14, *) else { return }
         
         ATTrackingManager.requestTrackingAuthorization { status in
             switch status {
             case .authorized:
                 self.adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
-                print("[Ad ID] Authorized \(self.adId)")
             default:
                 break
             }
-            print("[Ad ID] After Request \(self.adId)")
         }
     }
     
@@ -106,11 +102,11 @@ public class BitLabs: WebViewDelegate {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.sdk = "NATIVE"
             webViewController.tags = tags
-            webViewController.token = token
-            webViewController.delegate = self
             webViewController.adId = adId
+            webViewController.token = token
+            webViewController.sdk = "NATIVE"
+            webViewController.delegate = self
             webViewController.hasOffers = hasOffers
             
             webViewController.modalPresentationStyle = .overFullScreen
@@ -130,7 +126,6 @@ public class BitLabs: WebViewDelegate {
     private func getHasOffers() {
         bitlabsAPI?.getHasOffers { hasOffers in
             self.hasOffers = hasOffers ?? false
-            print("has offers: \(self.hasOffers)")
         }
     }
     
