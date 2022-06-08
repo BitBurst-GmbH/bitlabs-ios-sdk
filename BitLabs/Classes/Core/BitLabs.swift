@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AdSupport
+import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
 ///
@@ -14,9 +16,10 @@ import UIKit
 public class BitLabs: WebViewDelegate {
     public static let shared = BitLabs()
     
-    private var token = ""
     private var uid = ""
-    
+    private var adId = ""
+    private var token = ""
+    private var hasOffers = false
     private var tags: [String: Any] = [:]
     
     private var onReward: ((Float) -> ())?
@@ -32,7 +35,28 @@ public class BitLabs: WebViewDelegate {
     public func configure(token: String, uid: String) {
         self.token = token
         self.uid = uid
+        
         bitlabsAPI = BitLabsAPI(token, uid)
+        
+        getHasOffers()
+        
+        guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
+        else { return }
+        
+        adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    public func requestTrackingAuthorization() {
+        guard #available(iOS 14, *) else { return }
+        
+        ATTrackingManager.requestTrackingAuthorization { status in
+            switch status {
+            case .authorized:
+                self.adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+            default:
+                break
+            }
+        }
     }
     
     /// Sets the tags which will be used as query parameters in the Offerwall URL.
@@ -78,10 +102,12 @@ public class BitLabs: WebViewDelegate {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.sdk = "NATIVE"
             webViewController.tags = tags
+            webViewController.adId = adId
             webViewController.token = token
+            webViewController.sdk = "NATIVE"
             webViewController.delegate = self
+            webViewController.hasOffers = hasOffers
             
             webViewController.modalPresentationStyle = .overFullScreen
             
@@ -95,6 +121,12 @@ public class BitLabs: WebViewDelegate {
     
     func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
+    }
+    
+    private func getHasOffers() {
+        bitlabsAPI?.getHasOffers { hasOffers in
+            self.hasOffers = hasOffers ?? false
+        }
     }
     
     private func ifConfigured(block: () -> ()) {

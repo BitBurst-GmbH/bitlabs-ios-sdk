@@ -11,7 +11,8 @@ import Alamofire
 enum BitLabsRouter {
 	case checkSurveys(_ fingerprint: String = "")
 	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
-    case getSurveys
+    case getActions
+    case getOffers
 	
 	private var baseURL: String {
 		return "https://api.bitlabs.ai/v1/client"
@@ -23,8 +24,10 @@ enum BitLabsRouter {
 			return "check"
 		case .leaveSurvey(let networkId, let surveyId, _):
 			return "networks/\(networkId)/surveys/\(surveyId)/leave"
-        case .getSurveys:
+        case .getActions:
             return "actions"
+        case .getOffers:
+            return "offers"
 		}
 	}
 	
@@ -34,7 +37,9 @@ enum BitLabsRouter {
 			return .get
 		case .leaveSurvey:
 			return .post
-        case .getSurveys:
+        case .getActions:
+            return .get
+        case .getOffers:
             return .get
 		}
 	}
@@ -45,7 +50,9 @@ enum BitLabsRouter {
 			return ["platform": getPlatform(), "sc_fingerprint": fingerprint]
 		case .leaveSurvey(_,_, let reason):
 			return ["reason": reason.rawValue]
-        case .getSurveys:
+        case .getActions:
+            return ["platform": getPlatform()]
+        case .getOffers:
             return ["platform": getPlatform()]
 		}
 	}
