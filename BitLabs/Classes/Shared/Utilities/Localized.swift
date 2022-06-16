@@ -13,11 +13,3 @@ class Localized {
     static let leaveDescription = "LEAVE_DESC".localized
     static let continueSurvey = "CONTINUE_SURVEY".localized
 }
-
-let bundle = Bundle(for: WebViewController.self)
-
-extension String {
-    var localized: String {
-        return bundle.localizedString(forKey: self, value: nil, table: nil)
-    }
-}

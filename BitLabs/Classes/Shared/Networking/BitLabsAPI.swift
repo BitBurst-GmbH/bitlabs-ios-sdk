@@ -81,12 +81,14 @@ class BitLabsAPI {
             .responseDecodable(of: BitLabsResponse<GetActionsResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
-                    if blResponse.status == "success" {
-                        completion(blResponse.data?.surveys)
-                    } else {
-                        print("[BitLabs] Get Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
-                        completion(nil)
+                    if blResponse.status == "success", let surveys = blResponse.data?.surveys {
+                        completion(surveys.isEmpty ? randomSurveys():surveys)
+                        return
                     }
+                    
+                    print("[BitLabs] Get Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    completion(nil)
+                    
                 case .failure(let error):
                     print("[BitLabs] Get Surveys Failure: \(error)")
                     completion(nil)
