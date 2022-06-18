@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum BitLabsRouter {
-	case checkSurveys(_ fingerprint: String = "")
+	case checkSurveys
 	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
     case getActions
     case getOffers
@@ -46,8 +46,8 @@ enum BitLabsRouter {
 	
 	var parameters: [String: String] {
 		switch self {
-		case .checkSurveys(let fingerprint):
-			return ["platform": getPlatform(), "sc_fingerprint": fingerprint]
+		case .checkSurveys:
+			return ["platform": getPlatform()]
 		case .leaveSurvey(_,_, let reason):
 			return ["reason": reason.rawValue]
         case .getActions:

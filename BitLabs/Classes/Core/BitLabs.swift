@@ -81,11 +81,11 @@ public class BitLabs: WebViewDelegate {
     ///
     /// - Parameter completionHandler: A closure which executes after a result is recieve
     /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
-    public func checkSurveys(_ completionHandler: @escaping (_ hasSurveys: Bool) -> ()) {
+    public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         ifConfigured { bitlabsAPI?.checkSurveys(completionHandler) }
     }
     
-    public func getSurveys(_ completionHandler: @escaping ([Survey]?) -> ()) {
+    public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
     }
     
@@ -124,9 +124,7 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getHasOffers() {
-        bitlabsAPI?.getHasOffers { hasOffers in
-            self.hasOffers = hasOffers ?? false
-        }
+        bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
     }
     
     private func ifConfigured(block: () -> ()) {
