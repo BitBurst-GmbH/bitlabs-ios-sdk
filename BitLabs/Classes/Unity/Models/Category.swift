@@ -11,6 +11,11 @@ import Foundation
     let name: String
     let iconUrl: String
     
+    @objc init(name: String, iconUrl: String) {
+        self.name = name
+        self.iconUrl = iconUrl
+    }
+    
     @objc public func asDictionary() -> [String: Any] {
         return toDictionary()
     }

@@ -33,6 +33,7 @@ class ViewController: UIViewController {
             switch result {
             case .failure(let error):
                 print("[Example] Check For Surveys \(error)")
+                
             case .success(let hasSurveys):
                 print("[Example] \(hasSurveys ? "Surveys Available!":"No Surveys Available!")")
             }
