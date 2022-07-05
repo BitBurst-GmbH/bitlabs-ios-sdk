@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,12 +73,17 @@
                         <constraint firstItem="SRn-7t-i3x" firstAttribute="centerY" secondItem="FA6-KU-6k3" secondAttribute="centerY" id="umK-YR-wHJ"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGq-YA-WlF" customClass="SurveyView" customModule="BitLabs" customModuleProvider="target">
+                    <rect key="frame" x="20" y="448" width="374" height="0.0"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="5Sp-Zl-4Od"/>
             <constraints>
                 <constraint firstItem="5Sp-Zl-4Od" firstAttribute="trailing" secondItem="FA6-KU-6k3" secondAttribute="trailing" constant="10" id="0ou-4O-60Q"/>
                 <constraint firstItem="d9e-34-fY4" firstAttribute="leading" secondItem="5Sp-Zl-4Od" secondAttribute="leading" id="Bjm-3q-WFp"/>
                 <constraint firstItem="FA6-KU-6k3" firstAttribute="height" secondItem="5Sp-Zl-4Od" secondAttribute="height" multiplier="0.07" id="Cbc-F5-gcu"/>
+                <constraint firstItem="KGq-YA-WlF" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="HMJ-l7-ulp"/>
                 <constraint firstItem="FA6-KU-6k3" firstAttribute="centerY" secondItem="d9e-34-fY4" secondAttribute="centerY" id="Iya-ho-0GG"/>
                 <constraint firstItem="5Sp-Zl-4Od" firstAttribute="bottom" secondItem="2Uz-UT-5ss" secondAttribute="bottom" id="M2s-Pr-3jR"/>
                 <constraint firstItem="FA6-KU-6k3" firstAttribute="width" secondItem="5Sp-Zl-4Od" secondAttribute="width" multiplier="0.1" id="P9r-Q6-8zQ"/>
@@ -86,7 +91,9 @@
                 <constraint firstItem="5Sp-Zl-4Od" firstAttribute="trailing" secondItem="2Uz-UT-5ss" secondAttribute="trailing" id="Rah-So-Hqm"/>
                 <constraint firstItem="5Sp-Zl-4Od" firstAttribute="trailing" secondItem="d9e-34-fY4" secondAttribute="trailing" id="Rmn-ac-A00"/>
                 <constraint firstItem="5Sp-Zl-4Od" firstAttribute="top" secondItem="d9e-34-fY4" secondAttribute="top" id="TtR-Wd-bYd"/>
+                <constraint firstItem="5Sp-Zl-4Od" firstAttribute="trailing" secondItem="KGq-YA-WlF" secondAttribute="trailing" constant="20" id="hUb-Yk-Q6j"/>
                 <constraint firstItem="2Uz-UT-5ss" firstAttribute="top" secondItem="5Sp-Zl-4Od" secondAttribute="top" id="uCQ-F0-liw"/>
+                <constraint firstItem="KGq-YA-WlF" firstAttribute="leading" secondItem="5Sp-Zl-4Od" secondAttribute="leading" constant="20" id="uM6-PQ-JrV"/>
                 <constraint firstItem="d9e-34-fY4" firstAttribute="height" secondItem="5Sp-Zl-4Od" secondAttribute="height" multiplier="0.07" id="zlM-c0-Ny6"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
@@ -98,6 +105,9 @@
     <resources>
         <image name="chevron.backward.circle" catalog="system" width="128" height="121"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
