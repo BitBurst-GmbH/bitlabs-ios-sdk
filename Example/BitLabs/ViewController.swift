@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         BitLabs.shared.configure(token: token, uid: uid)
-        
     }
     
     @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
