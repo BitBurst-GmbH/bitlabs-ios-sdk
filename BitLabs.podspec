@@ -26,12 +26,12 @@ Pod::Spec.new do |spec|
     
     spec.subspec 'Core' do |core|
         core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
-        core.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+        core.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/**/*.xcassets']
     end
     
     spec.subspec 'Unity' do |unity|
         unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
-        unity.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+        unity.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/**/*.xcassets']
     end
 end
 
