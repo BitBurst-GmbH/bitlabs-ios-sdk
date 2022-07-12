@@ -27,9 +27,8 @@ protocol WebViewDelegate {
 
 class WebViewController: UIViewController {
     
-    @IBOutlet weak var closeView: UIView!
     @IBOutlet weak var topBarView: UIView!
-    
+    @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
@@ -52,8 +51,13 @@ class WebViewController: UIViewController {
         
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
         
         loadOfferwall()
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -137,13 +141,13 @@ extension WebViewController: WKNavigationDelegate {
             return
         }
         
-        if hasOffers, UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-            print("[BitLabs] Redirected to browser. No need to open it locally")
-            decisionHandler(.cancel)
-            dismiss(animated: true)
-            return
-        }
+//        if hasOffers, UIApplication.shared.canOpenURL(url) {
+//            UIApplication.shared.open(url)
+//            print("[BitLabs] Redirected to browser. No need to open it locally")
+//            decisionHandler(.cancel)
+//            dismiss(animated: true)
+//            return
+//        }
         
         let urlStr = url.absoluteString
         
@@ -198,7 +202,7 @@ extension WebViewController: WKNavigationDelegate {
     /// - Parameter isPageOfferwall: The bool to determine whether the current page is the Offerwall.
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
-        closeView.isHidden = !isPageOfferwall
+        closeButton.isHidden = !isPageOfferwall
         webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
     }
 }
