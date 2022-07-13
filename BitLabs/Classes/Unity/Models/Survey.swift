@@ -19,6 +19,19 @@ import Foundation
     let link: String
     let missingQuestions: Int?
     
+    init(networkId: Int, id: Int, cpi: String, value: String, loi: Double, remaining: Int, details: Details, rating: Int, link: String, missingQuestions: Int) {
+        self.networkId = networkId
+        self.id = id
+        self.cpi = cpi
+        self.value = value
+        self.loi = loi
+        self.remaining = remaining
+        self.details = details
+        self.rating = rating
+        self.link = link
+        self.missingQuestions = missingQuestions
+    }
+    
     
     public func open(parent: UIViewController) {
         BitLabs.shared.launchOfferWall(parent: parent)

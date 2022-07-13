@@ -10,6 +10,10 @@ import Foundation
 @objc class Details: NSObject, Codable {
     let category: Category
     
+    init(category: Category) {
+        self.category = category
+    }
+    
     @objc public func asDictionary() -> [String: Any] {
         return toDictionary()
     }
