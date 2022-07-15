@@ -1,5 +1,5 @@
 //
-//  SurveyViewController.swift
+//  SurveyView.swift
 //  BitLabs
 //
 //  Created by Omar Raad on 04.07.22.

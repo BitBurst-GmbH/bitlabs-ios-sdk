@@ -11,8 +11,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let token = "YOUR_APP_TOKEN"
-    let uid = "YOUR_USER_ID"
+    private let uid = "YOUR_USER_ID"
+    private let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    private var surveyDataSource: SurveyDataSource?
+    
+    @IBOutlet weak var surveysContainer: UIView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,6 +55,13 @@ class ViewController: UIViewController {
                 
             case .success(let surveys):
                 print("[Example] \(surveys.map { "Survey \($0.id) in Category \($0.details.category.name)" })")
+                
+                self.surveyDataSource = SurveyDataSource(surveys: surveys)
+                
+                let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys)
+                collection.frame = CGRect(origin: .zero, size: self.surveysContainer.frame.size)
+                
+                self.surveysContainer.addSubview(collection)
             }
         }
     }

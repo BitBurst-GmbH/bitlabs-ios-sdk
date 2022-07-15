@@ -70,8 +70,10 @@
 		BC5CA2844C106FC5A5AB6984AD9884D2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C59E140BB548C6FF1F1BA6C7FD00E38 /* Category.swift */; };
 		BDB884492623D02A3D2ECACDF10BF14F /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D394CB2647813D604BDD1825780E0E9 /* SurveyView.swift */; };
 		BFE7D2424B724F1E60BF70E3CBD3E4D4 /* BitLabsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6CE5CB12FBAC74251353E6F2F30F8 /* BitLabsAPI.swift */; };
-		C79A697628787A6E0091E76C /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */; };
-		C79A697728787A6E0091E76C /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C716E0962878A6AF0024E791 /* SurveyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716E0952878A6AF0024E791 /* SurveyDataSource.swift */; };
+		C79A697628787A6E0091E76C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */; };
+		C79A697728787A6E0091E76C /* Alamofire in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C7E5D93C287993BE003B984F /* SurveyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E5D93B287993BE003B984F /* SurveyCell.swift */; };
 		CA1C0CB1D4A5848EF20773483593962A /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA5E167889FA3791E8790E3AAFBE025 /* Answer.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
@@ -217,7 +219,9 @@
 		B3799310FD1889DA69FDDF07EF27B842 /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF1F67D4470AC46B80B387ACC74592E /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		C317CAA4F2337FF0A55F807FA1B1D2A2 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
-		C9677A2D416059D8FC137F79C29D070F /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C716E0952878A6AF0024E791 /* SurveyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyDataSource.swift; sourceTree = "<group>"; };
+		C7E5D93B287993BE003B984F /* SurveyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SurveyCell.swift; sourceTree = "<group>"; };
+		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
 		CEA2402EB055223595C4C9BE2CE2435C /* LeaveReason.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LeaveReason.swift; sourceTree = "<group>"; };
 		D0B3C0B55F7944B6871557291DB6CA5B /* BitLabs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabs.swift; sourceTree = "<group>"; };
@@ -322,6 +326,8 @@
 			children = (
 				8D394CB2647813D604BDD1825780E0E9 /* SurveyView.swift */,
 				94A380DD1EB671A81ED8CFE3AB183C36 /* WebViewController.swift */,
+				C716E0952878A6AF0024E791 /* SurveyDataSource.swift */,
+				C7E5D93B287993BE003B984F /* SurveyCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -812,6 +818,7 @@
 				5B699D0BC92095DE9AA048D0E578A865 /* BitLabsRouter.swift in Sources */,
 				BC5CA2844C106FC5A5AB6984AD9884D2 /* Category.swift in Sources */,
 				E72F446EDC2E36B7CFAB8D5B7D7AED26 /* CheckSurveysResponse.swift in Sources */,
+				C7E5D93C287993BE003B984F /* SurveyCell.swift in Sources */,
 				A2731D8AFD7CAB38798D7776E308E654 /* Details.swift in Sources */,
 				5AC59C28C53BD7CFEE718EB82EB3578E /* Error.swift in Sources */,
 				94458E05C4F20CCFB4FFB96B16D46527 /* ErrorDetails.swift in Sources */,
@@ -826,6 +833,7 @@
 				5FA11682178806E8A52BE6E39E808B87 /* RestrictionReason.swift in Sources */,
 				5772874460A6A9663B6C191BAA0854DF /* StartBonus.swift in Sources */,
 				DAE7D466D4F95F14B1670EBDEF270DB2 /* String+Extension.swift in Sources */,
+				C716E0962878A6AF0024E791 /* SurveyDataSource.swift in Sources */,
 				295D2A40723E1B92C3D124C3C3F44EF0 /* Survey.swift in Sources */,
 				BDB884492623D02A3D2ECACDF10BF14F /* SurveyView.swift in Sources */,
 				6DE98C695C57F040012C5066A383646A /* WebViewController.swift in Sources */,
