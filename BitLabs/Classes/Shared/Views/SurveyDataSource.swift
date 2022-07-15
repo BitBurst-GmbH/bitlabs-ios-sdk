@@ -20,8 +20,16 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let survey = surveys[indexPath.row]
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
-        cell.addSubview(SurveyView(frame: CGRect(origin: .zero, size: cell.frame.size)))
+        
+        let surveyView =  SurveyView(frame: CGRect(origin: .zero, size: cell.frame.size))
+        surveyView.rating = survey.rating
+        surveyView.reward = survey.value
+        surveyView.loi = "\(survey.loi) minutes"
+        
+        cell.addSubview(surveyView)
         
         return cell
     }
