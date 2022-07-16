@@ -157,6 +157,7 @@
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.4823529411764706" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="VQ3-b5-AvS" secondAttribute="bottom" constant="16" id="GmY-Wf-OgL"/>
                 <constraint firstItem="VQ3-b5-AvS" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="IAY-2R-GiB"/>
@@ -172,8 +173,16 @@
                     <integer key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="x85-7b-oaF" appends="YES" id="iFm-nK-doy"/>
+            </connections>
             <point key="canvasLocation" x="168.11594202898553" y="-974.66517857142856"/>
         </view>
+        <tapGestureRecognizer id="x85-7b-oaF">
+            <connections>
+                <action selector="onPress:" destination="-1" id="f7D-by-LaG"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="circle-play-regular" width="512" height="512"/>

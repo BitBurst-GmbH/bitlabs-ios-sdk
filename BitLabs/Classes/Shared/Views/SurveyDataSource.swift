@@ -10,9 +10,11 @@ import Foundation
 public class SurveyDataSource: NSObject, UICollectionViewDataSource {
     
     private var surveys: [Survey]
+    private var parent: UIViewController
     
-    public init(surveys: [Survey]) {
+    public init(surveys: [Survey], parent: UIViewController) {
         self.surveys = surveys
+        self.parent = parent
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -28,6 +30,7 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
         surveyView.rating = survey.rating
         surveyView.reward = survey.value
         surveyView.loi = "\(survey.loi) minutes"
+        surveyView.parent = parent
         
         cell.addSubview(surveyView)
         

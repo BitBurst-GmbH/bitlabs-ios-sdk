@@ -52,6 +52,8 @@ import Foundation
     //             rewardTV.setTextColor(color)
     //         }
     
+    weak var parent: UIViewController?
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initSubviews()
@@ -77,6 +79,12 @@ import Foundation
         determineRating()
         
         // custom initialization
+    }
+    
+    @IBAction func onPress(_ sender: Any) {
+        contentView.alpha = 0.75
+        UIView.animate(withDuration: 0.7) { self.contentView.alpha = 1.0 }
+        BitLabs.shared.launchOfferWall(parent: parent!)
     }
     
     private func determineRating() {
