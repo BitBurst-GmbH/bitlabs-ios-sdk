@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,10 +34,14 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="57.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N31-hh-AW3" userLabel="Back Button">
-                            <rect key="frame" x="10" y="14" width="20" height="29"/>
+                            <rect key="frame" x="10" y="20.5" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="8qh-en-WlY"/>
+                                <constraint firstAttribute="height" constant="16" id="Ctj-gw-gXE"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="chevron.backward.circle" catalog="system">
+                            <state key="normal" image="circle-chevron-left-regular">
                                 <color key="titleColor" systemColor="tintColor"/>
                             </state>
                             <connections>
@@ -56,11 +60,14 @@
                     <rect key="frame" x="362.5" y="44" width="41.5" height="57.5"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SRn-7t-i3x" userLabel="Close Button">
-                            <rect key="frame" x="20.5" y="14" width="21" height="29"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                            <rect key="frame" x="25.5" y="20.5" width="16" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Gvh-X9-RQ3"/>
+                                <constraint firstAttribute="height" constant="16" id="e2w-pS-EqG"/>
+                            </constraints>
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="multiply.circle" catalog="system"/>
+                            <state key="normal" image="circle-xmark-regular"/>
                             <connections>
                                 <action selector="closeBtnPressed:" destination="-1" eventType="touchUpInside" id="bcG-hW-W6e"/>
                             </connections>
@@ -96,8 +103,8 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward.circle" catalog="system" width="128" height="121"/>
-        <image name="multiply.circle" catalog="system" width="128" height="121"/>
+        <image name="circle-chevron-left-regular" width="512" height="512"/>
+        <image name="circle-xmark-regular" width="512" height="512"/>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

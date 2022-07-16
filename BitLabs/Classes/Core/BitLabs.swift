@@ -24,6 +24,8 @@ public class BitLabs: WebViewDelegate {
     
     private var onReward: ((Float) -> ())?
     
+    private var surveyDataSource: SurveyDataSource?
+    
     var bitlabsAPI: BitLabsAPI? = nil
     
     private init() {}
@@ -87,6 +89,21 @@ public class BitLabs: WebViewDelegate {
     
     public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
+    }
+    
+    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController) -> UICollectionView {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 300, height: 100)
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent)
+        collectionView.dataSource = surveyDataSource
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        
+        return collectionView
     }
     
     /// Stores the reward completion closure to use on every reward completion.
