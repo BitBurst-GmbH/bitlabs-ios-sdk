@@ -114,4 +114,23 @@ class BitLabsAPI {
                 }
             }
     }
+    
+    func getAppSettings(_ completion: @escaping (Visual) -> ()) {
+        session
+            .request(BitLabsRouter.getAppSettings)
+            .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let blResponse):
+                    if let visual = blResponse.data?.visual {
+                        completion(visual)
+                        return
+                    }
+                    
+                    print("[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    
+                case .failure(let error):
+                    print("[BitLabs] Get App Settings Failure: \(error)")
+                }
+            }
+    }
 }
