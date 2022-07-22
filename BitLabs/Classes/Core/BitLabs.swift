@@ -21,6 +21,7 @@ public class BitLabs: WebViewDelegate {
     private var token = ""
     private var hasOffers = false
     private var tags: [String: Any] = [:]
+    private var color = "000000".toUIColor
     
     private var onReward: ((Float) -> ())?
     
@@ -40,12 +41,18 @@ public class BitLabs: WebViewDelegate {
         
         bitlabsAPI = BitLabsAPI(token, uid)
         
+        getWidgetColor()
+        
         getHasOffers()
         
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    private func getWidgetColor() {
+        bitlabsAPI?.getAppSettings { visual in self.color = visual.surveyIconColor.toUIColor }
     }
     
     public func requestTrackingAuthorization() {
@@ -60,7 +67,7 @@ public class BitLabs: WebViewDelegate {
             }
         }
     }
-    
+        
     /// Sets the tags which will be used as query parameters in the Offerwall URL.
     ///
     /// - Warning: This will replace the currently stored tags with the newly input ones.
@@ -98,7 +105,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: color)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")

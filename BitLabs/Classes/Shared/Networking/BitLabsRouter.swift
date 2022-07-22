@@ -13,6 +13,7 @@ enum BitLabsRouter {
 	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
     case getActions
     case getOffers
+    case getAppSettings
 	
 	private var baseURL: String {
 		return "https://api.bitlabs.ai/v1/client"
@@ -28,6 +29,8 @@ enum BitLabsRouter {
             return "actions"
         case .getOffers:
             return "offers"
+        case .getAppSettings:
+            return "settings/v2"
 		}
 	}
 	
@@ -41,6 +44,8 @@ enum BitLabsRouter {
             return .get
         case .getOffers:
             return .get
+        case .getAppSettings:
+            return .get
 		}
 	}
 	
@@ -53,6 +58,8 @@ enum BitLabsRouter {
         case .getActions:
             return ["platform": getPlatform()]
         case .getOffers:
+            return ["platform": getPlatform()]
+        case .getAppSettings:
             return ["platform": getPlatform()]
 		}
 	}

@@ -40,17 +40,11 @@ import Foundation
         loiLabel?.text = loi
     }}
     
-    //     var color = ResourcesCompat.getColor(resources, R.color.colorPrimaryDark, null)
-    //         set(value) {
-    //             field = value
-    //             (findViewById<FrameLayout>(R.id.fl_widget_container)
-    //                 .background
-    //                 .mutate() as GradientDrawable)
-    //                 .setColor(color)
-    
-    //             earnTV.setTextColor(color)
-    //             rewardTV.setTextColor(color)
-    //         }
+    var color = "000000".toUIColor { didSet {
+        earnLabel?.textColor = color
+        rewardLabel?.textColor = color
+        contentView.backgroundColor = color
+    }}
     
     weak var parent: UIViewController?
     
