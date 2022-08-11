@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             switch result {
             case .failure(let error):
                 print("[Example] Check For Surveys \(error)")
-                
+
             case .success(let hasSurveys):
                 print("[Example] \(hasSurveys ? "Surveys Available!":"No Surveys Available!")")
             }
@@ -51,15 +51,16 @@ class ViewController: UIViewController {
             switch result {
             case .failure(let error):
                 print("[Example] Get Surveys \(error)")
-                
+
             case .success(let surveys):
                 print("[Example] \(surveys.map { "Survey \($0.id) in Category \($0.details.category.name)" })")
-                
+
                 let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys, parent: self)
                 collection.frame = CGRect(origin: .zero, size: self.surveysContainer.frame.size)
-                
+
                 self.surveysContainer.addSubview(collection)
             }
+//            print("[Example] \(result)")
         }
     }
 }
