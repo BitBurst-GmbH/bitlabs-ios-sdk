@@ -100,7 +100,8 @@ public class BitLabs: WebViewDelegate {
     
     public func getSurveyWidgets(surveys: [Survey], parent: UIViewController) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 300, height: 100)
+        layout.itemSize = CGSize(width: 310, height: 85)
+        layout.minimumLineSpacing = CGFloat(4)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
