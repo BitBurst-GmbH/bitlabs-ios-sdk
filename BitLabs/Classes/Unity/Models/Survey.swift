@@ -31,6 +31,10 @@ import Foundation
         self.link = link
         self.missingQuestions = missingQuestions
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> master
     
     @objc public func open(parent: UIViewController) {
         BitLabs.shared.launchOfferWall(parent: parent)
