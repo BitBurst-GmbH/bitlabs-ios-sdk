@@ -10,7 +10,7 @@ import Foundation
 @objc class Details: NSObject, Codable {
     let category: Category
     
-    init(category: Category) {
+    @objc init(category: Category) {
         self.category = category
     }
     

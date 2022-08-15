@@ -21,8 +21,11 @@ public class BitLabs: WebViewDelegate {
     private var token = ""
     private var hasOffers = false
     private var tags: [String: Any] = [:]
+    private var color = "000000".toUIColor
     
     private var onReward: ((Float) -> ())?
+    
+    private var surveyDataSource: SurveyDataSource?
     
     var bitlabsAPI: BitLabsAPI? = nil
     
@@ -38,12 +41,18 @@ public class BitLabs: WebViewDelegate {
         
         bitlabsAPI = BitLabsAPI(token, uid)
         
+        getWidgetColor()
+        
         getHasOffers()
         
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    private func getWidgetColor() {
+        bitlabsAPI?.getAppSettings { visual in self.color = visual.surveyIconColor.toUIColor }
     }
     
     public func requestTrackingAuthorization() {
@@ -58,7 +67,7 @@ public class BitLabs: WebViewDelegate {
             }
         }
     }
-    
+        
     /// Sets the tags which will be used as query parameters in the Offerwall URL.
     ///
     /// - Warning: This will replace the currently stored tags with the newly input ones.
@@ -81,12 +90,28 @@ public class BitLabs: WebViewDelegate {
     ///
     /// - Parameter completionHandler: A closure which executes after a result is recieve
     /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
-    public func checkSurveys(_ completionHandler: @escaping (_ hasSurveys: Bool) -> ()) {
+    public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
         ifConfigured { bitlabsAPI?.checkSurveys(completionHandler) }
     }
     
-    public func getSurveys(_ completionHandler: @escaping ([Survey]?) -> ()) {
+    public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
+    }
+    
+    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController) -> UICollectionView {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 310, height: 85)
+        layout.minimumLineSpacing = CGFloat(4)
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: color)
+        collectionView.dataSource = surveyDataSource
+        
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
+        
+        return collectionView
     }
     
     /// Stores the reward completion closure to use on every reward completion.
@@ -124,9 +149,7 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getHasOffers() {
-        bitlabsAPI?.getHasOffers { hasOffers in
-            self.hasOffers = hasOffers ?? false
-        }
+        bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
     }
     
     private func ifConfigured(block: () -> ()) {

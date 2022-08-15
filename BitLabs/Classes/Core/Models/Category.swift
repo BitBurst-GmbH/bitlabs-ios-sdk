@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Category: Codable {
-    let name: String
-    let iconUrl: String
+public struct Category: Codable {
+    public let name: String
+    public let iconUrl: String
 }
