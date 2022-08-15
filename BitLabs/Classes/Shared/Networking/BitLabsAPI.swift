@@ -28,21 +28,21 @@ class BitLabsAPI {
     ///
     /// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
     /// - Parameter completion: The closure to execute after a response for this request is received.
-    public func checkSurveys(_ completion: @escaping (Bool) -> ()) {
+    public func checkSurveys(_ completion: @escaping (Result<Bool, Error>) -> ()) {
         session
-            .request(BitLabsRouter.checkSurveys(""))
+            .request(BitLabsRouter.checkSurveys)
             .responseDecodable(of: BitLabsResponse<CheckSurveysResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let hasSurveys = blResponse.data?.hasSurveys {
-                        completion(hasSurveys)
-                    } else {
-                        print("[BitLabs] Check Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
-                        completion(false)
+                        completion(.success(hasSurveys))
+                        return
                     }
+                    
+                    completion(.failure(Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")))
+                    
                 case .failure(let error):
-                    print("[BitLabs] Check Surveys Failure: \(error)")
-                    completion(false)
+                    completion(.failure(error))
                 }
             }
     }
@@ -75,42 +75,61 @@ class BitLabsAPI {
             }
     }
     
-    func getSurveys(_ completion: @escaping ([Survey]?) -> ()) {
+    func getSurveys(_ completion: @escaping (Result<[Survey], Error>) -> ()) {
         session
             .request(BitLabsRouter.getActions)
             .responseDecodable(of: BitLabsResponse<GetActionsResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
-                    if blResponse.status == "success", let surveys = blResponse.data?.surveys {
-                        completion(surveys.isEmpty ? randomSurveys():surveys)
+                    if let surveys = blResponse.data?.surveys {
+                        completion(.success(surveys.isEmpty ? randomSurveys() : surveys))
                         return
                     }
                     
-                    print("[BitLabs] Get Surveys \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
-                    completion(nil)
+                    completion(.failure(Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")))
                     
                 case .failure(let error):
-                    print("[BitLabs] Get Surveys Failure: \(error)")
-                    completion(nil)
+                    completion(.failure(error))
                 }
             }
     }
     
-    func getHasOffers(_ completion: @escaping (Bool?) -> ()) {
+    func getHasOffers(_ completion: @escaping (Bool) -> ()) {
         session
             .request(BitLabsRouter.getOffers)
             .responseDecodable(of: BitLabsResponse<GetOffersResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
-                    if blResponse.status == "success" {
-                        completion(!(blResponse.data?.offers.isEmpty ?? false))
-                    } else {
-                        print("[BitLabs] Get Offers \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
-                        completion(nil)
+                    if let offers = blResponse.data?.offers {
+                        completion(!offers.isEmpty)
+                        return
                     }
+                    
+                    print("[BitLabs] Get Offers \(blResponse.error?.details.http ?? "Error") - \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    completion(false)
+                    
                 case .failure(let error):
                     print("[BitLabs] Get Offers Failure: \(error)")
-                    completion(nil)
+                    completion(false)
+                }
+            }
+    }
+    
+    func getAppSettings(_ completion: @escaping (Visual) -> ()) {
+        session
+            .request(BitLabsRouter.getAppSettings)
+            .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let blResponse):
+                    if let visual = blResponse.data?.visual {
+                        completion(visual)
+                        return
+                    }
+                    
+                    print("[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    
+                case .failure(let error):
+                    print("[BitLabs] Get App Settings Failure: \(error)")
                 }
             }
     }

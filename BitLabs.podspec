@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
     spec.name             = 'BitLabs'
-    spec.version          = '2.3.2'
+    spec.version          = '3.0.0'
     spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
     spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
     spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
@@ -26,12 +26,12 @@ Pod::Spec.new do |spec|
     
     spec.subspec 'Core' do |core|
         core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
-        core.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+        core.resources = ['BitLabs/Resources/{Shared,Core}/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/{Shared,Core}/**/*.xcassets']
     end
     
     spec.subspec 'Unity' do |unity|
         unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
-        unity.resources = ['BitLabs/Resources/**/*.xib', 'BitLabs/Localizations/**/*.strings']
+        unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
     end
 end
 

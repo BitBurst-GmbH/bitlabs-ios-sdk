@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Details: Codable {
-    let category: Category
+public struct Details: Codable {
+    public let category: Category
 }

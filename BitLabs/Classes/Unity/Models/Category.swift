@@ -11,7 +11,7 @@ import Foundation
     let name: String
     let iconUrl: String
     
-    init(name: String, iconUrl: String) {
+    @objc init(name: String, iconUrl: String) {
         self.name = name
         self.iconUrl = iconUrl
     }

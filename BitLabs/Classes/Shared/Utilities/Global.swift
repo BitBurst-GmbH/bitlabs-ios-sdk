@@ -19,3 +19,13 @@ func randomSurveys() -> [Survey] {
     
     return surveys
 }
+
+class Exception: Error, CustomStringConvertible {
+    let message: String
+    
+    public var description: String { return message }
+    
+    init(_ message: String) {
+        self.message = message
+    }
+}

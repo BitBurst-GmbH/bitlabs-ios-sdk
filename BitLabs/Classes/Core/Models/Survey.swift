@@ -8,16 +8,16 @@
 import Foundation
 
 public struct Survey: Codable {
-    let networkId: Int
-    let id: Int
-    let cpi: String
-    let value: String
-    let loi: Double
-    let remaining: Int
-    let details: Details
-    let rating: Int
-    let link: String
-    let missingQuestions: Int?
+    public let networkId: Int
+    public let id: Int
+    public let cpi: String
+    public let value: String
+    public let loi: Double
+    public let remaining: Int
+    public let details: Details
+    public let rating: Int
+    public let link: String
+    public let missingQuestions: Int?
     
     
     public func open(parent: UIViewController) {
