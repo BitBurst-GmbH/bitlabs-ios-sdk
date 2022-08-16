@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
     spec.name             = 'BitLabs'
-    spec.version          = '3.0.0'
+    spec.version          = '3.0.1'
     spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
     spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
     spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
