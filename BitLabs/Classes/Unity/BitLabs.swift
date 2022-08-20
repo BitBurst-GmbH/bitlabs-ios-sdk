@@ -19,6 +19,7 @@ import AppTrackingTransparency
     private var uid = ""
     private var adId = ""
     private var token = ""
+    private var widgetColor = ""
     private var hasOffers = false
     private var tags: [String: Any] = [:]
     
@@ -38,12 +39,18 @@ import AppTrackingTransparency
         
         bitlabsAPI = BitLabsAPI(token, uid)
         
+        getWidgetColor()
+        
         getHasOffers()
         
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    }
+    
+    private func getWidgetColor() {
+        bitlabsAPI?.getAppSettings { visual in self.widgetColor = visual.surveyIconColor }
     }
     
     @objc public func requestTrackingAuthorization() {
@@ -128,6 +135,10 @@ import AppTrackingTransparency
             
             parent.present(webViewController, animated: true)
         }
+    }
+    
+    @objc public func getColor() -> String {
+        return widgetColor
     }
     
     func rewardCompleted(_ value: Float) {
