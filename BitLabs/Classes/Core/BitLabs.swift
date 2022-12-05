@@ -129,6 +129,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.uid = uid
             webViewController.tags = tags
             webViewController.adId = adId
+            webViewController.color = color
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self
