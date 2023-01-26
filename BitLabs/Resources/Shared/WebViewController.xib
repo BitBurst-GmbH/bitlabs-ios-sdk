@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="BitLabs" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="N31-hh-AW3" id="Pbt-IH-l6l"/>
                 <outlet property="closeButton" destination="SRn-7t-i3x" id="Fa0-Xe-ULV"/>
                 <outlet property="topBarView" destination="d9e-34-fY4" id="0RS-OI-mNZ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vU1-vn-v1y"/>
@@ -33,13 +34,12 @@
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9e-34-fY4" userLabel="Top Bar View">
                     <rect key="frame" x="0.0" y="44" width="414" height="60"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N31-hh-AW3" userLabel="Back Button">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N31-hh-AW3" userLabel="Back Button">
                             <rect key="frame" x="10" y="22" width="16" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="16" id="8qh-en-WlY"/>
                                 <constraint firstAttribute="height" constant="16" id="Ctj-gw-gXE"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" image="circle-chevron-left-regular"/>
                             <connections>

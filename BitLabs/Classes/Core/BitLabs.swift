@@ -21,7 +21,8 @@ public class BitLabs: WebViewDelegate {
     private var token = ""
     private var hasOffers = false
     private var tags: [String: Any] = [:]
-    private var color = "000000".toUIColor
+    private var widgetColor = "000000".toUIColor
+    private var headerColor = "000000".toUIColor
     
     private var onReward: ((Float) -> ())?
     
@@ -52,7 +53,10 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual in self.color = visual.surveyIconColor.toUIColor }
+        bitlabsAPI?.getAppSettings { visual in
+            self.widgetColor = visual.surveyIconColor.toUIColor
+            self.headerColor = visual.navigationColor.toUIColor
+        }
     }
     
     public func requestTrackingAuthorization() {
@@ -106,7 +110,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: color)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
@@ -129,7 +133,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.uid = uid
             webViewController.tags = tags
             webViewController.adId = adId
-            webViewController.color = color
+            webViewController.color = headerColor
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self
