@@ -40,7 +40,7 @@ class WebViewController: UIViewController {
     var token = ""
     var surveyId = ""
     var networkId = ""
-    var hasOffers = false
+    var shouldOpenExternally = false
     var color = "000000".toUIColor
     var tags: [String: Any] = [:]
     
@@ -148,13 +148,13 @@ extension WebViewController: WKNavigationDelegate {
             return
         }
         
-//        if hasOffers, UIApplication.shared.canOpenURL(url) {
-//            UIApplication.shared.open(url)
-//            print("[BitLabs] Redirected to browser. No need to open it locally")
-//            decisionHandler(.cancel)
-//            dismiss(animated: true)
-//            return
-//        }
+        if shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url)
+            print("[BitLabs] Redirected to browser. No need to open it locally")
+            decisionHandler(.cancel)
+            dismiss(animated: true)
+            return
+        }
         
         let urlStr = url.absoluteString
         

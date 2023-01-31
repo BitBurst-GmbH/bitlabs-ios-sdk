@@ -115,14 +115,14 @@ class BitLabsAPI {
             }
     }
     
-    func getAppSettings(_ completion: @escaping (Visual) -> ()) {
+    func getAppSettings(_ completion: @escaping (Visual, Bool) -> ()) {
         session
             .request(BitLabsRouter.getAppSettings)
             .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let visual = blResponse.data?.visual {
-                        completion(visual)
+                        completion(visual, blResponse.data?.offers.enabled ?? true)
                         return
                     }
                     

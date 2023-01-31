@@ -20,6 +20,7 @@ public class BitLabs: WebViewDelegate {
     private var adId = ""
     private var token = ""
     private var hasOffers = false
+    private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
     private var widgetColor = "000000".toUIColor
     private var headerColor = "000000".toUIColor
@@ -53,9 +54,10 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual in
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled in
             self.widgetColor = visual.surveyIconColor.toUIColor
             self.headerColor = visual.navigationColor.toUIColor
+            self.isOffersEnabled = isOffersEnabled
         }
     }
     
@@ -137,7 +139,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self
-            webViewController.hasOffers = hasOffers
+            webViewController.shouldOpenExternally = hasOffers && isOffersEnabled
             
             webViewController.modalPresentationStyle = .overFullScreen
             

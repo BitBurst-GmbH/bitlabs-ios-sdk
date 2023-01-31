@@ -9,4 +9,9 @@ import Foundation
 
 struct GetAppSettingsResponse: Decodable {
     let visual: Visual
+    let offers: Offers
+}
+
+struct Offers: Decodable {
+    let enabled: Bool
 }
