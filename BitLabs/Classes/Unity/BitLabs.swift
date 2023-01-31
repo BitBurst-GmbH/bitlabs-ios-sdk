@@ -20,7 +20,9 @@ import AppTrackingTransparency
     private var adId = ""
     private var token = ""
     private var widgetColor = ""
+    private var headerColor = ""
     private var hasOffers = false
+    private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
     
     private var onReward: ((Float) -> ())?
@@ -50,7 +52,11 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual in self.widgetColor = visual.surveyIconColor }
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled in
+            self.widgetColor = visual.surveyIconColor
+            self.headerColor = visual.navigationColor
+            self.isOffersEnabled = isOffersEnabled
+        }
     }
     
     @objc public func requestTrackingAuthorization() {
@@ -129,7 +135,8 @@ import AppTrackingTransparency
             webViewController.sdk = "UNITY"
             webViewController.token = token
             webViewController.delegate = self
-            webViewController.hasOffers = hasOffers
+            webViewController.color = headerColor.toUIColor
+            webViewController.shouldOpenExternally = hasOffers && isOffersEnabled
             
             webViewController.modalPresentationStyle = .overFullScreen
             
