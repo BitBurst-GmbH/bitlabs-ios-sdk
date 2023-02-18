@@ -1,5 +1,5 @@
 //
-//  SurveyView.swift
+//  CompactSurveyView.swift
 //  BitLabs
 //
 //  Created by Omar Raad on 04.07.22.
@@ -7,13 +7,14 @@
 
 import Foundation
 
-@IBDesignable class SurveyView: UIView {
+@IBDesignable class CompactSurveyView: UIView {
     
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var loiLabel: UILabel?
     @IBOutlet weak var earnLabel: UILabel?
     @IBOutlet weak var rewardLabel: UILabel?
     @IBOutlet weak var ratingLabel: UILabel?
+    @IBOutlet weak var playImageView: UIImageView!
     
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var star2: UIImageView!
@@ -44,6 +45,7 @@ import Foundation
         earnLabel?.textColor = color
         rewardLabel?.textColor = color
         contentView.backgroundColor = color
+        playImageView.setImageColor(color: color)
     }}
     
     weak var parent: UIViewController?
@@ -65,7 +67,7 @@ import Foundation
     
     func initSubviews() {
         // standard initialization logic
-        let nib = UINib(nibName: "SurveyView", bundle: bundle)
+        let nib = UINib(nibName: "CompactSurveyView", bundle: bundle)
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)

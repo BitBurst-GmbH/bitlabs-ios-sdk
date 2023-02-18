@@ -28,7 +28,7 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UICollectionViewCell", for: indexPath)
         
-        let surveyView =  SurveyView(frame: CGRect(origin: .zero, size: cell.frame.size))
+        let surveyView =  CompactSurveyView(frame: CGRect(origin: .zero, size: cell.frame.size))
         surveyView.rating = survey.rating
         surveyView.reward = survey.value
         surveyView.loi = "\(survey.loi) minutes"
