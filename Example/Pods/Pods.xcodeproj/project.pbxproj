@@ -33,7 +33,7 @@
 		46A64A43AFA057B6B63C8F0C12F509B4 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D611F243BC3328826FE250D806EC26 /* Combine.swift */; };
 		4D4D310C7355F8B28CFEFAB8BBCE3A99 /* GetActionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62306497B800AC3320E015FAC7645159 /* GetActionsResponse.swift */; };
 		55AABB1FB38F61A3369ACC555FF3046D /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F537E69AFE9E127B99581572E13B3DB5 /* Alamofire-dummy.m */; };
-		57FB86548498C757CB638234ACC1714F /* CompactSurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* CompactSurveyView.swift */; };
+		57FB86548498C757CB638234ACC1714F /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* SurveyView.swift */; };
 		581DF26DAED8027CDAC3A8324B33CE04 /* BitLabsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5828684FA9B4DBEA7A273988C46191F3 /* BitLabsAPI.swift */; };
 		59E49DAAEF9E12E1438EC05822A34C35 /* BitLabs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D99B8104B55E9390FD5A419159936FB /* CoreImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFBE8E77425D6088E6325C4F8DBFBA21 /* CoreImages.xcassets */; };
@@ -76,6 +76,8 @@
 		C6CE567407C66871007CA8C173915DB5 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41171BCA64B045B1FBEE423512E4E5F1 /* Details.swift */; };
 		C733B79629A0EBB300CBA9AC /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733B79529A0EBB300CBA9AC /* UIImageView+Extension.swift */; };
 		C733B79829A0EFA000CBA9AC /* CompactSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C733B79729A0EFA000CBA9AC /* CompactSurveyView.xib */; };
+		C733B79A29A0F73F00CBA9AC /* SimpleSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */; };
+		C733B79C29A37B0300CBA9AC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733B79B29A37B0300CBA9AC /* WidgetType.swift */; };
 		CC8134E408D702048EC8041BCEA26AB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977014395E454C2F2BE025E04F948C56 /* Question.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
@@ -209,6 +211,8 @@
 		C317CAA4F2337FF0A55F807FA1B1D2A2 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
 		C733B79529A0EBB300CBA9AC /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		C733B79729A0EFA000CBA9AC /* CompactSurveyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CompactSurveyView.xib; sourceTree = "<group>"; };
+		C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleSurveyView.xib; sourceTree = "<group>"; };
+		C733B79B29A37B0300CBA9AC /* WidgetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
 		C821DC37F1B244816A3A56C4E3503E9F /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
@@ -222,7 +226,7 @@
 		D641E79625BE3A6FFFCF2115EA6F2B0E /* Pods-BitLabs_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitLabs_Example-Info.plist"; sourceTree = "<group>"; };
 		D6B591DC4B742EB96952318CD9E9EBD2 /* BitLabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BitLabs.debug.xcconfig; sourceTree = "<group>"; };
 		DAB3F4DEC660EA4E0D1518B65C6A9A91 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
-		DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* CompactSurveyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CompactSurveyView.swift; sourceTree = "<group>"; };
+		DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* SurveyView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyView.swift; sourceTree = "<group>"; };
 		DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BitLabs-umbrella.h"; sourceTree = "<group>"; };
 		DD137CC7DCF2467C7F2628B032A3C7A8 /* Visual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
 		DDEF86DB2F034B2435E33314C6B2D948 /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
@@ -517,6 +521,7 @@
 				15B946F23C9005EBFCA3340F10E33AAD /* Category.swift */,
 				41171BCA64B045B1FBEE423512E4E5F1 /* Details.swift */,
 				B93D149A6DC075949A7D0A1F1E78FFE7 /* Survey.swift */,
+				C733B79B29A37B0300CBA9AC /* WidgetType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -568,7 +573,7 @@
 			isa = PBXGroup;
 			children = (
 				36F60A5E2903E826CA6CDEEF6C1D576F /* SurveyDataSource.swift */,
-				DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* CompactSurveyView.swift */,
+				DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* SurveyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,6 +603,7 @@
 			children = (
 				C733B79729A0EFA000CBA9AC /* CompactSurveyView.xib */,
 				5B5CA8F5A9C33AF3CEBA41C17CFAF07D /* Assets */,
+				C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -802,6 +808,7 @@
 			files = (
 				5D99B8104B55E9390FD5A419159936FB /* CoreImages.xcassets in Resources */,
 				037AA1B1A21D9973ACE2D8F7CA462D63 /* Localizable.strings in Resources */,
+				C733B79A29A0F73F00CBA9AC /* SimpleSurveyView.xib in Resources */,
 				D42CC3E5F26F2EC141E8EAA4D2319E4C /* SharedImages.xcassets in Resources */,
 				C733B79829A0EFA000CBA9AC /* CompactSurveyView.xib in Resources */,
 				9FA266D7BF7B4085AC9B98DAE2D0EBF2 /* WebViewController.xib in Resources */,
@@ -839,6 +846,7 @@
 				ADFE9B9246F5A1BD4365A9386FD63434 /* GetAppSettingsResponse.swift in Sources */,
 				12D09297EDF94CCF582FC6812D8F37EE /* GetOffersResponse.swift in Sources */,
 				5F90730BB097B305C40CB339F19D5037 /* Global.swift in Sources */,
+				C733B79C29A37B0300CBA9AC /* WidgetType.swift in Sources */,
 				462BABC6D886C9ECA69D52160F8B3E69 /* LeaveReason.swift in Sources */,
 				D672D817075BFFD66D74CFC3BD952BA8 /* Localized.swift in Sources */,
 				0C9DE586DE984F7F509C2628BD07C254 /* Offer.swift in Sources */,
@@ -849,7 +857,7 @@
 				5DC2A35023E38F2EA9D832951D80D54C /* String+Extension.swift in Sources */,
 				EB72A080FCB98420768D586BBD653FF1 /* Survey.swift in Sources */,
 				7FA372C9F89E05F2550CBA50862421D3 /* SurveyDataSource.swift in Sources */,
-				57FB86548498C757CB638234ACC1714F /* CompactSurveyView.swift in Sources */,
+				57FB86548498C757CB638234ACC1714F /* SurveyView.swift in Sources */,
 				7C47C50D9BB4915EA0F86CFEE1D585B6 /* UIColor+Extension.swift in Sources */,
 				62871A271108782C5456FD9743B415BE /* Visual.swift in Sources */,
 				3272671A9201913B2F6516A6C8AB2157 /* WebViewController.swift in Sources */,

@@ -104,15 +104,21 @@ public class BitLabs: WebViewDelegate {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
     }
     
-    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController) -> UICollectionView {
+    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 310, height: 85)
+        layout.itemSize = {
+            switch type {
+            case .simple: return CGSize(width: 310, height: 150)
+            case .compact: return CGSize(width: 310, height: 85)
+            case .full_width: return CGSize(width: 310, height: 150)
+            }
+        }()
         layout.minimumLineSpacing = CGFloat(4)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
