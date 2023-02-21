@@ -13,6 +13,7 @@ import Foundation
     @IBOutlet weak var loiLabel: UILabel?
     @IBOutlet weak var rewardLabel: UILabel?
     @IBOutlet weak var ratingLabel: UILabel?
+    @IBOutlet weak var earnNowLabel: UILabel?
     @IBOutlet weak var playImageView: UIImageView?
     
     @IBOutlet weak var star1: UIImageView?
@@ -36,7 +37,7 @@ import Foundation
             switch type {
             case .simple: return "EARN \(reward)"
             case .compact: return "EARN\n\(reward)"
-            default: return "EARN \(reward)"
+            case .full_width: return reward
             }
         }()
         
@@ -49,7 +50,7 @@ import Foundation
             switch type {
             case .simple: return "Now in \(loi)!"
             case .compact: return loi
-            default: return "Now in \(loi)!"
+            case .full_width: return loi
             }
         }()
         
@@ -62,13 +63,15 @@ import Foundation
             switch type {
             case .simple: return .white
             case .compact: return color
-            default: return .white
+            case .full_width: return .white
             }
         }()
         
         rewardLabel?.textColor = usedColor
-        contentView.backgroundColor = color
         playImageView?.setImageColor(color: usedColor)
+        
+        earnNowLabel?.textColor = color
+        contentView.backgroundColor = color
     }}
     
     var type: WidgetType = .simple
@@ -80,8 +83,9 @@ import Foundation
         initSubviews()
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, withType type: WidgetType ) {
         super.init(frame: frame)
+        self.type = type
         initSubviews()
     }
     
@@ -96,7 +100,7 @@ import Foundation
             switch type {
             case .simple: return "SimpleSurveyView"
             case .compact: return "CompactSurveyView"
-            default: return "SimpleSurveyView"
+            case .full_width: return "FullWidthSurveyView"
             }
         }()
         
