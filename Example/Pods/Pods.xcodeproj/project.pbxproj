@@ -79,6 +79,11 @@
 		C733B79A29A0F73F00CBA9AC /* SimpleSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */; };
 		C733B79C29A37B0300CBA9AC /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C733B79B29A37B0300CBA9AC /* WidgetType.swift */; };
 		C733B79E29A3AC3B00CBA9AC /* FullWidthSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C733B79D29A3AC3B00CBA9AC /* FullWidthSurveyView.xib */; };
+		C76481BC29CB3554000A93E8 /* LeaderboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76481BB29CB3554000A93E8 /* LeaderboardView.xib */; };
+		C76481BE29CC7F50000A93E8 /* LeaderboardRankView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C76481BD29CC7F50000A93E8 /* LeaderboardRankView.xib */; };
+		C76481C029CCA680000A93E8 /* LeaderboardRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76481BF29CCA680000A93E8 /* LeaderboardRankingView.swift */; };
+		C7A10C7F29D06F0B00666D00 /* LeaderboardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C7E29D06F0B00666D00 /* LeaderboardDataSource.swift */; };
+		C7A10C8129D1CAA400666D00 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8029D1CAA400666D00 /* LeaderboardView.swift */; };
 		CC8134E408D702048EC8041BCEA26AB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977014395E454C2F2BE025E04F948C56 /* Question.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
@@ -215,6 +220,11 @@
 		C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleSurveyView.xib; sourceTree = "<group>"; };
 		C733B79B29A37B0300CBA9AC /* WidgetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
 		C733B79D29A3AC3B00CBA9AC /* FullWidthSurveyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FullWidthSurveyView.xib; sourceTree = "<group>"; };
+		C76481BB29CB3554000A93E8 /* LeaderboardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardView.xib; sourceTree = "<group>"; };
+		C76481BD29CC7F50000A93E8 /* LeaderboardRankView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardRankView.xib; sourceTree = "<group>"; };
+		C76481BF29CCA680000A93E8 /* LeaderboardRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRankingView.swift; sourceTree = "<group>"; };
+		C7A10C7E29D06F0B00666D00 /* LeaderboardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardDataSource.swift; sourceTree = "<group>"; };
+		C7A10C8029D1CAA400666D00 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		C821DC37F1B244816A3A56C4E3503E9F /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
@@ -576,6 +586,9 @@
 			children = (
 				36F60A5E2903E826CA6CDEEF6C1D576F /* SurveyDataSource.swift */,
 				DB2BBE2DC4389ED7FAB9A3CEB90A3448 /* SurveyView.swift */,
+				C76481BF29CCA680000A93E8 /* LeaderboardRankingView.swift */,
+				C7A10C7E29D06F0B00666D00 /* LeaderboardDataSource.swift */,
+				C7A10C8029D1CAA400666D00 /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -607,6 +620,8 @@
 				C733B79929A0F73F00CBA9AC /* SimpleSurveyView.xib */,
 				5B5CA8F5A9C33AF3CEBA41C17CFAF07D /* Assets */,
 				C733B79D29A3AC3B00CBA9AC /* FullWidthSurveyView.xib */,
+				C76481BB29CB3554000A93E8 /* LeaderboardView.xib */,
+				C76481BD29CC7F50000A93E8 /* LeaderboardRankView.xib */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -809,10 +824,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C76481BE29CC7F50000A93E8 /* LeaderboardRankView.xib in Resources */,
 				5D99B8104B55E9390FD5A419159936FB /* CoreImages.xcassets in Resources */,
 				C733B79E29A3AC3B00CBA9AC /* FullWidthSurveyView.xib in Resources */,
 				037AA1B1A21D9973ACE2D8F7CA462D63 /* Localizable.strings in Resources */,
 				C733B79A29A0F73F00CBA9AC /* SimpleSurveyView.xib in Resources */,
+				C76481BC29CB3554000A93E8 /* LeaderboardView.xib in Resources */,
 				D42CC3E5F26F2EC141E8EAA4D2319E4C /* SharedImages.xcassets in Resources */,
 				C733B79829A0EFA000CBA9AC /* CompactSurveyView.xib in Resources */,
 				9FA266D7BF7B4085AC9B98DAE2D0EBF2 /* WebViewController.xib in Resources */,
@@ -836,12 +853,14 @@
 				3F6840D4322C5CFCB09E938DAB4CC155 /* Answer.swift in Sources */,
 				1234C1625615A576AD71EE2A34EDE444 /* BitLabs.swift in Sources */,
 				8DF40E5B698DAD8837C03FD3A099837C /* BitLabs-dummy.m in Sources */,
+				C76481C029CCA680000A93E8 /* LeaderboardRankingView.swift in Sources */,
 				581DF26DAED8027CDAC3A8324B33CE04 /* BitLabsAPI.swift in Sources */,
 				C733B79629A0EBB300CBA9AC /* UIImageView+Extension.swift in Sources */,
 				5EA3EF932ED7D514DEC83CF1B2935669 /* BitLabsRequestInterceptor.swift in Sources */,
 				C4F35292B4B0A05065782C549B62CB5F /* BitLabsResponse.swift in Sources */,
 				0C3CE260C0C7DDAF6A172F30463DE7AC /* BitLabsRouter.swift in Sources */,
 				42EABD03F4E088FFF729A4153DCAEAE5 /* Category.swift in Sources */,
+				C7A10C8129D1CAA400666D00 /* LeaderboardView.swift in Sources */,
 				725864B8EAED6817E8996C4AA9641501 /* CheckSurveysResponse.swift in Sources */,
 				C6CE567407C66871007CA8C173915DB5 /* Details.swift in Sources */,
 				3034B6139C51C0D457F8873F2925B9B6 /* Error.swift in Sources */,
@@ -864,6 +883,7 @@
 				57FB86548498C757CB638234ACC1714F /* SurveyView.swift in Sources */,
 				7C47C50D9BB4915EA0F86CFEE1D585B6 /* UIColor+Extension.swift in Sources */,
 				62871A271108782C5456FD9743B415BE /* Visual.swift in Sources */,
+				C7A10C7F29D06F0B00666D00 /* LeaderboardDataSource.swift in Sources */,
 				3272671A9201913B2F6516A6C8AB2157 /* WebViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

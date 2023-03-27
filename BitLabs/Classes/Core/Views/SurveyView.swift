@@ -95,7 +95,6 @@ import Foundation
     }
     
     func initSubviews() {
-        // standard initialization logic
         let nibName: String = {
             switch type {
             case .simple: return "SimpleSurveyView"
@@ -108,10 +107,6 @@ import Foundation
         nib.instantiate(withOwner: self, options: nil)
         contentView.frame = bounds
         addSubview(contentView)
-        
-        determineRating()
-        
-        // custom initialization
     }
     
     @IBAction func onPress(_ sender: Any) {
