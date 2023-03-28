@@ -12,9 +12,10 @@ import UIKit
 class ViewController: UIViewController {
     
     private let uid = "YOUR_USER_ID"
-    private let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    private let token = "YOUR_APP_TOKEN"
     
     @IBOutlet weak var surveysContainer: UIView!
+    @IBOutlet weak var leaderboardContainer: UIView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -23,6 +24,17 @@ class ViewController: UIViewController {
         BitLabs.shared.setTags(["userType": "New", "isPremium": false])
         BitLabs.shared.setRewardCompletionHandler { reward in
             print("[Example] You earned: \(reward)")
+        }
+        
+        setupLeaderboard()
+    }
+    
+    func setupLeaderboard() {
+        BitLabs.shared.getLeaderboardView(parent: self) { leaderboard in
+            guard let leaderboard = leaderboard else { return }
+            
+            leaderboard.frame =  CGRect(origin: .zero, size: self.leaderboardContainer.frame.size)
+            self.leaderboardContainer.addSubview(leaderboard)
         }
     }
     

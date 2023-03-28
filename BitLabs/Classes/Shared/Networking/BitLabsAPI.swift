@@ -133,4 +133,23 @@ class BitLabsAPI {
                 }
             }
     }
+    
+    func getLeaderboard(_ completion: @escaping (GetLeaderboardResponse) -> ()) {
+        session
+            .request(BitLabsRouter.getLeaderboard)
+            .responseDecodable(of: BitLabsResponse<GetLeaderboardResponse>.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let blResponse):
+                    if let data = blResponse.data {
+                        completion(data)
+                        return
+                    }
+                    
+                    print("[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    
+                case .failure(let error):
+                    print("[BitLabs] Get App Settings Failure: \(error)")
+                }
+            }
+    }
 }

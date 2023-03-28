@@ -84,6 +84,10 @@
 		C76481C029CCA680000A93E8 /* LeaderboardRankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76481BF29CCA680000A93E8 /* LeaderboardRankingView.swift */; };
 		C7A10C7F29D06F0B00666D00 /* LeaderboardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C7E29D06F0B00666D00 /* LeaderboardDataSource.swift */; };
 		C7A10C8129D1CAA400666D00 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8029D1CAA400666D00 /* LeaderboardView.swift */; };
+		C7A10C8329D1D46700666D00 /* GetLeaderboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8229D1D46700666D00 /* GetLeaderboardResponse.swift */; };
+		C7A10C8529D1D97000666D00 /* OwnUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8429D1D97000666D00 /* OwnUser.swift */; };
+		C7A10C8729D1DA0A00666D00 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8629D1DA0A00666D00 /* Reward.swift */; };
+		C7A10C8929D1DA4200666D00 /* TopUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8829D1DA4200666D00 /* TopUser.swift */; };
 		CC8134E408D702048EC8041BCEA26AB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977014395E454C2F2BE025E04F948C56 /* Question.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
@@ -225,6 +229,10 @@
 		C76481BF29CCA680000A93E8 /* LeaderboardRankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardRankingView.swift; sourceTree = "<group>"; };
 		C7A10C7E29D06F0B00666D00 /* LeaderboardDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardDataSource.swift; sourceTree = "<group>"; };
 		C7A10C8029D1CAA400666D00 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		C7A10C8229D1D46700666D00 /* GetLeaderboardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLeaderboardResponse.swift; sourceTree = "<group>"; };
+		C7A10C8429D1D97000666D00 /* OwnUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnUser.swift; sourceTree = "<group>"; };
+		C7A10C8629D1DA0A00666D00 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		C7A10C8829D1DA4200666D00 /* TopUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUser.swift; sourceTree = "<group>"; };
 		C821DC37F1B244816A3A56C4E3503E9F /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
@@ -534,6 +542,9 @@
 				41171BCA64B045B1FBEE423512E4E5F1 /* Details.swift */,
 				B93D149A6DC075949A7D0A1F1E78FFE7 /* Survey.swift */,
 				C733B79B29A37B0300CBA9AC /* WidgetType.swift */,
+				C7A10C8429D1D97000666D00 /* OwnUser.swift */,
+				C7A10C8629D1DA0A00666D00 /* Reward.swift */,
+				C7A10C8829D1DA4200666D00 /* TopUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -652,6 +663,7 @@
 				65E1240420A525AAF2C3FD8D0B5EFC30 /* RestrictionReason.swift */,
 				C109251F908B4E2DE48A9440B0DA5E18 /* StartBonus.swift */,
 				DD137CC7DCF2467C7F2628B032A3C7A8 /* Visual.swift */,
+				C7A10C8229D1D46700666D00 /* GetLeaderboardResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -857,9 +869,11 @@
 				581DF26DAED8027CDAC3A8324B33CE04 /* BitLabsAPI.swift in Sources */,
 				C733B79629A0EBB300CBA9AC /* UIImageView+Extension.swift in Sources */,
 				5EA3EF932ED7D514DEC83CF1B2935669 /* BitLabsRequestInterceptor.swift in Sources */,
+				C7A10C8329D1D46700666D00 /* GetLeaderboardResponse.swift in Sources */,
 				C4F35292B4B0A05065782C549B62CB5F /* BitLabsResponse.swift in Sources */,
 				0C3CE260C0C7DDAF6A172F30463DE7AC /* BitLabsRouter.swift in Sources */,
 				42EABD03F4E088FFF729A4153DCAEAE5 /* Category.swift in Sources */,
+				C7A10C8929D1DA4200666D00 /* TopUser.swift in Sources */,
 				C7A10C8129D1CAA400666D00 /* LeaderboardView.swift in Sources */,
 				725864B8EAED6817E8996C4AA9641501 /* CheckSurveysResponse.swift in Sources */,
 				C6CE567407C66871007CA8C173915DB5 /* Details.swift in Sources */,
@@ -869,6 +883,7 @@
 				ADFE9B9246F5A1BD4365A9386FD63434 /* GetAppSettingsResponse.swift in Sources */,
 				12D09297EDF94CCF582FC6812D8F37EE /* GetOffersResponse.swift in Sources */,
 				5F90730BB097B305C40CB339F19D5037 /* Global.swift in Sources */,
+				C7A10C8529D1D97000666D00 /* OwnUser.swift in Sources */,
 				C733B79C29A37B0300CBA9AC /* WidgetType.swift in Sources */,
 				462BABC6D886C9ECA69D52160F8B3E69 /* LeaveReason.swift in Sources */,
 				D672D817075BFFD66D74CFC3BD952BA8 /* Localized.swift in Sources */,
@@ -880,6 +895,7 @@
 				5DC2A35023E38F2EA9D832951D80D54C /* String+Extension.swift in Sources */,
 				EB72A080FCB98420768D586BBD653FF1 /* Survey.swift in Sources */,
 				7FA372C9F89E05F2550CBA50862421D3 /* SurveyDataSource.swift in Sources */,
+				C7A10C8729D1DA0A00666D00 /* Reward.swift in Sources */,
 				57FB86548498C757CB638234ACC1714F /* SurveyView.swift in Sources */,
 				7C47C50D9BB4915EA0F86CFEE1D585B6 /* UIColor+Extension.swift in Sources */,
 				62871A271108782C5456FD9743B415BE /* Visual.swift in Sources */,

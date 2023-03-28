@@ -126,6 +126,18 @@ public class BitLabs: WebViewDelegate {
         return collectionView
     }
     
+    public func getLeaderboardView(parent: UIViewController, _ completionHandler: @escaping (LeaderboardView?) -> ()) {
+        ifConfigured { bitlabsAPI?.getLeaderboard { response in
+            guard let topUsers = response.topUsers else { return completionHandler(nil) }
+            
+            let leaderboardView = LeaderboardView()
+            leaderboardView.ownUser = response.ownUser
+            leaderboardView.rankings = topUsers
+            
+            completionHandler(leaderboardView)
+        }}
+    }
+    
     /// Stores the reward completion closure to use on every reward completion.
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
     public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {

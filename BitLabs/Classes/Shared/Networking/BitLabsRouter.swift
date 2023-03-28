@@ -14,6 +14,7 @@ enum BitLabsRouter {
     case getActions
     case getOffers
     case getAppSettings
+    case getLeaderboard
 	
 	private var baseURL: String {
 		return "https://api.bitlabs.ai/v1/client"
@@ -31,21 +32,19 @@ enum BitLabsRouter {
             return "offers"
         case .getAppSettings:
             return "settings/v2"
+        case .getLeaderboard:
+            return "leaderboard"
 		}
 	}
 	
 	var method: HTTPMethod {
 		switch self {
-		case .checkSurveys:
-			return .get
-		case .leaveSurvey:
-			return .post
-        case .getActions:
-            return .get
-        case .getOffers:
-            return .get
-        case .getAppSettings:
-            return .get
+		case .checkSurveys: return .get
+		case .leaveSurvey: return .post
+        case .getActions: return .get
+        case .getOffers: return .get
+        case .getAppSettings: return .get
+        case .getLeaderboard: return .get
 		}
 	}
 	
@@ -60,6 +59,8 @@ enum BitLabsRouter {
         case .getOffers:
             return ["platform": getPlatform()]
         case .getAppSettings:
+            return ["platform": getPlatform()]
+        case .getLeaderboard:
             return ["platform": getPlatform()]
 		}
 	}
