@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -16,42 +16,42 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYz-s4-QW6">
-                                <rect key="frame" x="16" y="14" width="343" height="230"/>
+                                <rect key="frame" x="16" y="58" width="358" height="283.33333333333331"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa">
-                                <rect key="frame" x="136.5" y="302" width="102" height="30"/>
+                                <rect key="frame" x="144" y="399.33333333333331" width="102" height="30"/>
                                 <state key="normal" title="Check Surveys"/>
                                 <connections>
                                     <action selector="checkForSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="awW-3T-7KV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVb-5N-F6j">
-                                <rect key="frame" x="129.5" y="352" width="116" height="30"/>
+                                <rect key="frame" x="137" y="449.33333333333331" width="116" height="30"/>
                                 <state key="normal" title="Launch Offerwall"/>
                                 <connections>
                                     <action selector="showOfferWall:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Wj-Sj-VJI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pI-gV-ajL">
-                                <rect key="frame" x="146" y="402" width="83" height="30"/>
+                                <rect key="frame" x="153.66666666666666" y="499.33333333333326" width="83" height="30"/>
                                 <state key="normal" title="Get Surveys"/>
                                 <connections>
                                     <action selector="getSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BxD-cJ-bsp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hk7-s4-apI">
-                                <rect key="frame" x="116.5" y="252" width="142" height="30"/>
+                                <rect key="frame" x="124" y="349.33333333333331" width="142" height="30"/>
                                 <state key="normal" title="Authororize Tracking"/>
                                 <connections>
                                     <action selector="requestTrackingAuthorization:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F25-ae-0b9"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX2-bL-55O">
-                                <rect key="frame" x="16" y="452" width="343" height="200"/>
+                                <rect key="frame" x="16" y="549.33333333333337" width="358" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="g0E-Oo-b3r"/>
                                 </constraints>

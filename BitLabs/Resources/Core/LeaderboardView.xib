@@ -33,7 +33,7 @@
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="dyz-vV-eFb">
                     <rect key="frame" x="0.0" y="60" width="414" height="408"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemBrownColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hUX-2q-hxI">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -42,26 +42,33 @@
                     </collectionViewFlowLayout>
                 </collectionView>
             </subviews>
+            <color key="backgroundColor" systemColor="systemCyanColor"/>
             <constraints>
                 <constraint firstItem="S3e-63-1Th" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6xK-NL-36w"/>
                 <constraint firstItem="1zb-l4-fzL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="91m-IO-9ht"/>
+                <constraint firstAttribute="bottom" secondItem="dyz-vV-eFb" secondAttribute="bottom" constant="8" id="Ewd-1p-VwP"/>
                 <constraint firstItem="1zb-l4-fzL" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.08" id="Iiz-e9-pA2"/>
                 <constraint firstItem="dyz-vV-eFb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="K9c-tP-vaC"/>
                 <constraint firstAttribute="trailing" secondItem="1zb-l4-fzL" secondAttribute="trailing" id="LPO-8G-DC3"/>
                 <constraint firstAttribute="bottom" secondItem="dyz-vV-eFb" secondAttribute="bottom" constant="8" id="Qm3-V3-74X"/>
+                <constraint firstAttribute="trailing" secondItem="dyz-vV-eFb" secondAttribute="trailing" id="Roc-nz-ZR8"/>
                 <constraint firstItem="S3e-63-1Th" firstAttribute="top" secondItem="1zb-l4-fzL" secondAttribute="bottom" id="Tld-aU-xk2"/>
                 <constraint firstItem="dyz-vV-eFb" firstAttribute="top" secondItem="S3e-63-1Th" secondAttribute="bottom" constant="4" id="dKI-dA-aE5"/>
                 <constraint firstItem="1zb-l4-fzL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="dUg-en-dqr"/>
                 <constraint firstAttribute="trailing" secondItem="S3e-63-1Th" secondAttribute="trailing" id="fu5-bG-ggM"/>
                 <constraint firstAttribute="trailing" secondItem="dyz-vV-eFb" secondAttribute="trailing" id="gUg-Cp-mT6"/>
+                <constraint firstItem="dyz-vV-eFb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iY4-cJ-osn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="137.68115942028987" y="-26.116071428571427"/>
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemCyanColor">
+            <color red="0.19607843137254902" green="0.67843137254901964" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

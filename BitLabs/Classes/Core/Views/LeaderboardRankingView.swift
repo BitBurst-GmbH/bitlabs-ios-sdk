@@ -10,30 +10,30 @@ import Foundation
 @IBDesignable class LeaderboardRankingView: UIView {
     
     @IBOutlet var contentView: UIView!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var rewardLabel: UILabel!
-    @IBOutlet weak var currencyImageView: UIImageView!
+    @IBOutlet weak var rankLabel: UILabel?
+    @IBOutlet weak var usernameLabel: UILabel?
+    @IBOutlet weak var topLabel: UILabel?
+    @IBOutlet weak var rewardLabel: UILabel?
+    @IBOutlet weak var currencyImageView: UIImageView?
     
     @IBInspectable
     var rank: Int = 0 { didSet {
-        rankLabel.text = String(rank)
+        rankLabel?.text = String(rank)
     }}
     
     @IBInspectable
     var reward: String = "" { didSet {
-        rewardLabel.text = reward
+        rewardLabel?.text = reward
     }}
     
     @IBInspectable
     var username: String = "anonymous" { didSet {
-        usernameLabel.text = String(username)
+        usernameLabel?.text = String(username)
     }}
     
     @IBInspectable
     var currencyIcon: UIImage? = nil { didSet {
-        currencyImageView.image = currencyIcon
+        currencyImageView?.image = currencyIcon
     }}
     
     required init?(coder aDecoder: NSCoder) {

@@ -12,7 +12,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private let uid = "YOUR_USER_ID"
-    private let token = "YOUR_APP_TOKEN"
+    private let token = "7afbdd12-1a97-4496-bcbe-1d0a7376427e"
     
     @IBOutlet weak var surveysContainer: UIView!
     @IBOutlet weak var leaderboardContainer: UIView!
