@@ -88,6 +88,8 @@
 		C7A10C8729D1DA0A00666D00 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8629D1DA0A00666D00 /* Reward.swift */; };
 		C7A10C8929D1DA4200666D00 /* TopUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A10C8829D1DA4200666D00 /* TopUser.swift */; };
 		C7A10C8D29D5BB4C00666D00 /* LeaderboardRankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7A10C8C29D5BB4C00666D00 /* LeaderboardRankingCell.xib */; };
+		C7C6C27829DB06290016428A /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6C27729DB06290016428A /* Currency.swift */; };
+		C7C6C27A29DB06E30016428A /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7C6C27929DB06E30016428A /* Symbol.swift */; };
 		CC8134E408D702048EC8041BCEA26AB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 977014395E454C2F2BE025E04F948C56 /* Question.swift */; };
 		CEBFFEED65D877702B2F36102528CF6D /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0FEA7D0ABAF694A3F75736158344A91 /* EventMonitor.swift */; };
 		D0EA90FBF83350C49E6EF6C8A98D6F00 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91762C69C08629CBFD921AEBACE63AED /* AFError.swift */; };
@@ -233,6 +235,8 @@
 		C7A10C8629D1DA0A00666D00 /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		C7A10C8829D1DA4200666D00 /* TopUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopUser.swift; sourceTree = "<group>"; };
 		C7A10C8C29D5BB4C00666D00 /* LeaderboardRankingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaderboardRankingCell.xib; sourceTree = "<group>"; };
+		C7C6C27729DB06290016428A /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		C7C6C27929DB06E30016428A /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		C821DC37F1B244816A3A56C4E3503E9F /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCDA57764A8E03532C6B4955E87CDD8F /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
@@ -545,6 +549,8 @@
 				C7A10C8429D1D97000666D00 /* OwnUser.swift */,
 				C7A10C8629D1DA0A00666D00 /* Reward.swift */,
 				C7A10C8829D1DA4200666D00 /* TopUser.swift */,
+				C7C6C27729DB06290016428A /* Currency.swift */,
+				C7C6C27929DB06E30016428A /* Symbol.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -881,6 +887,7 @@
 				F7A4CAFD94C501562BCC887DE3F4C404 /* ErrorDetails.swift in Sources */,
 				4D4D310C7355F8B28CFEFAB8BBCE3A99 /* GetActionsResponse.swift in Sources */,
 				ADFE9B9246F5A1BD4365A9386FD63434 /* GetAppSettingsResponse.swift in Sources */,
+				C7C6C27A29DB06E30016428A /* Symbol.swift in Sources */,
 				12D09297EDF94CCF582FC6812D8F37EE /* GetOffersResponse.swift in Sources */,
 				5F90730BB097B305C40CB339F19D5037 /* Global.swift in Sources */,
 				C7A10C8529D1D97000666D00 /* OwnUser.swift in Sources */,
@@ -898,6 +905,7 @@
 				C7A10C8729D1DA0A00666D00 /* Reward.swift in Sources */,
 				57FB86548498C757CB638234ACC1714F /* SurveyView.swift in Sources */,
 				7C47C50D9BB4915EA0F86CFEE1D585B6 /* UIColor+Extension.swift in Sources */,
+				C7C6C27829DB06290016428A /* Currency.swift in Sources */,
 				62871A271108782C5456FD9743B415BE /* Visual.swift in Sources */,
 				C7A10C7F29D06F0B00666D00 /* LeaderboardConfigurer.swift in Sources */,
 				3272671A9201913B2F6516A6C8AB2157 /* WebViewController.swift in Sources */,

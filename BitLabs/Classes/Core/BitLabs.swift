@@ -19,6 +19,7 @@ public class BitLabs: WebViewDelegate {
     private var uid = ""
     private var adId = ""
     private var token = ""
+    private var currencyIcon = ""
     private var hasOffers = false
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
@@ -43,7 +44,7 @@ public class BitLabs: WebViewDelegate {
         
         bitlabsAPI = BitLabsAPI(token, uid)
         
-        getWidgetColor()
+        getAppSettings()
         
         getHasOffers()
         
@@ -53,11 +54,14 @@ public class BitLabs: WebViewDelegate {
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
     
-    private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled in
+    private func getAppSettings() {
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
             self.widgetColor = visual.surveyIconColor.toUIColor
             self.headerColor = visual.navigationColor.toUIColor
             self.isOffersEnabled = isOffersEnabled
+
+            guard let currency = currency, currency.symbol.isImage else { return }
+            self.currencyIcon = currency.symbol.content
         }
     }
     
