@@ -1,5 +1,5 @@
 //
-//  LeaderboardRankingView.swift
+//  LeaderboardRankingCell.swift
 //  BitLabs
 //
 //  Created by Omar Raad on 23.03.23.
@@ -7,9 +7,8 @@
 
 import Foundation
 
-@IBDesignable class LeaderboardRankingView: UIView {
+@IBDesignable class LeaderboardRankingCell: UICollectionViewCell {
     
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var rankLabel: UILabel?
     @IBOutlet weak var usernameLabel: UILabel?
     @IBOutlet weak var topLabel: UILabel?
@@ -19,6 +18,7 @@ import Foundation
     @IBInspectable
     var rank: Int = 0 { didSet {
         rankLabel?.text = String(rank)
+        topLabel?.text = rank < 4 ? String(rank) : ""
     }}
     
     @IBInspectable
@@ -35,26 +35,4 @@ import Foundation
     var currencyIcon: UIImage? = nil { didSet {
         currencyImageView?.image = currencyIcon
     }}
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        initSubviews()
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        initSubviews()
-    }
-    
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        initSubviews()
-    }
-    
-    func initSubviews() {
-        let nib = UINib(nibName: "LeaderboardRankingView", bundle: bundle)
-        nib.instantiate(withOwner: self, options: nil)
-        contentView.frame = bounds
-        addSubview(contentView)
-    }
 }

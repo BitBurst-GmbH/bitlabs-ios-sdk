@@ -14,7 +14,7 @@ public class LeaderboardView: UIView {
     @IBOutlet weak var rankingsCollectionView: UICollectionView?
     
     
-    var leaderboardDataSource: LeaderboardDataSource? = nil
+    var leaderboardConfigurer: LeaderboardConfigurer? = nil
     
     var ownUser: OwnUser? = nil { didSet {
         guard let ownUser = ownUser else { return }
@@ -50,14 +50,10 @@ public class LeaderboardView: UIView {
     
     private func setupRankingList(_ rankings: [TopUser]) {
         guard let collectionView = rankingsCollectionView else { return }
-        leaderboardDataSource = LeaderboardDataSource()
-        collectionView.dataSource = leaderboardDataSource
+        leaderboardConfigurer = LeaderboardConfigurer(topUsers: rankings)
+        collectionView.dataSource = leaderboardConfigurer
+        collectionView.delegate = leaderboardConfigurer
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
-        
-        let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.itemSize = CGSize(width: 300, height: 55)
-        
-        
+        collectionView.register(UINib(nibName: "LeaderboardRankingCell", bundle: bundle), forCellWithReuseIdentifier: "LeaderboardRankingCell")
     }
 }

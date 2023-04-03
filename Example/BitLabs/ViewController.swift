@@ -33,7 +33,8 @@ class ViewController: UIViewController {
         BitLabs.shared.getLeaderboardView(parent: self) { leaderboard in
             guard let leaderboard = leaderboard else { return }
             
-            leaderboard.frame =  CGRect(origin: .zero, size: self.leaderboardContainer.frame.size)
+            leaderboard.frame = self.leaderboardContainer.bounds
+
             self.leaderboardContainer.addSubview(leaderboard)
         }
     }
@@ -68,7 +69,7 @@ class ViewController: UIViewController {
                 print("[Example] \(surveys.map { "Survey \($0.id) in Category \($0.details.category.name)" })")
 
                 let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys, parent: self, type: .full_width)
-                collection.frame = CGRect(origin: .zero, size: self.surveysContainer.frame.size)
+                collection.frame = self.surveysContainer.bounds
 
                 self.surveysContainer.addSubview(collection)
             }
