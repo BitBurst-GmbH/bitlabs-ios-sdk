@@ -145,11 +145,24 @@ class BitLabsAPI {
                         return
                     }
                     
-                    print("[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    print("[BitLabs] Get Leaderboard \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
                     
                 case .failure(let error):
-                    print("[BitLabs] Get App Settings Failure: \(error)")
+                    print("[BitLabs] Get Leaderboard Failure: \(error)")
                 }
             }
+    }
+    
+    func getCurrencyIcon(url: String, _ completion: @escaping (UIImage?) -> ()) {
+        AF.request(url).responseData { response in
+            switch (response.result) {
+            case .success(let data):
+                completion(UIImage(data: data))
+                
+            case .failure(let error):
+                print("[BitLabs] Get Currency Icon Failure: \(error)")
+                completion(nil)
+            }
+        }
     }
 }

@@ -37,6 +37,11 @@ import Foundation
     
     @IBInspectable
     var currencyIcon: UIImage? = nil { didSet {
-        currencyIV?.image = currencyIcon
+        guard let image = currencyIcon else {
+            currencyIV?.isHidden = true
+            return
+        }
+        
+        currencyIV?.image = image
     }}
 }

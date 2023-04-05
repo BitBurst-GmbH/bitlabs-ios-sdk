@@ -10,9 +10,11 @@ import Foundation
 class LeaderboardConfigurer: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var topUsers: [TopUser]
+    var image: UIImage?
     
-    init(topUsers: [TopUser]) {
+    init(topUsers: [TopUser], image: UIImage?) {
         self.topUsers = topUsers
+        self.image = image
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,6 +29,7 @@ class LeaderboardConfigurer: NSObject, UICollectionViewDataSource, UICollectionV
         cell.rank = user.rank
         cell.username = user.name
         cell.reward = String(user.earningsRaw)
+        cell.currencyIcon = image
         
         return cell;
     }

@@ -23,16 +23,21 @@ public class LeaderboardView: UIView {
     }}
     
     var rankings: [TopUser] = [] { didSet {
-        setupRankingList(rankings)
+        setupRankingList()
     }}
+    
+    var currencyIconUrl: String = ""
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+
         initSubviews()
     }
     
-    override init(frame: CGRect) {
+    init(currencyIconUrl: String, frame: CGRect) {
+        self.currencyIconUrl = currencyIconUrl
         super.init(frame: frame)
+
         initSubviews()
     }
     
@@ -48,12 +53,15 @@ public class LeaderboardView: UIView {
         addSubview(contentView)
     }
     
-    private func setupRankingList(_ rankings: [TopUser]) {
+    private func setupRankingList() {
         guard let collectionView = rankingsCollectionView else { return }
-        leaderboardConfigurer = LeaderboardConfigurer(topUsers: rankings)
-        collectionView.dataSource = leaderboardConfigurer
-        collectionView.delegate = leaderboardConfigurer
         
-        collectionView.register(UINib(nibName: "LeaderboardRankingCell", bundle: bundle), forCellWithReuseIdentifier: "LeaderboardRankingCell")
+        BitLabs.shared.getCurrencyIcon(currencyIconUrl: currencyIconUrl) { image in
+            self.leaderboardConfigurer = LeaderboardConfigurer(topUsers: self.rankings, image: image)
+            collectionView.dataSource = self.leaderboardConfigurer
+            collectionView.delegate = self.leaderboardConfigurer
+            
+            collectionView.register(UINib(nibName: "LeaderboardRankingCell", bundle: bundle), forCellWithReuseIdentifier: "LeaderboardRankingCell")
+        }
     }
 }

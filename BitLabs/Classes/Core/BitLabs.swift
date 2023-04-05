@@ -130,11 +130,11 @@ public class BitLabs: WebViewDelegate {
         return collectionView
     }
     
-    public func getLeaderboardView(parent: UIViewController, _ completionHandler: @escaping (LeaderboardView?) -> ()) {
+    public func getLeaderboardView(parent: UIView, _ completionHandler: @escaping (LeaderboardView?) -> ()) {
         ifConfigured { bitlabsAPI?.getLeaderboard { response in
             guard let topUsers = response.topUsers else { return completionHandler(nil) }
             
-            let leaderboardView = LeaderboardView()
+            let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, frame: parent.bounds)
             leaderboardView.ownUser = response.ownUser
             leaderboardView.rankings = topUsers
             
@@ -179,6 +179,10 @@ public class BitLabs: WebViewDelegate {
     
     private func getHasOffers() {
         bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
+    }
+    
+    func getCurrencyIcon(currencyIconUrl: String, _ completion: @escaping (UIImage?) -> ()) {
+        bitlabsAPI?.getCurrencyIcon(url: currencyIconUrl, completion)
     }
     
     private func ifConfigured(block: () -> ()) {

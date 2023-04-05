@@ -12,7 +12,7 @@ import UIKit
 class ViewController: UIViewController {
     
     private let uid = "YOUR_USER_ID"
-    private let token = "7afbdd12-1a97-4496-bcbe-1d0a7376427e"
+    private let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
     
     @IBOutlet weak var surveysContainer: UIView!
     @IBOutlet weak var leaderboardContainer: UIView!
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     func setupLeaderboard() {
-        BitLabs.shared.getLeaderboardView(parent: self) { leaderboard in
+        BitLabs.shared.getLeaderboardView(parent: leaderboardContainer) { leaderboard in
             guard let leaderboard = leaderboard else { return }
             
             leaderboard.frame = self.leaderboardContainer.bounds
