@@ -157,7 +157,18 @@ class BitLabsAPI {
         AF.request(url).responseData { response in
             switch (response.result) {
             case .success(let data):
-                completion(UIImage(data: data))
+                guard let mimeType = response.response?.mimeType, mimeType == "image/svg+xml" else {
+                    completion(UIImage(data: data))
+                    return
+                }
+                
+                guard let image = SVG(data)?.image() else {
+                    print("[BitLabs] Failed converting SVG to UIImage")
+                    completion(nil)
+                    return
+                }
+                
+                completion(image)
                 
             case .failure(let error):
                 print("[BitLabs] Get Currency Icon Failure: \(error)")

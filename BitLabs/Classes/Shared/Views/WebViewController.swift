@@ -150,7 +150,7 @@ extension WebViewController: WKNavigationDelegate {
         
         if shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url)
-            print("[BitLabs] Redirected to browser. No need to open it locally")
+            print("[BitLabs] Redirected to browser. It includes Offers.")
             decisionHandler(.cancel)
             dismiss(animated: true)
             return
