@@ -57,12 +57,12 @@ import Foundation
         loiLabel?.text = loiStr
     }}
     
-    var color = "000000".toUIColor { didSet {
+    var color: [UIColor] = [.black, .black] { didSet {
         
         let usedColor: UIColor = {
             switch type {
             case .simple: return .white
-            case .compact: return color
+            case .compact: return color.first!
             case .full_width: return .white
             }
         }()
@@ -70,8 +70,8 @@ import Foundation
         rewardLabel?.textColor = usedColor
         playImageView?.setImageColor(color: usedColor)
         
-        earnNowLabel?.textColor = color
-        contentView.backgroundColor = color
+        earnNowLabel?.textColor = color.first!
+        changeGradient(of: contentView, withColors: color)
     }}
     
     var type: WidgetType = .simple

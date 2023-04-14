@@ -9,7 +9,6 @@ import Foundation
 
 let bundle = Bundle(for: WebViewController.self)
 
-
 func randomSurveys() -> [Survey] {
     var surveys = [Survey]()
     
@@ -28,4 +27,14 @@ class Exception: Error, CustomStringConvertible {
     init(_ message: String) {
         self.message = message
     }
+}
+
+func changeGradient(of view: UIView, withColors colors: [UIColor]) {
+    let gradient = CAGradientLayer()
+    gradient.colors = colors.map { $0.cgColor }
+    gradient.cornerRadius = view.layer.cornerRadius
+    gradient.frame = view.bounds
+    gradient.startPoint = CGPoint(x: 0, y: 1)
+    gradient.endPoint = CGPoint(x: 1, y: 0)
+    view.layer.insertSublayer(gradient, at: 0)
 }

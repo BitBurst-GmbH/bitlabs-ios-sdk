@@ -11,10 +11,10 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
     
     private let parent: UIViewController
     private let surveys: [Survey]
-    private let color: UIColor
+    private let color: [UIColor]
     private let type: WidgetType
     
-    public init(surveys: [Survey], parent: UIViewController, color: UIColor, type: WidgetType) {
+    public init(surveys: [Survey], parent: UIViewController, color: [UIColor], type: WidgetType) {
         self.surveys = surveys
         self.parent = parent
         self.color = color

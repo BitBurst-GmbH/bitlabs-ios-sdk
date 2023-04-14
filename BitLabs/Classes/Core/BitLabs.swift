@@ -23,8 +23,8 @@ public class BitLabs: WebViewDelegate {
     private var hasOffers = false
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
-    private var widgetColor = "000000".toUIColor
-    private var headerColor = "000000".toUIColor
+    private var widgetColor = ["000000".toUIColor, "000000".toUIColor]
+    private var headerColor = ["000000".toUIColor, "000000".toUIColor]
     
     private var onReward: ((Float) -> ())?
     
@@ -56,8 +56,8 @@ public class BitLabs: WebViewDelegate {
     
     private func getAppSettings() {
         bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
-            self.widgetColor = visual.surveyIconColor.toUIColor
-            self.headerColor = visual.navigationColor.toUIColor
+            self.widgetColor = visual.surveyIconColor.extractColors
+            self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
 
             guard let currency = currency, currency.symbol.isImage else { return }

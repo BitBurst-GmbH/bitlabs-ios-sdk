@@ -41,7 +41,7 @@ class WebViewController: UIViewController {
     var surveyId = ""
     var networkId = ""
     var shouldOpenExternally = false
-    var color = "000000".toUIColor
+    var color: [UIColor] = [.black, .black]
     var tags: [String: Any] = [:]
     
     var delegate: WebViewDelegate?
@@ -51,14 +51,18 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        var isColorBright = false
+        
+        color.forEach { isColorBright = isColorBright || $0.luminance > 0.729 }
+        
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         
-        topBarView.backgroundColor = color
+        changeGradient(of: topBarView, withColors: color)
         
-        backButton.tintColor = color.luminance > 0.729 ? .black : .white
-        closeButton.tintColor = color.luminance > 0.729 ? .black : .white
+        backButton.tintColor = isColorBright ? .black : .white
+        closeButton.tintColor = isColorBright ? .black : .white
         
         loadOfferwall()
     }
