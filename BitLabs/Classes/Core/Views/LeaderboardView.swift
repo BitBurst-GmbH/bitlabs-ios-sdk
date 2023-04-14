@@ -27,6 +27,7 @@ public class LeaderboardView: UIView {
     }}
     
     var currencyIconUrl: String = ""
+    var color = UIColor.black
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -34,8 +35,9 @@ public class LeaderboardView: UIView {
         initSubviews()
     }
     
-    init(currencyIconUrl: String, frame: CGRect) {
+    init(currencyIconUrl: String, color: UIColor?, frame: CGRect) {
         self.currencyIconUrl = currencyIconUrl
+        self.color = color ?? .black
         super.init(frame: frame)
 
         initSubviews()
@@ -57,7 +59,7 @@ public class LeaderboardView: UIView {
         guard let collectionView = rankingsCollectionView else { return }
         
         BitLabs.shared.getCurrencyIcon(currencyIconUrl: currencyIconUrl) { image in
-            self.leaderboardConfigurer = LeaderboardConfigurer(topUsers: self.rankings, image: image)
+            self.leaderboardConfigurer = LeaderboardConfigurer(topUsers: self.rankings, ownRank: self.ownUser?.rank ?? -1, image: image, color: self.color)
             collectionView.dataSource = self.leaderboardConfigurer
             collectionView.delegate = self.leaderboardConfigurer
             

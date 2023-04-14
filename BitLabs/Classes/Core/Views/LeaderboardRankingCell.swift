@@ -15,6 +15,7 @@ import Foundation
     @IBOutlet weak var rewardLabel: UILabel?
     @IBOutlet weak var currencyIV: UIImageView?
     @IBOutlet weak var trophyIV: UIImageView!
+    @IBOutlet weak var youLabel: UILabel!
     
     @IBInspectable
     var rank: Int = 0 { didSet {
@@ -22,7 +23,6 @@ import Foundation
         let isTop3 = rank < 4
         topLabel?.text = isTop3 ? String(rank) : ""
         trophyIV?.isHidden = !isTop3
-        trophyIV.setImageColor(color: .blue)
     }}
     
     @IBInspectable
@@ -43,5 +43,14 @@ import Foundation
         }
         
         currencyIV?.image = image
+    }}
+    
+    @IBInspectable
+    var color: UIColor = .black { didSet {
+        trophyIV.setImageColor(color: color)
+    }}
+    
+    var isOwnUser: Bool = false { didSet {
+        youLabel.isHidden = !isOwnUser
     }}
 }

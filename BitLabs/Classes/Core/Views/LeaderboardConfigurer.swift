@@ -11,10 +11,14 @@ class LeaderboardConfigurer: NSObject, UICollectionViewDataSource, UICollectionV
     
     var topUsers: [TopUser]
     var image: UIImage?
+    var color: UIColor
+    var rank: Int
     
-    init(topUsers: [TopUser], image: UIImage?) {
+    init(topUsers: [TopUser], ownRank: Int, image: UIImage?, color: UIColor) {
         self.topUsers = topUsers
         self.image = image
+        self.color = color
+        self.rank = ownRank
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,7 +31,9 @@ class LeaderboardConfigurer: NSObject, UICollectionViewDataSource, UICollectionV
         let user = topUsers[indexPath.item]
         
         cell.rank = user.rank
+        cell.color = color
         cell.username = user.name
+        cell.isOwnUser = user.rank == rank
         cell.reward = String(user.earningsRaw)
         cell.currencyIcon = image
         
