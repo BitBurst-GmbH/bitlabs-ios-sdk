@@ -108,7 +108,7 @@ public class BitLabs: WebViewDelegate {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
     }
     
-    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType) -> UICollectionView {
+    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = {
             switch type {
