@@ -66,4 +66,14 @@ public class LeaderboardView: UIView {
             collectionView.register(UINib(nibName: "LeaderboardRankingCell", bundle: bundle), forCellWithReuseIdentifier: "LeaderboardRankingCell")
         }
     }
+    
+    @IBAction func onTap(_ sender: Any) {
+        guard var vc = window?.rootViewController else { return }
+        
+        while let presentedVC = vc.presentedViewController {
+            vc = presentedVC
+        }
+        
+        BitLabs.shared.launchOfferWall(parent: vc)
+    }
 }

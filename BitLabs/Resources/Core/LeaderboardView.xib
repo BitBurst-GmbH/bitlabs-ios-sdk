@@ -57,8 +57,16 @@
                 <constraint firstItem="dyz-vV-eFb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="iY4-cJ-osn"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="WpG-8L-1ZP" appends="YES" id="QJt-RA-YQB"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="-193.86160714285714"/>
         </view>
+        <tapGestureRecognizer id="WpG-8L-1ZP">
+            <connections>
+                <action selector="onTap:" destination="-1" id="QXw-wZ-tUD"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <systemColor name="systemBackgroundColor">
