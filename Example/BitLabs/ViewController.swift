@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     func setupLeaderboard() {
         BitLabs.shared.getLeaderboardView(parent: leaderboardContainer) { leaderboard in
             guard let leaderboard = leaderboard else { return }
-            
+
             leaderboard.frame = self.leaderboardContainer.bounds
 
             self.leaderboardContainer.addSubview(leaderboard)
