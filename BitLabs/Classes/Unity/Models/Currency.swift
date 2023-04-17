@@ -14,7 +14,7 @@ import Foundation
     let currencyPromotion: Int?
     let bonusPercentage: Int
     
-    @objc init(floorDecimal: Bool, factor: String, symbol: Symbol, currencyPromotion: Int?, bonusPercentage: Int) {
+    @objc init(floorDecimal: Bool, factor: String, symbol: Symbol, currencyPromotion: Int, bonusPercentage: Int) {
         self.floorDecimal = floorDecimal
         self.factor = factor
         self.symbol = symbol

@@ -23,8 +23,8 @@ public class BitLabs: WebViewDelegate {
     private var hasOffers = false
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
-    private var widgetColor = ["000000".toUIColor, "000000".toUIColor]
-    private var headerColor = ["000000".toUIColor, "000000".toUIColor]
+    private var widgetColor = ["000000", "000000"]
+    private var headerColor = ["000000", "000000"]
     
     private var onReward: ((Float) -> ())?
     
@@ -122,7 +122,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor, type: type)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
@@ -134,7 +134,7 @@ public class BitLabs: WebViewDelegate {
         ifConfigured { bitlabsAPI?.getLeaderboard { response in
             guard let topUsers = response.topUsers else { return completionHandler(nil) }
             
-            let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, color: self.widgetColor.first, frame: parent.bounds)
+            let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, color: self.widgetColor.first?.toUIColor, frame: parent.bounds)
             leaderboardView.ownUser = response.ownUser
             leaderboardView.rankings = topUsers
             
@@ -157,7 +157,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.uid = uid
             webViewController.tags = tags
             webViewController.adId = adId
-            webViewController.color = headerColor
+            webViewController.color = headerColor.map { $0.toUIColor }
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self
