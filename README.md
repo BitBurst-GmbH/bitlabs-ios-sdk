@@ -1,4 +1,4 @@
-# BitLabs iOS v2
+# BitLabs iOS v3
 
 [![Version](https://img.shields.io/cocoapods/v/BitLabs.svg?style=flat)](https://cocoapods.org/pods/BitLabs)
 [![License](https://img.shields.io/cocoapods/l/BitLabs.svg?style=flat)](https://cocoapods.org/pods/BitLabs)
@@ -19,7 +19,7 @@ pod 'BitLabs'
 
 ## Guide
 
-Refer to the full guide here: [iOS SDK v2](https://developer.bitlabs.ai/docs/ios-sdk-v2)
+Refer to the full guide here: [iOS SDK v3](https://developer.bitlabs.ai/docs/ios-sdk-v3)
 
 ## Author
 
