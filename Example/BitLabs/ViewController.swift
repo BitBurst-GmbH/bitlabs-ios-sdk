@@ -12,13 +12,20 @@ import UIKit
 class ViewController: UIViewController {
     
     private let uid = "YOUR_USER_ID"
-    private let token = "46d31e1e-315a-4b52-b0de-eca6062163af"
+    private var token = "YOUR_APP_TOKEN"
     
     @IBOutlet weak var surveysContainer: UIView!
     @IBOutlet weak var leaderboardContainer: UIView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+           let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+           let plist = try? PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? Dictionary<String, String> {
+            token = plist["APP_TOKEN"] ?? token
+        }
+        
         BitLabs.shared.configure(token: token, uid: uid)
         
         BitLabs.shared.setTags(["userType": "New", "isPremium": false])
