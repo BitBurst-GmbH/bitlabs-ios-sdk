@@ -12,17 +12,37 @@ import UIKit
 class ViewController: UIViewController {
     
     private let uid = "YOUR_USER_ID"
-    private let token = "YOUR_APP_TOKEN"
+    private var token = "YOUR_APP_TOKEN"
     
     @IBOutlet weak var surveysContainer: UIView!
+    @IBOutlet weak var leaderboardContainer: UIView!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+           let data = try? Data(contentsOf: URL(fileURLWithPath: path)),
+           let plist = try? PropertyListSerialization.propertyList(from: data, options: .mutableContainers, format: nil) as? Dictionary<String, String> {
+            token = plist["APP_TOKEN"] ?? token
+        }
+        
         BitLabs.shared.configure(token: token, uid: uid)
         
         BitLabs.shared.setTags(["userType": "New", "isPremium": false])
         BitLabs.shared.setRewardCompletionHandler { reward in
             print("[Example] You earned: \(reward)")
+        }
+        
+        setupLeaderboard()
+    }
+    
+    func setupLeaderboard() {
+        BitLabs.shared.getLeaderboardView { leaderboard in
+            guard let leaderboard = leaderboard else { return }
+
+            leaderboard.frame = self.leaderboardContainer.bounds
+
+            self.leaderboardContainer.addSubview(leaderboard)
         }
     }
     
@@ -56,7 +76,7 @@ class ViewController: UIViewController {
                 print("[Example] \(surveys.map { "Survey \($0.id) in Category \($0.details.category.name)" })")
 
                 let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys, parent: self)
-                collection.frame = CGRect(origin: .zero, size: self.surveysContainer.frame.size)
+                collection.frame = self.surveysContainer.bounds
 
                 self.surveysContainer.addSubview(collection)
             }

@@ -19,8 +19,8 @@ import AppTrackingTransparency
     private var uid = ""
     private var adId = ""
     private var token = ""
-    private var widgetColor = ""
-    private var headerColor = ""
+    private var widgetColor = ["", ""]
+    private var headerColor = ["", ""]
     private var hasOffers = false
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
@@ -52,9 +52,9 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled in
-            self.widgetColor = visual.surveyIconColor
-            self.headerColor = visual.navigationColor
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, _ in
+            self.widgetColor = visual.surveyIconColor.extractColors
+            self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
         }
     }
@@ -106,7 +106,7 @@ import AppTrackingTransparency
         }}
     }
     
-    @objc public func getSurveys(_ completionHandler: @escaping ([Survey])-> ()) {
+    @objc public func getSurveys(_ completionHandler: @escaping ([Survey]) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys { result in
             switch result {
             case .failure(let error):
@@ -115,6 +115,10 @@ import AppTrackingTransparency
                 completionHandler(surveys)
             }
         }}
+    }
+    
+    @objc public func getLeaderboard(_ completionHandler: @escaping (GetLeaderboardResponse) -> ()) {
+        ifConfigured { bitlabsAPI?.getLeaderboard(completionHandler) }
     }
     
     /// Stores the reward completion closure to use on every reward completion.
@@ -135,7 +139,7 @@ import AppTrackingTransparency
             webViewController.sdk = "UNITY"
             webViewController.token = token
             webViewController.delegate = self
-            webViewController.color = headerColor.toUIColor
+            webViewController.color = headerColor.map { $0.toUIColor }
             webViewController.shouldOpenExternally = hasOffers && isOffersEnabled
             
             webViewController.modalPresentationStyle = .overFullScreen
@@ -144,7 +148,7 @@ import AppTrackingTransparency
         }
     }
     
-    @objc public func getColor() -> String {
+    @objc public func getColor() -> [String] {
         return widgetColor
     }
     

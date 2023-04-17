@@ -19,11 +19,12 @@ public class BitLabs: WebViewDelegate {
     private var uid = ""
     private var adId = ""
     private var token = ""
+    private var currencyIcon = ""
     private var hasOffers = false
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
-    private var widgetColor = "000000".toUIColor
-    private var headerColor = "000000".toUIColor
+    private var widgetColor = ["000000", "000000"]
+    private var headerColor = ["000000", "000000"]
     
     private var onReward: ((Float) -> ())?
     
@@ -43,7 +44,7 @@ public class BitLabs: WebViewDelegate {
         
         bitlabsAPI = BitLabsAPI(token, uid)
         
-        getWidgetColor()
+        getAppSettings()
         
         getHasOffers()
         
@@ -53,11 +54,14 @@ public class BitLabs: WebViewDelegate {
         adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
     
-    private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled in
-            self.widgetColor = visual.surveyIconColor.toUIColor
-            self.headerColor = visual.navigationColor.toUIColor
+    private func getAppSettings() {
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
+            self.widgetColor = visual.surveyIconColor.extractColors
+            self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
+
+            guard let currency = currency, currency.symbol.isImage else { return }
+            self.currencyIcon = currency.symbol.content
         }
     }
     
@@ -104,20 +108,38 @@ public class BitLabs: WebViewDelegate {
         ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
     }
     
-    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController) -> UICollectionView {
+    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 310, height: 85)
+        layout.itemSize = {
+            switch type {
+            case .simple: return CGSize(width: 310, height: 150)
+            case .compact: return CGSize(width: 310, height: 85)
+            case .full_width: return CGSize(width: 400, height: 55)
+            }
+        }()
         layout.minimumLineSpacing = CGFloat(4)
         layout.scrollDirection = .horizontal
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
         
         return collectionView
+    }
+    
+    public func getLeaderboardView(_ completionHandler: @escaping (LeaderboardView?) -> ()) {
+        ifConfigured { bitlabsAPI?.getLeaderboard { response in
+            guard let topUsers = response.topUsers else { return completionHandler(nil) }
+            
+            let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, color: self.widgetColor.first?.toUIColor, frame: CGRect())
+            leaderboardView.ownUser = response.ownUser
+            leaderboardView.rankings = topUsers
+            
+            completionHandler(leaderboardView)
+        }}
     }
     
     /// Stores the reward completion closure to use on every reward completion.
@@ -135,7 +157,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.uid = uid
             webViewController.tags = tags
             webViewController.adId = adId
-            webViewController.color = headerColor
+            webViewController.color = headerColor.map { $0.toUIColor }
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self
@@ -157,6 +179,10 @@ public class BitLabs: WebViewDelegate {
     
     private func getHasOffers() {
         bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
+    }
+    
+    func getCurrencyIcon(currencyIconUrl: String, _ completion: @escaping (UIImage?) -> ()) {
+        bitlabsAPI?.getCurrencyIcon(url: currencyIconUrl, completion)
     }
     
     private func ifConfigured(block: () -> ()) {

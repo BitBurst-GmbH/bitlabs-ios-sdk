@@ -29,4 +29,18 @@ extension String {
             alpha: CGFloat(1.0)
         )
     }
+    
+    /// This method assumes that the string is a either a hex color or the linear gradient in the form 'linear-gradient(angle, color1, color2)'.
+    /// It then extracts and returns color1 and color2. Otherwise, it will return the hex color as a UIColor twice in an array.
+    var extractColors: [String] {
+        let regex = try! NSRegularExpression(pattern: #"linear-gradient\((\d+)deg,\s*(.+)\)"#)
+        
+        guard let match = regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).first else { return [self, self] }
+        
+        var colors = String(self[Range(match.range(at: 2), in: self)!])
+        
+        colors = try! NSRegularExpression(pattern: #"([0-9]+)%"#).stringByReplacingMatches(in: colors, range: NSRange(colors.startIndex..., in: colors), withTemplate: "")
+        
+        return colors.split(separator: ",").map { String($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+    }
 }

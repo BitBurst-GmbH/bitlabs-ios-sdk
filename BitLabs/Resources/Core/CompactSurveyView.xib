@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,8 +17,8 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="zrO-FV-qdA"/>
-                <outlet property="earnLabel" destination="CWh-Il-HZE" id="8Bm-KA-ntD"/>
                 <outlet property="loiLabel" destination="JLD-R9-cwW" id="zjG-Eb-dd9"/>
+                <outlet property="playImageView" destination="Hdc-t4-LTo" id="k8Q-x4-Aii"/>
                 <outlet property="ratingLabel" destination="H0u-Zh-7c0" id="Ib3-hq-fws"/>
                 <outlet property="rewardLabel" destination="2os-e1-HZq" id="als-EE-h9C"/>
                 <outlet property="star1" destination="0Ko-z7-FgI" id="o2t-Nt-SvN"/>
@@ -37,34 +38,25 @@
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" image="circle-play-light" translatesAutoresizingMaskIntoConstraints="NO" id="Hdc-t4-LTo">
                             <rect key="frame" x="0.0" y="43" width="60" height="35"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" systemColor="tintColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="PyB-M0-BPn"/>
                                 <constraint firstAttribute="width" constant="60" id="oag-oW-vAo"/>
                             </constraints>
                         </imageView>
-                        <stackView opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="u1R-uQ-dcz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2os-e1-HZq">
                             <rect key="frame" x="60" y="40" width="60" height="41"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="EARN" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWh-Il-HZE">
-                                    <rect key="frame" x="0.0" y="0.0" width="60" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.4823529412" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2os-e1-HZq">
-                                    <rect key="frame" x="0.0" y="20.5" width="60" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" red="0.0" green="0.4823529412" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="60" id="qJF-YS-rwp"/>
-                            </constraints>
-                        </stackView>
+                            <string key="text">EARN
+0</string>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <color key="textColor" red="0.0" green="0.4823529412" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="2os-e1-HZq" firstAttribute="width" secondItem="YHM-Iz-BSr" secondAttribute="width" multiplier="0.5" id="n5A-l5-8Uj"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                             <integer key="value" value="5"/>
@@ -188,5 +180,8 @@
         <image name="circle-play-light" width="288" height="288"/>
         <image name="clock-regular" width="288" height="288"/>
         <image name="star-regular" width="288" height="288"/>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

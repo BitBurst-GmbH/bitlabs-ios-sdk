@@ -115,14 +115,14 @@ class BitLabsAPI {
             }
     }
     
-    func getAppSettings(_ completion: @escaping (Visual, Bool) -> ()) {
+    func getAppSettings(_ completion: @escaping (Visual, Bool, Currency?) -> ()) {
         session
             .request(BitLabsRouter.getAppSettings)
             .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let visual = blResponse.data?.visual {
-                        completion(visual, blResponse.data?.offers.enabled ?? true)
+                        completion(visual, blResponse.data?.offers.enabled ?? true, blResponse.data?.currency)
                         return
                     }
                     
@@ -132,5 +132,48 @@ class BitLabsAPI {
                     print("[BitLabs] Get App Settings Failure: \(error)")
                 }
             }
+    }
+    
+    func getLeaderboard(_ completion: @escaping (GetLeaderboardResponse) -> ()) {
+        session
+            .request(BitLabsRouter.getLeaderboard)
+            .responseDecodable(of: BitLabsResponse<GetLeaderboardResponse>.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let blResponse):
+                    if let data = blResponse.data {
+                        completion(data)
+                        return
+                    }
+                    
+                    print("[BitLabs] Get Leaderboard \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    
+                case .failure(let error):
+                    print("[BitLabs] Get Leaderboard Failure: \(error)")
+                }
+            }
+    }
+    
+    func getCurrencyIcon(url: String, _ completion: @escaping (UIImage?) -> ()) {
+        AF.request(url).responseData { response in
+            switch (response.result) {
+            case .success(let data):
+                guard let mimeType = response.response?.mimeType, mimeType == "image/svg+xml" else {
+                    completion(UIImage(data: data))
+                    return
+                }
+                
+                guard let image = SVG(data)?.image() else {
+                    print("[BitLabs] Failed converting SVG to UIImage")
+                    completion(nil)
+                    return
+                }
+                
+                completion(image)
+                
+            case .failure(let error):
+                print("[BitLabs] Get Currency Icon Failure: \(error)")
+                completion(nil)
+            }
+        }
     }
 }

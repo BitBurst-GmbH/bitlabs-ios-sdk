@@ -15,6 +15,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		C74C27B329ED4E8A0089EA26 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C74C27B229ED4E8A0089EA26 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B1A3ED2D25A7686A0098E723 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		BA053320D48B0799F882634E /* Pods_BitLabs_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C74C27B229ED4E8A0089EA26 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		F3E519E7BE4D051F0C6E9B13 /* Pods-BitLabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				C74C27B229ED4E8A0089EA26 /* Keys.plist */,
 			);
 			name = "Example for BitLabs";
 			path = BitLabs;
@@ -248,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C74C27B329ED4E8A0089EA26 /* Keys.plist in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
