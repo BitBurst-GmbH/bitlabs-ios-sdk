@@ -19,10 +19,14 @@ import AppTrackingTransparency
     private var uid = ""
     private var adId = ""
     private var token = ""
+    private var currencyIconUrl = ""
+    
     private var widgetColor = ["", ""]
     private var headerColor = ["", ""]
+    
     private var hasOffers = false
     private var isOffersEnabled = false
+    
     private var tags: [String: Any] = [:]
     
     private var onReward: ((Float) -> ())?
@@ -52,10 +56,13 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, _ in
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
+            
+            guard let currency = currency, currency.symbol.isImage else { return }
+            self.currencyIconUrl = currency.symbol.content
         }
     }
     
@@ -150,6 +157,10 @@ import AppTrackingTransparency
     
     @objc public func getColor() -> [String] {
         return widgetColor
+    }
+    
+    @objc public func getCurrencyIconUrl() -> String {
+        return currencyIconUrl
     }
     
     func rewardCompleted(_ value: Float) {
