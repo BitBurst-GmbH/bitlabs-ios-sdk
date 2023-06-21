@@ -24,29 +24,6 @@ class BitLabsAPI {
         session = Session(interceptor: BitLabsRequestInterceptor(token, userId))
     }
     
-    /// Checks whether there are available surveys or qualification questions in the backend.
-    ///
-    /// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
-    /// - Parameter completion: The closure to execute after a response for this request is received.
-    public func checkSurveys(_ completion: @escaping (Result<Bool, Error>) -> ()) {
-        session
-            .request(BitLabsRouter.checkSurveys)
-            .responseDecodable(of: BitLabsResponse<CheckSurveysResponse>.self, decoder: decoder) { response in
-                switch response.result {
-                case .success(let blResponse):
-                    if let hasSurveys = blResponse.data?.hasSurveys {
-                        completion(.success(hasSurveys))
-                        return
-                    }
-                    
-                    completion(.failure(Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")))
-                    
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-    
     /// This request reports the termination of a survey with a reason given by the user.
     ///
     /// This endpoint is optional but it is important to use it as source for feedback in real-time to filter out bad surveys to improve the overall UX for all users.
@@ -82,7 +59,7 @@ class BitLabsAPI {
                 switch response.result {
                 case .success(let blResponse):
                     if let surveys = blResponse.data?.surveys {
-                        completion(.success(surveys.isEmpty ? randomSurveys() : surveys))
+                        completion(.success(surveys))
                         return
                     }
                     

@@ -102,15 +102,15 @@ import AppTrackingTransparency
     /// - Parameter completionHandler: A closure which executes after a result is recieve
     /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
     @objc public func checkSurveys(_ completionHandler: @escaping (_ hasSurveys: Bool) -> ()) {
-        ifConfigured { bitlabsAPI?.checkSurveys { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
             switch result {
             case .failure(let error):
                 print("[BitLabs] Check For Surveys \(error)")
                 completionHandler(false)
-            case .success(let hasSurveys):
-                completionHandler(hasSurveys)
+            case .success(let surveys):
+                completionHandler(!surveys.isEmpty)
             }
-        }}
+        } }
     }
     
     @objc public func getSurveys(_ completionHandler: @escaping ([Survey]) -> ()) {
@@ -119,7 +119,7 @@ import AppTrackingTransparency
             case .failure(let error):
                 print("[Example] Get Surveys \(error)")
             case .success(let surveys):
-                completionHandler(surveys)
+                completionHandler(surveys.isEmpty ? randomSurveys() : surveys)
             }
         }}
     }

@@ -9,7 +9,6 @@ import Foundation
 import Alamofire
 
 enum BitLabsRouter {
-	case checkSurveys
 	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
     case getSurveys(sdk: String)
     case getOffers
@@ -22,8 +21,6 @@ enum BitLabsRouter {
 	
 	private var path: String {
 		switch self {
-		case .checkSurveys:
-			return "v1/client/check"
 		case .leaveSurvey(let networkId, let surveyId, _):
 			return "v1/client/networks/\(networkId)/surveys/\(surveyId)/leave"
         case .getSurveys:
@@ -39,7 +36,6 @@ enum BitLabsRouter {
 	
 	var method: HTTPMethod {
 		switch self {
-		case .checkSurveys: return .get
 		case .leaveSurvey: return .post
         case .getSurveys: return .get
         case .getOffers: return .get
@@ -50,8 +46,6 @@ enum BitLabsRouter {
 	
 	var parameters: [String: String] {
 		switch self {
-		case .checkSurveys:
-			return ["platform": getPlatform()]
 		case .leaveSurvey(_,_, let reason):
 			return ["reason": reason.rawValue]
         case .getSurveys(let sdk):

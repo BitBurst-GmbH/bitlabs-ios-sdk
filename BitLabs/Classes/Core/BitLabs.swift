@@ -101,11 +101,19 @@ public class BitLabs: WebViewDelegate {
     /// - Parameter completionHandler: A closure which executes after a result is recieve
     /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
     public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        ifConfigured { bitlabsAPI?.checkSurveys(completionHandler) }
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+            switch result {
+            case .success(let surveys): completionHandler(.success(!surveys.isEmpty))
+            case .failure(let error): completionHandler(.failure(error))
+            }}}
     }
     
     public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE", completionHandler) }
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+            switch result {
+            case .success(let surveys): completionHandler(.success(surveys.isEmpty ? randomSurveys() : surveys))
+            case .failure(let error): completionHandler(.failure(error))
+            }}}
     }
     
     public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
