@@ -114,7 +114,7 @@ import AppTrackingTransparency
     }
     
     @objc public func getSurveys(_ completionHandler: @escaping ([Survey]) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
             switch result {
             case .failure(let error):
                 print("[Example] Get Surveys \(error)")

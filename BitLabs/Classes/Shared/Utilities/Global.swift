@@ -13,7 +13,7 @@ func randomSurveys() -> [Survey] {
     var surveys = [Survey]()
     
     for i in 1...3 {
-        surveys.append(Survey(networkId: Int.random(in: 1...1000), id: i, cpi: "0.5", value: "0.5", loi: Double.random(in: 1.0...30.0), remaining: 3, details: Details(category: Category(name: "General", iconUrl: "")), rating: Int.random(in: 1...5), link: "", missingQuestions: 0))
+        surveys.append(Survey(id: String(i), type: "survey", clickUrl: "", cpi: "0.5", value: "500", loi: Double.random(in: 1.0...30.0), country: "US", language: "en", rating: Int.random(in: 1...5), category: Category(name: "Survey-\(i)", iconUrl: "", iconName: "", nameInternal: ""), tags: ["recontact", "pii"]))
     }
     
     return surveys

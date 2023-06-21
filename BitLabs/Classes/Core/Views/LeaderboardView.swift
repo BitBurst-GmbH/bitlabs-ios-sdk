@@ -16,13 +16,13 @@ public class LeaderboardView: UIView {
     
     var leaderboardConfigurer: LeaderboardConfigurer? = nil
     
-    var ownUser: OwnUser? = nil { didSet {
+    var ownUser: User? = nil { didSet {
         guard let ownUser = ownUser else { return }
         
         ownUserRankLabel?.text = "You are currently ranked \(ownUser.rank) on our leaderboad."
     }}
     
-    var rankings: [TopUser] = [] { didSet {
+    var rankings: [User] = [] { didSet {
         setupRankingList()
     }}
     

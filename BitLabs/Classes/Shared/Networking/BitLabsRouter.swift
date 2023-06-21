@@ -11,29 +11,29 @@ import Alamofire
 enum BitLabsRouter {
 	case checkSurveys
 	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
-    case getActions
+    case getSurveys(sdk: String)
     case getOffers
     case getAppSettings
     case getLeaderboard
 	
 	private var baseURL: String {
-		return "https://api.bitlabs.ai/v1/client"
+		return "https://api.bitlabs.ai"
 	}
 	
 	private var path: String {
 		switch self {
 		case .checkSurveys:
-			return "check"
+			return "v1/client/check"
 		case .leaveSurvey(let networkId, let surveyId, _):
-			return "networks/\(networkId)/surveys/\(surveyId)/leave"
-        case .getActions:
-            return "actions"
+			return "v1/client/networks/\(networkId)/surveys/\(surveyId)/leave"
+        case .getSurveys:
+            return "v2/client/surveys"
         case .getOffers:
-            return "offers"
+            return "v1/client/offers"
         case .getAppSettings:
-            return "settings/v2"
+            return "v1/client/settings/v2"
         case .getLeaderboard:
-            return "leaderboard"
+            return "v1/client/leaderboard"
 		}
 	}
 	
@@ -41,7 +41,7 @@ enum BitLabsRouter {
 		switch self {
 		case .checkSurveys: return .get
 		case .leaveSurvey: return .post
-        case .getActions: return .get
+        case .getSurveys: return .get
         case .getOffers: return .get
         case .getAppSettings: return .get
         case .getLeaderboard: return .get
@@ -54,8 +54,8 @@ enum BitLabsRouter {
 			return ["platform": getPlatform()]
 		case .leaveSurvey(_,_, let reason):
 			return ["reason": reason.rawValue]
-        case .getActions:
-            return ["platform": getPlatform()]
+        case .getSurveys(let sdk):
+            return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
         case .getOffers:
             return ["platform": getPlatform()]
         case .getAppSettings:

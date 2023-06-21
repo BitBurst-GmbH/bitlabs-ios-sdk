@@ -1,5 +1,5 @@
 //
-//  OwnUser.swift
+//  User.swift
 //  BitLabs
 //
 //  Created by Omar Raad on 27.03.23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-@objc class OwnUser: NSObject, Codable {
+@objc class User: NSObject, Codable {
     let earningsRaw: Double
     let name: String
     let rank: Int

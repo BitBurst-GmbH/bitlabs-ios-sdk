@@ -8,17 +8,17 @@
 import Foundation
 
 public struct Survey: Codable {
-    public let networkId: Int
-    public let id: Int
+    public let id: String
+    public let type: String
+    public let clickUrl: String
     public let cpi: String
     public let value: String
     public let loi: Double
-    public let remaining: Int
-    public let details: Details
+    public let country: String
+    public let language: String
     public let rating: Int
-    public let link: String
-    public let missingQuestions: Int?
-    
+    public let category: Category
+    public let tags: [String]
     
     public func open(parent: UIViewController) {
         BitLabs.shared.launchOfferWall(parent: parent)

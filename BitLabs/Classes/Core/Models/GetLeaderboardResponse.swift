@@ -9,7 +9,7 @@ import Foundation
 
 struct GetLeaderboardResponse: Decodable {
     let nextResetAt: String
-    let ownUser: OwnUser?
+    let ownUser: User?
     let rewards: [Reward]
-    let topUsers: [TopUser]?
+    let topUsers: [User]?
 }

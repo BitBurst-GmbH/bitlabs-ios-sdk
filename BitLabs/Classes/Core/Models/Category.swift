@@ -10,4 +10,6 @@ import Foundation
 public struct Category: Codable {
     public let name: String
     public let iconUrl: String
+    public let iconName: String
+    public let nameInternal: String
 }

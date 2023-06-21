@@ -75,10 +75,10 @@ class BitLabsAPI {
             }
     }
     
-    func getSurveys(_ completion: @escaping (Result<[Survey], Error>) -> ()) {
+    func getSurveys(sdk: String, _ completion: @escaping (Result<[Survey], Error>) -> ()) {
         session
-            .request(BitLabsRouter.getActions)
-            .responseDecodable(of: BitLabsResponse<GetActionsResponse>.self, decoder: decoder) { response in
+            .request(BitLabsRouter.getSurveys(sdk: sdk))
+            .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let surveys = blResponse.data?.surveys {

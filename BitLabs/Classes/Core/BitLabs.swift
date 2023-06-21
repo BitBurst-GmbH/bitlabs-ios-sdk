@@ -105,7 +105,7 @@ public class BitLabs: WebViewDelegate {
     }
     
     public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(completionHandler) }
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE", completionHandler) }
     }
     
     public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
