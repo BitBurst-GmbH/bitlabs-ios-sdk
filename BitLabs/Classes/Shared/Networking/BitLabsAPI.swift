@@ -28,14 +28,13 @@ class BitLabsAPI {
     ///
     /// This endpoint is optional but it is important to use it as source for feedback in real-time to filter out bad surveys to improve the overall UX for all users.
     /// - Parameters:
-    ///   - networkId: The ID of the Network this survey belongs to, this is a path component..
-    ///   - surveyId: The ID of the terminated Survey, this is a path component.
+    ///   - clickId: The click id of the terminated Survey.
     ///   - reason: The reason given by the user. See [LeaveReason](x-source-tag://LeaveReason).
     ///   - completion: The closure to execute after a response for this request is received.
-    func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping () -> ()) {
+    func leaveSurvey(clickId: String, reason: LeaveReason, completion: @escaping () -> ()) {
         session
-            .request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason))
-            .responseDecodable(of: BitLabsResponse<String>.self, decoder: decoder) { response in
+            .request(BitLabsRouter.updateClick(clickId: clickId, reason: reason))
+            .responseDecodable(of: BitLabsResponse<UpdateClickResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if blResponse.status == "success" {

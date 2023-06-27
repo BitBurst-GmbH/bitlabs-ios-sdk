@@ -181,8 +181,8 @@ public class BitLabs: WebViewDelegate {
         onReward?(value)
     }
     
-    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
-        bitlabsAPI?.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason, completion: completion)
+    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
+        bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
     }
     
     private func getHasOffers() {

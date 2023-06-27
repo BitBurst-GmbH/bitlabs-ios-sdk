@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum BitLabsRouter {
-	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
+	case updateClick(clickId: String, reason: LeaveReason)
     case getSurveys(sdk: String)
     case getOffers
     case getAppSettings
@@ -21,8 +21,8 @@ enum BitLabsRouter {
 	
 	private var path: String {
 		switch self {
-		case .leaveSurvey(let networkId, let surveyId, _):
-			return "v1/client/networks/\(networkId)/surveys/\(surveyId)/leave"
+        case .updateClick(let clickId, _):
+			return "v2/client/clicks/\(clickId)"
         case .getSurveys:
             return "v2/client/surveys"
         case .getOffers:
@@ -35,8 +35,8 @@ enum BitLabsRouter {
 	}
 	
 	var method: HTTPMethod {
-		switch self {
-		case .leaveSurvey: return .post
+        switch self {
+		case .updateClick: return .post
         case .getSurveys: return .get
         case .getOffers: return .get
         case .getAppSettings: return .get
@@ -44,10 +44,10 @@ enum BitLabsRouter {
 		}
 	}
 	
-	var parameters: [String: String] {
+	var parameters: Parameters {
 		switch self {
-		case .leaveSurvey(_,_, let reason):
-			return ["reason": reason.rawValue]
+		case .updateClick(_, let reason):
+            return ["leave_survey": ["reason": reason.rawValue]]
         case .getSurveys(let sdk):
             return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
         case .getOffers:
@@ -67,11 +67,15 @@ extension BitLabsRouter: URLRequestConvertible {
 		var request = URLRequest(url: url)
 		request.method = method
 		
+        print(url)
+        
 		if method == .get {
-			request = try URLEncodedFormParameterEncoder()
-				.encode(parameters, into: request)
+            let queryItems = parameters.map { URLQueryItem(name: $0, value: "\($1)") }
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            urlComponents?.queryItems = queryItems
+            request.url = urlComponents?.url
 		} else if method == .post {
-			request = try JSONParameterEncoder().encode(parameters, into: request)
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
 			request.setValue("application/json", forHTTPHeaderField: "Accept")
 		}
 	

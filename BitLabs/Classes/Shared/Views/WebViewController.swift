@@ -16,13 +16,12 @@ protocol WebViewDelegate {
     
     /// Sends the leave reason to the BitLabs API
     ///
-    ///  - Parameter networkId: The ID of the network of the survey.
-    ///  - Parameter surveyId: The ID of the survey.
+    ///  - Parameter clickId: The click ID of the survey.
     ///  - Parameter reason: The reason the user left the survey.
     ///  - Parameter completion: The completion closure to execute after the leave request is executed.
     ///
     /// - Tag: sendLeaveSurveyRequest
-    func sendLeaveSurveyRequest(networkId: String, surveyId: String, reason: LeaveReason, _ completion: @escaping () -> ())
+    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ())
 }
 
 class WebViewController: UIViewController {
@@ -38,8 +37,7 @@ class WebViewController: UIViewController {
     var sdk = ""
     var adId = ""
     var token = ""
-    var surveyId = ""
-    var networkId = ""
+    var clickId = ""
     var shouldOpenExternally = false
     var color: [UIColor] = [.black, .black]
     var tags: [String: Any] = [:]
@@ -136,9 +134,8 @@ class WebViewController: UIViewController {
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
     /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
     private func sendLeaveRequest(reason: LeaveReason) {
-        delegate?.sendLeaveSurveyRequest(networkId: networkId, surveyId: surveyId, reason: reason) {
-            self.networkId = ""
-            self.surveyId = ""
+        delegate?.sendLeaveSurveyRequest(clickId: clickId, reason: reason) {
+            self.clickId = ""
             self.loadOfferwall()
         }
     }
@@ -162,49 +159,24 @@ extension WebViewController: WKNavigationDelegate {
         
         let urlStr = url.absoluteString
         
-        if urlStr.contains("survey/complete") || urlStr.contains("survey/screenout") {
-            reward += Float(URLComponents(string: urlStr)?.queryItems?.first(where: {$0.name == "val"})?.value ?? "") ?? 0
+        if urlStr == "about:blank" {
+            decisionHandler(.allow)
+            return
         }
         
         let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
         
-        if !isPageOfferwall {
-            getNetworkAndSurveyId(fromURL: urlStr)
+        if isPageOfferwall {
+            if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
+                reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
+            }
+        } else {
+            clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
         }
         
         configureUI(isPageOfferwall)
         
         decisionHandler(.allow)
-    }
-    
-    
-    /// Extracts the Network ID and Survey ID for the current Survey and User.
-    ///
-    /// It checks whether the URL has the `networks` and `surveys` endpoints. If it has, it exctracts both IDs from it.
-    /// - Parameter url: The URL from which the IDs should be extracted.
-    /// - Returns: The `networkId` and `surveyId`extracted from `url`. It return nil in case the `url` doesn't have the IDs.
-    private func getNetworkAndSurveyId(fromURL url: String) {
-        guard networkId.isEmpty, surveyId.isEmpty else { return }
-        
-        do {
-            let regex = try NSRegularExpression(pattern: "\\/networks\\/(\\d+)\\/surveys\\/(\\d+)", options: .caseInsensitive)
-            let matches = regex.matches(in: url, options: .withTransparentBounds, range: NSMakeRange(0, url.count))
-            
-            if matches.isEmpty { return }
-            
-            guard let url = URL(string: url) else { throw NSError() }
-            
-            let components = url.pathComponents
-            
-            guard let network = components.firstIndex(of: "networks"),
-                  let survey = components.firstIndex(of: "surveys")
-            else { throw NSError() }
-            
-            networkId = components[network+1]
-            surveyId = components[survey+1]
-        } catch(let error) {
-            print("[BitLabs] Error Extracting NetworkId and SurveyId. Reference: \(error)")
-        }
     }
     
     /// Applies UI changes according to the data it has.
