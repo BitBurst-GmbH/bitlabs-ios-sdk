@@ -9,55 +9,49 @@ import Foundation
 import Alamofire
 
 enum BitLabsRouter {
-	case checkSurveys
-	case leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason)
-    case getActions
+	case updateClick(clickId: String, reason: LeaveReason)
+    case getSurveys(sdk: String)
     case getOffers
     case getAppSettings
     case getLeaderboard
 	
 	private var baseURL: String {
-		return "https://api.bitlabs.ai/v1/client"
+		return "https://api.bitlabs.ai"
 	}
 	
 	private var path: String {
 		switch self {
-		case .checkSurveys:
-			return "check"
-		case .leaveSurvey(let networkId, let surveyId, _):
-			return "networks/\(networkId)/surveys/\(surveyId)/leave"
-        case .getActions:
-            return "actions"
+        case .updateClick(let clickId, _):
+			return "v2/client/clicks/\(clickId)"
+        case .getSurveys:
+            return "v2/client/surveys"
         case .getOffers:
-            return "offers"
+            return "v2/client/offers"
         case .getAppSettings:
-            return "settings/v2"
+            return "v1/client/settings/v2"
         case .getLeaderboard:
-            return "leaderboard"
+            return "v1/client/leaderboard"
 		}
 	}
 	
 	var method: HTTPMethod {
-		switch self {
-		case .checkSurveys: return .get
-		case .leaveSurvey: return .post
-        case .getActions: return .get
+        switch self {
+		case .updateClick: return .post
+        case .getSurveys: return .get
         case .getOffers: return .get
         case .getAppSettings: return .get
         case .getLeaderboard: return .get
 		}
 	}
 	
-	var parameters: [String: String] {
+	var parameters: Parameters {
 		switch self {
-		case .checkSurveys:
-			return ["platform": getPlatform()]
-		case .leaveSurvey(_,_, let reason):
-			return ["reason": reason.rawValue]
-        case .getActions:
-            return ["platform": getPlatform()]
+		case .updateClick(_, let reason):
+            return ["leave_survey": ["reason": reason.rawValue]]
+        case .getSurveys(let sdk):
+            return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
         case .getOffers:
-            return ["platform": getPlatform()]
+            return ["platform": getPlatform(), "debug": true]
         case .getAppSettings:
             return ["platform": getPlatform()]
         case .getLeaderboard:
@@ -72,12 +66,15 @@ extension BitLabsRouter: URLRequestConvertible {
 		let url = try baseURL.asURL().appendingPathComponent(path)
 		var request = URLRequest(url: url)
 		request.method = method
-		
+		        
 		if method == .get {
-			request = try URLEncodedFormParameterEncoder()
-				.encode(parameters, into: request)
+            let queryItems = parameters.map { URLQueryItem(name: $0, value: "\($1)") }
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
+            urlComponents?.queryItems = queryItems
+            request.url = urlComponents?.url
+            print(request.url)
 		} else if method == .post {
-			request = try JSONParameterEncoder().encode(parameters, into: request)
+            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
 			request.setValue("application/json", forHTTPHeaderField: "Accept")
 		}
 	

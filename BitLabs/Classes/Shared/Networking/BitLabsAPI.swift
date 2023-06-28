@@ -24,41 +24,17 @@ class BitLabsAPI {
         session = Session(interceptor: BitLabsRequestInterceptor(token, userId))
     }
     
-    /// Checks whether there are available surveys or qualification questions in the backend.
-    ///
-    /// It receives a [CheckSurveysResponse](x-source-tag://CheckSurveysResponse)
-    /// - Parameter completion: The closure to execute after a response for this request is received.
-    public func checkSurveys(_ completion: @escaping (Result<Bool, Error>) -> ()) {
-        session
-            .request(BitLabsRouter.checkSurveys)
-            .responseDecodable(of: BitLabsResponse<CheckSurveysResponse>.self, decoder: decoder) { response in
-                switch response.result {
-                case .success(let blResponse):
-                    if let hasSurveys = blResponse.data?.hasSurveys {
-                        completion(.success(hasSurveys))
-                        return
-                    }
-                    
-                    completion(.failure(Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")))
-                    
-                case .failure(let error):
-                    completion(.failure(error))
-                }
-            }
-    }
-    
     /// This request reports the termination of a survey with a reason given by the user.
     ///
     /// This endpoint is optional but it is important to use it as source for feedback in real-time to filter out bad surveys to improve the overall UX for all users.
     /// - Parameters:
-    ///   - networkId: The ID of the Network this survey belongs to, this is a path component..
-    ///   - surveyId: The ID of the terminated Survey, this is a path component.
+    ///   - clickId: The click id of the terminated Survey.
     ///   - reason: The reason given by the user. See [LeaveReason](x-source-tag://LeaveReason).
     ///   - completion: The closure to execute after a response for this request is received.
-    func leaveSurvey(networkId: String, surveyId: String, reason: LeaveReason, completion: @escaping () -> ()) {
+    func leaveSurvey(clickId: String, reason: LeaveReason, completion: @escaping () -> ()) {
         session
-            .request(BitLabsRouter.leaveSurvey(networkId: networkId, surveyId: surveyId, reason: reason))
-            .responseDecodable(of: BitLabsResponse<String>.self, decoder: decoder) { response in
+            .request(BitLabsRouter.updateClick(clickId: clickId, reason: reason))
+            .responseDecodable(of: BitLabsResponse<UpdateClickResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if blResponse.status == "success" {
@@ -75,14 +51,14 @@ class BitLabsAPI {
             }
     }
     
-    func getSurveys(_ completion: @escaping (Result<[Survey], Error>) -> ()) {
+    func getSurveys(sdk: String, _ completion: @escaping (Result<[Survey], Error>) -> ()) {
         session
-            .request(BitLabsRouter.getActions)
-            .responseDecodable(of: BitLabsResponse<GetActionsResponse>.self, decoder: decoder) { response in
+            .request(BitLabsRouter.getSurveys(sdk: sdk))
+            .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let surveys = blResponse.data?.surveys {
-                        completion(.success(surveys.isEmpty ? randomSurveys() : surveys))
+                        completion(.success(surveys))
                         return
                     }
                     
@@ -98,12 +74,17 @@ class BitLabsAPI {
         session
             .request(BitLabsRouter.getOffers)
             .responseDecodable(of: BitLabsResponse<GetOffersResponse>.self, decoder: decoder) { response in
+                
+                print("\(response.request!.method) \(response.request!.url)\n\(response.request!.headers)")
+                
                 switch response.result {
                 case .success(let blResponse):
                     if let offers = blResponse.data?.offers {
                         completion(!offers.isEmpty)
                         return
                     }
+                    
+                    print(blResponse, response.response!.headers)
                     
                     print("[BitLabs] Get Offers \(blResponse.error?.details.http ?? "Error") - \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
                     completion(false)

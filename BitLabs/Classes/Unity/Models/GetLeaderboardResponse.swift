@@ -9,11 +9,11 @@ import Foundation
 
 @objc public class GetLeaderboardResponse: NSObject, Codable {
     let nextResetAt: String
-    let ownUser: OwnUser?
+    let ownUser: User?
     let rewards: [Reward]
-    let topUsers: [TopUser]?
+    let topUsers: [User]?
     
-    @objc init(nextResetAt: String, ownUser: OwnUser?, rewards: [Reward], topUsers: [TopUser]?) {
+    @objc init(nextResetAt: String, ownUser: User?, rewards: [Reward], topUsers: [User]?) {
         self.nextResetAt = nextResetAt
         self.ownUser = ownUser
         self.rewards = rewards

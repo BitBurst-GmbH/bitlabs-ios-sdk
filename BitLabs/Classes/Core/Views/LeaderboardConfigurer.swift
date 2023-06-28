@@ -9,12 +9,12 @@ import Foundation
 
 class LeaderboardConfigurer: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    var topUsers: [TopUser]
+    var topUsers: [User]
     var image: UIImage?
     var color: UIColor
     var rank: Int
     
-    init(topUsers: [TopUser], ownRank: Int, image: UIImage?, color: UIColor) {
+    init(topUsers: [User], ownRank: Int, image: UIImage?, color: UIColor) {
         self.topUsers = topUsers
         self.image = image
         self.color = color

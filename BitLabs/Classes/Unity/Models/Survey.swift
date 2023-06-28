@@ -8,28 +8,30 @@
 import Foundation
 
 @objc public class Survey: NSObject, Codable {
-    let networkId: Int
-    let id: Int
+    let id: String
+    let type: String
+    let clickUrl: String
     let cpi: String
     let value: String
     let loi: Double
-    let remaining: Int
-    let details: Details
+    let country: String
+    let language: String
     let rating: Int
-    let link: String
-    let missingQuestions: Int?
+    let category: Category
+    let tags: [String]
     
-    @objc init(networkId: Int, id: Int, cpi: String, value: String, loi: Double, remaining: Int, details: Details, rating: Int, link: String, missingQuestions: Int) {
-        self.networkId = networkId
+    @objc init( id: String, type: String, clickUrl: String, cpi: String, value: String, loi: Double, country: String, language: String, rating: Int, category: Category, tags: [String]) {
         self.id = id
+        self.type = type
+        self.clickUrl = clickUrl
         self.cpi = cpi
         self.value = value
         self.loi = loi
-        self.remaining = remaining
-        self.details = details
+        self.country = country
+        self.language = language
         self.rating = rating
-        self.link = link
-        self.missingQuestions = missingQuestions
+        self.category = category
+        self.tags = tags
     }
 
     @objc public func open(parent: UIViewController) {

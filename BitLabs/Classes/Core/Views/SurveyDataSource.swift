@@ -33,7 +33,7 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
         let surveyView =  SurveyView(frame: cell.bounds, withType: type)
         surveyView.rating = survey.rating
         surveyView.reward = survey.value
-        surveyView.loi = "\(survey.loi) minutes"
+        surveyView.loi = "\(Int(round(survey.loi))) minutes"
         surveyView.parent = parent
         surveyView.color = color
         
