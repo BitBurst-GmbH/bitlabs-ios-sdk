@@ -51,7 +51,7 @@ enum BitLabsRouter {
         case .getSurveys(let sdk):
             return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
         case .getOffers:
-            return ["platform": getPlatform(), "debug": true]
+            return ["platform": getPlatform()]
         case .getAppSettings:
             return ["platform": getPlatform()]
         case .getLeaderboard:
@@ -72,7 +72,6 @@ extension BitLabsRouter: URLRequestConvertible {
             var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
             urlComponents?.queryItems = queryItems
             request.url = urlComponents?.url
-            print(request.url)
 		} else if method == .post {
             request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
 			request.setValue("application/json", forHTTPHeaderField: "Accept")

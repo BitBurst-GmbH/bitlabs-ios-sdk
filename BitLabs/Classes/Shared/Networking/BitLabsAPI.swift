@@ -74,18 +74,13 @@ class BitLabsAPI {
         session
             .request(BitLabsRouter.getOffers)
             .responseDecodable(of: BitLabsResponse<GetOffersResponse>.self, decoder: decoder) { response in
-                
-                print("\(response.request!.method) \(response.request!.url)\n\(response.request!.headers)")
-                
                 switch response.result {
                 case .success(let blResponse):
                     if let offers = blResponse.data?.offers {
                         completion(!offers.isEmpty)
                         return
                     }
-                    
-                    print(blResponse, response.response!.headers)
-                    
+                                        
                     print("[BitLabs] Get Offers \(blResponse.error?.details.http ?? "Error") - \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
                     completion(false)
                     
