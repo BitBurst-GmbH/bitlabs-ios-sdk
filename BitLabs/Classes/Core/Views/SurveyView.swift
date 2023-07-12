@@ -13,7 +13,10 @@ import Foundation
     @IBOutlet weak var loiLabel: UILabel?
     @IBOutlet weak var rewardLabel: UILabel?
     @IBOutlet weak var ratingLabel: UILabel?
-    @IBOutlet weak var earnNowLabel: UILabel?
+    @IBOutlet weak var oldRewardLabel: UILabel?
+    @IBOutlet weak var bonusView: UIView?
+    @IBOutlet weak var bonusLabel: UILabel?
+    @IBOutlet weak var earnLabel: UILabel?
     @IBOutlet weak var playImageView: UIImageView?
     
     @IBOutlet weak var star1: UIImageView?
@@ -32,16 +35,18 @@ import Foundation
     }}
     
     @IBInspectable
-    var reward: String = "EARN\n0.5" { didSet {
+    var reward: String = "0.5" { didSet {
         let rewardStr: String = {
             switch type {
             case .simple: return "EARN \(reward)"
-            case .compact: return "EARN\n\(reward)"
+            case .compact: return "\(reward)"
             case .full_width: return reward
             }
         }()
         
         rewardLabel?.text = rewardStr
+        oldRewardLabel?.attributedText =     NSAttributedString(string: reward, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
+
     }}
     
     @IBInspectable
@@ -68,10 +73,14 @@ import Foundation
         }()
         
         rewardLabel?.textColor = usedColor
+        oldRewardLabel?.textColor = usedColor
         playImageView?.setImageColor(color: usedColor)
         
-        earnNowLabel?.textColor = color.first!
+        earnLabel?.textColor = color.first!
         changeGradient(of: contentView, withColors: color)
+        
+        if let bonusView = bonusView { changeGradient(of: bonusView, withColors: color)
+        }
     }}
     
     var type: WidgetType = .simple
