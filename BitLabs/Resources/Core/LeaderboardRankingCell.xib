@@ -73,17 +73,17 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="KPK-ic-A6f">
-                                <rect key="frame" x="275" y="-82" width="80" height="222"/>
+                                <rect key="frame" x="275" y="-82.5" width="80" height="223"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mhV-f0-Xq6">
-                                        <rect key="frame" x="0.0" y="100.5" width="51" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="101" width="51" height="20.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0eP-fw-m6i">
-                                        <rect key="frame" x="56" y="99" width="24" height="24"/>
+                                        <rect key="frame" x="56" y="99.5" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="6NX-01-qqP"/>
                                             <constraint firstAttribute="width" constant="24" id="C8N-yX-ffJ"/>

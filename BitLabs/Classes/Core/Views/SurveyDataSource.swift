@@ -13,8 +13,10 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
     private let surveys: [Survey]
     private let color: [UIColor]
     private let type: WidgetType
+    private let imageUrl: String
     
-    public init(surveys: [Survey], parent: UIViewController, color: [UIColor], type: WidgetType) {
+    public init(surveys: [Survey], parent: UIViewController, color: [UIColor], currencyUrl: String, type: WidgetType) {
+        self.imageUrl = currencyUrl
         self.surveys = surveys
         self.parent = parent
         self.color = color
@@ -36,6 +38,8 @@ public class SurveyDataSource: NSObject, UICollectionViewDataSource {
         surveyView.loi = "\(Int(round(survey.loi))) minutes"
         surveyView.parent = parent
         surveyView.color = color
+        
+        BitLabs.shared.getCurrencyIcon(currencyIconUrl: imageUrl) {image in surveyView.currencyIcon = image }
         
         cell.addSubview(surveyView)
         

@@ -12,8 +12,10 @@ import Foundation
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var loiLabel: UILabel?
     @IBOutlet weak var rewardLabel: UILabel?
+    @IBOutlet weak var currencyImageView: UIImageView?
     @IBOutlet weak var ratingLabel: UILabel?
     @IBOutlet weak var oldRewardLabel: UILabel?
+    @IBOutlet weak var oldCurrencyImageView: UIImageView?
     @IBOutlet weak var bonusView: UIView?
     @IBOutlet weak var bonusLabel: UILabel?
     @IBOutlet weak var earnLabel: UILabel?
@@ -82,6 +84,17 @@ import Foundation
         bonusLabel?.textColor = type == .compact ? .white : color.first
         if let bonusView = bonusView, type == .compact { changeGradient(of: bonusView, withColors: color)
         }
+    }}
+    
+    var currencyIcon: UIImage? = nil { didSet {
+        guard let image = currencyIcon else {
+            currencyImageView?.isHidden = true
+            oldCurrencyImageView?.isHidden = true
+            return
+        }
+        
+        currencyImageView?.image = image
+        oldCurrencyImageView?.image = image
     }}
     
     var type: WidgetType = .simple

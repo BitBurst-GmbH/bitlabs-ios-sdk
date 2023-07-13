@@ -122,7 +122,7 @@ public class BitLabs: WebViewDelegate {
             switch type {
             case .simple: return CGSize(width: 310, height: 150)
             case .compact: return CGSize(width: 310, height: 85)
-            case .full_width: return CGSize(width: 400, height: 55)
+            case .full_width: return CGSize(width: 450, height: 50)
             }
         }()
         layout.minimumLineSpacing = CGFloat(4)
@@ -130,7 +130,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, type: type)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, currencyUrl: currencyIcon, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
