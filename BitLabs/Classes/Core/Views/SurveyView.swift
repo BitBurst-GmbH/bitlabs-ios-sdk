@@ -79,8 +79,8 @@ import Foundation
         earnLabel?.textColor = color.first!
         changeGradient(of: contentView, withColors: color)
         
-        bonusLabel?.textColor = type == .simple ? color.first : .white
-        if let bonusView = bonusView, type != .simple { changeGradient(of: bonusView, withColors: color)
+        bonusLabel?.textColor = type == .compact ? .white : color.first
+        if let bonusView = bonusView, type == .compact { changeGradient(of: bonusView, withColors: color)
         }
     }}
     
