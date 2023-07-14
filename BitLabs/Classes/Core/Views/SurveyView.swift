@@ -12,8 +12,14 @@ import Foundation
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var loiLabel: UILabel?
     @IBOutlet weak var rewardLabel: UILabel?
+    @IBOutlet weak var currencyImageView: UIImageView?
     @IBOutlet weak var ratingLabel: UILabel?
-    @IBOutlet weak var earnNowLabel: UILabel?
+    @IBOutlet weak var promotionView: UIView?
+    @IBOutlet weak var oldRewardLabel: UILabel?
+    @IBOutlet weak var oldCurrencyImageView: UIImageView?
+    @IBOutlet weak var bonusView: UIView?
+    @IBOutlet weak var bonusLabel: UILabel?
+    @IBOutlet weak var earnLabel: UILabel?
     @IBOutlet weak var playImageView: UIImageView?
     
     @IBOutlet weak var star1: UIImageView?
@@ -32,16 +38,20 @@ import Foundation
     }}
     
     @IBInspectable
-    var reward: String = "EARN\n0.5" { didSet {
+    var reward: String = "0.5" { didSet {
         let rewardStr: String = {
             switch type {
             case .simple: return "EARN \(reward)"
-            case .compact: return "EARN\n\(reward)"
+            case .compact: return "\(reward)"
             case .full_width: return reward
             }
         }()
         
         rewardLabel?.text = rewardStr
+    }}
+    
+    var oldReward: String = "0.5" { didSet {
+        oldRewardLabel?.attributedText = NSAttributedString(string: oldReward, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
     }}
     
     @IBInspectable
@@ -68,10 +78,36 @@ import Foundation
         }()
         
         rewardLabel?.textColor = usedColor
+        oldRewardLabel?.textColor = usedColor
         playImageView?.setImageColor(color: usedColor)
         
-        earnNowLabel?.textColor = color.first!
+        earnLabel?.textColor = color.first!
         changeGradient(of: contentView, withColors: color)
+        
+        bonusLabel?.textColor = type == .compact ? .white : color.first
+        if let bonusView = bonusView, type == .compact { changeGradient(of: bonusView, withColors: color)
+        }
+    }}
+    
+    var currencyIcon: UIImage? = nil { didSet {
+        guard let image = currencyIcon else {
+            currencyImageView?.isHidden = true
+            oldCurrencyImageView?.isHidden = true
+            return
+        }
+        
+        currencyImageView?.image = image
+        oldCurrencyImageView?.image = image
+    }}
+    
+    var bonusPercentage: Int = 0 { didSet {
+        if bonusPercentage > 0 {
+            bonusLabel?.text = "+\(bonusPercentage)%"
+            return
+        }
+        
+        promotionView?.isHidden = true
+        bonusView?.isHidden = true // FullWidth case, since it's inside the promotion view
     }}
     
     var type: WidgetType = .simple
