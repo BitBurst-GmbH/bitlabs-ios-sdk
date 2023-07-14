@@ -18,6 +18,7 @@
                 <outlet property="oldCurrencyImageView" destination="Mxv-qL-1zV" id="WEQ-CT-AjP"/>
                 <outlet property="oldRewardLabel" destination="RB5-m8-2pq" id="IUA-dG-laB"/>
                 <outlet property="playImageView" destination="4Ds-Ba-qnV" id="xGf-AY-CTr"/>
+                <outlet property="promotionView" destination="KLf-gd-HXT" id="w2B-Cq-0Op"/>
                 <outlet property="rewardLabel" destination="uwb-Aw-xfw" id="b8p-Us-ds5"/>
             </connections>
         </placeholder>

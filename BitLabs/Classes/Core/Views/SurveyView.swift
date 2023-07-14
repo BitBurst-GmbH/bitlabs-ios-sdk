@@ -14,6 +14,7 @@ import Foundation
     @IBOutlet weak var rewardLabel: UILabel?
     @IBOutlet weak var currencyImageView: UIImageView?
     @IBOutlet weak var ratingLabel: UILabel?
+    @IBOutlet weak var promotionView: UIView?
     @IBOutlet weak var oldRewardLabel: UILabel?
     @IBOutlet weak var oldCurrencyImageView: UIImageView?
     @IBOutlet weak var bonusView: UIView?
@@ -105,9 +106,8 @@ import Foundation
             return
         }
         
-        oldCurrencyImageView?.isHidden = true
-        oldRewardLabel?.isHidden = true
-        bonusView?.isHidden = true
+        promotionView?.isHidden = true
+        bonusView?.isHidden = true // FullWidth case, since it's inside the promotion view
     }}
     
     var type: WidgetType = .simple

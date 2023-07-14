@@ -75,7 +75,7 @@ class ViewController: UIViewController {
             case .success(let surveys):
                 print("[Example] \(surveys.map { "Survey \($0.id) in Category \($0.category.name)" })")
 
-                let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys, parent: self, type: .compact)
+                let collection = BitLabs.shared.getSurveyWidgets(surveys: surveys, parent: self, type: .simple)
                 collection.frame = self.surveysContainer.bounds
 
                 self.surveysContainer.addSubview(collection)

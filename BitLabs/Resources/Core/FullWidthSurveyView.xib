@@ -18,6 +18,7 @@
                 <outlet property="loiLabel" destination="dG5-jl-9ob" id="zBr-lV-mbr"/>
                 <outlet property="oldCurrencyImageView" destination="CHD-pO-SQP" id="XhY-nT-lxe"/>
                 <outlet property="oldRewardLabel" destination="nSC-aQ-wuF" id="C3E-Qh-CnR"/>
+                <outlet property="promotionView" destination="M85-b5-CAa" id="bmi-6v-G85"/>
                 <outlet property="ratingLabel" destination="hai-dA-BbC" id="fsg-Ai-nSg"/>
                 <outlet property="rewardLabel" destination="CD1-Hg-07G" id="xTt-gv-ic4"/>
                 <outlet property="star1" destination="kkv-x1-dHT" id="owh-MP-tlX"/>
@@ -137,6 +138,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Jg5-bf-Hif">
                                             <rect key="frame" x="0.0" y="14" width="55.5" height="16"/>
@@ -155,8 +157,10 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </stackView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmR-l8-qPY" userLabel="Bonus View">
                                     <rect key="frame" x="244" y="12.5" width="40.5" height="18.5"/>

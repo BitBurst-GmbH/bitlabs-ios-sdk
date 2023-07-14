@@ -25,6 +25,7 @@
                 <outlet property="oldCurrencyImageView" destination="xXk-7d-7Ku" id="J3F-b5-DuF"/>
                 <outlet property="oldRewardLabel" destination="vj2-41-dhH" id="ZYI-dX-IN7"/>
                 <outlet property="playImageView" destination="Hdc-t4-LTo" id="k8Q-x4-Aii"/>
+                <outlet property="promotionView" destination="Phj-M5-gGW" id="jJ6-FF-BWI"/>
                 <outlet property="ratingLabel" destination="H0u-Zh-7c0" id="Ib3-hq-fws"/>
                 <outlet property="rewardLabel" destination="2os-e1-HZq" id="als-EE-h9C"/>
                 <outlet property="star1" destination="0Ko-z7-FgI" id="o2t-Nt-SvN"/>
@@ -106,6 +107,7 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLc-qo-Tqu" userLabel="Bonus View">
                                     <rect key="frame" x="76.5" y="42.5" width="40.5" height="18.5"/>
