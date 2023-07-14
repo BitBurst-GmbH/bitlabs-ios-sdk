@@ -47,8 +47,10 @@ import Foundation
         }()
         
         rewardLabel?.text = rewardStr
-        oldRewardLabel?.attributedText =     NSAttributedString(string: reward, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
-
+    }}
+    
+    var oldReward: String = "0.5" { didSet {
+        oldRewardLabel?.attributedText = NSAttributedString(string: oldReward, attributes: [.strikethroughStyle : NSUnderlineStyle.single.rawValue])
     }}
     
     @IBInspectable
@@ -95,6 +97,17 @@ import Foundation
         
         currencyImageView?.image = image
         oldCurrencyImageView?.image = image
+    }}
+    
+    var bonusPercentage: Int = 0 { didSet {
+        if bonusPercentage > 0 {
+            bonusLabel?.text = "+\(bonusPercentage)%"
+            return
+        }
+        
+        oldCurrencyImageView?.isHidden = true
+        oldRewardLabel?.isHidden = true
+        bonusView?.isHidden = true
     }}
     
     var type: WidgetType = .simple

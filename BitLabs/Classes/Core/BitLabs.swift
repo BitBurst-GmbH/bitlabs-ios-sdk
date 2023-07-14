@@ -21,6 +21,7 @@ public class BitLabs: WebViewDelegate {
     private var token = ""
     private var currencyIcon = ""
     private var hasOffers = false
+    private var bonusPercentage = 0.0
     private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
     private var widgetColor = ["000000", "000000"]
@@ -55,13 +56,17 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getAppSettings() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, promotion in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
 
             guard let currency = currency, currency.symbol.isImage else { return }
             self.currencyIcon = currency.symbol.content
+            self.bonusPercentage += Double(currency.bonusPercentage) / 100.0
+            
+            guard let bonus = promotion?.bonusPercentage else { return }
+            self.bonusPercentage += Double(bonus) / 100.0 + Double(bonus) * self.bonusPercentage / 100.0
         }
     }
     
@@ -130,7 +135,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, currencyUrl: currencyIcon, type: type)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, currencyUrl: currencyIcon, bonus: bonusPercentage, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
