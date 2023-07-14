@@ -56,7 +56,7 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency in
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, _ in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled

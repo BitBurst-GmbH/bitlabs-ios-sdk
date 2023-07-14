@@ -7,162 +7,163 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0239A1EF17570CE5594BE95077BA91AC /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A170E946883952B6B6576BEEB2C6FDD /* Category.swift */; };
 		04A8430BFC619C34E5F4D3878D094380 /* CachedResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77226E8FC7B56CA1068824166848ADBF /* CachedResponseHandler.swift */; };
-		05D4A98F4588B2BA6A0FCDED6291DF20 /* GetOffersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 555AD984142BF038CE0BE97757D65D52 /* GetOffersResponse.swift */; };
+		05F3B8F963AD075A1FB649694A16C95F /* BitLabsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC8AD485F20DB92537833E21C5902FD /* BitLabsResponse.swift */; };
+		0728EA3E851BFC30DC629E5C6CE0D1E2 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34349E380920EFAF3C3393DA1F4105 /* SurveyView.swift */; };
 		079F0820555C5B86C9FBD5EC6344137F /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D19AFBBBB00EEE64CE63E5D70649F6 /* Protected.swift */; };
+		07A37E334FA1D602441507C47F3C1D17 /* CheckSurveysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAC49B51D1ED9F5567A95ADE1FFA42C /* CheckSurveysResponse.swift */; };
+		0D1AEE01CBBEDEC0A25FD8C28DB6086D /* SurveyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A8F8909EA63AB96B9F50CF5971ECE5 /* SurveyDataSource.swift */; };
 		0F163DEEF395D6B239AF93E777B5ACDB /* Pods-BitLabs_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F1AE0D54E18207DC6975002E39DA96DC /* Pods-BitLabs_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		10440AA0EB08CF2556239F95ABC9C1E4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */; };
-		109E0538F2CF11FBCC0AC45F9D07C332 /* BitLabs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BDB5CB886A240B4465BA56B0706A56 /* BitLabs-dummy.m */; };
 		11CCD832BD537718892C6A216A38490A /* URLRequest+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C1B9BA6444238057611BDA7CACFA5 /* URLRequest+Alamofire.swift */; };
-		17C0DFB5791880895F31FF8B7EA9B567 /* BitLabsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878C686C97CC9A89B2E1F69F5B5A6E26 /* BitLabsAPI.swift */; };
 		197457852FC83E905248660B0F930452 /* AuthenticationInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B206CABA3E5C254320AB3AD7135A3CE /* AuthenticationInterceptor.swift */; };
 		1AFD57838680DF58184FF94D14C7F3FF /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F66307C1CA0F8DA20D1A6B668D1860 /* RequestInterceptor.swift */; };
-		1B32C585DCD0124910D95240E22B2B40 /* GetSurveysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A8AC2479B7BC625421D63412F9B00F /* GetSurveysResponse.swift */; };
-		1BC8C2018AE6DFC607FDD326B8719D6B /* BitLabsRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2416EC5B3D9CA8D5C34C5750F2FDB344 /* BitLabsRequestInterceptor.swift */; };
-		1E7E4E7C8F14DEEF4140820E46A8CDA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6074DED6EDDA95B9F135120ABFF0E4D /* Localizable.strings */; };
-		22AE1D25B490F73AD8C1732DC2297D1D /* BitLabsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFEE21AFA3BBD9422AAE0BB206A66E20 /* BitLabsResponse.swift */; };
-		2353ECDC3FDD474E9B047AFA5D4BA73B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319CF830147F8AE26CED80D49C816FFC /* User.swift */; };
+		1CC381A9647C871F39802DC4E2DD641D /* BitLabs-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 86BDB5CB886A240B4465BA56B0706A56 /* BitLabs-dummy.m */; };
+		1E6D104404A5C76A01B32BBC0AE70556 /* BitLabs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		22F63F233FB1A6D4FC184C7F0F760AD0 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A270AFA72D0580DBD04E379751B83C /* Survey.swift */; };
+		232B644E2EEDED1CC2BA39BA7981B429 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB90BFE4A5DBB72FA19DA5C8E4AA1BC /* Reward.swift */; };
+		262B9019BD09E7DF112A249360BF5332 /* OwnUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE673344E7757F5AAEE965C6297B9C /* OwnUser.swift */; };
+		2673B3A2FC06998E9AADB038DE0F89CA /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D2A3276B16F499701FE040A0BD75C /* WidgetType.swift */; };
+		268F808D1F0E2E9F2D0D5A52270F3D45 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0F674C3EEE1CC0BC7C72BB45DE007 /* Double+Extension.swift */; };
 		282FCD4EA8B05830E9108690B8CD336B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2BD68F2EB883212FFD2A289C9C6AFFD /* Session.swift */; };
 		299C2FD10BCCBC88F7B3583B56C9C073 /* Pods-BitLabs_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 21BDD3A80312C2988F4995208187274C /* Pods-BitLabs_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2B8B02D20E97DB164D445A2886F72310 /* ErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2CC22D697A63D4850B3E8550C51B44 /* ErrorDetails.swift */; };
+		2A1E68F38EFA66B2E1A868F3F6B4ECED /* ErrorDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97DDD10E14CE51CE1DCD018BFB7569D7 /* ErrorDetails.swift */; };
+		31E0A218097D9FCFAB292F027B6A8FF0 /* BitLabsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64AA548F92F775E832783C176649B85C /* BitLabsRouter.swift */; };
 		320C0D7A88AA812EFB20016BA1F5D7AE /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A436FE54641F2D107C7A36EEE579A711 /* AFError.swift */; };
-		34D6012FED35B889DB1A4568612C6E18 /* FullWidthSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6898F15599B786C3A469B755FDFB6C57 /* FullWidthSurveyView.xib */; };
-		374070CB2FDCE282E8CF479FBBDD6EEB /* LeaderboardRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE5D925D5A8098F11621CF9678C1756 /* LeaderboardRankingCell.swift */; };
+		3295F79CC6FB0323DEBAC1753A70EAB6 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A898A1D5023B101EF7DBD9B1BF0B559D /* Global.swift */; };
 		385BC4B250B6A6DB8AAAEA77D5B7A46F /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2D2AF8C623656CFD56B345D33E2C372 /* Combine.swift */; };
 		3A59D8FBAF9A54906E3644AC80465AFB /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B82D59AE35645D50D3A84BED8E57BBC /* Notifications.swift */; };
-		3D34FB897E5A3FDE8173408099B7FE81 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D864D3DB1C4BC4CED2D1A1894D3E16 /* Offer.swift */; };
+		3B1765130089F75E4E31639CE9E71CFC /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D47D5BA8A29CAEAE035915E0900C2A7 /* WebViewController.swift */; };
+		3CC82F1380D1A30E238755046AAFB866 /* LeaderboardRankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD7F6F04B15E0414E0912EF86215DDC /* LeaderboardRankingCell.xib */; };
 		3FA127A261BB563409868A0DC21807B2 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C5241B5E7FD5A8798EE42B92946C37 /* ResponseSerialization.swift */; };
-		3FA63783F8E6CEA57FCDA1AC352F38D7 /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EB4F8F5807173E5319EC46703C0DB22 /* SharedImages.xcassets */; };
-		41727A89348BECD9393F33944B9902AD /* LeaderboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE7E818AC1BE90EF38650F8E2B4860D /* LeaderboardView.xib */; };
+		41F360451727F69DA8C866CFFD2B6F15 /* GetSurveysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B335C2449426A38642DD0F9397706C /* GetSurveysResponse.swift */; };
+		4240E0978B54312FD123D8CBD22443BC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F953623A2E57A3E0AAD88B92CB5AF73A /* Currency.swift */; };
+		4567632B79ACAADA145D497C94B9B248 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F6074DED6EDDA95B9F135120ABFF0E4D /* Localizable.strings */; };
+		4815A6A9C93818478482831B1E60E87F /* UpdateClickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52786426D873CD4A0BA47C223E21EF50 /* UpdateClickResponse.swift */; };
 		482B74C0548970BB9C095E2D8530E421 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920D8F2C20208E53D68F47064E2AADAC /* ParameterEncoding.swift */; };
-		4FBE1C0AFA0C476256E2B19269DDD07F /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2952B7C4301ACE3F8557588394F6A /* LeaderboardView.swift */; };
-		50327A16870FCD0A22AAF050D72AE253 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
-		515530F928DBA1948CFF2A4D7A6C054A /* SurveyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A8F8909EA63AB96B9F50CF5971ECE5 /* SurveyDataSource.swift */; };
+		4AFD407E24BB0F864603F831B93F952B /* FullWidthSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6898F15599B786C3A469B755FDFB6C57 /* FullWidthSurveyView.xib */; };
+		4D5848D24C091BB981882086D42DFE76 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		4DEEC50A7D07DB5327C2F7E0E183C325 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA474C2D5AA86F9DB74EEE6AD729D20 /* SVG.swift */; };
 		529173B31EFCD3D199E79866AFBEC86C /* HTTPHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888DDD453AE7EBF323FD5C58AFC3C36A /* HTTPHeaders.swift */; };
-		5B620B09064DA49FEDF80C73BE6B36BA /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5460094ACD9250FE812F808DFA18173D /* Error.swift */; };
-		5B713EE02D71E34F3A5BE624B2BF8624 /* RestrictionReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304209B51D9373F631932CBA9C63E9E9 /* RestrictionReason.swift */; };
+		554FB1B753356125296043EFCBB69458 /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AFB10398694DA6C0D1C3B53787E0C18 /* Visual.swift */; };
 		5B92A66A66BD639411C3D839A0F87B0C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAE996B4E9D2DB7B306B601909915C7 /* Request.swift */; };
+		5F379420888C6BE41B86620331F185E3 /* LeaderboardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFE7E818AC1BE90EF38650F8E2B4860D /* LeaderboardView.xib */; };
 		5F881976AE4A34E409F4F900193A602A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		6117C06685F04388DB77E6AD9A7B9290 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033EC25597267C96CA3F0A76DD19356D /* Promotion.swift */; };
 		643A7AFFB7AEB70B2B9B7E0926055023 /* RetryPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FF77F272823F291CC1199FF15724F9 /* RetryPolicy.swift */; };
-		64B313EF4B54F0C545A2C4E98C3863A7 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D89A3D67FF6BF3A8E5B51956CDBBB2 /* Answer.swift */; };
 		67B10FEAA3B7E5387D20E76B1085E94D /* URLSessionConfiguration+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = C748480AB66C4D2CE843052F31C9C0D4 /* URLSessionConfiguration+Alamofire.swift */; };
-		6DB040357FEA4A4B2F4F7E676F8B90C2 /* CoreImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */; };
-		6F319034CD539E74F3D708A627CA70BC /* UpdateClickResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EC99821B921AC2ABF38639AB13FC58 /* UpdateClickResponse.swift */; };
-		705B526EA5778C56F2C4A0337ED22EB1 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1026C49D2E99BACC5F95009FF2789233 /* UIImageView+Extension.swift */; };
-		708FD96AABE64B22457122A1522CF998 /* LeaveReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F74A793060ACEA8478FC3F75D925317 /* LeaveReason.swift */; };
+		69B46AC674686A00A3EAF67FA9C2F309 /* BitLabsRequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA29D70A521885CE5A9FC2C3679E954 /* BitLabsRequestInterceptor.swift */; };
+		6DE34815817D608F1150451B347B3DC9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319CF830147F8AE26CED80D49C816FFC /* User.swift */; };
 		732C29255F73EF3D83D49BD4F8FEAA8F /* MultipartUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24767B05C71B09A12209F0C3C0CE3CB9 /* MultipartUpload.swift */; };
 		737747B9A98257DB58112C3A23686669 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592CA37CBFF826891439B792D0D405E6 /* MultipartFormData.swift */; };
-		74965C6EC2BACED0AE0D25A7658138C2 /* SimpleSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C53804046DA89BC7F05DEB8549FC6 /* SimpleSurveyView.xib */; };
-		775A0B5B46FBFAD8A58D682253FE976E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF30731304912345B81CA0CB45192DCD /* String+Extension.swift */; };
 		77AB6AF4BFC6DE016DA7C057B5799C84 /* ServerTrustEvaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8EC1AD74376CBE8B70B0820F6A611BA /* ServerTrustEvaluation.swift */; };
 		78B1DD1219182494A6AFAD26AAB20AA6 /* Concurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAC7B7C6D7F8B176EF5F9FB19EC1561 /* Concurrency.swift */; };
-		7B94C1D835DC2156F78204894056109F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D21E9C2B22C5AF2F0DC706BC3137F2D /* WebViewController.swift */; };
+		7A14773C34668FAF6D87701B03DE0E91 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672051148F8573A696773255C4251098 /* String+Extension.swift */; };
 		7D64BC3E6CAA4AB54EAC0AAADE93F578 /* OperationQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 910E01056C25BE91CB35F0ED509E6324 /* OperationQueue+Alamofire.swift */; };
-		7EB676B00658958DD28C4EB77C557DAD /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F953623A2E57A3E0AAD88B92CB5AF73A /* Currency.swift */; };
-		7FA1C63E680F4AEEC5A0B35DAC4820A7 /* BitLabsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15D452B38348A9E59E2ABEE942A3D649 /* BitLabsRouter.swift */; };
 		81E6A0FF7F286008345ECFA3A2103FA8 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06058CC4DC17D97D816E6291418C188D /* Alamofire.swift */; };
+		82AE00A51F5859D4220AA3254FD2C18B /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */; };
 		82FD97FBBEFE51E2D3B434AF4954FC93 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366002D2484CDB3D84D2680DC45279B7 /* EventMonitor.swift */; };
-		89ECF7A3DCABB0B13293172230913D78 /* Visual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A881BF2BC00F90EFBE2C1A1D09C4489 /* Visual.swift */; };
-		8B5AEBBC8AA3113A93A19F0D93A43789 /* WidgetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3D2A3276B16F499701FE040A0BD75C /* WidgetType.swift */; };
+		88E0CE213F245E672BB025CBC52AEDE2 /* CompactSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F7458CF612C33E0027382018A7F267 /* CompactSurveyView.xib */; };
 		8BF290A0D9BF26C37875D79507A1BE68 /* Pods-BitLabs_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0E5726ECCC8D509A4F0FCAC5711C6 /* Pods-BitLabs_Example-dummy.m */; };
+		8DB5F56728DE7AD8E93292F2A2DAB3C2 /* GetAppSettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF3EED01B8AD853F14861940C79D682 /* GetAppSettingsResponse.swift */; };
+		8E107C6A263CD5C2B291A4C8023E2822 /* BitLabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C4363C8E86AE09B2F96D21A707538 /* BitLabs.swift */; };
 		8E698F134A953250D5834C8B83CDAD34 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000339D58404A7D349EB962C6BE9E8C9 /* DispatchQueue+Alamofire.swift */; };
 		8E85763AE29BEF0A46EE875B8F069E8E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
+		8F584A2DFAD51BB3427106A9AFC96D23 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 659FA68A844382EED79C8FD228F66E89 /* UIColor+Extension.swift */; };
+		95852EC935BF7EAD7468F5BAB68F484E /* LeaderboardConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89E0BAE5A64712F2E0DED4984A5075 /* LeaderboardConfigurer.swift */; };
+		9AEBE1896B11C4E4B06F5CFC3402BB9C /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EACA32476EE70999F1ACA88882C9F7B /* Localized.swift */; };
+		A2BF75A74F58116F2DE5E1227F2457F4 /* GetLeaderboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5450A9DAEAFB3E936AF0D8E0E9105 /* GetLeaderboardResponse.swift */; };
 		A523488C60BF961290D0B1ABB9ADACEC /* RequestCompression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDB01290164DBD601DFFB8BF2E99BB5 /* RequestCompression.swift */; };
 		AA721ECC2B36AFB7D9FE70C83E6D63F9 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F10AF7BA68CD513FE4BD12AC3E9325 /* Response.swift */; };
-		AC11E6BE237CB2508A13543BB55F9BEA /* OwnUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CE673344E7757F5AAEE965C6297B9C /* OwnUser.swift */; };
+		AB7323606648E3F941E30A87B0895E4F /* SimpleSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165C53804046DA89BC7F05DEB8549FC6 /* SimpleSurveyView.xib */; };
+		AC24FA24D4E9DDA1BED8807B6FA9DC41 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9576D1C6CAA4A9EE27AFB8650AB77A /* Answer.swift */; };
 		AC9E679560AFCD3A3162334E18B600CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */; };
 		B17D933C8F8BC6A4F91AA620D7D7A870 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B1939EB3C8896EB69219C5F7BE0889 /* ParameterEncoder.swift */; };
-		B54308C9355102992639D7D604775B3B /* GetLeaderboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD5450A9DAEAFB3E936AF0D8E0E9105 /* GetLeaderboardResponse.swift */; };
-		B696BCD5FD05641C6DC2C7F165FEEC84 /* BitLabs-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B1AE2B7CD5499EB82510349CC398F3AB /* SharedImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EB4F8F5807173E5319EC46703C0DB22 /* SharedImages.xcassets */; };
 		BAB17A1C6CAD14B3788973EAF8466C93 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC207F43B02F0FCBF22B2B6ECAB6315 /* NetworkReachabilityManager.swift */; };
-		BB6FEE78AED9CBE273E8C47749BA1942 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB34349E380920EFAF3C3393DA1F4105 /* SurveyView.swift */; };
 		BB8FB38D211BA13FE6D8E59863A11418 /* Pods-BitLabs_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 15FD428A0F3637AE81D3CE9665313842 /* Pods-BitLabs_Tests-dummy.m */; };
+		BCF66D61CAE4AA8F8CF4C78AF377A81D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E89987F325E3ECA157DE906AE77CE3 /* UIImageView+Extension.swift */; };
 		C04739CBCEE445B66192BFA708655EDF /* StringEncoding+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79D0CEF5C05F64E7426A7256B88CE035 /* StringEncoding+Alamofire.swift */; };
-		C784793A2A604E21005D7D5B /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C78479392A604E21005D7D5B /* Promotion.swift */; };
-		C784793C2A61528C005D7D5B /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C784793B2A61528C005D7D5B /* Double+Extension.swift */; };
+		C72698396C4CF592402718284A7819D7 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6953028797547C141074A7998F8E00F /* Error.swift */; };
+		C8011BF44F562690B6B50B2CFDF5746A /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424229134FFBB2D1276F204B8314962B /* Symbol.swift */; };
 		C8269B42DED12AB1F275648D0BD32E45 /* URLEncodedFormEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4726E64C69480A59B59C7FAEADD2FEB4 /* URLEncodedFormEncoder.swift */; };
-		CFC4CD1A2ABA255751DC491021F83A30 /* LeaderboardConfigurer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89E0BAE5A64712F2E0DED4984A5075 /* LeaderboardConfigurer.swift */; };
 		D0560E8E2E5EB407B5D8E0381BF453FA /* URLConvertible+URLRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5152926B0E533873A8EED86D330834C0 /* URLConvertible+URLRequestConvertible.swift */; };
 		D09FBBADAF7C5C757AA5AB5DFE54BD25 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EA17C4197838FFA052EE7B9CAD9DD8D3 /* Alamofire-dummy.m */; };
+		D350AC07B36AB7D3291B7304EB971D98 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8E2952B7C4301ACE3F8557588394F6A /* LeaderboardView.swift */; };
 		D368E6F70C5E6998548A72E65F92432D /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CA3C62864BF74A58495C935CB6F35D /* Validation.swift */; };
-		D45D660D3E58EF5F94969984E5B8473F /* LeaderboardRankingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD7F6F04B15E0414E0912EF86215DDC /* LeaderboardRankingCell.xib */; };
-		D58AE89D809847B9D9E013736C17714F /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307F46A5252905A21794FF0D4C9BE8E3 /* Global.swift */; };
-		D6CD959A1606B06811D7BC3C68082B65 /* BitLabs.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6C4363C8E86AE09B2F96D21A707538 /* BitLabs.swift */; };
+		D466582C428C31A348BED180A947A795 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234ED7C0BF911378A47332302D543827 /* Offer.swift */; };
 		D7BCBE1EB4A638403C265CE2199EFF1B /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */; };
-		DABB451098607F017AD1E9FC50F512F4 /* SVG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511FAAA8FDCE470FF72D5074AC2087A /* SVG.swift */; };
-		DE2E11F467DB9F25477144F977CFAAF1 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A170E946883952B6B6576BEEB2C6FDD /* Category.swift */; };
-		E44E47B8FB5DD6432C5800A3BF6B08FE /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A270AFA72D0580DBD04E379751B83C /* Survey.swift */; };
-		E57183C9B5E9F6B83DB4DA252085B22F /* CompactSurveyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5F7458CF612C33E0027382018A7F267 /* CompactSurveyView.xib */; };
+		E21F441363F8227232083C14183800F6 /* CoreImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */; };
+		E3E6FB62E150873B619D1C966CEE499A /* BitLabsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0C6CB7A712421753CF557505069D6E /* BitLabsAPI.swift */; };
 		E6251F02EE12804D1B66AE32E716E664 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6965E5E3838DCDCC41AC01DA56A7D8D /* SessionDelegate.swift */; };
-		EA54FA1B883676FB5A71EFCB55F4C542 /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7558E6B0E47B932CF8ECBAACF456DD2F /* Localized.swift */; };
+		E7C978FE91FE36F1F1C1F54ABB5F27FF /* GetOffersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C644ECD7924345F0998F568C58EA859A /* GetOffersResponse.swift */; };
 		ECE6F23823454A8FDB3F97CE1A7CD182 /* RedirectHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67B27F0DC0BF19F460FD9E129E69629E /* RedirectHandler.swift */; };
 		ECF2F956B37A4C28B228BC291A57AD6E /* RequestTaskMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E276D9A7B3CF40C485A7FB983B8E7 /* RequestTaskMap.swift */; };
-		EEF2093EF21825B32993F6950AFD0DB5 /* GetAppSettingsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8139483A64EFACB2CB4A1FA7E35E442D /* GetAppSettingsResponse.swift */; };
 		F038D81F7ABAA15CF03246AD4BF334F7 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F833B93B04081CCB1F8033F4D88CDF4 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2415AE8678DE2698B7AD7D88B1A5C0F /* AlamofireExtended.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B614FCEF1E81C3ADCF667EBD4DD00A /* AlamofireExtended.swift */; };
-		F555CF25E610C9B0DF6BC875221E7671 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B014C458AE64C61BAACAC1D045E50231 /* UIColor+Extension.swift */; };
+		F529F63C8A2F04E6CD5667BAE05F424A /* LeaveReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793CEB873A302F16DEAD1C4ED89C3EA /* LeaveReason.swift */; };
 		F66CC47AD425C8D57BD149AFD09C2AFE /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18C61B77E806893D01FB3110BCFF9F3 /* HTTPMethod.swift */; };
-		F678E068781AC619C3034019B920DE51 /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424229134FFBB2D1276F204B8314962B /* Symbol.swift */; };
 		F6E94E8EE1CE35F49B9091BE8748587B /* Result+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA707F68E714E23150CF6B884D329CA /* Result+Alamofire.swift */; };
-		F99DA07D6D79984AA2EE165BAEF941C8 /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB90BFE4A5DBB72FA19DA5C8E4AA1BC /* Reward.swift */; };
-		FF05D09A6AB8B6B167DD08BC8BEE4679 /* CheckSurveysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47E68A5E25EC6F740FCE9AACF7083CF /* CheckSurveysResponse.swift */; };
+		FBE7A6AC3C1F6623B286CBA7BE4D7E84 /* RestrictionReason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B988ACF6535C4C9BDDCD733EF17A15 /* RestrictionReason.swift */; };
+		FF7B66FAB9A2BE018DAC636AB11557EB /* LeaderboardRankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE5D925D5A8098F11621CF9678C1756 /* LeaderboardRankingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3A7CBDB80552F17188F176D64A64D87D /* PBXContainerItemProxy */ = {
+		09E7FEFB363C4C5215E3FCDAD553D6A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
 			remoteInfo = Alamofire;
 		};
-		5A6788983834BBA0DEC2A3617EAF069D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
-			remoteInfo = Alamofire;
-		};
-		5DF16BFF620899EE42BFF5E5A1F91CA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7A25A4FD1DE243906620D1BCDA4B385C;
-			remoteInfo = "Pods-BitLabs_Example";
-		};
-		B88FF6573F617C61A78D3741FF027D4C /* PBXContainerItemProxy */ = {
+		89E6DDA94B64A5EA4875802FDE149144 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3740F855605096E48538A36B1CA2069A;
 			remoteInfo = BitLabs;
 		};
+		DC0A4CDF5F131CC5912B0A9AD41F7C50 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAAA1AD3A8A1B59AB91319EE40752C6D;
+			remoteInfo = Alamofire;
+		};
+		FDC0F2B67DEB8223EF03E0599D263BC7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A25A4FD1DE243906620D1BCDA4B385C;
+			remoteInfo = "Pods-BitLabs_Example";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		000339D58404A7D349EB962C6BE9E8C9 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		033EC25597267C96CA3F0A76DD19356D /* Promotion.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		06058CC4DC17D97D816E6291418C188D /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		0F74A793060ACEA8478FC3F75D925317 /* LeaveReason.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LeaveReason.swift; sourceTree = "<group>"; };
+		07E89987F325E3ECA157DE906AE77CE3 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		08B0F674C3EEE1CC0BC7C72BB45DE007 /* Double+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		0D47D5BA8A29CAEAE035915E0900C2A7 /* WebViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		0EACA32476EE70999F1ACA88882C9F7B /* Localized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		0FD7F6F04B15E0414E0912EF86215DDC /* LeaderboardRankingCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = LeaderboardRankingCell.xib; sourceTree = "<group>"; };
-		1026C49D2E99BACC5F95009FF2789233 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		14465E95612890F0488E6DF5C6AC29EE /* Pods-BitLabs_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitLabs_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		1511FAAA8FDCE470FF72D5074AC2087A /* SVG.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
-		15D452B38348A9E59E2ABEE942A3D649 /* BitLabsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsRouter.swift; sourceTree = "<group>"; };
 		15FD428A0F3637AE81D3CE9665313842 /* Pods-BitLabs_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BitLabs_Tests-dummy.m"; sourceTree = "<group>"; };
 		165C53804046DA89BC7F05DEB8549FC6 /* SimpleSurveyView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = SimpleSurveyView.xib; sourceTree = "<group>"; };
-		17EC99821B921AC2ABF38639AB13FC58 /* UpdateClickResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UpdateClickResponse.swift; sourceTree = "<group>"; };
 		193BD7D52F701ECC581F0C3E7BFE0F22 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1B56A76B5AD1B4CBE2CE3CA7D2098A25 /* Pods-BitLabs_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitLabs_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		1BA474C2D5AA86F9DB74EEE6AD729D20 /* SVG.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
 		21BDD3A80312C2988F4995208187274C /* Pods-BitLabs_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitLabs_Tests-umbrella.h"; sourceTree = "<group>"; };
 		21EB2AA5884FB920AB5C709A41728B13 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = "de-DE.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		22C5241B5E7FD5A8798EE42B92946C37 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		2416EC5B3D9CA8D5C34C5750F2FDB344 /* BitLabsRequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsRequestInterceptor.swift; sourceTree = "<group>"; };
+		234ED7C0BF911378A47332302D543827 /* Offer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		24767B05C71B09A12209F0C3C0CE3CB9 /* MultipartUpload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartUpload.swift; path = Source/MultipartUpload.swift; sourceTree = "<group>"; };
+		29B988ACF6535C4C9BDDCD733EF17A15 /* RestrictionReason.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestrictionReason.swift; sourceTree = "<group>"; };
 		2E8C6C8843819BB8BBAB4AD06AA67D05 /* Pods-BitLabs_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitLabs_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		2EB4F8F5807173E5319EC46703C0DB22 /* SharedImages.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = SharedImages.xcassets; sourceTree = "<group>"; };
-		304209B51D9373F631932CBA9C63E9E9 /* RestrictionReason.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RestrictionReason.swift; sourceTree = "<group>"; };
+		2EC8AD485F20DB92537833E21C5902FD /* BitLabsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsResponse.swift; sourceTree = "<group>"; };
 		306E2D1B9E4FC953243A0CACF97218A6 /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
-		307F46A5252905A21794FF0D4C9BE8E3 /* Global.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		3117039BB5C70A39F96B56AA7BCBBAF7 /* BitLabs-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BitLabs-prefix.pch"; sourceTree = "<group>"; };
 		319CF830147F8AE26CED80D49C816FFC /* User.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		31FF77F272823F291CC1199FF15724F9 /* RetryPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryPolicy.swift; path = Source/RetryPolicy.swift; sourceTree = "<group>"; };
@@ -177,34 +178,34 @@
 		424229134FFBB2D1276F204B8314962B /* Symbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		432A6754AFAB845BB390E0DFCB8BEC6A /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4726E64C69480A59B59C7FAEADD2FEB4 /* URLEncodedFormEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLEncodedFormEncoder.swift; path = Source/URLEncodedFormEncoder.swift; sourceTree = "<group>"; };
-		4D21E9C2B22C5AF2F0DC706BC3137F2D /* WebViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		4EA90F1DA2F6ED431AC5E3168C37CD6C /* Pods-BitLabs_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitLabs_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		4F833B93B04081CCB1F8033F4D88CDF4 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
 		5152926B0E533873A8EED86D330834C0 /* URLConvertible+URLRequestConvertible.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLConvertible+URLRequestConvertible.swift"; path = "Source/URLConvertible+URLRequestConvertible.swift"; sourceTree = "<group>"; };
-		5460094ACD9250FE812F808DFA18173D /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
-		555AD984142BF038CE0BE97757D65D52 /* GetOffersResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetOffersResponse.swift; sourceTree = "<group>"; };
+		51B335C2449426A38642DD0F9397706C /* GetSurveysResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetSurveysResponse.swift; sourceTree = "<group>"; };
+		52786426D873CD4A0BA47C223E21EF50 /* UpdateClickResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UpdateClickResponse.swift; sourceTree = "<group>"; };
 		592CA37CBFF826891439B792D0D405E6 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
 		5C3D2A3276B16F499701FE040A0BD75C /* WidgetType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetType.swift; sourceTree = "<group>"; };
 		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D19AFBBBB00EEE64CE63E5D70649F6 /* Protected.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protected.swift; path = Source/Protected.swift; sourceTree = "<group>"; };
 		6106CB76D7A6120D940D12170B6430AD /* Pods-BitLabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitLabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		64AA548F92F775E832783C176649B85C /* BitLabsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsRouter.swift; sourceTree = "<group>"; };
+		659FA68A844382EED79C8FD228F66E89 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		672051148F8573A696773255C4251098 /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		67B27F0DC0BF19F460FD9E129E69629E /* RedirectHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RedirectHandler.swift; path = Source/RedirectHandler.swift; sourceTree = "<group>"; };
 		6898F15599B786C3A469B755FDFB6C57 /* FullWidthSurveyView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = FullWidthSurveyView.xib; sourceTree = "<group>"; };
-		6A881BF2BC00F90EFBE2C1A1D09C4489 /* Visual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
+		6BA29D70A521885CE5A9FC2C3679E954 /* BitLabsRequestInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsRequestInterceptor.swift; sourceTree = "<group>"; };
 		6ED8831F6FF4301FD74775E203143BC4 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		71A8F8909EA63AB96B9F50CF5971ECE5 /* SurveyDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyDataSource.swift; sourceTree = "<group>"; };
 		740AAA5D9614C4C73D0E5D0E6E1FA9F3 /* Alamofire-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Alamofire-Info.plist"; sourceTree = "<group>"; };
 		74A8A157655B5E42F0119BDF65FDB4B8 /* BitLabs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BitLabs.release.xcconfig; sourceTree = "<group>"; };
-		7558E6B0E47B932CF8ECBAACF456DD2F /* Localized.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		77226E8FC7B56CA1068824166848ADBF /* CachedResponseHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CachedResponseHandler.swift; path = Source/CachedResponseHandler.swift; sourceTree = "<group>"; };
 		79D0CEF5C05F64E7426A7256B88CE035 /* StringEncoding+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "StringEncoding+Alamofire.swift"; path = "Source/StringEncoding+Alamofire.swift"; sourceTree = "<group>"; };
+		7A9576D1C6CAA4A9EE27AFB8650AB77A /* Answer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		7B82D59AE35645D50D3A84BED8E57BBC /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		8139483A64EFACB2CB4A1FA7E35E442D /* GetAppSettingsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetAppSettingsResponse.swift; sourceTree = "<group>"; };
 		86BDB5CB886A240B4465BA56B0706A56 /* BitLabs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BitLabs-dummy.m"; sourceTree = "<group>"; };
-		878C686C97CC9A89B2E1F69F5B5A6E26 /* BitLabsAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsAPI.swift; sourceTree = "<group>"; };
 		888DDD453AE7EBF323FD5C58AFC3C36A /* HTTPHeaders.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPHeaders.swift; path = Source/HTTPHeaders.swift; sourceTree = "<group>"; };
 		88B1939EB3C8896EB69219C5F7BE0889 /* ParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoder.swift; path = Source/ParameterEncoder.swift; sourceTree = "<group>"; };
-		89DEC3A41EB3DD2BF8CA9AA1DDBEB60B /* BitLabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = BitLabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		89DEC3A41EB3DD2BF8CA9AA1DDBEB60B /* BitLabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BitLabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		8DB90BFE4A5DBB72FA19DA5C8E4AA1BC /* Reward.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
 		8FDB01290164DBD601DFFB8BF2E99BB5 /* RequestCompression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestCompression.swift; path = Source/RequestCompression.swift; sourceTree = "<group>"; };
@@ -214,14 +215,16 @@
 		920D8F2C20208E53D68F47064E2AADAC /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
 		94F10AF7BA68CD513FE4BD12AC3E9325 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
 		953E276D9A7B3CF40C485A7FB983B8E7 /* RequestTaskMap.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RequestTaskMap.swift; path = Source/RequestTaskMap.swift; sourceTree = "<group>"; };
+		97DDD10E14CE51CE1DCD018BFB7569D7 /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		9955868280F5BA33182DC573D9A98929 /* BitLabs.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BitLabs.modulemap; sourceTree = "<group>"; };
+		9AFB10398694DA6C0D1C3B53787E0C18 /* Visual.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Visual.swift; sourceTree = "<group>"; };
 		9B206CABA3E5C254320AB3AD7135A3CE /* AuthenticationInterceptor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthenticationInterceptor.swift; path = Source/AuthenticationInterceptor.swift; sourceTree = "<group>"; };
 		9B892CB64AEFA9D6B9A951A7E735FA84 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A436FE54641F2D107C7A36EEE579A711 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
 		A52D1AFEE03B6011772E5FAE0AC50EEE /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		A6E5356F54707C9581DF1EA263D1079F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		A8D89A3D67FF6BF3A8E5B51956CDBBB2 /* Answer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		A6E5356F54707C9581DF1EA263D1079F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		A898A1D5023B101EF7DBD9B1BF0B559D /* Global.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A8E2952B7C4301ACE3F8557588394F6A /* LeaderboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		AAE2B83FBDB7D4C63E30B9F0A1DFB41F /* Pods-BitLabs_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitLabs_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,52 +232,57 @@
 		AD714F718D7CC54F064F15757F78C492 /* Alamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.debug.xcconfig; sourceTree = "<group>"; };
 		ADF1300447974D5F21CD0BC408CD51F9 /* Pods-BitLabs_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BitLabs_Example.release.xcconfig"; sourceTree = "<group>"; };
 		AFD482EBF89B4A4900F4D53F2D369CE3 /* Pods-BitLabs_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BitLabs_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B014C458AE64C61BAACAC1D045E50231 /* UIColor+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		B1B614FCEF1E81C3ADCF667EBD4DD00A /* AlamofireExtended.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlamofireExtended.swift; path = Source/AlamofireExtended.swift; sourceTree = "<group>"; };
 		B1F8946F292AB1F772B0F5D785C55DE6 /* Pods-BitLabs_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BitLabs_Example.modulemap"; sourceTree = "<group>"; };
 		B2D2AF8C623656CFD56B345D33E2C372 /* Combine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Combine.swift; path = Source/Combine.swift; sourceTree = "<group>"; };
 		B3799310FD1889DA69FDDF07EF27B842 /* BitLabs */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BitLabs; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B47E68A5E25EC6F740FCE9AACF7083CF /* CheckSurveysResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckSurveysResponse.swift; sourceTree = "<group>"; };
+		BAAC49B51D1ED9F5567A95ADE1FFA42C /* CheckSurveysResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CheckSurveysResponse.swift; sourceTree = "<group>"; };
 		BCD5450A9DAEAFB3E936AF0D8E0E9105 /* GetLeaderboardResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetLeaderboardResponse.swift; sourceTree = "<group>"; };
 		BDAE996B4E9D2DB7B306B601909915C7 /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		BFEE21AFA3BBD9422AAE0BB206A66E20 /* BitLabsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsResponse.swift; sourceTree = "<group>"; };
+		BFF3EED01B8AD853F14861940C79D682 /* GetAppSettingsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetAppSettingsResponse.swift; sourceTree = "<group>"; };
 		C18C61B77E806893D01FB3110BCFF9F3 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/HTTPMethod.swift; sourceTree = "<group>"; };
 		C2BD68F2EB883212FFD2A289C9C6AFFD /* Session.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Source/Session.swift; sourceTree = "<group>"; };
+		C644ECD7924345F0998F568C58EA859A /* GetOffersResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetOffersResponse.swift; sourceTree = "<group>"; };
 		C6965E5E3838DCDCC41AC01DA56A7D8D /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
 		C748480AB66C4D2CE843052F31C9C0D4 /* URLSessionConfiguration+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLSessionConfiguration+Alamofire.swift"; path = "Source/URLSessionConfiguration+Alamofire.swift"; sourceTree = "<group>"; };
-		C78479392A604E21005D7D5B /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		C784793B2A61528C005D7D5B /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		C793CEB873A302F16DEAD1C4ED89C3EA /* LeaveReason.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LeaveReason.swift; sourceTree = "<group>"; };
 		C7A270AFA72D0580DBD04E379751B83C /* Survey.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		C9677A2D416059D8FC137F79C29D070F /* Pods-BitLabs_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Example"; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD2CC22D697A63D4850B3E8550C51B44 /* ErrorDetails.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ErrorDetails.swift; sourceTree = "<group>"; };
 		CFE7E818AC1BE90EF38650F8E2B4860D /* LeaderboardView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = LeaderboardView.xib; sourceTree = "<group>"; };
 		D1CAEBE1C1727AC355481D03463B4C68 /* Pods-BitLabs_Tests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitLabs_Tests-Info.plist"; sourceTree = "<group>"; };
 		D5F7458CF612C33E0027382018A7F267 /* CompactSurveyView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CompactSurveyView.xib; sourceTree = "<group>"; };
-		D641205EFDFA743B89B50774471B2A20 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D641205EFDFA743B89B50774471B2A20 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		D641E79625BE3A6FFFCF2115EA6F2B0E /* Pods-BitLabs_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BitLabs_Example-Info.plist"; sourceTree = "<group>"; };
-		D6A8AC2479B7BC625421D63412F9B00F /* GetSurveysResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetSurveysResponse.swift; sourceTree = "<group>"; };
 		D6B591DC4B742EB96952318CD9E9EBD2 /* BitLabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BitLabs.debug.xcconfig; sourceTree = "<group>"; };
 		D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = CoreImages.xcassets; sourceTree = "<group>"; };
 		DA6C4363C8E86AE09B2F96D21A707538 /* BitLabs.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabs.swift; sourceTree = "<group>"; };
 		DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BitLabs-umbrella.h"; sourceTree = "<group>"; };
 		DCAC7B7C6D7F8B176EF5F9FB19EC1561 /* Concurrency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Concurrency.swift; path = Source/Concurrency.swift; sourceTree = "<group>"; };
 		DDA707F68E714E23150CF6B884D329CA /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Result+Alamofire.swift"; sourceTree = "<group>"; };
-		DF30731304912345B81CA0CB45192DCD /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		E4CE673344E7757F5AAEE965C6297B9C /* OwnUser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OwnUser.swift; sourceTree = "<group>"; };
 		E8EC1AD74376CBE8B70B0820F6A611BA /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
 		EA0C1B9BA6444238057611BDA7CACFA5 /* URLRequest+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "URLRequest+Alamofire.swift"; path = "Source/URLRequest+Alamofire.swift"; sourceTree = "<group>"; };
 		EA17C4197838FFA052EE7B9CAD9DD8D3 /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
 		EC4701FCC96F6AA9731A7C2FD954DD06 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EC8B6D3F1C76445141286113080DD81D /* Pods-BitLabs_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BitLabs_Tests"; path = Pods_BitLabs_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F0D864D3DB1C4BC4CED2D1A1894D3E16 /* Offer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		F1AE0D54E18207DC6975002E39DA96DC /* Pods-BitLabs_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BitLabs_Example-umbrella.h"; sourceTree = "<group>"; };
+		F6953028797547C141074A7998F8E00F /* Error.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		F953623A2E57A3E0AAD88B92CB5AF73A /* Currency.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		FB0C6CB7A712421753CF557505069D6E /* BitLabsAPI.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsAPI.swift; sourceTree = "<group>"; };
 		FC89E0BAE5A64712F2E0DED4984A5075 /* LeaderboardConfigurer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LeaderboardConfigurer.swift; sourceTree = "<group>"; };
 		FD0CE05D5D076B1B5190EE5DF97FD54E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		FEC207F43B02F0FCBF22B2B6ECAB6315 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		456AD32060B7953CF3E0F8EAEC3FA88B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4D5848D24C091BB981882086D42DFE76 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BF6E64D3157435E5797A5278584A4DC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -292,14 +300,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FE648DB7B43D03C42B1FEAB9DA77917C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				50327A16870FCD0A22AAF050D72AE253 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FF42DFB039933FB94D849B4D8000C8C7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,33 +311,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077F6BB7BCA82B8615853A2DE343F6D4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				FB0C6CB7A712421753CF557505069D6E /* BitLabsAPI.swift */,
+				6BA29D70A521885CE5A9FC2C3679E954 /* BitLabsRequestInterceptor.swift */,
+				64AA548F92F775E832783C176649B85C /* BitLabsRouter.swift */,
+			);
+			name = Networking;
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		086C1A0442BD824928A418D910DE2B21 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D47D5BA8A29CAEAE035915E0900C2A7 /* WebViewController.swift */,
+			);
+			name = Views;
+			path = Views;
+			sourceTree = "<group>";
+		};
 		0977EA28A1E7724C9793DC2FED20C605 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */,
 			);
+			name = Assets;
 			path = Assets;
-			sourceTree = "<group>";
-		};
-		09BD60E8EFF83472B9D51908FB830CAA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A8D89A3D67FF6BF3A8E5B51956CDBBB2 /* Answer.swift */,
-				BFEE21AFA3BBD9422AAE0BB206A66E20 /* BitLabsResponse.swift */,
-				B47E68A5E25EC6F740FCE9AACF7083CF /* CheckSurveysResponse.swift */,
-				5460094ACD9250FE812F808DFA18173D /* Error.swift */,
-				CD2CC22D697A63D4850B3E8550C51B44 /* ErrorDetails.swift */,
-				8139483A64EFACB2CB4A1FA7E35E442D /* GetAppSettingsResponse.swift */,
-				555AD984142BF038CE0BE97757D65D52 /* GetOffersResponse.swift */,
-				D6A8AC2479B7BC625421D63412F9B00F /* GetSurveysResponse.swift */,
-				0F74A793060ACEA8478FC3F75D925317 /* LeaveReason.swift */,
-				F0D864D3DB1C4BC4CED2D1A1894D3E16 /* Offer.swift */,
-				304209B51D9373F631932CBA9C63E9E9 /* RestrictionReason.swift */,
-				17EC99821B921AC2ABF38639AB13FC58 /* UpdateClickResponse.swift */,
-				6A881BF2BC00F90EFBE2C1A1D09C4489 /* Visual.swift */,
-				C78479392A604E21005D7D5B /* Promotion.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		0EB643132FBEEEDB9E88152179EBD517 /* Core */ = {
@@ -349,14 +349,6 @@
 			);
 			name = Core;
 			path = BitLabs/Classes/Core;
-			sourceTree = "<group>";
-		};
-		156891077A4061C9A7642BCB55C8CE08 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				4D21E9C2B22C5AF2F0DC706BC3137F2D /* WebViewController.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -373,6 +365,7 @@
 				A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */,
 				B66C3FBCDC465A04B162410893DA16F8 /* Assets */,
 			);
+			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -410,6 +403,18 @@
 			path = "../Target Support Files/Alamofire";
 			sourceTree = "<group>";
 		};
+		606A2E0CA02317C928E58A3F7FEF8891 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A289966767C3B745261F087DF191C693 /* Models */,
+				077F6BB7BCA82B8615853A2DE343F6D4 /* Networking */,
+				D9500AFD3EB6C3CCC32BFDAD2CABE641 /* Utilities */,
+				086C1A0442BD824928A418D910DE2B21 /* Views */,
+			);
+			name = Shared;
+			path = BitLabs/Classes/Shared;
+			sourceTree = "<group>";
+		};
 		61C8CC330A5CA84DA2F5F1D32AB07069 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,20 +440,6 @@
 			path = "Target Support Files/Pods-BitLabs_Tests";
 			sourceTree = "<group>";
 		};
-		6834DD17CE05753562E038F5A3A2A1D5 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				307F46A5252905A21794FF0D4C9BE8E3 /* Global.swift */,
-				7558E6B0E47B932CF8ECBAACF456DD2F /* Localized.swift */,
-				DF30731304912345B81CA0CB45192DCD /* String+Extension.swift */,
-				1511FAAA8FDCE470FF72D5074AC2087A /* SVG.swift */,
-				B014C458AE64C61BAACAC1D045E50231 /* UIColor+Extension.swift */,
-				1026C49D2E99BACC5F95009FF2789233 /* UIImageView+Extension.swift */,
-				C784793B2A61528C005D7D5B /* Double+Extension.swift */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		691AB35470217A05EC426828B3D6E85D /* Pod */ = {
 			isa = PBXGroup;
 			children = (
@@ -472,6 +463,7 @@
 				319CF830147F8AE26CED80D49C816FFC /* User.swift */,
 				5C3D2A3276B16F499701FE040A0BD75C /* WidgetType.swift */,
 			);
+			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -494,6 +486,7 @@
 				71A8F8909EA63AB96B9F50CF5971ECE5 /* SurveyDataSource.swift */,
 				AB34349E380920EFAF3C3393DA1F4105 /* SurveyView.swift */,
 			);
+			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -531,18 +524,6 @@
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		7FFB5B118510EB852B468EFFA8FB01C1 /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				09BD60E8EFF83472B9D51908FB830CAA /* Models */,
-				9E8BC85E1C6D79E16C1E6CE89F540EA8 /* Networking */,
-				6834DD17CE05753562E038F5A3A2A1D5 /* Utilities */,
-				156891077A4061C9A7642BCB55C8CE08 /* Views */,
-			);
-			name = Shared;
-			path = BitLabs/Classes/Shared;
-			sourceTree = "<group>";
-		};
 		857F7AC1CFB8251B23EF6C1B0B6276A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,16 +533,6 @@
 				EC8B6D3F1C76445141286113080DD81D /* Pods-BitLabs_Tests */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		9E8BC85E1C6D79E16C1E6CE89F540EA8 /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				878C686C97CC9A89B2E1F69F5B5A6E26 /* BitLabsAPI.swift */,
-				2416EC5B3D9CA8D5C34C5750F2FDB344 /* BitLabsRequestInterceptor.swift */,
-				15D452B38348A9E59E2ABEE942A3D649 /* BitLabsRouter.swift */,
-			);
-			path = Networking;
 			sourceTree = "<group>";
 		};
 		A04F8719988180477052BBAC5B588925 /* Support Files */ = {
@@ -579,11 +550,34 @@
 			path = "Example/Pods/Target Support Files/BitLabs";
 			sourceTree = "<group>";
 		};
+		A289966767C3B745261F087DF191C693 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7A9576D1C6CAA4A9EE27AFB8650AB77A /* Answer.swift */,
+				2EC8AD485F20DB92537833E21C5902FD /* BitLabsResponse.swift */,
+				BAAC49B51D1ED9F5567A95ADE1FFA42C /* CheckSurveysResponse.swift */,
+				F6953028797547C141074A7998F8E00F /* Error.swift */,
+				97DDD10E14CE51CE1DCD018BFB7569D7 /* ErrorDetails.swift */,
+				BFF3EED01B8AD853F14861940C79D682 /* GetAppSettingsResponse.swift */,
+				C644ECD7924345F0998F568C58EA859A /* GetOffersResponse.swift */,
+				51B335C2449426A38642DD0F9397706C /* GetSurveysResponse.swift */,
+				C793CEB873A302F16DEAD1C4ED89C3EA /* LeaveReason.swift */,
+				234ED7C0BF911378A47332302D543827 /* Offer.swift */,
+				033EC25597267C96CA3F0A76DD19356D /* Promotion.swift */,
+				29B988ACF6535C4C9BDDCD733EF17A15 /* RestrictionReason.swift */,
+				52786426D873CD4A0BA47C223E21EF50 /* UpdateClickResponse.swift */,
+				9AFB10398694DA6C0D1C3B53787E0C18 /* Visual.swift */,
+			);
+			name = Models;
+			path = Models;
+			sourceTree = "<group>";
+		};
 		B66C3FBCDC465A04B162410893DA16F8 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
 				2EB4F8F5807173E5319EC46703C0DB22 /* SharedImages.xcassets */,
 			);
+			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -593,7 +587,7 @@
 				0EB643132FBEEEDB9E88152179EBD517 /* Core */,
 				743577D519634CD45944117A22FF0FF3 /* Localizations */,
 				6EB4FA15FF6E4029993245C506E50228 /* Resources */,
-				7FFB5B118510EB852B468EFFA8FB01C1 /* Shared */,
+				606A2E0CA02317C928E58A3F7FEF8891 /* Shared */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -629,7 +623,23 @@
 				165C53804046DA89BC7F05DEB8549FC6 /* SimpleSurveyView.xib */,
 				0977EA28A1E7724C9793DC2FED20C605 /* Assets */,
 			);
+			name = Core;
 			path = Core;
+			sourceTree = "<group>";
+		};
+		D9500AFD3EB6C3CCC32BFDAD2CABE641 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				08B0F674C3EEE1CC0BC7C72BB45DE007 /* Double+Extension.swift */,
+				A898A1D5023B101EF7DBD9B1BF0B559D /* Global.swift */,
+				0EACA32476EE70999F1ACA88882C9F7B /* Localized.swift */,
+				672051148F8573A696773255C4251098 /* String+Extension.swift */,
+				1BA474C2D5AA86F9DB74EEE6AD729D20 /* SVG.swift */,
+				659FA68A844382EED79C8FD228F66E89 /* UIColor+Extension.swift */,
+				07E89987F325E3ECA157DE906AE77CE3 /* UIImageView+Extension.swift */,
+			);
+			name = Utilities;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E4DBDEEA84D01EDB41FB547B1154D346 /* Alamofire */ = {
@@ -674,20 +684,13 @@
 				40CA3C62864BF74A58495C935CB6F35D /* Validation.swift */,
 				5F92C9B9F679FE7DF64E95279E5DB79F /* Support Files */,
 			);
+			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		65358B491399A58FE526E1722EA97C55 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B696BCD5FD05641C6DC2C7F165FEEC84 /* BitLabs-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D5F73DB8CAB10FA21F6D5B49EE633984 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -712,6 +715,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF1B5474015AD4CA6FDBB3966BF687E3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E6D104404A5C76A01B32BBC0AE70556 /* BitLabs-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -727,7 +738,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A79D3DBC658B8D6B8C58960FD6C6548B /* PBXTargetDependency */,
+				35017A6482BAF649C93AC53303B07AD8 /* PBXTargetDependency */,
 			);
 			name = "Pods-BitLabs_Tests";
 			productName = Pods_BitLabs_Tests;
@@ -736,17 +747,17 @@
 		};
 		3740F855605096E48538A36B1CA2069A /* BitLabs */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B9B3D22B101090F3FD507AB2EFB3111D /* Build configuration list for PBXNativeTarget "BitLabs" */;
+			buildConfigurationList = 5203186B386120F7FA88727BDEE07AF1 /* Build configuration list for PBXNativeTarget "BitLabs" */;
 			buildPhases = (
-				65358B491399A58FE526E1722EA97C55 /* Headers */,
-				C4644EA6D54FCB1F7AC8E254A1A82A87 /* Sources */,
-				FE648DB7B43D03C42B1FEAB9DA77917C /* Frameworks */,
-				E2269BF3B40521CE11415A8DAB31626C /* Resources */,
+				EF1B5474015AD4CA6FDBB3966BF687E3 /* Headers */,
+				7E379699865E79086874841F94FF5ECB /* Sources */,
+				456AD32060B7953CF3E0F8EAEC3FA88B /* Frameworks */,
+				8B6952FA3E3E8E350C0F98C0C61F5CCD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E1DB7F12CD1C0409823661E6245C2FCF /* PBXTargetDependency */,
+				511D44546EF0C9A490F955C9A5F7895B /* PBXTargetDependency */,
 			);
 			name = BitLabs;
 			productName = BitLabs;
@@ -765,8 +776,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				08699C1F16CA971A3B3CF187C1F1DE33 /* PBXTargetDependency */,
-				5A996A9E33F9BF4106FB0B5FE431EA96 /* PBXTargetDependency */,
+				ACC2C0DDF33D03142DD8FA6F3558A798 /* PBXTargetDependency */,
+				4A621A9FCD769C7A9DA188F768F28CC7 /* PBXTargetDependency */,
 			);
 			name = "Pods-BitLabs_Example";
 			productName = Pods_BitLabs_Example;
@@ -834,6 +845,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8B6952FA3E3E8E350C0F98C0C61F5CCD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88E0CE213F245E672BB025CBC52AEDE2 /* CompactSurveyView.xib in Resources */,
+				E21F441363F8227232083C14183800F6 /* CoreImages.xcassets in Resources */,
+				4AFD407E24BB0F864603F831B93F952B /* FullWidthSurveyView.xib in Resources */,
+				3CC82F1380D1A30E238755046AAFB866 /* LeaderboardRankingCell.xib in Resources */,
+				5F379420888C6BE41B86620331F185E3 /* LeaderboardView.xib in Resources */,
+				4567632B79ACAADA145D497C94B9B248 /* Localizable.strings in Resources */,
+				B1AE2B7CD5499EB82510349CC398F3AB /* SharedImages.xcassets in Resources */,
+				AB7323606648E3F941E30A87B0895E4F /* SimpleSurveyView.xib in Resources */,
+				82AE00A51F5859D4220AA3254FD2C18B /* WebViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AB3996918400A0010A8759169DDF1334 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -845,22 +872,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E2269BF3B40521CE11415A8DAB31626C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E57183C9B5E9F6B83DB4DA252085B22F /* CompactSurveyView.xib in Resources */,
-				6DB040357FEA4A4B2F4F7E676F8B90C2 /* CoreImages.xcassets in Resources */,
-				34D6012FED35B889DB1A4568612C6E18 /* FullWidthSurveyView.xib in Resources */,
-				D45D660D3E58EF5F94969984E5B8473F /* LeaderboardRankingCell.xib in Resources */,
-				41727A89348BECD9393F33944B9902AD /* LeaderboardView.xib in Resources */,
-				1E7E4E7C8F14DEEF4140820E46A8CDA0 /* Localizable.strings in Resources */,
-				3FA63783F8E6CEA57FCDA1AC352F38D7 /* SharedImages.xcassets in Resources */,
-				74965C6EC2BACED0AE0D25A7658138C2 /* SimpleSurveyView.xib in Resources */,
-				10440AA0EB08CF2556239F95ABC9C1E4 /* WebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,80 +939,80 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4644EA6D54FCB1F7AC8E254A1A82A87 /* Sources */ = {
+		7E379699865E79086874841F94FF5ECB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B313EF4B54F0C545A2C4E98C3863A7 /* Answer.swift in Sources */,
-				D6CD959A1606B06811D7BC3C68082B65 /* BitLabs.swift in Sources */,
-				109E0538F2CF11FBCC0AC45F9D07C332 /* BitLabs-dummy.m in Sources */,
-				17C0DFB5791880895F31FF8B7EA9B567 /* BitLabsAPI.swift in Sources */,
-				1BC8C2018AE6DFC607FDD326B8719D6B /* BitLabsRequestInterceptor.swift in Sources */,
-				22AE1D25B490F73AD8C1732DC2297D1D /* BitLabsResponse.swift in Sources */,
-				7FA1C63E680F4AEEC5A0B35DAC4820A7 /* BitLabsRouter.swift in Sources */,
-				DE2E11F467DB9F25477144F977CFAAF1 /* Category.swift in Sources */,
-				FF05D09A6AB8B6B167DD08BC8BEE4679 /* CheckSurveysResponse.swift in Sources */,
-				7EB676B00658958DD28C4EB77C557DAD /* Currency.swift in Sources */,
-				5B620B09064DA49FEDF80C73BE6B36BA /* Error.swift in Sources */,
-				2B8B02D20E97DB164D445A2886F72310 /* ErrorDetails.swift in Sources */,
-				EEF2093EF21825B32993F6950AFD0DB5 /* GetAppSettingsResponse.swift in Sources */,
-				B54308C9355102992639D7D604775B3B /* GetLeaderboardResponse.swift in Sources */,
-				05D4A98F4588B2BA6A0FCDED6291DF20 /* GetOffersResponse.swift in Sources */,
-				1B32C585DCD0124910D95240E22B2B40 /* GetSurveysResponse.swift in Sources */,
-				D58AE89D809847B9D9E013736C17714F /* Global.swift in Sources */,
-				C784793A2A604E21005D7D5B /* Promotion.swift in Sources */,
-				CFC4CD1A2ABA255751DC491021F83A30 /* LeaderboardConfigurer.swift in Sources */,
-				374070CB2FDCE282E8CF479FBBDD6EEB /* LeaderboardRankingCell.swift in Sources */,
-				4FBE1C0AFA0C476256E2B19269DDD07F /* LeaderboardView.swift in Sources */,
-				708FD96AABE64B22457122A1522CF998 /* LeaveReason.swift in Sources */,
-				EA54FA1B883676FB5A71EFCB55F4C542 /* Localized.swift in Sources */,
-				C784793C2A61528C005D7D5B /* Double+Extension.swift in Sources */,
-				3D34FB897E5A3FDE8173408099B7FE81 /* Offer.swift in Sources */,
-				AC11E6BE237CB2508A13543BB55F9BEA /* OwnUser.swift in Sources */,
-				5B713EE02D71E34F3A5BE624B2BF8624 /* RestrictionReason.swift in Sources */,
-				F99DA07D6D79984AA2EE165BAEF941C8 /* Reward.swift in Sources */,
-				775A0B5B46FBFAD8A58D682253FE976E /* String+Extension.swift in Sources */,
-				E44E47B8FB5DD6432C5800A3BF6B08FE /* Survey.swift in Sources */,
-				515530F928DBA1948CFF2A4D7A6C054A /* SurveyDataSource.swift in Sources */,
-				BB6FEE78AED9CBE273E8C47749BA1942 /* SurveyView.swift in Sources */,
-				DABB451098607F017AD1E9FC50F512F4 /* SVG.swift in Sources */,
-				F678E068781AC619C3034019B920DE51 /* Symbol.swift in Sources */,
-				F555CF25E610C9B0DF6BC875221E7671 /* UIColor+Extension.swift in Sources */,
-				705B526EA5778C56F2C4A0337ED22EB1 /* UIImageView+Extension.swift in Sources */,
-				6F319034CD539E74F3D708A627CA70BC /* UpdateClickResponse.swift in Sources */,
-				2353ECDC3FDD474E9B047AFA5D4BA73B /* User.swift in Sources */,
-				89ECF7A3DCABB0B13293172230913D78 /* Visual.swift in Sources */,
-				7B94C1D835DC2156F78204894056109F /* WebViewController.swift in Sources */,
-				8B5AEBBC8AA3113A93A19F0D93A43789 /* WidgetType.swift in Sources */,
+				AC24FA24D4E9DDA1BED8807B6FA9DC41 /* Answer.swift in Sources */,
+				8E107C6A263CD5C2B291A4C8023E2822 /* BitLabs.swift in Sources */,
+				1CC381A9647C871F39802DC4E2DD641D /* BitLabs-dummy.m in Sources */,
+				E3E6FB62E150873B619D1C966CEE499A /* BitLabsAPI.swift in Sources */,
+				69B46AC674686A00A3EAF67FA9C2F309 /* BitLabsRequestInterceptor.swift in Sources */,
+				05F3B8F963AD075A1FB649694A16C95F /* BitLabsResponse.swift in Sources */,
+				31E0A218097D9FCFAB292F027B6A8FF0 /* BitLabsRouter.swift in Sources */,
+				0239A1EF17570CE5594BE95077BA91AC /* Category.swift in Sources */,
+				07A37E334FA1D602441507C47F3C1D17 /* CheckSurveysResponse.swift in Sources */,
+				4240E0978B54312FD123D8CBD22443BC /* Currency.swift in Sources */,
+				268F808D1F0E2E9F2D0D5A52270F3D45 /* Double+Extension.swift in Sources */,
+				C72698396C4CF592402718284A7819D7 /* Error.swift in Sources */,
+				2A1E68F38EFA66B2E1A868F3F6B4ECED /* ErrorDetails.swift in Sources */,
+				8DB5F56728DE7AD8E93292F2A2DAB3C2 /* GetAppSettingsResponse.swift in Sources */,
+				A2BF75A74F58116F2DE5E1227F2457F4 /* GetLeaderboardResponse.swift in Sources */,
+				E7C978FE91FE36F1F1C1F54ABB5F27FF /* GetOffersResponse.swift in Sources */,
+				41F360451727F69DA8C866CFFD2B6F15 /* GetSurveysResponse.swift in Sources */,
+				3295F79CC6FB0323DEBAC1753A70EAB6 /* Global.swift in Sources */,
+				95852EC935BF7EAD7468F5BAB68F484E /* LeaderboardConfigurer.swift in Sources */,
+				FF7B66FAB9A2BE018DAC636AB11557EB /* LeaderboardRankingCell.swift in Sources */,
+				D350AC07B36AB7D3291B7304EB971D98 /* LeaderboardView.swift in Sources */,
+				F529F63C8A2F04E6CD5667BAE05F424A /* LeaveReason.swift in Sources */,
+				9AEBE1896B11C4E4B06F5CFC3402BB9C /* Localized.swift in Sources */,
+				D466582C428C31A348BED180A947A795 /* Offer.swift in Sources */,
+				262B9019BD09E7DF112A249360BF5332 /* OwnUser.swift in Sources */,
+				6117C06685F04388DB77E6AD9A7B9290 /* Promotion.swift in Sources */,
+				FBE7A6AC3C1F6623B286CBA7BE4D7E84 /* RestrictionReason.swift in Sources */,
+				232B644E2EEDED1CC2BA39BA7981B429 /* Reward.swift in Sources */,
+				7A14773C34668FAF6D87701B03DE0E91 /* String+Extension.swift in Sources */,
+				22F63F233FB1A6D4FC184C7F0F760AD0 /* Survey.swift in Sources */,
+				0D1AEE01CBBEDEC0A25FD8C28DB6086D /* SurveyDataSource.swift in Sources */,
+				0728EA3E851BFC30DC629E5C6CE0D1E2 /* SurveyView.swift in Sources */,
+				4DEEC50A7D07DB5327C2F7E0E183C325 /* SVG.swift in Sources */,
+				C8011BF44F562690B6B50B2CFDF5746A /* Symbol.swift in Sources */,
+				8F584A2DFAD51BB3427106A9AFC96D23 /* UIColor+Extension.swift in Sources */,
+				BCF66D61CAE4AA8F8CF4C78AF377A81D /* UIImageView+Extension.swift in Sources */,
+				4815A6A9C93818478482831B1E60E87F /* UpdateClickResponse.swift in Sources */,
+				6DE34815817D608F1150451B347B3DC9 /* User.swift in Sources */,
+				554FB1B753356125296043EFCBB69458 /* Visual.swift in Sources */,
+				3B1765130089F75E4E31639CE9E71CFC /* WebViewController.swift in Sources */,
+				2673B3A2FC06998E9AADB038DE0F89CA /* WidgetType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		08699C1F16CA971A3B3CF187C1F1DE33 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Alamofire;
-			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 3A7CBDB80552F17188F176D64A64D87D /* PBXContainerItemProxy */;
-		};
-		5A996A9E33F9BF4106FB0B5FE431EA96 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = BitLabs;
-			target = 3740F855605096E48538A36B1CA2069A /* BitLabs */;
-			targetProxy = B88FF6573F617C61A78D3741FF027D4C /* PBXContainerItemProxy */;
-		};
-		A79D3DBC658B8D6B8C58960FD6C6548B /* PBXTargetDependency */ = {
+		35017A6482BAF649C93AC53303B07AD8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-BitLabs_Example";
 			target = 7A25A4FD1DE243906620D1BCDA4B385C /* Pods-BitLabs_Example */;
-			targetProxy = 5DF16BFF620899EE42BFF5E5A1F91CA7 /* PBXContainerItemProxy */;
+			targetProxy = FDC0F2B67DEB8223EF03E0599D263BC7 /* PBXContainerItemProxy */;
 		};
-		E1DB7F12CD1C0409823661E6245C2FCF /* PBXTargetDependency */ = {
+		4A621A9FCD769C7A9DA188F768F28CC7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BitLabs;
+			target = 3740F855605096E48538A36B1CA2069A /* BitLabs */;
+			targetProxy = 89E6DDA94B64A5EA4875802FDE149144 /* PBXContainerItemProxy */;
+		};
+		511D44546EF0C9A490F955C9A5F7895B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Alamofire;
 			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
-			targetProxy = 5A6788983834BBA0DEC2A3617EAF069D /* PBXContainerItemProxy */;
+			targetProxy = 09E7FEFB363C4C5215E3FCDAD553D6A4 /* PBXContainerItemProxy */;
+		};
+		ACC2C0DDF33D03142DD8FA6F3558A798 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Alamofire;
+			target = EAAA1AD3A8A1B59AB91319EE40752C6D /* Alamofire */;
+			targetProxy = DC0A4CDF5F131CC5912B0A9AD41F7C50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1049,6 +1060,39 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_VERSION = 5;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1332D4E9B0CF93B6EF53CF2CE3A37B7D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74A8A157655B5E42F0119BDF65FDB4B8 /* BitLabs.release.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BitLabs/BitLabs.modulemap";
+				PRODUCT_MODULE_NAME = BitLabs;
+				PRODUCT_NAME = BitLabs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1143,7 +1187,8 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -1177,6 +1222,38 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		968CD5BDDA7E29E68FA59D130A9A3A10 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D6B591DC4B742EB96952318CD9E9EBD2 /* BitLabs.debug.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/BitLabs/BitLabs.modulemap";
+				PRODUCT_MODULE_NAME = BitLabs;
+				PRODUCT_NAME = BitLabs;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1217,38 +1294,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		A4EA854EC3F0FA23010146EE8689CAD1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6B591DC4B742EB96952318CD9E9EBD2 /* BitLabs.debug.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BitLabs/BitLabs.modulemap";
-				PRODUCT_MODULE_NAME = BitLabs;
-				PRODUCT_NAME = BitLabs;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		B4EFE046ACF8F37157F6E322C7FCFC28 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1315,39 +1360,6 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
-		};
-		C2F18A248BC0020F5A75E066DF03D04D /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74A8A157655B5E42F0119BDF65FDB4B8 /* BitLabs.release.xcconfig */;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/BitLabs/BitLabs.modulemap";
-				PRODUCT_MODULE_NAME = BitLabs;
-				PRODUCT_NAME = BitLabs;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		C42E01C7A9554EC432ED84C37360827B /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1430,6 +1442,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5203186B386120F7FA88727BDEE07AF1 /* Build configuration list for PBXNativeTarget "BitLabs" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				968CD5BDDA7E29E68FA59D130A9A3A10 /* Debug */,
+				1332D4E9B0CF93B6EF53CF2CE3A37B7D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6357E3C191EB5DF098B41757BD893B64 /* Build configuration list for PBXNativeTarget "Pods-BitLabs_Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1444,15 +1465,6 @@
 			buildConfigurations = (
 				942CA0DDC176F88A9F1FE174DEC02BCA /* Debug */,
 				DC967D7878D5C3AE895D98514E6B6A07 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B9B3D22B101090F3FD507AB2EFB3111D /* Build configuration list for PBXNativeTarget "BitLabs" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A4EA854EC3F0FA23010146EE8689CAD1 /* Debug */,
-				C2F18A248BC0020F5A75E066DF03D04D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
