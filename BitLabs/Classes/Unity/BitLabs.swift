@@ -20,6 +20,7 @@ import AppTrackingTransparency
     private var adId = ""
     private var token = ""
     private var currencyIconUrl = ""
+    private var bonusPercentage = 0.0
     
     private var widgetColor = ["", ""]
     private var headerColor = ["", ""]
@@ -56,13 +57,22 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, _ in
+        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, promotion in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
             self.isOffersEnabled = isOffersEnabled
             
             guard let currency = currency, currency.symbol.isImage else { return }
             self.currencyIconUrl = currency.symbol.content
+            let currencyBonus = Double(currency.bonusPercentage) / 100.0
+            
+            guard let bonus = promotion?.bonusPercentage else {
+                self.bonusPercentage = currencyBonus
+                print("bonus percentage: \(self.bonusPercentage)")
+                return
+            }
+            self.bonusPercentage = currencyBonus + Double(bonus) / 100.0 + Double(bonus) * currencyBonus / 100.0
+            print("bonus percentage: \(self.bonusPercentage)")
         }
     }
     
@@ -161,6 +171,10 @@ import AppTrackingTransparency
     
     @objc public func getCurrencyIconUrl() -> String {
         return currencyIconUrl
+    }
+    
+    @objc public func getBonusPercentage() -> Double {
+        return bonusPercentage
     }
     
     func rewardCompleted(_ value: Float) {
