@@ -28,7 +28,6 @@ class WebViewController: UIViewController {
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
@@ -43,6 +42,7 @@ class WebViewController: UIViewController {
     var tags: [String: Any] = [:]
     
     var delegate: WebViewDelegate?
+    var observer: NSKeyValueObservation?
     
     private var reward: Float = 0.0
     
@@ -56,11 +56,20 @@ class WebViewController: UIViewController {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
+        observer = webView.observe(\.url, options: .new) { webview, change in
+            guard let newValue = change.newValue, let url = newValue?.absoluteString else { return }
+            
+            if url.hasSuffix("/close") {
+                self.dismiss(animated: true)
+                return
+            }
+            
+            print("URL: \(url)")
+        }
         
         changeGradient(of: topBarView, withColors: color)
         
         backButton.tintColor = isColorBright ? .black : .white
-        closeButton.tintColor = isColorBright ? .black : .white
         
         loadOfferwall()
     }
@@ -72,10 +81,6 @@ class WebViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.rewardCompleted(reward)
-    }
-    
-    @IBAction func closeBtnPressed(_ sender: UIButton) {
-        dismiss(animated: true)
     }
     
     @IBAction func backBtnPressed(_sender: UIButton) {
@@ -108,7 +113,6 @@ class WebViewController: UIViewController {
     
     /// Generates the URL the BitLabs Offerwall
     /// - Tag: generateURL
-    /// - Returns: The generated URL
     private func generateURL() -> URL? {
         guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else { return nil }
         
@@ -185,7 +189,6 @@ extension WebViewController: WKNavigationDelegate {
     /// - Parameter isPageOfferwall: The bool to determine whether the current page is the Offerwall.
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
-        closeButton.isHidden = !isPageOfferwall
         webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
     }
 }
