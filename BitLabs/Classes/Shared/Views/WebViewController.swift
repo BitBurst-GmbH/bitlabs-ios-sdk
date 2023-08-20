@@ -53,19 +53,7 @@ class WebViewController: UIViewController {
         
         color.forEach { isColorBright = isColorBright || $0.luminance > 0.729 }
         
-        webView.uiDelegate = self
-        webView.navigationDelegate = self
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
-        observer = webView.observe(\.url, options: .new) { webview, change in
-            guard let newValue = change.newValue, let url = newValue?.absoluteString else { return }
-            
-            if url.hasSuffix("/close") {
-                self.dismiss(animated: true)
-                return
-            }
-            
-            print("URL: \(url)")
-        }
+        setupWebView()
         
         changeGradient(of: topBarView, withColors: color)
         
@@ -81,6 +69,40 @@ class WebViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.rewardCompleted(reward)
+    }
+    
+    private func setupWebView() {
+        webView.uiDelegate = self
+        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        observer = webView.observe(\.url, options: .new) { [self] webview, change in
+            guard let newValue = change.newValue, let url = newValue else { return }
+            
+            if url.absoluteString.hasSuffix("/close") {
+                dismiss(animated: true)
+                return
+            }
+            
+            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+                print("[BitLabs] Redirected to browser. It includes Offers.")
+                self.dismiss(animated: true)
+                return
+            }
+            
+            let urlStr = url.absoluteString
+            
+            let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
+            
+            if isPageOfferwall {
+                if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
+                    reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
+                }
+            } else {
+                clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
+            }
+            
+            configureUI(isPageOfferwall)
+        }
     }
     
     @IBAction func backBtnPressed(_sender: UIButton) {
@@ -143,50 +165,10 @@ class WebViewController: UIViewController {
             self.loadOfferwall()
         }
     }
-}
-
-extension WebViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        
-        guard let url = navigationAction.request.url else {
-            decisionHandler(.allow)
-            return
-        }
-        
-        if shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-            print("[BitLabs] Redirected to browser. It includes Offers.")
-            decisionHandler(.cancel)
-            dismiss(animated: true)
-            return
-        }
-        
-        let urlStr = url.absoluteString
-        
-        if urlStr == "about:blank" {
-            decisionHandler(.allow)
-            return
-        }
-        
-        let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
-        
-        if isPageOfferwall {
-            if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
-                reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
-            }
-        } else {
-            clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
-        }
-        
-        configureUI(isPageOfferwall)
-        
-        decisionHandler(.allow)
-    }
     
     /// Applies UI changes according to the data it has.
     ///
     /// If the page is the Offerwall, the `topBarView` will be hidden. Otherwise, it will be visible.
-    /// - Parameter isPageOfferwall: The bool to determine whether the current page is the Offerwall.
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
         webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
