@@ -187,17 +187,16 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func presentFail() {
-        let error = "{ uid: \(uid), date: \(Int(Date().timeIntervalSince1970)) }"
+        let errorStr = "{ uid: \(uid), date: \(Int(Date().timeIntervalSince1970)) }"
+        let error = Data(errorStr.utf8).base64EncodedString()
         
         if let imageView = errorView.subviews.first as? UIImageView {
             imageView.image = generateQRCode(from: error)
         }
         
         if let label = errorView.subviews.last as? UILabel {
-            label.text = error
+            label.text = "Error ID: \(error)"
         }
-        
-        print(error)
     }
 }
 
