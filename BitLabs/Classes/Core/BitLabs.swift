@@ -145,7 +145,7 @@ public class BitLabs: WebViewDelegate {
     
     public func getLeaderboardView(_ completionHandler: @escaping (LeaderboardView?) -> ()) {
         ifConfigured { bitlabsAPI?.getLeaderboard { response in
-            guard let topUsers = response.topUsers else { return completionHandler(nil) }
+            guard let topUsers = response.topUsers, !topUsers.isEmpty else { return completionHandler(nil) }
             
             let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, color: self.widgetColor.first?.toUIColor, frame: CGRect())
             leaderboardView.ownUser = response.ownUser

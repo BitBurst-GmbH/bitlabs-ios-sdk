@@ -31,6 +31,7 @@ class WebViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var errorView: UIStackView!
     
     var uid = ""
     var sdk = ""
@@ -73,6 +74,7 @@ class WebViewController: UIViewController {
     
     private func setupWebView() {
         webView.uiDelegate = self
+        webView.navigationDelegate = self
         webView.scrollView.contentInsetAdjustmentBehavior = .never
         observer = webView.observe(\.url, options: .new) { [self] webview, change in
             guard let newValue = change.newValue, let url = newValue else { return }
@@ -82,12 +84,12 @@ class WebViewController: UIViewController {
                 return
             }
             
-            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-                print("[BitLabs] Redirected to browser. It includes Offers.")
-                self.dismiss(animated: true)
-                return
-            }
+//            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
+//                UIApplication.shared.open(url)
+//                print("[BitLabs] Redirected to browser. It includes Offers.")
+//                self.dismiss(animated: true)
+//                return
+//            }
             
             let urlStr = url.absoluteString
             
@@ -161,6 +163,7 @@ class WebViewController: UIViewController {
     /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
     private func sendLeaveRequest(reason: LeaveReason) {
         delegate?.sendLeaveSurveyRequest(clickId: clickId, reason: reason) {
+            self.errorView.isHidden = true
             self.clickId = ""
             self.loadOfferwall()
         }
@@ -172,6 +175,31 @@ class WebViewController: UIViewController {
     private func configureUI(_ isPageOfferwall: Bool) {
         topBarView.isHidden = isPageOfferwall
         webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
+    }
+}
+
+extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        presentFail()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        presentFail()
+    }
+    
+    func presentFail() {
+        errorView.isHidden = false
+        
+        let errorStr = "{ uid: \(uid), date: \(Int(Date().timeIntervalSince1970)) }"
+        let error = Data(errorStr.utf8).base64EncodedString()
+        
+        if let imageView = errorView.subviews.first as? UIImageView {
+            imageView.image = generateQRCode(from: error)
+        }
+        
+        if let label = errorView.subviews.last as? UILabel {
+            label.text = "Error ID: \(error)"
+        }
     }
 }
 
