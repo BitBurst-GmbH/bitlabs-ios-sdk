@@ -126,7 +126,7 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        if let url = URL(string: "http://http:badssl.com") {
+        if let url = generateURL() {
             webView?.load(URLRequest(url: url))
             return
         }
@@ -163,6 +163,7 @@ class WebViewController: UIViewController {
     /// - Parameter reason: The reason to be sent. Check [LeaveReason](x-source-tag://LeaveReason).
     private func sendLeaveRequest(reason: LeaveReason) {
         delegate?.sendLeaveSurveyRequest(clickId: clickId, reason: reason) {
+            self.errorView.isHidden = true
             self.clickId = ""
             self.loadOfferwall()
         }
@@ -187,6 +188,8 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func presentFail() {
+        errorView.isHidden = false
+        
         let errorStr = "{ uid: \(uid), date: \(Int(Date().timeIntervalSince1970)) }"
         let error = Data(errorStr.utf8).base64EncodedString()
         
