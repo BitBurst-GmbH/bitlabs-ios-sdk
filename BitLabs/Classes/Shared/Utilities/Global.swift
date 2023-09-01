@@ -38,3 +38,16 @@ func changeGradient(of view: UIView, withColors colors: [UIColor]) {
     gradient.endPoint = CGPoint(x: 1, y: 0)
     view.layer.insertSublayer(gradient, at: 0)
 }
+
+func generateQRCode(from string: String) -> UIImage? {
+    let data = string.data(using: .ascii)
+    
+    guard let filter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+    
+    filter.setValue(data, forKey: "inputMessage")
+    
+    let transform = CGAffineTransform(scaleX: 3, y: 3)
+    guard let output = filter.outputImage?.transformed(by: transform) else { return nil }
+    
+    return UIImage(ciImage: output);
+}
