@@ -84,12 +84,12 @@ class WebViewController: UIViewController {
                 return
             }
             
-//            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
-//                UIApplication.shared.open(url)
-//                print("[BitLabs] Redirected to browser. It includes Offers.")
-//                self.dismiss(animated: true)
-//                return
-//            }
+            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+                print("[BitLabs] Redirected to browser. It includes Offers.")
+                self.dismiss(animated: true)
+                return
+            }
             
             let urlStr = url.absoluteString
             
