@@ -33,5 +33,9 @@ Pod::Spec.new do |spec|
         unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
         unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
     end
+    
+    spec.test_spec 'Tests' do |test_spec|
+      test_spec.source_files = 'BitLabs/Tests/*.swift'
+    end
 end
 

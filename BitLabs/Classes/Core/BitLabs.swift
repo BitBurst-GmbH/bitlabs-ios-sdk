@@ -135,7 +135,7 @@ public class BitLabs: WebViewDelegate {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor }, currencyUrl: currencyIcon, bonus: bonusPercentage, type: type)
+        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor ?? .black }, currencyUrl: currencyIcon, bonus: bonusPercentage, type: type)
         collectionView.dataSource = surveyDataSource
         
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
@@ -170,7 +170,7 @@ public class BitLabs: WebViewDelegate {
             webViewController.uid = uid
             webViewController.tags = tags
             webViewController.adId = adId
-            webViewController.color = headerColor.map { $0.toUIColor }
+            webViewController.color = headerColor.map { $0.toUIColor ?? .black }
             webViewController.token = token
             webViewController.sdk = "NATIVE"
             webViewController.delegate = self

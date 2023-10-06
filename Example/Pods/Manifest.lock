@@ -5,9 +5,12 @@ PODS:
     - BitLabs/Core (= 3.1.9)
   - BitLabs/Core (3.1.9):
     - Alamofire (~> 5.5)
+  - BitLabs/Tests (3.1.9):
+    - Alamofire (~> 5.5)
 
 DEPENDENCIES:
   - BitLabs (from `../`)
+  - BitLabs/Tests (from `../`)
 
 SPEC REPOS:
   trunk:
@@ -19,8 +22,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 0123a34370cb170936ae79a8df46cc62b2edeb88
-  BitLabs: a988c55f14c931beeded3cbe6632c58cf7545cfd
+  BitLabs: 7c4fcf0654a9d1a15ce23e65a4d6d54c2400908c
 
-PODFILE CHECKSUM: 09bcd0bb3fb92f4a491eedaf1b63b50544c89899
+PODFILE CHECKSUM: e2c685d3f53cf9dbdfd973b77a44a3492fae9378
 
 COCOAPODS: 1.12.1

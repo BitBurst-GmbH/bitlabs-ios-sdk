@@ -12,7 +12,13 @@ extension String {
         return bundle.localizedString(forKey: self, value: nil, table: nil)
     }
     
-    var toUIColor: UIColor {
+    var toUIColor: UIColor? {
+        let regex = try! NSRegularExpression(pattern: #"#([0-9a-fA-F]{6})"#)
+        
+        if regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).isEmpty {
+            return nil
+        }
+        
         let string = self
             .trimmingCharacters(in:.whitespacesAndNewlines)
             .replacingOccurrences(of: "#", with: "")
@@ -35,7 +41,14 @@ extension String {
     var extractColors: [String] {
         let regex = try! NSRegularExpression(pattern: #"linear-gradient\((\d+)deg,\s*(.+)\)"#)
         
-        guard let match = regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).first else { return [self, self] }
+        guard let match = regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).first else {
+            let regex = try! NSRegularExpression(pattern: #"#([0-9a-fA-F]{6})"#)
+            
+            if regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).isEmpty {
+                return []
+            }
+            
+            return [self, self] }
         
         var colors = String(self[Range(match.range(at: 2), in: self)!])
         
