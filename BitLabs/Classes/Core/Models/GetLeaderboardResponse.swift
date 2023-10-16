@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetLeaderboardResponse: Decodable {
+struct GetLeaderboardResponse: Codable {
     let nextResetAt: String
     let ownUser: User?
     let rewards: [Reward]

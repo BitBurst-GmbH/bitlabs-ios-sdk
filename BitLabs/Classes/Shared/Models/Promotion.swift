@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Promotion: Decodable {
+struct Promotion: Codable {
     let startDate: String
     let endDate: String
     let bonusPercentage: Int

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Currency: Decodable {
+struct Currency: Codable {
     let floorDecimal: Bool
     let factor: String
     let symbol: Symbol

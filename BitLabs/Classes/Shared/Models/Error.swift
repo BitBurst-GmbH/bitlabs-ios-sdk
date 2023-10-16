@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ErrorResponse: Decodable {
+struct ErrorResponse: Codable {
     let details: ErrorDetails
 }

@@ -10,18 +10,13 @@ import Alamofire
 
 /// A class to manage connection with the BitLabs API.
 class BitLabsAPI {
-    
-    private let token: String
-    private let userId: String
     private let decoder = JSONDecoder()
     
     private let session: Session
     
-    init(_ token: String, _ userId: String) {
-        self.token = token
-        self.userId = userId
+    init(_ session: Session) {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        session = Session(interceptor: BitLabsRequestInterceptor(token, userId))
+        self.session = session
     }
     
     /// This request reports the termination of a survey with a reason given by the user.

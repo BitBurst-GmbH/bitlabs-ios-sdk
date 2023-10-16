@@ -7,6 +7,7 @@
 
 import UIKit
 import AdSupport
+import Alamofire
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -43,7 +44,7 @@ public class BitLabs: WebViewDelegate {
         self.token = token
         self.uid = uid
         
-        bitlabsAPI = BitLabsAPI(token, uid)
+        bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         
         getAppSettings()
         

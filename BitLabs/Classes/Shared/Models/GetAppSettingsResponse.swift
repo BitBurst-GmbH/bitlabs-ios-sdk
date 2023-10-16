@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct GetAppSettingsResponse: Decodable {
+struct GetAppSettingsResponse: Codable {
     let visual: Visual
     let offers: Offers
     let currency: Currency
     let promotion: Promotion?
 }
 
-struct Offers: Decodable {
+struct Offers: Codable {
     let enabled: Bool
 }

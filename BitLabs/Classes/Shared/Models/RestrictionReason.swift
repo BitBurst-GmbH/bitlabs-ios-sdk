@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RestrictionReason: Decodable {
+struct RestrictionReason: Codable {
     let notVerified: Bool?
     let usingVpn: Bool?
     let bannedUntil: String?

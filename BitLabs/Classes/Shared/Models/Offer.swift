@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Offer: Decodable {
+struct Offer: Codable {
     let id: Int
 }

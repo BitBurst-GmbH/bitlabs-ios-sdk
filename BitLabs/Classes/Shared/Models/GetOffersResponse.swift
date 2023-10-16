@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct GetOffersResponse: Decodable {
+struct GetOffersResponse: Codable {
     let offers: [Offer]
 }

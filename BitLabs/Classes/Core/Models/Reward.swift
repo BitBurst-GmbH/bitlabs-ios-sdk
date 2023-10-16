@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Reward: Decodable {
+struct Reward: Codable {
     let rank: Int
     let rewardRaw: Double
 }

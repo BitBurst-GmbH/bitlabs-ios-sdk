@@ -26,7 +26,12 @@
     {
       "name": "Tests",
       "test_type": "unit",
-      "source_files": "BitLabs/Tests/*.swift"
+      "source_files": "BitLabs/Tests/*.swift",
+      "dependencies": {
+        "OHHTTPStubs/Swift": [
+
+        ]
+      }
     }
   ],
   "subspecs": [
