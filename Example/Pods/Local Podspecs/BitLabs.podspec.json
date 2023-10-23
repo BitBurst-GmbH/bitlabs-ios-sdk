@@ -24,14 +24,33 @@
   "default_subspecs": "Core",
   "testspecs": [
     {
-      "name": "Tests",
+      "name": "UnitTests",
       "test_type": "unit",
-      "source_files": "BitLabs/Tests/*.swift",
+      "source_files": "BitLabs/Tests/Unit\\ Tests/*.swift",
       "dependencies": {
         "OHHTTPStubs/Swift": [
 
         ]
       }
+    },
+    {
+      "name": "UITests",
+      "test_type": "ui",
+      "requires_app_host": true,
+      "app_host_name": "BitLabs/AppHost",
+      "dependencies": {
+        "BitLabs/AppHost": [
+
+        ]
+      },
+      "source_files": "BitLabs/Tests/UI\\ Tests/*.swift"
+    }
+  ],
+  "appspecs": [
+    {
+      "name": "AppHost",
+      "source_files": "BitLabs/AppHost/**/*.{swift}",
+      "resources": "BitLabs/AppHost/**/*.{xib,storyboard}"
     }
   ],
   "subspecs": [
