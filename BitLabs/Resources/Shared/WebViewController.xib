@@ -48,6 +48,7 @@
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration" identifier="topBarView"/>
                     <constraints>
                         <constraint firstItem="N31-hh-AW3" firstAttribute="centerY" secondItem="d9e-34-fY4" secondAttribute="centerY" id="29g-vE-XaW"/>
                         <constraint firstItem="N31-hh-AW3" firstAttribute="leading" secondItem="d9e-34-fY4" secondAttribute="leading" constant="10" id="Om8-4W-D5B"/>

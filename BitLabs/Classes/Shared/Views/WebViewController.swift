@@ -33,14 +33,12 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorView: UIStackView!
     
+    var url: URL?
+
     var uid = ""
-    var sdk = ""
-    var adId = ""
-    var token = ""
     var clickId = ""
     var shouldOpenExternally = false
     var color: [UIColor] = [.black, .black]
-    var tags: [String: Any] = [:]
     
     var delegate: WebViewDelegate?
     var observer: NSKeyValueObservation?
@@ -51,15 +49,15 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         
         var isColorBright = false
-        
+        backButton.tintColor = isColorBright ? .black : .white
         color.forEach { isColorBright = isColorBright || $0.luminance > 0.729 }
-        
-        setupWebView()
         
         changeGradient(of: topBarView, withColors: color)
         
-        backButton.tintColor = isColorBright ? .black : .white
-        
+        setupWebView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadOfferwall()
     }
     
@@ -126,37 +124,13 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        if let url = generateURL() {
+        if let url = url {
             webView?.load(URLRequest(url: url))
             return
         }
         
         print("[BitLabs] Error generating URL...")
         dismiss(animated: true)
-    }
-    
-    /// Generates the URL the BitLabs Offerwall
-    /// - Tag: generateURL
-    private func generateURL() -> URL? {
-        guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else { return nil }
-        
-        var queryItems = [
-            URLQueryItem(name: "uid", value: uid),
-            URLQueryItem(name: "token", value: token),
-            URLQueryItem(name: "os", value: "IOS"),
-            URLQueryItem(name: "sdk", value: sdk)]
-        
-        if !adId.isEmpty {
-            queryItems.append(URLQueryItem(name: "maid", value: adId))
-        }
-        
-        tags.forEach { tag in
-            queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))
-        }
-        
-        urlComponents.queryItems = queryItems
-        
-        return urlComponents.url
     }
     
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).

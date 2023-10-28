@@ -17,19 +17,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-nH-9Sn">
-                                <rect key="frame" x="146.5" y="432.5" width="121" height="31"/>
+                                <rect key="frame" x="10" y="54" width="73.5" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Open Webview"/>
+                                <buttonConfiguration key="configuration" style="plain" title="No URL"/>
                                 <connections>
                                     <action selector="onWebviewPressed:" destination="823-AY-0jH" eventType="touchUpInside" id="S2u-rP-fth"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egh-17-epb">
+                                <rect key="frame" x="93.5" y="54" width="96" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Empty URL"/>
+                                <connections>
+                                    <action selector="emptyURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="yeq-ml-9Jq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgn-M2-Q7O" userLabel="Incorrect URL">
+                                <rect key="frame" x="199.5" y="54" width="113.5" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Incorrect URL"/>
+                                <connections>
+                                    <action selector="emptyURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="RbA-xX-Fac"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-kA-jdL">
+                                <rect key="frame" x="10" y="95" width="141" height="31"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Correct Form URL"/>
+                                <connections>
+                                    <action selector="correctFormURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="vVU-4c-Osy"/>
+                                    <action selector="emptyURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="SHM-3Q-3XR"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fcv-km-Lv7"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="centerY" secondItem="vn8-Hc-Kf6" secondAttribute="centerY" id="Cmr-lU-Wz8"/>
-                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="centerX" secondItem="vn8-Hc-Kf6" secondAttribute="centerX" id="EtA-4Q-g2f"/>
+                            <constraint firstItem="Egh-17-epb" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="6c3-JG-Vtt"/>
+                            <constraint firstItem="B7U-kA-jdL" firstAttribute="leading" secondItem="Fcv-km-Lv7" secondAttribute="leading" constant="10" id="GAE-QU-JlQ"/>
+                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="Zrx-M7-VAe"/>
+                            <constraint firstItem="Egh-17-epb" firstAttribute="leading" secondItem="ZCw-nH-9Sn" secondAttribute="trailing" constant="10" id="hQi-3I-LVq"/>
+                            <constraint firstItem="B7U-kA-jdL" firstAttribute="top" secondItem="ZCw-nH-9Sn" secondAttribute="bottom" constant="10" id="oH5-LZ-kRb"/>
+                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="leading" secondItem="Fcv-km-Lv7" secondAttribute="leading" constant="10" id="wux-3p-dPq"/>
+                            <constraint firstItem="bgn-M2-Q7O" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="xdn-tA-7et"/>
+                            <constraint firstItem="bgn-M2-Q7O" firstAttribute="leading" secondItem="Egh-17-epb" secondAttribute="trailing" constant="10" id="xxW-0R-svz"/>
                         </constraints>
                     </view>
                 </viewController>
