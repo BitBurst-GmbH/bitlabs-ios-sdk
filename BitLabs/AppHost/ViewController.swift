@@ -6,14 +6,15 @@
 //  Copyright © 2023 CocoaPods. All rights reserved.
 //
 
-import Foundation
 import UIKit
 @testable import BitLabs
 
+
 class ViewController: UIViewController {
-    override func viewDidLoad() {
-        BitLabs.shared.configure(token: "678c564f-62a3-4331-a018-0bf7ee2c885b", uid: "fasdf")
-    }
+    @IBOutlet weak var label: UILabel!
+    
+    let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+
     
     @IBAction func noURLButton(_ sender: Any) {
         let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
@@ -47,5 +48,33 @@ class ViewController: UIViewController {
         
         wv.modalPresentationStyle = .overFullScreen
         present(wv, animated: true)
+    }
+    
+    @IBAction func offerwalURLButton(_ sender: Any) {
+        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        
+        wv.url = URL(string: "https://web.bitlabs.ai?token=678c564f-62a3-4331-a018-0bf7ee2c885b&uid=fasdf")
+        
+        wv.modalPresentationStyle = .overFullScreen
+        present(wv, animated: true)
+    }
+    
+    @IBAction func notOfferwallURLButton(_ sender: Any) {
+        wv.url = URL(string: "https://www.google.com")
+        wv.delegate = self
+        
+        wv.modalPresentationStyle = .overFullScreen
+        present(wv, animated: true)
+    }
+}
+
+extension ViewController: WebViewDelegate {
+    func rewardCompleted(_ value: Float) {
+    }
+    
+    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
+        print("LeaveSurveyRequest")
+        label.text = reason.rawValue.localized
+        wv.dismiss(animated: true)
     }
 }
