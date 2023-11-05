@@ -9,11 +9,6 @@ import Foundation
 
 struct GetAppSettingsResponse: Decodable {
     let visual: Visual
-    let offers: Offers
     let currency: Currency
     let promotion: Promotion?
-}
-
-struct Offers: Decodable {
-    let enabled: Bool
 }

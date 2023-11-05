@@ -38,7 +38,6 @@ class WebViewController: UIViewController {
     var adId = ""
     var token = ""
     var clickId = ""
-    var shouldOpenExternally = false
     var color: [UIColor] = [.black, .black]
     var tags: [String: Any] = [:]
     
@@ -81,13 +80,6 @@ class WebViewController: UIViewController {
             
             if url.absoluteString.hasSuffix("/close") {
                 dismiss(animated: true)
-                return
-            }
-            
-            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-                print("[BitLabs] Redirected to browser. It includes Offers.")
-                self.dismiss(animated: true)
                 return
             }
             
