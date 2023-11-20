@@ -37,9 +37,11 @@ class WebViewController: UIViewController {
     var sdk = ""
     var adId = ""
     var token = ""
-    var clickId = ""
-    var color: [UIColor] = [.black, .black]
     var tags: [String: Any] = [:]
+    var color: [UIColor] = [.black, .black]
+    
+    var clickId = ""
+    var areParametersInjected = true
     
     var delegate: WebViewDelegate?
     var observer: NSKeyValueObservation?
@@ -91,8 +93,14 @@ class WebViewController: UIViewController {
                 if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
                     reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
                 }
+                
+                if !areParametersInjected, urlStr.contains("sdk=\(sdk)"), let url = generateURL(urlStr) {
+                    webview.load(URLRequest(url: url))
+                    areParametersInjected = true
+                }
             } else {
                 clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
+                areParametersInjected = false
             }
             
             configureUI(isPageOfferwall)
@@ -118,7 +126,7 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        if let url = generateURL() {
+        if let url = generateURL("https://web.bitlabs.ai") {
             webView?.load(URLRequest(url: url))
             return
         }
@@ -129,8 +137,8 @@ class WebViewController: UIViewController {
     
     /// Generates the URL the BitLabs Offerwall
     /// - Tag: generateURL
-    private func generateURL() -> URL? {
-        guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else { return nil }
+    private func generateURL(_ url: String) -> URL? {
+        guard var urlComponents = URLComponents(string: url) else { return nil }
         
         var queryItems = [
             URLQueryItem(name: "uid", value: uid),
