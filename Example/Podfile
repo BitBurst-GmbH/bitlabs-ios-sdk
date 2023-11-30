@@ -3,6 +3,8 @@ platform :ios, "11.0"
 
 target 'BitLabs_Example' do
   
-  pod 'BitLabs', :path => '../', :testspecs => ['UnitTests', 'UITests']
+  pod 'BitLabs', :path => '../'
+  pod 'BitLabs/UnitTests', :path => '../'
+  pod 'BitLabs/UITests', :path => '../'
   
 end

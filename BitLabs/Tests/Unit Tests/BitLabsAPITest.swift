@@ -116,7 +116,7 @@ class BitLabsAPITest: XCTestCase {
     
     func testGetAppSettings_Response_Success() {
         do {
-            let json = try encoder.encode(BitLabsResponse(data: GetAppSettingsResponse(visual: Visual(backgroundColor: "", colorRatingThreshold: 0, customLogoUrl: "", elementBorderRadius: "", hideRewardValue: true, interactionColor: "", navigationColor: "", offerwallWidth: "", screenoutReward: "", surveyIconColor: ""), currency: Currency(floorDecimal: true, factor: "", symbol: Symbol(content: "", isImage: true), currencyPromotion: nil, bonusPercentage: 20), promotion: Promotion(startDate: "", endDate: "", bonusPercentage: 1)), error: nil, status: "", traceId: ""))
+            let json = try encoder.encode(BitLabsResponse(data: GetAppSettingsResponse(visual: Visual(backgroundColor: "", colorRatingThreshold: 0, customLogoUrl: "", elementBorderRadius: "", hideRewardValue: true, interactionColor: "", navigationColor: "", offerwallWidth: "", screenoutReward: "", surveyIconColor: ""), currency: Currency(floorDecimal: true, factor: "", symbol: Symbol(content: "", isImage: true), currencyPromotion: 0, bonusPercentage: 20), promotion: Promotion(startDate: "", endDate: "", bonusPercentage: 1)), error: nil, status: "", traceId: ""))
             
             stub(condition: forAll()) { _ in
                 return HTTPStubsResponse(data: json, statusCode: Int32(200), headers: ["Content-Type": "application/json"])

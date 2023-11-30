@@ -63,16 +63,6 @@ class WebViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if token.isEmpty {
-            print("[BitLabs] Error - Token is empty. Dismissing...")
-            dismiss(animated: true)
-        }
-        
-        if uid.isEmpty {
-            print("[BitLabs] Error - UID is empty. Dismissing...")
-            dismiss(animated: true)
-        }
-        
         loadOfferwall()
     }
     

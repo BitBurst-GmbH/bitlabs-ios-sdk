@@ -7,6 +7,7 @@
 
 import UIKit
 import AdSupport
+import Alamofire
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -41,8 +42,8 @@ import AppTrackingTransparency
         self.token = token
         self.uid = uid
         
-        bitlabsAPI = BitLabsAPI(token, uid)
-        
+        bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
+
         getWidgetColor()
                 
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
@@ -150,7 +151,7 @@ import AppTrackingTransparency
             webViewController.sdk = "UNITY"
             webViewController.token = token
             webViewController.delegate = self
-            webViewController.color = headerColor.map { $0.toUIColor }
+            webViewController.color = headerColor.map { $0.toUIColor ?? .black }
             
             webViewController.modalPresentationStyle = .overFullScreen
             
