@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ErrorDetails: Decodable {
+struct ErrorDetails: Codable {
     let http: String
     let msg: String
 }

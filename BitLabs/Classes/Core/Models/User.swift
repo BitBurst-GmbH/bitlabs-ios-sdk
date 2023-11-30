@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Codable {
     let earningsRaw: Double
     let name: String
     let rank: Int

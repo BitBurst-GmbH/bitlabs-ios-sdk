@@ -3,11 +3,6 @@ platform :ios, "11.0"
 
 target 'BitLabs_Example' do
   
-  pod 'BitLabs', :path => '../'
+  pod 'BitLabs', :path => '../', :testspecs => ['UnitTests', 'UITests']
   
-  target 'BitLabs_Tests' do
-    inherit! :search_paths
-    
-    #  pod 'FBSnapshotTestCase' , '~> 2.1.4'
-  end
 end

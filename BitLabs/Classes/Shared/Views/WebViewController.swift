@@ -33,6 +33,8 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorView: UIStackView!
     
+    var url: URL?
+
     var uid = ""
     var sdk = ""
     var adId = ""
@@ -52,14 +54,24 @@ class WebViewController: UIViewController {
         super.viewDidLoad()
         
         var isColorBright = false
-        
+        backButton.tintColor = isColorBright ? .black : .white
         color.forEach { isColorBright = isColorBright || $0.luminance > 0.729 }
-        
-        setupWebView()
         
         changeGradient(of: topBarView, withColors: color)
         
-        backButton.tintColor = isColorBright ? .black : .white
+        setupWebView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if token.isEmpty {
+            print("[BitLabs] Error - Token is empty. Dismissing...")
+            dismiss(animated: true)
+        }
+        
+        if uid.isEmpty {
+            print("[BitLabs] Error - UID is empty. Dismissing...")
+            dismiss(animated: true)
+        }
         
         loadOfferwall()
     }
@@ -126,7 +138,7 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        if let url = generateURL("https://web.bitlabs.ai") {
+        if let url = url {
             webView?.load(URLRequest(url: url))
             return
         }

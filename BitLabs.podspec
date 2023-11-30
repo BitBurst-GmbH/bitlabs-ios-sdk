@@ -33,5 +33,25 @@ Pod::Spec.new do |spec|
         unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
         unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
     end
+    
+    spec.app_spec 'AppHost' do |host|
+        host.source_files = 'BitLabs/AppHost/**/*.{swift}'
+        host.resources = 'BitLabs/AppHost/**/*.{xib,storyboard}'
+    end
+    
+    spec.test_spec 'UnitTests' do |test_spec|
+      test_spec.source_files = 'BitLabs/Tests/Unit\ Tests/*.swift'
+      test_spec.dependency 'OHHTTPStubs/Swift'
+    end
+    
+    spec.test_spec 'UITests' do |test_spec|
+        test_spec.test_type = :ui
+        
+        test_spec.requires_app_host = true
+        test_spec.app_host_name = 'BitLabs/AppHost'
+        test_spec.dependency 'BitLabs/AppHost'
+        
+        test_spec.source_files = 'BitLabs/Tests/UI\ Tests/*.swift'
+    end
 end
 

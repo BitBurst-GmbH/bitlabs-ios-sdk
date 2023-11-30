@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Visual: Decodable {
+struct Visual: Codable {
     let backgroundColor: String
     let colorRatingThreshold: Int
     let customLogoUrl: String

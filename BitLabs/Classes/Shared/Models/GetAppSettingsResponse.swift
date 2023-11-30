@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetAppSettingsResponse: Decodable {
+struct GetAppSettingsResponse: Codable {
     let visual: Visual
     let currency: Currency
     let promotion: Promotion?

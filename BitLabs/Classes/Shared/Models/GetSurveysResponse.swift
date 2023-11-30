@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetSurveysResponse: Decodable {
+struct GetSurveysResponse: Codable {
     let restrictionReason: RestrictionReason?
     let surveys: [Survey]
 }

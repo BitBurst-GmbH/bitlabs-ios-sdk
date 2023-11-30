@@ -51,3 +51,27 @@ func generateQRCode(from string: String) -> UIImage? {
     
     return UIImage(ciImage: output);
 }
+
+/// Generates the URL the BitLabs Offerwall
+/// - Tag: generateURL
+func generateURL(uid: String, token: String, sdk: String, adId: String, tags: [String: Any]) -> URL? {
+    guard var urlComponents = URLComponents(string: "https://web.bitlabs.ai") else { return nil }
+    
+    var queryItems = [
+        URLQueryItem(name: "uid", value: uid),
+        URLQueryItem(name: "token", value: token),
+        URLQueryItem(name: "os", value: "IOS"),
+        URLQueryItem(name: "sdk", value: sdk)]
+    
+    if !adId.isEmpty {
+        queryItems.append(URLQueryItem(name: "maid", value: adId))
+    }
+    
+    tags.forEach { tag in
+        queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))
+    }
+    
+    urlComponents.queryItems = queryItems
+    
+    return urlComponents.url
+}

@@ -1,6 +1,6 @@
 {
   "name": "BitLabs",
-  "version": "3.1.11",
+  "version": "3.1.12",
   "summary": "BitLabs - monetize your app with rewarded surveys.",
   "description": "BitLabs offers the opportunity to monetize your app with rewarded surveys easily.",
   "homepage": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git",
-    "tag": "3.1.11"
+    "tag": "3.1.12"
   },
   "swift_versions": "5.0",
   "platforms": {
@@ -22,6 +22,37 @@
     ]
   },
   "default_subspecs": "Core",
+  "testspecs": [
+    {
+      "name": "UnitTests",
+      "test_type": "unit",
+      "source_files": "BitLabs/Tests/Unit\\ Tests/*.swift",
+      "dependencies": {
+        "OHHTTPStubs/Swift": [
+
+        ]
+      }
+    },
+    {
+      "name": "UITests",
+      "test_type": "ui",
+      "requires_app_host": true,
+      "app_host_name": "BitLabs/AppHost",
+      "dependencies": {
+        "BitLabs/AppHost": [
+
+        ]
+      },
+      "source_files": "BitLabs/Tests/UI\\ Tests/*.swift"
+    }
+  ],
+  "appspecs": [
+    {
+      "name": "AppHost",
+      "source_files": "BitLabs/AppHost/**/*.{swift}",
+      "resources": "BitLabs/AppHost/**/*.{xib,storyboard}"
+    }
+  ],
   "subspecs": [
     {
       "name": "Core",

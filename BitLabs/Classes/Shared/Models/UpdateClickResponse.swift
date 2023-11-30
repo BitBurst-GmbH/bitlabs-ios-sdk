@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct UpdateClickResponse: Decodable {
+struct UpdateClickResponse: Codable {
     let clickType: String
 }

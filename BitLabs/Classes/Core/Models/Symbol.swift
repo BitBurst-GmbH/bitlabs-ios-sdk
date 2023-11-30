@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Symbol: Decodable {
+struct Symbol: Codable {
     let content: String
     let isImage: Bool
 }
