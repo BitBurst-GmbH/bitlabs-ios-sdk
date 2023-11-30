@@ -25,9 +25,6 @@ import AppTrackingTransparency
     private var widgetColor = ["", ""]
     private var headerColor = ["", ""]
     
-    private var hasOffers = false
-    private var isOffersEnabled = false
-    
     private var tags: [String: Any] = [:]
     
     private var onReward: ((Float) -> ())?
@@ -47,9 +44,7 @@ import AppTrackingTransparency
         bitlabsAPI = BitLabsAPI(token, uid)
         
         getWidgetColor()
-        
-        getHasOffers()
-        
+                
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
@@ -57,10 +52,9 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, promotion in
+        bitlabsAPI?.getAppSettings { visual, currency, promotion in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
-            self.isOffersEnabled = isOffersEnabled
             
             guard let currency = currency, currency.symbol.isImage else { return }
             self.currencyIconUrl = currency.symbol.content
@@ -157,7 +151,6 @@ import AppTrackingTransparency
             webViewController.token = token
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor }
-            webViewController.shouldOpenExternally = hasOffers && isOffersEnabled
             
             webViewController.modalPresentationStyle = .overFullScreen
             
@@ -183,10 +176,6 @@ import AppTrackingTransparency
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
-    }
-    
-    private func getHasOffers() {
-        bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
     }
     
     private func ifConfigured(block: () -> ()) {

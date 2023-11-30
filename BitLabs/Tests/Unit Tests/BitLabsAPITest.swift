@@ -96,66 +96,6 @@ class BitLabsAPITest: XCTestCase {
         }
     }
     
-    func testGetHasOffers_Failure() {
-        stub(condition: forAll()) {_ in
-         return HTTPStubsResponse(error: Exception("Failure Error"))
-        }
-
-        let bitlabsAPI = BitLabsAPI(Session())
-
-        let expectation = XCTestExpectation(description: "Error received")
-        bitlabsAPI.getHasOffers { result in
-            XCTAssertEqual(result, false)
-            expectation.fulfill()
-        }
-
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testGetHasOffers_Response_Success() {
-        do {
-            let json = try encoder.encode(BitLabsResponse(data: GetOffersResponse(offers: [Offer(id: 0)]), error: nil, status: "", traceId: ""))
-            
-            stub(condition: forAll()) { _ in
-                return HTTPStubsResponse(data: json, statusCode: Int32(200), headers: ["Content-Type": "application/json"])
-            }
-
-            let bitlabsAPI = BitLabsAPI(Session())
-
-            let expectation = XCTestExpectation(description: "Response received")
-            bitlabsAPI.getHasOffers { result in
-                XCTAssertEqual(result, true)
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 10.0)
-        } catch {
-            XCTFail("Failed to parse hardcoded. Error: \(error)")
-        }
-    }
-    
-    func testGetHasOffers_Response_Error() {
-        do {
-            let json = try encoder.encode(BitLabsResponse<GetSurveysResponse>(data: nil, error: ErrorResponse(details: ErrorDetails(http: "400", msg: "Response Error")), status: "", traceId: ""))
-
-            stub(condition: forAll()) { _ in
-                return HTTPStubsResponse(data: json, statusCode: Int32(200), headers: ["Content-Type": "application/json"])
-            }
-
-            let bitlabsAPI = BitLabsAPI(Session())
-
-            let expectation = XCTestExpectation(description: "Error received")
-            bitlabsAPI.getHasOffers { result in
-                XCTAssertEqual(result, false)
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 10.0)
-        } catch {
-            XCTFail("Failed to parse hardcoded. Error: \(error)")
-        }
-    }
-    
     func testGetAppSettings_Failure() {
         stub(condition: forAll()) {_ in
          return HTTPStubsResponse(error: Exception("Failure Error"))
@@ -165,7 +105,7 @@ class BitLabsAPITest: XCTestCase {
 
         let expectation = XCTestExpectation(description: "Error received")
         expectation.isInverted = true
-        bitlabsAPI.getAppSettings { visual, isOffersEnabled, currency, promotion  in
+        bitlabsAPI.getAppSettings { visual, currency, promotion  in
             
             XCTFail("Completion block should not be called for erros")
             expectation.fulfill()
@@ -176,7 +116,7 @@ class BitLabsAPITest: XCTestCase {
     
     func testGetAppSettings_Response_Success() {
         do {
-            let json = try encoder.encode(BitLabsResponse(data: GetAppSettingsResponse(visual: Visual(backgroundColor: "", colorRatingThreshold: 0, customLogoUrl: "", elementBorderRadius: "", hideRewardValue: true, interactionColor: "", navigationColor: "", offerwallWidth: "", screenoutReward: "", surveyIconColor: ""), offers: Offers(enabled: true), currency: Currency(floorDecimal: true, factor: "", symbol: Symbol(content: "", isImage: true), currencyPromotion: nil, bonusPercentage: 20), promotion: Promotion(startDate: "", endDate: "", bonusPercentage: 1)), error: nil, status: "", traceId: ""))
+            let json = try encoder.encode(BitLabsResponse(data: GetAppSettingsResponse(visual: Visual(backgroundColor: "", colorRatingThreshold: 0, customLogoUrl: "", elementBorderRadius: "", hideRewardValue: true, interactionColor: "", navigationColor: "", offerwallWidth: "", screenoutReward: "", surveyIconColor: ""), currency: Currency(floorDecimal: true, factor: "", symbol: Symbol(content: "", isImage: true), currencyPromotion: nil, bonusPercentage: 20), promotion: Promotion(startDate: "", endDate: "", bonusPercentage: 1)), error: nil, status: "", traceId: ""))
             
             stub(condition: forAll()) { _ in
                 return HTTPStubsResponse(data: json, statusCode: Int32(200), headers: ["Content-Type": "application/json"])
@@ -185,7 +125,7 @@ class BitLabsAPITest: XCTestCase {
             let bitlabsAPI = BitLabsAPI(Session())
 
             let expectation = XCTestExpectation(description: "Response received")
-            bitlabsAPI.getAppSettings { visual, isOffersEnabled, currency, promotion  in
+            bitlabsAPI.getAppSettings { visual, currency, promotion  in
                 expectation.fulfill()
             }
 
@@ -208,7 +148,7 @@ class BitLabsAPITest: XCTestCase {
             let expectation = XCTestExpectation(description: "Error received")
             expectation.isInverted = true
             
-            bitlabsAPI.getAppSettings { visual, isOffersEnabled, currency, promotion  in
+            bitlabsAPI.getAppSettings { visual, currency, promotion  in
                 expectation.fulfill()
             }
 

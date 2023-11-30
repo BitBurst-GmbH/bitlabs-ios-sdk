@@ -21,9 +21,7 @@ public class BitLabs: WebViewDelegate {
     private var adId = ""
     private var token = ""
     private var currencyIcon = ""
-    private var hasOffers = false
     private var bonusPercentage = 0.0
-    private var isOffersEnabled = false
     private var tags: [String: Any] = [:]
     private var widgetColor = ["000000", "000000"]
     private var headerColor = ["000000", "000000"]
@@ -47,9 +45,7 @@ public class BitLabs: WebViewDelegate {
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         
         getAppSettings()
-        
-        getHasOffers()
-        
+                
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
@@ -57,10 +53,9 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getAppSettings() {
-        bitlabsAPI?.getAppSettings { visual, isOffersEnabled, currency, promotion in
+        bitlabsAPI?.getAppSettings { visual, currency, promotion in
             self.widgetColor = visual.surveyIconColor.extractColors
             self.headerColor = visual.navigationColor.extractColors
-            self.isOffersEnabled = isOffersEnabled
 
             guard let currency = currency, currency.symbol.isImage else { return }
             self.currencyIcon = currency.symbol.content
@@ -169,11 +164,14 @@ public class BitLabs: WebViewDelegate {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
+            webViewController.tags = tags
+            webViewController.adId = adId
+            webViewController.token = token
+            webViewController.sdk = "NATIVE"
             webViewController.url = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, tags: tags)
             
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
-            webViewController.shouldOpenExternally = hasOffers && isOffersEnabled
             
             webViewController.modalPresentationStyle = .overFullScreen
             
@@ -187,10 +185,6 @@ public class BitLabs: WebViewDelegate {
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
-    }
-    
-    private func getHasOffers() {
-        bitlabsAPI?.getHasOffers { self.hasOffers = $0 }
     }
     
     func getCurrencyIcon(currencyIconUrl: String, _ completion: @escaping (UIImage?) -> ()) {

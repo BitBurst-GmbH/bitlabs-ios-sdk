@@ -65,35 +65,14 @@ class BitLabsAPI {
             }
     }
     
-    func getHasOffers(_ completion: @escaping (Bool) -> ()) {
-        session
-            .request(BitLabsRouter.getOffers)
-            .responseDecodable(of: BitLabsResponse<GetOffersResponse>.self, decoder: decoder) { response in
-                switch response.result {
-                case .success(let blResponse):
-                    if let offers = blResponse.data?.offers {
-                        completion(!offers.isEmpty)
-                        return
-                    }
-                                        
-                    print("[BitLabs] Get Offers \(blResponse.error?.details.http ?? "Error") - \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
-                    completion(false)
-                    
-                case .failure(let error):
-                    print("[BitLabs] Get Offers Failure: \(error)")
-                    completion(false)
-                }
-            }
-    }
-    
-    func getAppSettings(_ completion: @escaping (Visual, Bool, Currency?, Promotion?) -> ()) {
+    func getAppSettings(_ completion: @escaping (Visual, Currency?, Promotion?) -> ()) {
         session
             .request(BitLabsRouter.getAppSettings)
             .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
                     if let visual = blResponse.data?.visual {
-                        completion(visual, blResponse.data?.offers.enabled ?? true, blResponse.data?.currency, blResponse.data?.promotion)
+                        completion(visual, blResponse.data?.currency, blResponse.data?.promotion)
                         return
                     }
                     

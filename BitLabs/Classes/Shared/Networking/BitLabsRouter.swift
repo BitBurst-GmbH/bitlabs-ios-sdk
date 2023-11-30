@@ -11,7 +11,6 @@ import Alamofire
 enum BitLabsRouter {
 	case updateClick(clickId: String, reason: LeaveReason)
     case getSurveys(sdk: String)
-    case getOffers
     case getAppSettings
     case getLeaderboard
 	
@@ -25,8 +24,6 @@ enum BitLabsRouter {
 			return "v2/client/clicks/\(clickId)"
         case .getSurveys:
             return "v2/client/surveys"
-        case .getOffers:
-            return "v2/client/offers"
         case .getAppSettings:
             return "v1/client/settings/v2"
         case .getLeaderboard:
@@ -38,7 +35,6 @@ enum BitLabsRouter {
         switch self {
 		case .updateClick: return .post
         case .getSurveys: return .get
-        case .getOffers: return .get
         case .getAppSettings: return .get
         case .getLeaderboard: return .get
 		}
@@ -50,8 +46,6 @@ enum BitLabsRouter {
             return ["leave_survey": ["reason": reason.rawValue]]
         case .getSurveys(let sdk):
             return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
-        case .getOffers:
-            return ["platform": getPlatform()]
         case .getAppSettings:
             return ["platform": getPlatform()]
         case .getLeaderboard:

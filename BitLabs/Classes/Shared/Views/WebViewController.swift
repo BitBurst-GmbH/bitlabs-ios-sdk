@@ -36,9 +36,14 @@ class WebViewController: UIViewController {
     var url: URL?
 
     var uid = ""
-    var clickId = ""
-    var shouldOpenExternally = false
+    var sdk = ""
+    var adId = ""
+    var token = ""
+    var tags: [String: Any] = [:]
     var color: [UIColor] = [.black, .black]
+    
+    var clickId = ""
+    var areParametersInjected = true
     
     var delegate: WebViewDelegate?
     var observer: NSKeyValueObservation?
@@ -58,6 +63,16 @@ class WebViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if token.isEmpty {
+            print("[BitLabs] Error - Token is empty. Dismissing...")
+            dismiss(animated: true)
+        }
+        
+        if uid.isEmpty {
+            print("[BitLabs] Error - UID is empty. Dismissing...")
+            dismiss(animated: true)
+        }
+        
         loadOfferwall()
     }
     
@@ -82,13 +97,6 @@ class WebViewController: UIViewController {
                 return
             }
             
-            if self.shouldOpenExternally, UIApplication.shared.canOpenURL(url) {
-                UIApplication.shared.open(url)
-                print("[BitLabs] Redirected to browser. It includes Offers.")
-                self.dismiss(animated: true)
-                return
-            }
-            
             let urlStr = url.absoluteString
             
             let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
@@ -97,8 +105,14 @@ class WebViewController: UIViewController {
                 if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
                     reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
                 }
+                
+                if !areParametersInjected, urlStr.contains("sdk=\(sdk)"), let url = generateURL(urlStr) {
+                    webview.load(URLRequest(url: url))
+                    areParametersInjected = true
+                }
             } else {
                 clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
+                areParametersInjected = false
             }
             
             configureUI(isPageOfferwall)
@@ -131,6 +145,30 @@ class WebViewController: UIViewController {
         
         print("[BitLabs] Error generating URL...")
         dismiss(animated: true)
+    }
+    
+    /// Generates the URL the BitLabs Offerwall
+    /// - Tag: generateURL
+    private func generateURL(_ url: String) -> URL? {
+        guard var urlComponents = URLComponents(string: url) else { return nil }
+        
+        var queryItems = [
+            URLQueryItem(name: "uid", value: uid),
+            URLQueryItem(name: "token", value: token),
+            URLQueryItem(name: "os", value: "IOS"),
+            URLQueryItem(name: "sdk", value: sdk)]
+        
+        if !adId.isEmpty {
+            queryItems.append(URLQueryItem(name: "maid", value: adId))
+        }
+        
+        tags.forEach { tag in
+            queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))
+        }
+        
+        urlComponents.queryItems = queryItems
+        
+        return urlComponents.url
     }
     
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
