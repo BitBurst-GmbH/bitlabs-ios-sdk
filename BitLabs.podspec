@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
     spec.name             = 'BitLabs'
-    spec.version          = '3.1.14'
+    spec.version          = '3.1.15'
     spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
     spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
     spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
@@ -34,24 +34,24 @@ Pod::Spec.new do |spec|
         unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
     end
     
-    spec.app_spec 'AppHost' do |host|
-        host.source_files = 'BitLabs/AppHost/**/*.{swift}'
-        host.resources = 'BitLabs/AppHost/**/*.{xib,storyboard}'
-    end
+#    spec.app_spec 'AppHost' do |host|
+#        host.source_files = 'BitLabs/AppHost/**/*.{swift}'
+#        host.resources = 'BitLabs/AppHost/**/*.{xib,storyboard}'
+#    end
     
     spec.test_spec 'UnitTests' do |test_spec|
       test_spec.source_files = 'BitLabs/Tests/Unit\ Tests/*.swift'
       test_spec.dependency 'OHHTTPStubs/Swift'
     end
     
-    spec.test_spec 'UITests' do |test_spec|
-        test_spec.test_type = :ui
-        
-        test_spec.requires_app_host = true
-        test_spec.app_host_name = 'BitLabs/AppHost'
-        test_spec.dependency 'BitLabs/AppHost'
-        
-        test_spec.source_files = 'BitLabs/Tests/UI\ Tests/*.swift'
-    end
+#    spec.test_spec 'UITests' do |test_spec|
+#        test_spec.test_type = :ui
+#
+#        test_spec.requires_app_host = true
+#        test_spec.app_host_name = 'BitLabs/AppHost'
+#        test_spec.dependency 'BitLabs/AppHost'
+#
+#        test_spec.source_files = 'BitLabs/Tests/UI\ Tests/*.swift'
+#    end
 end
 

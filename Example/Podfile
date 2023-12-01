@@ -5,6 +5,6 @@ target 'BitLabs_Example' do
   
   pod 'BitLabs', :path => '../'
   pod 'BitLabs/UnitTests', :path => '../'
-  pod 'BitLabs/UITests', :path => '../'
+#  pod 'BitLabs/UITests', :path => '../'
   
 end
