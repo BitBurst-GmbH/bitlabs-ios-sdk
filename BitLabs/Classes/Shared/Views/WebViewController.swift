@@ -78,7 +78,7 @@ class WebViewController: UIViewController {
     private func setupWebView() {
         webView.uiDelegate = self
         webView.navigationDelegate = self
-        webView.scrollView.contentInsetAdjustmentBehavior = .never
+        webView.scrollView.bounces = false
         observer = webView.observe(\.url, options: .new) { [self] webview, change in
             guard let newValue = change.newValue, let url = newValue else { return }
             

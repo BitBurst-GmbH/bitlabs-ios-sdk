@@ -139,6 +139,13 @@ public class BitLabs: WebViewDelegate {
         return collectionView
     }
     
+    public func showLeaderboard(in container: UIView) {
+        ifConfigured {
+            let widget = WidgetView(frame: container.bounds, token: token, uid: uid)
+            container.replaceSubView(widget)
+        }
+    }
+    
     public func getLeaderboardView(_ completionHandler: @escaping (LeaderboardView?) -> ()) {
         ifConfigured { bitlabsAPI?.getLeaderboard { response in
             guard let topUsers = response.topUsers, !topUsers.isEmpty else { return completionHandler(nil) }

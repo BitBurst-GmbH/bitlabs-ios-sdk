@@ -37,13 +37,15 @@ class ViewController: UIViewController {
     }
     
     func setupLeaderboard() {
-        BitLabs.shared.getLeaderboardView { leaderboard in
-            guard let leaderboard = leaderboard else { return }
-
-            leaderboard.frame = self.leaderboardContainer.bounds
-
-            self.leaderboardContainer.addSubview(leaderboard)
-        }
+        BitLabs.shared.showLeaderboard(in: leaderboardContainer)
+        
+//        BitLabs.shared.getLeaderboardView { leaderboard in
+//            guard let leaderboard = leaderboard else { return }
+//
+//            leaderboard.frame = self.leaderboardContainer.bounds
+//
+//            self.leaderboardContainer.addSubview(leaderboard)
+//        }
     }
     
     @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
