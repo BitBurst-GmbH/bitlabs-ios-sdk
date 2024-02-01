@@ -48,6 +48,8 @@ class WebViewController: UIViewController {
     var delegate: WebViewDelegate?
     var observer: NSKeyValueObservation?
     
+    private var didCallViewDidAppear = false
+    
     private var reward: Float = 0.0
     
     override func viewDidLoad() {
@@ -63,7 +65,12 @@ class WebViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        if didCallViewDidAppear {
+            return
+        }
+        
         loadOfferwall()
+        didCallViewDidAppear = true
     }
     
     override var prefersHomeIndicatorAutoHidden: Bool {
