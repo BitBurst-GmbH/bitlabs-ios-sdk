@@ -44,6 +44,7 @@ import Foundation
             case .simple: return "EARN \(reward)"
             case .compact: return "\(reward)"
             case .full_width: return reward
+            default: return "EARN \(reward)"
             }
         }()
         
@@ -61,6 +62,7 @@ import Foundation
             case .simple: return "Now in \(loi)!"
             case .compact: return loi
             case .full_width: return loi
+            default: return "Now in \(loi)!"
             }
         }()
         
@@ -74,6 +76,7 @@ import Foundation
             case .simple: return .white
             case .compact: return color.first!
             case .full_width: return .white
+            default: return .white
             }
         }()
         
@@ -136,6 +139,7 @@ import Foundation
             case .simple: return "SimpleSurveyView"
             case .compact: return "CompactSurveyView"
             case .full_width: return "FullWidthSurveyView"
+            default: return "SimpleSurveyView"
             }
         }()
         

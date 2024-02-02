@@ -13,13 +13,15 @@ public class WidgetView: UIView {
     
     let webview = WKWebView()
     
+    var type = WidgetType.leaderboard
     var token = ""
     var uid = ""
     
-    init(frame: CGRect, token: String, uid: String) {
+    init(frame: CGRect, token: String, uid: String, type: WidgetType) {
         super.init(frame: frame)
         self.token = token
         self.uid = uid
+        self.type = type
         setup()
     }
     
@@ -68,7 +70,7 @@ public class WidgetView: UIView {
                 window.bitlabsSDK
                   .init("\(token)", "\(uid)")
                   .then(() => {
-                    window.bitlabsSDK.showWidget("#widget", "leaderboard", {
+                    window.bitlabsSDK.showWidget("#widget", "\(type.rawValue)", {
                       onClick: () => {},
                     });
 

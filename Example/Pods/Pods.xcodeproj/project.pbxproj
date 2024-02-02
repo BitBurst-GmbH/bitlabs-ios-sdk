@@ -535,6 +535,7 @@
 		491DD3291849D1BCCB6F47424EB267C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C8A82FFDF996C5DAFE2D0F542FEDC829 /* WidgetType.swift */,
 				9D9537FCAE74BDB2D0C4BBB2424D1D48 /* Answer.swift */,
 				5B735F0AE25CD5101D184F0F47072940 /* BitLabsResponse.swift */,
 				5590CB2E320B4135B137FB8101687370 /* CheckSurveysResponse.swift */,
@@ -809,7 +810,6 @@
 				AC870E717E01E045A1796DB7F7378FFA /* Survey.swift */,
 				1B2B5BDA796A486B09921057AB8A3646 /* Symbol.swift */,
 				0D3B221152E2A485FDEE67CB9D49D4B6 /* User.swift */,
-				C8A82FFDF996C5DAFE2D0F542FEDC829 /* WidgetType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

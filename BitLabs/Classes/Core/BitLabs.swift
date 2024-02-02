@@ -124,6 +124,7 @@ public class BitLabs: WebViewDelegate {
             case .simple: return CGSize(width: 310, height: 150)
             case .compact: return CGSize(width: 310, height: 85)
             case .full_width: return CGSize(width: 450, height: 50)
+            default: return CGSize(width: 310, height: 150)
             }
         }()
         layout.minimumLineSpacing = CGFloat(4)
@@ -139,13 +140,15 @@ public class BitLabs: WebViewDelegate {
         return collectionView
     }
     
+    /// Shows the Leaderboard in the specified container.
     public func showLeaderboard(in container: UIView) {
         ifConfigured {
-            let widget = WidgetView(frame: container.bounds, token: token, uid: uid)
+            let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: .leaderboard)
             container.replaceSubView(widget)
         }
     }
     
+    @available(*, deprecated, message: "Use showLeaderboard(in:) instead.")
     public func getLeaderboardView(_ completionHandler: @escaping (LeaderboardView?) -> ()) {
         ifConfigured { bitlabsAPI?.getLeaderboard { response in
             guard let topUsers = response.topUsers, !topUsers.isEmpty else { return completionHandler(nil) }
