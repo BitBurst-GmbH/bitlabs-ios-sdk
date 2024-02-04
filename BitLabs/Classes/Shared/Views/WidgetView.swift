@@ -35,6 +35,8 @@ public class WidgetView: UIView {
             return print("[BitLabs] Token or UID found empty! Can't show the widget.")
         }
         
+        backgroundColor = .cyan
+        
         // webview properties
         webview.frame = bounds
         addSubview(webview)
@@ -85,6 +87,5 @@ public class WidgetView: UIView {
         """
         
         webview.loadHTMLString(string, baseURL: URL(string: "https://sdk.bitlabs.ai/"))
-        
     }
 }

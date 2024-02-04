@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina6_0" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -11,47 +12,75 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="BitLabs_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iYz-s4-QW6">
-                                <rect key="frame" x="16" y="58" width="358" height="283.33333333333331"/>
+                                <rect key="frame" x="4" y="58" width="367" height="299"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa">
-                                <rect key="frame" x="144" y="399.33333333333331" width="102" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ieb-fS-d6M">
+                                <rect key="frame" x="4" y="361" width="367" height="31"/>
+                                <state key="normal" title="Authororize Tracking"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show Leaderboard"/>
+                                <connections>
+                                    <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="yzi-Tx-cht"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hk7-s4-apI">
+                                <rect key="frame" x="4" y="396" width="203" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="mea-sB-jJL"/>
+                                </constraints>
+                                <state key="normal" title="Authororize Tracking"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Authororize Tracking"/>
+                                <connections>
+                                    <action selector="requestTrackingAuthorization:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F25-ae-0b9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLQ-xN-lTa">
+                                <rect key="frame" x="211" y="396" width="160" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="D8j-i4-7Rj"/>
+                                </constraints>
                                 <state key="normal" title="Check Surveys"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Check Surveys"/>
                                 <connections>
                                     <action selector="checkForSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="awW-3T-7KV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVb-5N-F6j">
-                                <rect key="frame" x="137" y="449.33333333333331" width="116" height="30"/>
+                                <rect key="frame" x="4" y="431" width="367" height="31"/>
                                 <state key="normal" title="Launch Offerwall"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Launch Offerwall"/>
                                 <connections>
                                     <action selector="showOfferWall:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="8Wj-Sj-VJI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pI-gV-ajL">
-                                <rect key="frame" x="153.66666666666666" y="499.33333333333326" width="83" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pI-gV-ajL">
+                                <rect key="frame" x="4" y="466" width="160" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="AZw-EH-Zd1"/>
+                                </constraints>
                                 <state key="normal" title="Get Surveys"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Get Surveys"/>
                                 <connections>
                                     <action selector="getSurveys:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BxD-cJ-bsp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hk7-s4-apI">
-                                <rect key="frame" x="124" y="349.33333333333331" width="142" height="30"/>
-                                <state key="normal" title="Authororize Tracking"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDx-4j-J3r">
+                                <rect key="frame" x="168" y="466" width="203" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="TZ0-fo-ikQ"/>
+                                </constraints>
+                                <state key="normal" title="Get Surveys"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Show Survey Widget"/>
                                 <connections>
-                                    <action selector="requestTrackingAuthorization:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="F25-ae-0b9"/>
+                                    <action selector="showSurveyWidget:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="QgB-LG-Xtn"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qX2-bL-55O">
-                                <rect key="frame" x="16" y="549.33333333333337" width="358" height="200"/>
+                                <rect key="frame" x="4" y="507" width="367" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="g0E-Oo-b3r"/>
                                 </constraints>
@@ -65,23 +94,33 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="tjO-jL-Xn9"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kVb-5N-F6j" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" multiplier="1.1" id="1DO-Gz-NNf"/>
-                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="top" secondItem="hk7-s4-apI" secondAttribute="bottom" constant="20" id="5hh-zF-WhY"/>
-                            <constraint firstItem="iYz-s4-QW6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="8N3-ny-czp"/>
-                            <constraint firstItem="7pI-gV-ajL" firstAttribute="top" secondItem="kVb-5N-F6j" secondAttribute="bottom" constant="20" id="Bms-dR-sJB"/>
-                            <constraint firstItem="iYz-s4-QW6" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="14" id="Ddd-7D-Gg5"/>
-                            <constraint firstItem="qX2-bL-55O" firstAttribute="top" secondItem="7pI-gV-ajL" secondAttribute="bottom" constant="20" id="DjK-l0-Smk"/>
-                            <constraint firstItem="hk7-s4-apI" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="QQV-Bz-HAH"/>
-                            <constraint firstItem="hk7-s4-apI" firstAttribute="top" secondItem="iYz-s4-QW6" secondAttribute="bottom" constant="8" id="Vox-gY-mif"/>
-                            <constraint firstItem="qX2-bL-55O" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="YE8-IK-wV1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="iYz-s4-QW6" secondAttribute="trailing" id="YkS-xQ-NV7"/>
-                            <constraint firstItem="7pI-gV-ajL" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="oq3-Ik-oXw"/>
-                            <constraint firstItem="kVb-5N-F6j" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="qGd-30-JR7"/>
-                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="sX2-ui-iN2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qX2-bL-55O" secondAttribute="trailing" id="ssq-nG-R8q"/>
-                            <constraint firstItem="kVb-5N-F6j" firstAttribute="top" secondItem="XLQ-xN-lTa" secondAttribute="bottom" constant="20" id="yh0-Un-4AY"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="HDx-4j-J3r" secondAttribute="trailing" constant="4" id="3ah-Dc-IUr"/>
+                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="leading" secondItem="hk7-s4-apI" secondAttribute="trailing" constant="4" id="4zA-HA-mI6"/>
+                            <constraint firstItem="hk7-s4-apI" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="6Yv-t7-xBT"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="iYz-s4-QW6" secondAttribute="trailing" constant="4" id="Abu-mE-czf"/>
+                            <constraint firstItem="7pI-gV-ajL" firstAttribute="top" secondItem="kVb-5N-F6j" secondAttribute="bottom" constant="4" id="Bms-dR-sJB"/>
+                            <constraint firstItem="kVb-5N-F6j" firstAttribute="top" secondItem="XLQ-xN-lTa" secondAttribute="bottom" constant="4" id="DAV-XG-Cu3"/>
+                            <constraint firstItem="iYz-s4-QW6" firstAttribute="top" secondItem="tjO-jL-Xn9" secondAttribute="top" constant="14" id="Ddd-7D-Gg5"/>
+                            <constraint firstItem="qX2-bL-55O" firstAttribute="top" secondItem="7pI-gV-ajL" secondAttribute="bottom" constant="10" id="DjK-l0-Smk"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="Ieb-fS-d6M" secondAttribute="trailing" constant="4" id="GGc-aC-0GJ"/>
+                            <constraint firstItem="Ieb-fS-d6M" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="HE0-OG-8DW"/>
+                            <constraint firstItem="HDx-4j-J3r" firstAttribute="top" secondItem="kVb-5N-F6j" secondAttribute="bottom" constant="4" id="I7K-Dr-fKv"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="XLQ-xN-lTa" secondAttribute="trailing" constant="4" id="OmI-dL-RaY"/>
+                            <constraint firstItem="qX2-bL-55O" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="QKQ-Ms-kEa"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="qX2-bL-55O" secondAttribute="trailing" constant="4" id="TxO-0p-jEI"/>
+                            <constraint firstItem="Ieb-fS-d6M" firstAttribute="top" secondItem="iYz-s4-QW6" secondAttribute="bottom" constant="4" id="YFR-Lr-FYI"/>
+                            <constraint firstItem="HDx-4j-J3r" firstAttribute="leading" secondItem="7pI-gV-ajL" secondAttribute="trailing" constant="4" id="ZQG-vd-zSC"/>
+                            <constraint firstItem="XLQ-xN-lTa" firstAttribute="top" secondItem="Ieb-fS-d6M" secondAttribute="bottom" constant="4" id="eE6-ij-RDt"/>
+                            <constraint firstItem="iYz-s4-QW6" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="gtT-2T-TIn"/>
+                            <constraint firstItem="hk7-s4-apI" firstAttribute="top" secondItem="Ieb-fS-d6M" secondAttribute="bottom" constant="4" id="jgC-3p-af4"/>
+                            <constraint firstItem="kVb-5N-F6j" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="mgh-qs-cYZ"/>
+                            <constraint firstItem="7pI-gV-ajL" firstAttribute="leading" secondItem="tjO-jL-Xn9" secondAttribute="leading" constant="4" id="u3s-qL-7Pp"/>
+                            <constraint firstItem="kVb-5N-F6j" firstAttribute="top" secondItem="hk7-s4-apI" secondAttribute="bottom" constant="4" id="wud-4y-wyZ"/>
+                            <constraint firstItem="tjO-jL-Xn9" firstAttribute="trailing" secondItem="kVb-5N-F6j" secondAttribute="trailing" constant="4" id="y5D-Nr-d5O"/>
                         </constraints>
                     </view>
                     <connections>
@@ -91,7 +130,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-20" y="120.98950524737631"/>
+            <point key="canvasLocation" x="-20" y="120.85308056872037"/>
         </scene>
     </scenes>
 </document>

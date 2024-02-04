@@ -117,6 +117,13 @@ public class BitLabs: WebViewDelegate {
             }}}
     }
     
+    public func showSurveyWidget(in container: UIView, type: WidgetType = .simple) {
+        ifConfigured {
+            let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: type)
+            container.replaceSubView(widget)
+        }
+    }
+    
     public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = {
