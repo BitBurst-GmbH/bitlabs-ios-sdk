@@ -150,7 +150,7 @@ import AppTrackingTransparency
             webViewController.adId = adId
             webViewController.sdk = "UNITY"
             webViewController.token = token
-            webViewController.url = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, tags: tags)
+            webViewController.url = generateURL(uid: uid, token: token, sdk: "UNITY", adId: adId, tags: tags)
 
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
