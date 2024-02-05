@@ -39,6 +39,17 @@ public class WidgetView: UIView {
         
         // webview properties
         webview.frame = bounds
+        
+        webview.frame = { switch type {
+        case .simple:
+            return CGRect(origin: .zero, size: CGSize(width: 280, height: 130))
+        case .compact:
+            return CGRect(origin: .zero, size: CGSize(width: 400, height: 300))
+        case .full_width:
+            return CGRect(origin: .zero, size: CGSize(width: 400, height: 300))
+        case .leaderboard:
+            return bounds
+        }}()
         addSubview(webview)
         
         webview.scrollView.bounces = false
@@ -65,7 +76,7 @@ public class WidgetView: UIView {
             <title>Leaderboard</title>
           </head>
           <body>
-            <div id="widget"></div>
+            <div id="widget" style="background-color: red"></div>
 
             <script>
               function initSDK() {

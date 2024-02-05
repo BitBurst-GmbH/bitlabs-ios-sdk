@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         BitLabs.shared.setRewardCompletionHandler { reward in
             print("[Example] You earned: \(reward)")
         }
+        
+        surveysContainer.backgroundColor = .green
     }
     
     @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
