@@ -31,9 +31,7 @@ class ViewController: UIViewController {
         BitLabs.shared.setTags(["userType": "New", "isPremium": false])
         BitLabs.shared.setRewardCompletionHandler { reward in
             print("[Example] You earned: \(reward)")
-        }
-        
-        surveysContainer.backgroundColor = .green
+        }        
     }
     
     @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
@@ -73,6 +71,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showSurveyWidget(_ sender: Any) {
-        BitLabs.shared.showSurveyWidget(in: self.surveysContainer)
+        BitLabs.shared.showSurveyWidget(in: self.surveysContainer, type: .simple)
     }
 }

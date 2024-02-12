@@ -34,23 +34,23 @@ public class WidgetView: UIView {
         if token.isEmpty || uid.isEmpty {
             return print("[BitLabs] Token or UID found empty! Can't show the widget.")
         }
-        
-        backgroundColor = .cyan
-        
+                
         // webview properties
-        webview.frame = bounds
-        
         webview.frame = { switch type {
         case .simple:
             return CGRect(origin: .zero, size: CGSize(width: 280, height: 130))
         case .compact:
-            return CGRect(origin: .zero, size: CGSize(width: 400, height: 300))
+            return CGRect(origin: .zero, size: CGSize(width: 250, height: 75))
         case .full_width:
-            return CGRect(origin: .zero, size: CGSize(width: 400, height: 300))
+            return CGRect(origin: .zero, size: CGSize(width: bounds.width, height: 60))
         case .leaderboard:
             return bounds
         }}()
         addSubview(webview)
+        webview.isOpaque = false
+        
+        // make view similar to webview
+        bounds = CGRect(origin: bounds.origin, size: webview.bounds.size)
         
         webview.scrollView.bounces = false
         
@@ -76,7 +76,7 @@ public class WidgetView: UIView {
             <title>Leaderboard</title>
           </head>
           <body>
-            <div id="widget" style="background-color: red"></div>
+            <div id="widget"></div>
 
             <script>
               function initSDK() {
