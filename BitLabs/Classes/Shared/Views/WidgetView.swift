@@ -50,7 +50,7 @@ public class WidgetView: UIView {
         webview.isOpaque = false
         
         // make view similar to webview
-        bounds = CGRect(origin: bounds.origin, size: webview.bounds.size)
+        frame.size = webview.bounds.size
         
         webview.scrollView.bounces = false
         

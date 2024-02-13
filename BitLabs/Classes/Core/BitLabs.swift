@@ -121,9 +121,11 @@ public class BitLabs: WebViewDelegate {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: type)
             container.replaceSubView(widget)
+            widget.center.x = container.center.x
         }
     }
     
+    @available(*, deprecated, message: "Use showSurveyWidget(in:type:) instead.")
     public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.itemSize = {

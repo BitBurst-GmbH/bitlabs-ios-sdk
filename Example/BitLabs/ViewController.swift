@@ -71,6 +71,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func showSurveyWidget(_ sender: Any) {
-        BitLabs.shared.showSurveyWidget(in: self.surveysContainer, type: .simple)
+        BitLabs.shared.showSurveyWidget(in: surveysContainer, type: .simple)
     }
 }
