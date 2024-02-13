@@ -8,6 +8,8 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+![](/overview.gif)
+
 ## Installation
 
 BitLabs is available through [CocoaPods](https://cocoapods.org). To install
