@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (5.8.1)
-  - BitLabs (3.1.17):
+  - BitLabs (3.2.0):
     - Alamofire (~> 5.5)
-    - BitLabs/Core (= 3.1.17)
-  - BitLabs/Core (3.1.17):
+    - BitLabs/Core (= 3.2.0)
+  - BitLabs/Core (3.2.0):
     - Alamofire (~> 5.5)
-  - BitLabs/UnitTests (3.1.17):
+  - BitLabs/UnitTests (3.2.0):
     - Alamofire (~> 5.5)
     - OHHTTPStubs/Swift
   - OHHTTPStubs/Core (9.1.0)
@@ -37,7 +37,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
-  BitLabs: ff1160000d7cd70664f2b6dd8cc1aafad84e52d3
+  BitLabs: 29c7de7de046723a54579a15d2e4c5bd164e592b
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
 
 PODFILE CHECKSUM: fc7ceecd0183f0ecbda922544da085f1ecf30b9d
