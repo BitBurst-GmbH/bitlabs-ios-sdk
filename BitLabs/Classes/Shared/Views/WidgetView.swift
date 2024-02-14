@@ -9,7 +9,7 @@ import Foundation
 import WebKit
 
 
-public class WidgetView: UIView {
+public class WidgetView: UIView, UIGestureRecognizerDelegate {
     
     let webview = WKWebView()
     
@@ -48,9 +48,6 @@ public class WidgetView: UIView {
         }}()
         addSubview(webview)
         webview.isOpaque = false
-        
-        // make view similar to webview
-        frame.size = webview.bounds.size
         
         webview.scrollView.bounces = false
         
@@ -98,5 +95,28 @@ public class WidgetView: UIView {
         """
         
         webview.loadHTMLString(string, baseURL: URL(string: "https://sdk.bitlabs.ai/"))
+        
+        // view properties
+        isUserInteractionEnabled = true
+        frame.size = webview.bounds.size  // make view similar to webview
+        
+        let gesture = UITapGestureRecognizer(target: parentViewController ?? self, action: #selector(onTap))
+        gesture.delegate = self
+        addGestureRecognizer(gesture)
+        
+    }
+    
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    @objc func onTap() {
+        print("lolo called")
+        guard let parent = parentViewController else {
+            print("[BitLabs] Looks like the WidgetView instance doesn't have a parent VC! Can't launch OfferWall")
+            return
+        }
+        
+        BitLabs.shared.launchOfferWall(parent: parent)
     }
 }
