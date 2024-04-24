@@ -11,7 +11,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    private let uid = "YOUR_USER_ID"
+    private let uid = "oblivatevariegata"
     private var token = "YOUR_APP_TOKEN"
     
     @IBOutlet weak var surveysContainer: UIView!
