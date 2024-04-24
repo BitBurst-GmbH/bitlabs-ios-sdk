@@ -111,7 +111,6 @@ public class WidgetView: UIView, UIGestureRecognizerDelegate {
     }
     
     @objc func onTap() {
-        print("lolo called")
         guard let parent = parentViewController else {
             print("[BitLabs] Looks like the WidgetView instance doesn't have a parent VC! Can't launch OfferWall")
             return

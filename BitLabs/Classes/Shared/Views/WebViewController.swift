@@ -99,16 +99,11 @@ class WebViewController: UIViewController {
             let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
             
             if isPageOfferwall {
-                if urlStr.contains("/survey-complete") || urlStr.contains("/survey-screenout") || urlStr.contains("/start-bonus") {
-                    reward += Float(URLComponents(string: urlStr)?.queryItems?.first {$0.name == "val"}?.value ?? "") ?? 0
-                }
-                
-                if !areParametersInjected, urlStr.contains("sdk=\(sdk)"), let url = generateURL(urlStr) {
+                if !areParametersInjected, !urlStr.contains("sdk=\(sdk)"), let url = generateURL(urlStr) {
                     webview.load(URLRequest(url: url))
                     areParametersInjected = true
                 }
             } else {
-                clickId = URLComponents(string: urlStr)?.queryItems?.first { $0.name == "clk" }?.value ?? clickId
                 areParametersInjected = false
             }
             
