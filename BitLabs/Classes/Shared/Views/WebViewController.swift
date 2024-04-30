@@ -192,6 +192,10 @@ extension WebViewController: WKNavigationDelegate {
     }
     
     func presentFail() {
+        guard (BitLabs.shared.isDebugMode) else {
+            return
+        }
+        
         errorView.isHidden = false
         
         let errorStr = "{ uid: \(uid), date: \(Int(Date().timeIntervalSince1970)) }"

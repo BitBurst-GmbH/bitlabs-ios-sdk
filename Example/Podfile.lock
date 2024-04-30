@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (5.8.1)
+  - Alamofire (5.9.1)
   - BitLabs (3.2.0):
     - Alamofire (~> 5.5)
     - BitLabs/Core (= 3.2.0)
@@ -36,10 +36,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
   BitLabs: 29c7de7de046723a54579a15d2e4c5bd164e592b
   OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
 
 PODFILE CHECKSUM: fc7ceecd0183f0ecbda922544da085f1ecf30b9d
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
