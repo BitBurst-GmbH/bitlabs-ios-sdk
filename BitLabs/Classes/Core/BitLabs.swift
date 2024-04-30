@@ -31,6 +31,7 @@ public class BitLabs: WebViewDelegate {
     private var surveyDataSource: SurveyDataSource?
     
     var bitlabsAPI: BitLabsAPI? = nil
+    public var isDebugMode = false
     
     private init() {}
     

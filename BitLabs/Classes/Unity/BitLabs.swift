@@ -30,6 +30,7 @@ import AppTrackingTransparency
     
     private var onReward: ((Float) -> ())?
     
+    var isDebugMode = false
     var bitlabsAPI: BitLabsAPI? = nil
     
     private override init() {}
@@ -137,6 +138,10 @@ import AppTrackingTransparency
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
     @objc public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {
         onReward = rewardCompletionHandler
+    }
+    
+    @objc public func setIsDebugMode(_ isDebugMode: Bool) {
+        self.isDebugMode = isDebugMode
     }
     
     /// Presents a ViewController with a WebKitViewController to show the Offerwall.
