@@ -14,26 +14,14 @@
   },
   "swift_versions": "5.0",
   "platforms": {
-    "ios": "11.0"
+    "ios": "12.0"
   },
   "dependencies": {
     "Alamofire": [
-      "~> 5.5"
+      "~> 5.9.0"
     ]
   },
   "default_subspecs": "Core",
-  "testspecs": [
-    {
-      "name": "UnitTests",
-      "test_type": "unit",
-      "source_files": "BitLabs/Tests/Unit\\ Tests/*.swift",
-      "dependencies": {
-        "OHHTTPStubs/Swift": [
-
-        ]
-      }
-    }
-  ],
   "subspecs": [
     {
       "name": "Core",

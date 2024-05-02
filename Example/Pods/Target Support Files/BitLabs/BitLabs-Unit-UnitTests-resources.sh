@@ -111,7 +111,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/../../BitLabs/Localizations/it.lproj/Localizable.strings"
   install_resource "${PODS_ROOT}/../../BitLabs/Resources/Core/Assets/CoreImages.xcassets"
   install_resource "${PODS_ROOT}/../../BitLabs/Resources/Shared/Assets/SharedImages.xcassets"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/../../BitLabs/Resources/Core/CompactSurveyView.xib"
@@ -128,7 +127,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_ROOT}/../../BitLabs/Localizations/it.lproj/Localizable.strings"
   install_resource "${PODS_ROOT}/../../BitLabs/Resources/Core/Assets/CoreImages.xcassets"
   install_resource "${PODS_ROOT}/../../BitLabs/Resources/Shared/Assets/SharedImages.xcassets"
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

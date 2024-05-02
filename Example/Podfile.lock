@@ -1,35 +1,17 @@
 PODS:
   - Alamofire (5.9.1)
   - BitLabs (3.2.0):
-    - Alamofire (~> 5.5)
+    - Alamofire (~> 5.9.0)
     - BitLabs/Core (= 3.2.0)
   - BitLabs/Core (3.2.0):
-    - Alamofire (~> 5.5)
-  - BitLabs/UnitTests (3.2.0):
-    - Alamofire (~> 5.5)
-    - OHHTTPStubs/Swift
-  - OHHTTPStubs/Core (9.1.0)
-  - OHHTTPStubs/Default (9.1.0):
-    - OHHTTPStubs/Core
-    - OHHTTPStubs/JSON
-    - OHHTTPStubs/NSURLSession
-    - OHHTTPStubs/OHPathHelpers
-  - OHHTTPStubs/JSON (9.1.0):
-    - OHHTTPStubs/Core
-  - OHHTTPStubs/NSURLSession (9.1.0):
-    - OHHTTPStubs/Core
-  - OHHTTPStubs/OHPathHelpers (9.1.0)
-  - OHHTTPStubs/Swift (9.1.0):
-    - OHHTTPStubs/Default
+    - Alamofire (~> 5.9.0)
 
 DEPENDENCIES:
   - BitLabs (from `../`)
-  - BitLabs/UnitTests (from `../`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - OHHTTPStubs
 
 EXTERNAL SOURCES:
   BitLabs:
@@ -37,9 +19,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  BitLabs: 29c7de7de046723a54579a15d2e4c5bd164e592b
-  OHHTTPStubs: 90eac6d8f2c18317baeca36698523dc67c513831
+  BitLabs: c2531b6c8e908d44d509dc2a5c0978d23ac0bcaf
 
-PODFILE CHECKSUM: fc7ceecd0183f0ecbda922544da085f1ecf30b9d
+PODFILE CHECKSUM: f12ff434c181c005d3dc148ce8ede5fa226de637
 
 COCOAPODS: 1.15.2

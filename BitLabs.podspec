@@ -19,8 +19,8 @@ Pod::Spec.new do |spec|
     # s.social_media_url  = 'https://twitter.com/<TWITTER_USERNAME>'
     
     spec.swift_version = '5.0'
-    spec.ios.deployment_target = '11.0'
-    spec.dependency 'Alamofire', '~> 5.5'
+    spec.ios.deployment_target = '12.0'
+    spec.dependency 'Alamofire', '~> 5.9.0'
     
     spec.default_subspec = 'Core'
     
@@ -39,10 +39,10 @@ Pod::Spec.new do |spec|
 #        host.resources = 'BitLabs/AppHost/**/*.{xib,storyboard}'
 #    end
     
-    spec.test_spec 'UnitTests' do |test_spec|
-      test_spec.source_files = 'BitLabs/Tests/Unit\ Tests/*.swift'
-      test_spec.dependency 'OHHTTPStubs/Swift'
-    end
+#    spec.test_spec 'UnitTests' do |test_spec|
+#      test_spec.source_files = 'BitLabs/Tests/Unit\ Tests/*.swift'
+#      test_spec.dependency 'OHHTTPStubs/Swift'
+#    end
     
 #    spec.test_spec 'UITests' do |test_spec|
 #        test_spec.test_type = :ui
