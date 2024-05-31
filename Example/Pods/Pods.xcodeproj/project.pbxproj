@@ -97,6 +97,7 @@
 		D30471F1B250D9254AE80E746BB85913 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F035FB0FD5549172549BA6D3A482C2C4 /* Category.swift */; };
 		D488D57BF30A21147A3E9CBC95494ABD /* CheckSurveysResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32EABCF6D6536FB45C2BA23C85DF878 /* CheckSurveysResponse.swift */; };
 		D6123D58F55B6F2DF3758B1506B07DAD /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB1429204E5C99E09B97C07E190A5CA /* UIImageView+Extension.swift */; };
+		D7214FB82C08A03F0008C56B /* HookMessageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7214FB72C08A03F0008C56B /* HookMessageUtils.swift */; };
 		D969F68DCAC2A0BA1D9B0339BD890A01 /* SurveyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B964B0E650998A164EC3529380D2BD60 /* SurveyView.swift */; };
 		DE896085DFDD686BDBDEFB776F0D683A /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = A602DFBE8344434F2421B2A90900B31A /* DispatchQueue+Alamofire.swift */; };
 		DE8F5B68839128A005EE3549A1149B09 /* RequestInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E2C5A8A6958524B59BE002613A56821 /* RequestInterceptor.swift */; };
@@ -216,7 +217,7 @@
 		86BDB5CB886A240B4465BA56B0706A56 /* BitLabs-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BitLabs-dummy.m"; sourceTree = "<group>"; };
 		875DED0E60E61321E50184982B424729 /* DataStreamRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataStreamRequest.swift; path = Source/Core/DataStreamRequest.swift; sourceTree = "<group>"; };
 		890AD1050F2FA45E2F67F3F3F354CD80 /* SVG.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SVG.swift; sourceTree = "<group>"; };
-		89DEC3A41EB3DD2BF8CA9AA1DDBEB60B /* BitLabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BitLabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		89DEC3A41EB3DD2BF8CA9AA1DDBEB60B /* BitLabs.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = BitLabs.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8B20273ACA96FE0C0F8AE8E10ABD3309 /* Global.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		8D3D57353834825F7B52B816066B7789 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CFNetwork.framework; sourceTree = DEVELOPER_DIR; };
 		8EDA19ADDCFBBA62E5615347AD22477A /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
@@ -226,12 +227,12 @@
 		9B661F12F170C7B538CFC843C15122AC /* Combine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Combine.swift; path = Source/Features/Combine.swift; sourceTree = "<group>"; };
 		9B892CB64AEFA9D6B9A951A7E735FA84 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9C7A34756E8CC5A8206D3C31D9AF5050 /* String+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DC8041970D88C4AB47B7F85ADD5B689 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Core/Notifications.swift; sourceTree = "<group>"; };
 		A3B0A0784F04F8F68B1062EAAB7F6126 /* BitLabsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BitLabsRouter.swift; sourceTree = "<group>"; };
 		A602DFBE8344434F2421B2A90900B31A /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/Extensions/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
 		A66166E16BE64F7BCF895480664CF09F /* WebViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		A6E5356F54707C9581DF1EA263D1079F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		A6E5356F54707C9581DF1EA263D1079F /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		AE1C24800826C7F48ADA96C8FB098118 /* Result+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Result+Alamofire.swift"; path = "Source/Extensions/Result+Alamofire.swift"; sourceTree = "<group>"; };
 		B3799310FD1889DA69FDDF07EF27B842 /* BitLabs */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BitLabs; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,11 +252,12 @@
 		D3813B32A501739AD1B0CD24D6705223 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Core/Response.swift; sourceTree = "<group>"; };
 		D3A3597B5AD35FF5ABD455C59A0C5E3C /* Symbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
 		D5F7458CF612C33E0027382018A7F267 /* CompactSurveyView.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; path = CompactSurveyView.xib; sourceTree = "<group>"; };
-		D641205EFDFA743B89B50774471B2A20 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		D641205EFDFA743B89B50774471B2A20 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D6B591DC4B742EB96952318CD9E9EBD2 /* BitLabs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BitLabs.debug.xcconfig; sourceTree = "<group>"; };
+		D7214FB72C08A03F0008C56B /* HookMessageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HookMessageUtils.swift; sourceTree = "<group>"; };
 		D79A0EF6FC3DBE6205C73C23A3DDA17D /* Alamofire.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.release.xcconfig; sourceTree = "<group>"; };
 		D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = CoreImages.xcassets; sourceTree = "<group>"; };
-		DA82429B51A805EA2CB988BF8B30C7DE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Source/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DA82429B51A805EA2CB988BF8B30C7DE /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Source/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		DC4EC311A41F8B83A0C3BA4FCC2AA5BF /* BitLabs-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BitLabs-umbrella.h"; sourceTree = "<group>"; };
 		DD00A946369DBEFB5D81A0475F36BED1 /* SurveyDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SurveyDataSource.swift; sourceTree = "<group>"; };
 		DF83845BB36207190DB696FC4C4F3BDE /* Alamofire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.debug.xcconfig; sourceTree = "<group>"; };
@@ -324,8 +326,8 @@
 				505A35E9AB3464A4FCB12F142DAE9409 /* UIColor+Extension.swift */,
 				3CB1429204E5C99E09B97C07E190A5CA /* UIImageView+Extension.swift */,
 				77FA5B0C8AED1CFC3B7DE7B91B0AA398 /* UIView+Extension.swift */,
+				D7214FB72C08A03F0008C56B /* HookMessageUtils.swift */,
 			);
-			name = Utilities;
 			path = Utilities;
 			sourceTree = "<group>";
 		};
@@ -342,7 +344,6 @@
 			children = (
 				D9014C85945A975FE26D998FB28C6506 /* CoreImages.xcassets */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -375,7 +376,6 @@
 				DD00A946369DBEFB5D81A0475F36BED1 /* SurveyDataSource.swift */,
 				B964B0E650998A164EC3529380D2BD60 /* SurveyView.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -396,7 +396,6 @@
 				A934335305A6A4E0DF68DDE867C09728 /* WebViewController.xib */,
 				B66C3FBCDC465A04B162410893DA16F8 /* Assets */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -417,7 +416,6 @@
 				483E8E2DB60728A82A8BFE49288C943A /* Visual.swift */,
 				32E65AEEC0FB71E17549A95740A5E2E7 /* WidgetType.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -473,7 +471,6 @@
 				A66166E16BE64F7BCF895480664CF09F /* WebViewController.swift */,
 				5107646B6ECD58C41F912F66B52F49EF /* WidgetView.swift */,
 			);
-			name = Views;
 			path = Views;
 			sourceTree = "<group>";
 		};
@@ -588,7 +585,6 @@
 				AAE98C90A1A09314C616A0D8C9AD32BE /* Resources */,
 				2C2535ED1C7342AC8C4CC2C302349808 /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -599,7 +595,6 @@
 				C56C656A40AEDA1DB4D76C3F74E13818 /* BitLabsRequestInterceptor.swift */,
 				A3B0A0784F04F8F68B1062EAAB7F6126 /* BitLabsRouter.swift */,
 			);
-			name = Networking;
 			path = Networking;
 			sourceTree = "<group>";
 		};
@@ -615,7 +610,6 @@
 				D3A3597B5AD35FF5ABD455C59A0C5E3C /* Symbol.swift */,
 				CA0005AFB485632AA4F87981E030E1F7 /* User.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -647,7 +641,6 @@
 			children = (
 				2EB4F8F5807173E5319EC46703C0DB22 /* SharedImages.xcassets */,
 			);
-			name = Assets;
 			path = Assets;
 			sourceTree = "<group>";
 		};
@@ -684,7 +677,6 @@
 				165C53804046DA89BC7F05DEB8549FC6 /* SimpleSurveyView.xib */,
 				0977EA28A1E7724C9793DC2FED20C605 /* Assets */,
 			);
-			name = Core;
 			path = Core;
 			sourceTree = "<group>";
 		};
@@ -887,6 +879,7 @@
 				6D3E5324E37395B7310A8AF7710D82D8 /* BitLabs.swift in Sources */,
 				9995E76FD1421CA753CD89E7097C7419 /* BitLabs-dummy.m in Sources */,
 				0DDB42B545134F897038504AAFFD2F07 /* BitLabsAPI.swift in Sources */,
+				D7214FB82C08A03F0008C56B /* HookMessageUtils.swift in Sources */,
 				BFB930319577339601901761266A21BB /* BitLabsRequestInterceptor.swift in Sources */,
 				8E1264361D988307BBC2D8F770DFC8F6 /* BitLabsResponse.swift in Sources */,
 				A87A3E88ADE0C76C5028E6B819C70534 /* BitLabsRouter.swift in Sources */,

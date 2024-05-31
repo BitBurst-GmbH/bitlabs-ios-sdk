@@ -34,7 +34,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var errorView: UIStackView!
     
     var url: URL?
-
+    
     var uid = ""
     var sdk = ""
     var adId = ""
@@ -89,10 +89,10 @@ class WebViewController: UIViewController {
         observer = webView.observe(\.url, options: .new) { [self] webview, change in
             guard let newValue = change.newValue, let url = newValue else { return }
             
-            if url.absoluteString.hasSuffix("/close") {
-                dismiss(animated: true)
-                return
-            }
+//            if url.absoluteString.hasSuffix("/close") {
+//                dismiss(animated: true)
+//                return
+//            }
             
             let urlStr = url.absoluteString
             
@@ -109,6 +109,8 @@ class WebViewController: UIViewController {
             
             configureUI(isPageOfferwall)
         }
+        
+        configurePostMessageAPI()
     }
     
     @IBAction func backBtnPressed(_sender: UIButton) {
@@ -217,5 +219,38 @@ extension WebViewController: WKUIDelegate {
             UIApplication.shared.open(url)
         }
         return nil
+    }
+}
+
+extension WebViewController: WKScriptMessageHandler {
+    func configurePostMessageAPI() {
+        webView.configuration.userContentController.add(self, name: "iOSWebView")
+        
+        let js = """
+            window.addEventListener('message', function(event) {
+                window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(event.data));
+            });
+            
+            window.parent.postMessage('Message sent from iOS');
+            window.postMessage({ target: 'app.visual.dark.background_color', value: '#FF0000' }, '*');
+        """
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.webView.evaluateJavaScript(js)
+        }
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        print("[BitLabs]", message.body)
+        
+        let hookMessage = (message.body as! String).asHookMessage()
+        print(hookMessage)
+        
+        switch hookMessage?.name {
+        case .sdkClose:
+            dismiss(animated: true)
+        case .none:
+            print("Nothin")
+        }
     }
 }
