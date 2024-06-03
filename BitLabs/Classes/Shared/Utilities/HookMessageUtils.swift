@@ -10,16 +10,27 @@ import Foundation
 extension String {
     func asHookMessage() -> HookMessage? {
         do {
+            let regex = #"(\{"type":".*?","name":".*?","args":\[.*?\]\})"#
+            
+            guard let _ = range(of: regex, options: .regularExpression) else {
+                return nil
+            }
+            
             return try JSONDecoder().decode(HookMessage.self, from: data(using: .utf8)!)
         } catch {
-            print("Decoding failed: \(error)")
+            print("[BitLabs] Decoding failed: \(error)")
             return nil
         }
     }
 }
 
 enum HookName: String, Codable {
+    case initOfferwall = "offerwall-core:init"
     case sdkClose = "offerwall-core:sdk.close"
+    case surveyStart = "offerwall-surveys:survey.start"
+    case surveyComplete = "offerwall-surveys:survey.complete"
+    case surveyScreentout = "offerwall-surveys:survey.screenout"
+    case surveyStartBonus = "offerwall-surveys:survey.start-bonus"
 }
 
 struct HookMessage: Codable {
@@ -28,16 +39,25 @@ struct HookMessage: Codable {
     let args: [Argument]
 }
 
+struct RewardArgument: Codable {
+    let reward: Double
+}
+
+struct SurveyStartArgument: Codable {
+    let clickId: String
+    let link: String
+}
+
 enum Argument: Codable {
-    case intValue(Int)
-    case stringValue(String)
+    case reward(RewardArgument)
+    case SurveyStart(SurveyStartArgument)
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        if let intValue = try? container.decode(Int.self) {
-            self = .intValue(intValue)
-        } else if let stringValue = try? container.decode(String.self) {
-            self = .stringValue(stringValue)
+        if let rewardArgument = try? container.decode(RewardArgument.self) {
+            self = .reward(rewardArgument)
+        } else if let surveyStartArgument = try? container.decode(SurveyStartArgument.self) {
+            self = .SurveyStart(surveyStartArgument)
         } else {
             throw DecodingError.typeMismatch(Argument.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Type not matched"))
         }
@@ -46,10 +66,10 @@ enum Argument: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         switch self {
-        case .intValue(let intValue):
-            try container.encode(intValue)
-        case .stringValue(let stringValue):
-            try container.encode(stringValue)
+        case .reward(let rewardArgument):
+            try container.encode(rewardArgument)
+        case .SurveyStart(let surveyStartArgument):
+            try container.encode(surveyStartArgument)
         }
     }
 }

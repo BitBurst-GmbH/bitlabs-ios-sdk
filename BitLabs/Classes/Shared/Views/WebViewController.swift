@@ -185,6 +185,16 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let js = """
+            window.addEventListener('message', function(event) {
+                window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(event.data));
+            });
+        """
+        
+        self.webView.evaluateJavaScript(js)
+    }
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         presentFail()
     }
@@ -227,10 +237,6 @@ extension WebViewController: WKScriptMessageHandler {
         webView.configuration.userContentController.add(self, name: "iOSWebView")
         
         let js = """
-            window.addEventListener('message', function(event) {
-                window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(event.data));
-            });
-            
             window.parent.postMessage('Message sent from iOS');
             window.postMessage({ target: 'app.visual.dark.background_color', value: '#FF0000' }, '*');
         """
@@ -243,14 +249,25 @@ extension WebViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         print("[BitLabs]", message.body)
         
-        let hookMessage = (message.body as! String).asHookMessage()
+        guard let hookMessage = (message.body as! String).asHookMessage() else {
+            return
+        }
+        
         print(hookMessage)
         
-        switch hookMessage?.name {
+        switch hookMessage.name {
         case .sdkClose:
             dismiss(animated: true)
-        case .none:
-            print("Nothin")
+        case .initOfferwall:
+            print("INIT OFFERWALL")
+        case .surveyComplete:
+            print("SURVEY COMPLETE")
+        case .surveyScreentout:
+            print("SURVEY SCREENOUT")
+        case .surveyStartBonus:
+            print("SURVEY START BONUS")
+        case .surveyStart:
+            print("SURVEY START")
         }
     }
 }
