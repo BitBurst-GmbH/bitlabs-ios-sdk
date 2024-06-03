@@ -235,15 +235,6 @@ extension WebViewController: WKUIDelegate {
 extension WebViewController: WKScriptMessageHandler {
     func configurePostMessageAPI() {
         webView.configuration.userContentController.add(self, name: "iOSWebView")
-        
-        let js = """
-            window.parent.postMessage('Message sent from iOS');
-            window.postMessage({ target: 'app.visual.dark.background_color', value: '#FF0000' }, '*');
-        """
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.webView.evaluateJavaScript(js)
-        }
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -261,13 +252,29 @@ extension WebViewController: WKScriptMessageHandler {
         case .initOfferwall:
             print("INIT OFFERWALL")
         case .surveyComplete:
-            print("SURVEY COMPLETE")
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
         case .surveyScreentout:
-            print("SURVEY SCREENOUT")
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
         case .surveyStartBonus:
-            print("SURVEY START BONUS")
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
         case .surveyStart:
-            print("SURVEY START")
+            guard case .surveyStart(let surveyStartArgument) = hookMessage.args.first else {
+                return
+            }
+            
+            clickId = surveyStartArgument.clickId
         }
     }
 }

@@ -40,7 +40,7 @@ struct HookMessage: Codable {
 }
 
 struct RewardArgument: Codable {
-    let reward: Double
+    let reward: Float
 }
 
 struct SurveyStartArgument: Codable {
@@ -50,14 +50,14 @@ struct SurveyStartArgument: Codable {
 
 enum Argument: Codable {
     case reward(RewardArgument)
-    case SurveyStart(SurveyStartArgument)
+    case surveyStart(SurveyStartArgument)
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if let rewardArgument = try? container.decode(RewardArgument.self) {
             self = .reward(rewardArgument)
         } else if let surveyStartArgument = try? container.decode(SurveyStartArgument.self) {
-            self = .SurveyStart(surveyStartArgument)
+            self = .surveyStart(surveyStartArgument)
         } else {
             throw DecodingError.typeMismatch(Argument.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Type not matched"))
         }
@@ -68,7 +68,7 @@ enum Argument: Codable {
         switch self {
         case .reward(let rewardArgument):
             try container.encode(rewardArgument)
-        case .SurveyStart(let surveyStartArgument):
+        case .surveyStart(let surveyStartArgument):
             try container.encode(surveyStartArgument)
         }
     }
