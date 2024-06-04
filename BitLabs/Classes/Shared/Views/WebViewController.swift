@@ -34,7 +34,7 @@ class WebViewController: UIViewController {
     @IBOutlet weak var errorView: UIStackView!
     
     var url: URL?
-
+    
     var uid = ""
     var sdk = ""
     var adId = ""
@@ -89,10 +89,10 @@ class WebViewController: UIViewController {
         observer = webView.observe(\.url, options: .new) { [self] webview, change in
             guard let newValue = change.newValue, let url = newValue else { return }
             
-            if url.absoluteString.hasSuffix("/close") {
-                dismiss(animated: true)
-                return
-            }
+//            if url.absoluteString.hasSuffix("/close") {
+//                dismiss(animated: true)
+//                return
+//            }
             
             let urlStr = url.absoluteString
             
@@ -109,6 +109,8 @@ class WebViewController: UIViewController {
             
             configureUI(isPageOfferwall)
         }
+        
+        configurePostMessageAPI()
     }
     
     @IBAction func backBtnPressed(_sender: UIButton) {
@@ -183,6 +185,16 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        let js = """
+            window.addEventListener('message', function(event) {
+                window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(event.data));
+            });
+        """
+        
+        self.webView.evaluateJavaScript(js)
+    }
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         presentFail()
     }
@@ -217,5 +229,53 @@ extension WebViewController: WKUIDelegate {
             UIApplication.shared.open(url)
         }
         return nil
+    }
+}
+
+extension WebViewController: WKScriptMessageHandler {
+    func configurePostMessageAPI() {
+        webView.configuration.userContentController.add(self, name: "iOSWebView")
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        guard let hookMessage = (message.body as! String).asHookMessage() else {
+            return
+        }
+
+        switch hookMessage.name {
+        case .sdkClose:
+            dismiss(animated: true)
+        case .initOfferwall:
+            print("[BitLabs] Sent showCloseButton event")
+            self.webView.evaluateJavaScript("""
+            window.parent.postMessage({ target: 'app.behaviour.show_close_button', value: true });
+            """)
+        case .surveyComplete:
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
+        case .surveyScreentout:
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
+        case .surveyStartBonus:
+            guard case .reward(let rewardArg) = hookMessage.args.first else {
+                return
+            }
+            
+            reward += rewardArg.reward
+        case .surveyStart:
+            guard case .surveyStart(let surveyStartArgument) = hookMessage.args.first else {
+                return
+            }
+            
+            clickId = surveyStartArgument.clickId
+        default:
+            break
+        }
     }
 }
