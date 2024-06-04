@@ -238,19 +238,18 @@ extension WebViewController: WKScriptMessageHandler {
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("[BitLabs]", message.body)
-        
         guard let hookMessage = (message.body as! String).asHookMessage() else {
             return
         }
-        
-        print(hookMessage)
-        
+
         switch hookMessage.name {
         case .sdkClose:
             dismiss(animated: true)
         case .initOfferwall:
-            print("INIT OFFERWALL")
+            print("[BitLabs] Sent showCloseButton event")
+            self.webView.evaluateJavaScript("""
+            window.parent.postMessage({ target: 'app.behaviour.show_close_button', value: true });
+            """)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return
@@ -275,6 +274,8 @@ extension WebViewController: WKScriptMessageHandler {
             }
             
             clickId = surveyStartArgument.clickId
+        default:
+            break
         }
     }
 }

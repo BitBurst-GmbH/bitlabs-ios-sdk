@@ -17,6 +17,8 @@ extension String {
             }
             
             return try JSONDecoder().decode(HookMessage.self, from: data(using: .utf8)!)
+        } catch DecodingError.dataCorrupted(let context) where context.codingPath.contains(where: { $0.stringValue == "name" }) {
+            return nil
         } catch {
             print("[BitLabs] Decoding failed: \(error)")
             return nil
@@ -25,6 +27,7 @@ extension String {
 }
 
 enum HookName: String, Codable {
+    case unwanted
     case initOfferwall = "offerwall-core:init"
     case sdkClose = "offerwall-core:sdk.close"
     case surveyStart = "offerwall-surveys:survey.start"
@@ -48,9 +51,13 @@ struct SurveyStartArgument: Codable {
     let link: String
 }
 
+// Helper Codable Struct
+struct CodableValue: Codable {}
+
 enum Argument: Codable {
     case reward(RewardArgument)
     case surveyStart(SurveyStartArgument)
+    case unknownData([String: CodableValue])
     
     init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -58,6 +65,8 @@ enum Argument: Codable {
             self = .reward(rewardArgument)
         } else if let surveyStartArgument = try? container.decode(SurveyStartArgument.self) {
             self = .surveyStart(surveyStartArgument)
+        } else if let data = try? container.decode([String: CodableValue].self) {
+            self = .unknownData(data)
         } else {
             throw DecodingError.typeMismatch(Argument.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Type not matched"))
         }
@@ -70,6 +79,8 @@ enum Argument: Codable {
             try container.encode(rewardArgument)
         case .surveyStart(let surveyStartArgument):
             try container.encode(surveyStartArgument)
+        case .unknownData(let data):
+            try container.encode(data)
         }
     }
 }
