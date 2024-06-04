@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (5.9.1)
-  - BitLabs (3.2.1):
+  - BitLabs (3.2.2):
     - Alamofire (~> 5.9.0)
-    - BitLabs/Core (= 3.2.1)
-  - BitLabs/Core (3.2.1):
+    - BitLabs/Core (= 3.2.2)
+  - BitLabs/Core (3.2.2):
     - Alamofire (~> 5.9.0)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  BitLabs: f31cb5fb12490d88ec9eda632f3f173e4e651bf8
+  BitLabs: 3e61d451622e97666d0f16ad66372dabf7bbe538
 
 PODFILE CHECKSUM: f12ff434c181c005d3dc148ce8ede5fa226de637
 
