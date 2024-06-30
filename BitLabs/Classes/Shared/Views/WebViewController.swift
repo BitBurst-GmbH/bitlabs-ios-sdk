@@ -33,17 +33,12 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorView: UIStackView!
     
-    var url: URL?
+    var initialURL: URL?
     
-    var uid = ""
-    var sdk = ""
-    var adId = ""
-    var token = ""
-    var tags: [String: Any] = [:]
+    var uid = "" // Recorded for error tracking in debug mode
     var color: [UIColor] = [.black, .black]
     
     var clickId = ""
-    var areParametersInjected = true
     
     var delegate: WebViewDelegate?
     var observer: NSKeyValueObservation?
@@ -86,27 +81,10 @@ class WebViewController: UIViewController {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.bounces = false
-        observer = webView.observe(\.url, options: .new) { [self] webview, change in
+        observer = webView.observe(\.url, options: .new) { [self] _, change in
             guard let newValue = change.newValue, let url = newValue else { return }
             
-//            if url.absoluteString.hasSuffix("/close") {
-//                dismiss(animated: true)
-//                return
-//            }
-            
-            let urlStr = url.absoluteString
-            
-            let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
-            
-            if isPageOfferwall {
-                if !areParametersInjected, !urlStr.contains("sdk=\(sdk)"), let url = generateURL(urlStr) {
-                    webview.load(URLRequest(url: url))
-                    areParametersInjected = true
-                }
-            } else {
-                areParametersInjected = false
-            }
-            
+            let isPageOfferwall = url.absoluteString.starts(with: "https://web.bitlabs.ai")
             configureUI(isPageOfferwall)
         }
         
@@ -132,37 +110,13 @@ class WebViewController: UIViewController {
     
     /// Calls [generateURL()](x-source-tag://generateURL) and loads it into the WebView
     private func loadOfferwall() {
-        if let url = url {
+        if let url = initialURL {
             webView?.load(URLRequest(url: url))
             return
         }
         
         print("[BitLabs] Error generating URL...")
         dismiss(animated: true)
-    }
-    
-    /// Generates the URL the BitLabs Offerwall
-    /// - Tag: generateURL
-    private func generateURL(_ url: String) -> URL? {
-        guard var urlComponents = URLComponents(string: url) else { return nil }
-        
-        var queryItems = [
-            URLQueryItem(name: "uid", value: uid),
-            URLQueryItem(name: "token", value: token),
-            URLQueryItem(name: "os", value: "IOS"),
-            URLQueryItem(name: "sdk", value: sdk)]
-        
-        if !adId.isEmpty {
-            queryItems.append(URLQueryItem(name: "maid", value: adId))
-        }
-        
-        tags.forEach { tag in
-            queryItems.append(URLQueryItem(name: tag.key, value: String(describing: tag.value)))
-        }
-        
-        urlComponents.queryItems = queryItems
-        
-        return urlComponents.url
     }
     
     /// Invokes the [sendLeaveSurveyRequest](x-source-tag://sendLeaveSurveyRequest).
@@ -248,7 +202,7 @@ extension WebViewController: WKScriptMessageHandler {
         case .initOfferwall:
             print("[BitLabs] Sent showCloseButton event")
             self.webView.evaluateJavaScript("""
-            window.parent.postMessage({ target: 'app.behaviour.show_close_button', value: true });
+            window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });
             """)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {

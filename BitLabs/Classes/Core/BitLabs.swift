@@ -184,11 +184,7 @@ public class BitLabs: WebViewDelegate {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.tags = tags
-            webViewController.adId = adId
-            webViewController.token = token
-            webViewController.sdk = "NATIVE"
-            webViewController.url = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, tags: tags)
+            webViewController.initialURL = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, tags: tags)
             
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
