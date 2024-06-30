@@ -88,12 +88,7 @@ class WebViewController: UIViewController {
         webView.scrollView.bounces = false
         observer = webView.observe(\.url, options: .new) { [self] webview, change in
             guard let newValue = change.newValue, let url = newValue else { return }
-            
-//            if url.absoluteString.hasSuffix("/close") {
-//                dismiss(animated: true)
-//                return
-//            }
-            
+
             let urlStr = url.absoluteString
             
             let isPageOfferwall = urlStr.starts(with: "https://web.bitlabs.ai")
@@ -248,7 +243,7 @@ extension WebViewController: WKScriptMessageHandler {
         case .initOfferwall:
             print("[BitLabs] Sent showCloseButton event")
             self.webView.evaluateJavaScript("""
-            window.parent.postMessage({ target: 'app.behaviour.show_close_button', value: true });
+            window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });
             """)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
