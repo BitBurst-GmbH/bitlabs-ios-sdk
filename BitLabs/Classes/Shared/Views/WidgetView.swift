@@ -9,7 +9,7 @@ import Foundation
 import WebKit
 
 
-public class WidgetView: UIView, UIGestureRecognizerDelegate {
+@objc public class WidgetView: UIView, UIGestureRecognizerDelegate {
     
     let webview = WKWebView()
     
@@ -25,18 +25,36 @@ public class WidgetView: UIView, UIGestureRecognizerDelegate {
         setup()
     }
     
+    @objc public init(token: String, uid: String, type: String) {
+        super.init(frame: CGRect(origin: .zero, size: CGSize(width: 300.0, height: 300.0)))
+        self.uid = uid
+        self.token = token
+        self.type = WidgetType(rawValue: type) ?? .leaderboard
+        setup(isUnity: true)
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
     
-    func setup() {
-        if token.isEmpty || uid.isEmpty {
-            return print("[BitLabs] Token or UID found empty! Can't show the widget.")
+    @objc public func setOrigin(x: Double, y: Double) {
+        let scale = UIScreen.main.scale
+        frame.origin = CGPoint(x: x / scale, y: y / scale)
+    }
+    
+    @objc public func setSize(width: Double, height: Double) {
+        let scale = UIScreen.main.scale
+        frame.size = CGSize(width: width / scale, height: height / scale)
+        webview.frame.size = bounds.size
+    }
+    
+    private func calculateFrame(_ isUnity: Bool) -> CGRect {
+        if isUnity {
+            return bounds
         }
-                
-        // webview properties
-        webview.frame = { switch type {
+        
+        switch type {
         case .simple:
             return CGRect(origin: .zero, size: CGSize(width: 280, height: 130))
         case .compact:
@@ -45,10 +63,18 @@ public class WidgetView: UIView, UIGestureRecognizerDelegate {
             return CGRect(origin: .zero, size: CGSize(width: bounds.width, height: 60))
         case .leaderboard:
             return bounds
-        }}()
+        }
+    }
+    
+    private func setup(isUnity: Bool = false) {
+        if token.isEmpty || uid.isEmpty {
+            return print("[BitLabs] Token or UID found empty! Can't show the widget.")
+        }
+        
+        webview.frame = calculateFrame(isUnity)
+        
         addSubview(webview)
         webview.isOpaque = false
-        
         webview.scrollView.bounces = false
         
         let string = """
@@ -74,7 +100,7 @@ public class WidgetView: UIView, UIGestureRecognizerDelegate {
           </head>
           <body>
             <div id="widget"></div>
-
+        
             <script>
               function initSDK() {
                 window.bitlabsSDK
@@ -83,11 +109,11 @@ public class WidgetView: UIView, UIGestureRecognizerDelegate {
                     window.bitlabsSDK.showWidget("#widget", "\(type.rawValue)", {
                       onClick: () => {},
                     });
-
+        
                     document.removeEventListener("DOMContentLoaded", this.initSDK);
                   });
               }
-
+        
               document.addEventListener("DOMContentLoaded", this.initSDK);
             </script>
           </body>
