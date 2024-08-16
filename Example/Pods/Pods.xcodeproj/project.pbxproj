@@ -293,6 +293,7 @@
 		CD8550629FEA93CBDEB2D83C947C796B /* CoreImages.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = CoreImages.xcassets; sourceTree = "<group>"; };
 		CFE173718137CF8781C0057FC9482988 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/Core/ParameterEncoding.swift; sourceTree = "<group>"; };
 		D422A7E277789A4F3526CEB14414F0A6 /* Localizable.strings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.strings; name = Localizable.strings; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7ED59622C6F5F64008C9923 /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = ../../.github/workflows; sourceTree = "<group>"; };
 		D7F3D6FD44C6042027251DAD4778D6C1 /* ServerTrustEvaluation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustEvaluation.swift; path = Source/Features/ServerTrustEvaluation.swift; sourceTree = "<group>"; };
 		DB0D283D6E4686F04538D19F98E27039 /* GetAppSettingsResponse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = GetAppSettingsResponse.swift; sourceTree = "<group>"; };
 		DC1BEBD0F5D4DC57087D74702ADC0123 /* DataRequest.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Source/Core/DataRequest.swift; sourceTree = "<group>"; };
@@ -729,6 +730,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				D7ED59622C6F5F64008C9923 /* workflows */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				6885744BC5B6B92A706CE6C8AD75AB1F /* Development Pods */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
@@ -1374,11 +1376,12 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-Unit-UnitTests-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Unit-UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1728,11 +1731,12 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGNING_ALLOWED = YES;
-				CODE_SIGNING_REQUIRED = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "Target Support Files/BitLabs/BitLabs-Unit-UnitTests-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/BitLabs/BitLabs-Unit-UnitTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
