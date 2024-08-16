@@ -4,7 +4,7 @@ platform :ios, "12.0"
 target 'BitLabs_Example' do
   
   pod 'BitLabs', :path => '../'
-#  pod 'BitLabs/UnitTests', :path => '../' removed due to compatibility issue with OHHTTPStubs
-#  pod 'BitLabs/UITests', :path => '../' removed due to errors regarding the Host
+  pod 'BitLabs/UnitTests', :path => '../' # removed due to compatibility issue with OHHTTPStubs
+  #  pod 'BitLabs/UITests', :path => '../' # removed due to errors regarding the Host
   
 end

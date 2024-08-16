@@ -5,13 +5,19 @@ PODS:
     - BitLabs/Core (= 3.2.4)
   - BitLabs/Core (3.2.4):
     - Alamofire (~> 5.9.0)
+  - BitLabs/UnitTests (3.2.4):
+    - Alamofire (~> 5.9.0)
+    - Mocker
+  - Mocker (2.5.5)
 
 DEPENDENCIES:
   - BitLabs (from `../`)
+  - BitLabs/UnitTests (from `../`)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Mocker
 
 EXTERNAL SOURCES:
   BitLabs:
@@ -19,8 +25,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  BitLabs: 3f16f840da63f0d74b730b02d466b491043fd90b
+  BitLabs: 91ea16430c9c0e253d98920c23f0998ac6b01be8
+  Mocker: 8c731a8104962f246cadf2b02556218e9edc1390
 
-PODFILE CHECKSUM: f12ff434c181c005d3dc148ce8ede5fa226de637
+PODFILE CHECKSUM: 1da3753c36cdbe16143ac49a25e6cb8d05576bdb
 
 COCOAPODS: 1.15.2
