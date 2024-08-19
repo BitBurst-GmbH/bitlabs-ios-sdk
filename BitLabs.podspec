@@ -39,11 +39,6 @@ Pod::Spec.new do |spec|
 #        host.resources = 'BitLabs/AppHost/**/*.{xib,storyboard}'
 #    end
     
-    spec.test_spec 'UnitTests' do |test_spec|
-      test_spec.source_files = 'BitLabs/Tests/Unit\ Tests/*.swift'
-      test_spec.dependency 'Mocker'
-    end
-    
 #    spec.test_spec 'UITests' do |test_spec|
 #        test_spec.test_type = :ui
 #

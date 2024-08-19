@@ -22,18 +22,6 @@
     ]
   },
   "default_subspecs": "Core",
-  "testspecs": [
-    {
-      "name": "UnitTests",
-      "test_type": "unit",
-      "source_files": "BitLabs/Tests/Unit\\ Tests/*.swift",
-      "dependencies": {
-        "Mocker": [
-
-        ]
-      }
-    }
-  ],
   "subspecs": [
     {
       "name": "Core",
