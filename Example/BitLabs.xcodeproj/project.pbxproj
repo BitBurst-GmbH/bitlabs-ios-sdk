@@ -8,18 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		2037A45727F1F94A00C4B982 /* Pods_BitLabs_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */; };
+		3F58DBF5FFA173B0A2AC7699 /* Pods_BitLabs_Example_UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 607C007595DCCADE4A279867 /* Pods_BitLabs_Example_UITests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
-		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
+		607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* MainViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		A689D31C0B4CA57422793113 /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */; };
 		C74C27B329ED4E8A0089EA26 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C74C27B229ED4E8A0089EA26 /* Keys.plist */; };
+		D7AC24532C73968500DF6E8C /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC24522C73968500DF6E8C /* UITests.swift */; };
+		D7AC245D2C74A35900DF6E8C /* Testing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AC245B2C74A35900DF6E8C /* Testing.storyboard */; };
+		D7AC245E2C74A35900DF6E8C /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC245C2C74A35900DF6E8C /* TestingViewController.swift */; };
 		D7ED59EB2C736F05008C9923 /* GlobalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ED59EA2C736F05008C9923 /* GlobalTests.swift */; };
 		D7ED59ED2C736F91008C9923 /* BitLabsAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7ED59EC2C736F91008C9923 /* BitLabsAPITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		D7AC24562C73968500DF6E8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
+			remoteInfo = BitLabs_Example;
+		};
 		D7ED59E42C736615008C9923 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 607FACC81AFB9204008FA782 /* Project object */;
@@ -30,12 +41,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		03B1535722BF8D5A93872D2F /* Pods-BitLabs_Example-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example-UITests.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		0A63A087A1680888EAADB8AC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		167CC059D48BC83105F896F4 /* Pods-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.release.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.release.xcconfig"; sourceTree = "<group>"; };
+		284B55409E17A57918C5F84D /* Pods-BitLabs_Example-UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example-UITests.release.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests.release.xcconfig"; sourceTree = "<group>"; };
 		310B2E7BCEC2EC87A0646B51 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		508CA92221E7D3DD37741CF4 /* Pods-UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITests.debug.xcconfig"; path = "Target Support Files/Pods-UITests/Pods-UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		607C007595DCCADE4A279867 /* Pods_BitLabs_Example_UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example_UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD01AFB9204008FA782 /* BitLabs_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitLabs_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		607FACD71AFB9204008FA782 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		607FACDA1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		607FACDC1AFB9204008FA782 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -46,6 +62,10 @@
 		BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C27B229ED4E8A0089EA26 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D7AC24502C73968500DF6E8C /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7AC24522C73968500DF6E8C /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
+		D7AC245B2C74A35900DF6E8C /* Testing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Testing.storyboard; sourceTree = "<group>"; };
+		D7AC245C2C74A35900DF6E8C /* TestingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingViewController.swift; sourceTree = "<group>"; };
 		D7ED59E02C736615008C9923 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7ED59EA2C736F05008C9923 /* GlobalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTests.swift; sourceTree = "<group>"; };
 		D7ED59EC2C736F91008C9923 /* BitLabsAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsAPITest.swift; sourceTree = "<group>"; };
@@ -59,6 +79,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2037A45727F1F94A00C4B982 /* Pods_BitLabs_Example.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7AC244D2C73968500DF6E8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F58DBF5FFA173B0A2AC7699 /* Pods_BitLabs_Example_UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +107,7 @@
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example for BitLabs */,
 				D7ED59E12C736615008C9923 /* UnitTests */,
+				D7AC24512C73968500DF6E8C /* UITests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				E52A36C216E036B14F20C732 /* Pods */,
 				EFE0FC111D86049531B8AB51 /* Frameworks */,
@@ -90,6 +119,7 @@
 			children = (
 				607FACD01AFB9204008FA782 /* BitLabs_Example.app */,
 				D7ED59E02C736615008C9923 /* UnitTests.xctest */,
+				D7AC24502C73968500DF6E8C /* UITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,9 +128,11 @@
 			isa = PBXGroup;
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				607FACD71AFB9204008FA782 /* MainViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
+				D7AC245B2C74A35900DF6E8C /* Testing.storyboard */,
+				D7AC245C2C74A35900DF6E8C /* TestingViewController.swift */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 				C74C27B229ED4E8A0089EA26 /* Keys.plist */,
@@ -127,6 +159,14 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		D7AC24512C73968500DF6E8C /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				D7AC24522C73968500DF6E8C /* UITests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
 		D7ED59E12C736615008C9923 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +183,10 @@
 				6D03CBFF3DF4BCAAB164DCF2 /* Pods-BitLabs_Example.release.xcconfig */,
 				8FA50B05B29A2C7C14EC44A2 /* Pods-UnitTests.debug.xcconfig */,
 				BAAFB3C625BA84CEDED2BB0B /* Pods-UnitTests.release.xcconfig */,
+				508CA92221E7D3DD37741CF4 /* Pods-UITests.debug.xcconfig */,
+				167CC059D48BC83105F896F4 /* Pods-UITests.release.xcconfig */,
+				03B1535722BF8D5A93872D2F /* Pods-BitLabs_Example-UITests.debug.xcconfig */,
+				284B55409E17A57918C5F84D /* Pods-BitLabs_Example-UITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -152,6 +196,7 @@
 			children = (
 				C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */,
 				BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */,
+				607C007595DCCADE4A279867 /* Pods_BitLabs_Example_UITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,6 +222,26 @@
 			productName = BitLabSDK;
 			productReference = 607FACD01AFB9204008FA782 /* BitLabs_Example.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D7AC244F2C73968500DF6E8C /* UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7AC245A2C73968500DF6E8C /* Build configuration list for PBXNativeTarget "UITests" */;
+			buildPhases = (
+				324C416B3948E54E91C593CD /* [CP] Check Pods Manifest.lock */,
+				D7AC244C2C73968500DF6E8C /* Sources */,
+				D7AC244D2C73968500DF6E8C /* Frameworks */,
+				D7AC244E2C73968500DF6E8C /* Resources */,
+				552D556571EC2BCCAD86D72A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7AC24572C73968500DF6E8C /* PBXTargetDependency */,
+			);
+			name = UITests;
+			productName = UITests;
+			productReference = D7AC24502C73968500DF6E8C /* UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		D7ED59DF2C736615008C9923 /* UnitTests */ = {
 			isa = PBXNativeTarget;
@@ -215,6 +280,10 @@
 						LastSwiftMigration = 1320;
 						ProvisioningStyle = Automatic;
 					};
+					D7AC244F2C73968500DF6E8C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
 					D7ED59DF2C736615008C9923 = {
 						CreatedOnToolsVersion = 15.3;
 						TestTargetID = 607FACCF1AFB9204008FA782;
@@ -237,6 +306,7 @@
 			targets = (
 				607FACCF1AFB9204008FA782 /* BitLabs_Example */,
 				D7ED59DF2C736615008C9923 /* UnitTests */,
+				D7AC244F2C73968500DF6E8C /* UITests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +320,14 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				D7AC245D2C74A35900DF6E8C /* Testing.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7AC244E2C73968500DF6E8C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +383,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		324C416B3948E54E91C593CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BitLabs_Example-UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		4BDCDE8F028C7430236618B6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +425,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		552D556571EC2BCCAD86D72A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabs.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C5C8F05A6B95C7BB0C962130 /* [CP] Embed Pods Frameworks */ = {
@@ -352,8 +472,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				D7AC245E2C74A35900DF6E8C /* TestingViewController.swift in Sources */,
+				607FACD81AFB9204008FA782 /* MainViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7AC244C2C73968500DF6E8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7AC24532C73968500DF6E8C /* UITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,6 +498,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		D7AC24572C73968500DF6E8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 607FACCF1AFB9204008FA782 /* BitLabs_Example */;
+			targetProxy = D7AC24562C73968500DF6E8C /* PBXContainerItemProxy */;
+		};
 		D7ED59E52C736615008C9923 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* BitLabs_Example */;
@@ -560,6 +694,72 @@
 			};
 			name = Release;
 		};
+		D7AC24582C73968500DF6E8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03B1535722BF8D5A93872D2F /* Pods-BitLabs_Example-UITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = PMQSAFYSYK;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitlabs.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitLabs_Example;
+			};
+			name = Debug;
+		};
+		D7AC24592C73968500DF6E8C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 284B55409E17A57918C5F84D /* Pods-BitLabs_Example-UITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PMQSAFYSYK;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bitlabs.UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BitLabs_Example;
+			};
+			name = Release;
+		};
 		D7ED59E72C736615008C9923 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8FA50B05B29A2C7C14EC44A2 /* Pods-UnitTests.debug.xcconfig */;
@@ -643,6 +843,15 @@
 			buildConfigurations = (
 				607FACF01AFB9204008FA782 /* Debug */,
 				607FACF11AFB9204008FA782 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D7AC245A2C73968500DF6E8C /* Build configuration list for PBXNativeTarget "UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7AC24582C73968500DF6E8C /* Debug */,
+				D7AC24592C73968500DF6E8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

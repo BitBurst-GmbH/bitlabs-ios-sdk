@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  BitLabs
 //
 //  Created by BitBurst GmbH on 11/09/2020.
@@ -9,7 +9,7 @@
 import BitLabs
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     private let uid = "oblivatevariegata"
     private var token = "YOUR_APP_TOKEN"

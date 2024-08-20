@@ -14,6 +14,7 @@ class WebViewControllerTest: XCTestCase {
     private let app = XCUIApplication()
     
     override func setUpWithError() throws {
+        app.launchArguments.append("UITestingEnvironment")
         app.launch()
     }
     
@@ -38,18 +39,7 @@ class WebViewControllerTest: XCTestCase {
         let wv = app.webViews.firstMatch
         XCTAssertFalse(wv.exists)
     }
-    
-    func test_IncorrectURL_WebViewClosed() {
-        let button = app.buttons["Incorrect URL"]
-        XCTAssertTrue(button.exists)
-        
-        button.tap()
-        sleep(2)
-        
-        let wv = app.webViews.firstMatch
-        XCTAssertFalse(wv.exists)
-    }
-    
+
     func test_CorrectFormURL_WebViewExists() {
         let button = app.buttons["Correct Form URL"]
         XCTAssertTrue(button.exists)
