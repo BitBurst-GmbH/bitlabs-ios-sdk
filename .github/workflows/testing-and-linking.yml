@@ -1,4 +1,4 @@
-name: Pod
+name: Testing and Linting
 
 on:
   push:

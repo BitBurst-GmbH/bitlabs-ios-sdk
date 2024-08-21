@@ -16,6 +16,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		A689D31C0B4CA57422793113 /* Pods_UnitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */; };
 		C74C27B329ED4E8A0089EA26 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = C74C27B229ED4E8A0089EA26 /* Keys.plist */; };
+		D7A0A8342C76262800D7B45B /* workflows in Resources */ = {isa = PBXBuildFile; fileRef = D7A0A8332C76262800D7B45B /* workflows */; };
 		D7AC24532C73968500DF6E8C /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC24522C73968500DF6E8C /* UITests.swift */; };
 		D7AC245D2C74A35900DF6E8C /* Testing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7AC245B2C74A35900DF6E8C /* Testing.storyboard */; };
 		D7AC245E2C74A35900DF6E8C /* TestingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AC245C2C74A35900DF6E8C /* TestingViewController.swift */; };
@@ -62,6 +63,7 @@
 		BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C27B229ED4E8A0089EA26 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D7A0A8332C76262800D7B45B /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = ../.github/workflows; sourceTree = "<group>"; };
 		D7AC24502C73968500DF6E8C /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AC24522C73968500DF6E8C /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		D7AC245B2C74A35900DF6E8C /* Testing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Testing.storyboard; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
+				D7A0A8332C76262800D7B45B /* workflows */,
 				607FACD21AFB9204008FA782 /* Example for BitLabs */,
 				D7ED59E12C736615008C9923 /* UnitTests */,
 				D7AC24512C73968500DF6E8C /* UITests */,
@@ -317,6 +320,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C74C27B329ED4E8A0089EA26 /* Keys.plist in Resources */,
+				D7A0A8342C76262800D7B45B /* workflows in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
