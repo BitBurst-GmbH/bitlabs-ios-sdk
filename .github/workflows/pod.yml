@@ -23,6 +23,9 @@ jobs:
           gem install cocoapods
           (cd Example && pod install)
           
+      - name: Create Keys.plist
+        run: touch Example/BitLabs/Keys.plist
+          
       - name: Run tests
         run: xcodebuild test -workspace Example/BitLabs.xcworkspace -scheme BitLabs_Example -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest'
         
