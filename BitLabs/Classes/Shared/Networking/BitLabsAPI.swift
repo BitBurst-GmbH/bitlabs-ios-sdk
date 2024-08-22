@@ -52,6 +52,12 @@ class BitLabsAPI {
             .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
+                    if let restriction = blResponse.data?.restrictionReason {
+                        completion(.failure(Exception(restriction.prettyPrint())))
+                        return
+                    }
+                    
+                    
                     if let surveys = blResponse.data?.surveys {
                         completion(.success(surveys))
                         return
