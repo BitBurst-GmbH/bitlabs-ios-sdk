@@ -1,0 +1,6 @@
+framework module Pods_BitLabs_Example_UITests {
+  umbrella header "Pods-BitLabs_Example-UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

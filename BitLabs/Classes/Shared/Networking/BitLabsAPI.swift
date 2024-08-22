@@ -68,7 +68,7 @@ class BitLabsAPI {
                 case .failure(let error):
                     completion(.failure(error))
                 }
-            }
+            }.resume()
     }
     
     func getAppSettings(_ completion: @escaping (Visual, Currency?, Promotion?) -> ()) {
