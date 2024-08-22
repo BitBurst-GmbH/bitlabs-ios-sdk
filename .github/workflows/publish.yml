@@ -2,7 +2,7 @@ name: Publish to CocoaPods
 
 on:
   release:
-    types: [ publish ]
+    types: [ published ]
   
   
 jobs:
