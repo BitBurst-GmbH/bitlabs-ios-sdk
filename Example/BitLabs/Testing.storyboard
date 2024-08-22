@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="823-AY-0jH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Testing View Controller-->
+        <scene sceneID="AeS-MY-dzV">
+            <objects>
+                <viewController id="823-AY-0jH" customClass="TestingViewController" customModule="BitLabs_AppHost" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vn8-Hc-Kf6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCw-nH-9Sn">
+                                <rect key="frame" x="10" y="58" width="82.5" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="No URL"/>
+                                <connections>
+                                    <action selector="noURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="CkY-jl-Bk3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Egh-17-epb">
+                                <rect key="frame" x="102.5" y="58" width="109" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Empty URL"/>
+                                <connections>
+                                    <action selector="emptyURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="yeq-ml-9Jq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgn-M2-Q7O" userLabel="Incorrect URL">
+                                <rect key="frame" x="221.5" y="58" width="129" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Incorrect URL"/>
+                                <connections>
+                                    <action selector="incorrectURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="6wP-f3-0vw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-kA-jdL">
+                                <rect key="frame" x="10" y="102.5" width="162" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Correct Form URL"/>
+                                <connections>
+                                    <action selector="correctFormURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="vVU-4c-Osy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyo-NR-dGw">
+                                <rect key="frame" x="182" y="102.5" width="129" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Offerwall URL"/>
+                                <connections>
+                                    <action selector="offerwalURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="SUT-Ku-cIb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xx-ci-zfT">
+                                <rect key="frame" x="10" y="147" width="160.5" height="34.5"/>
+                                <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Not Offerwall URL"/>
+                                <connections>
+                                    <action selector="notOfferwallURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="lIL-Yj-sjB"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-AH-Rjv">
+                                <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Fcv-km-Lv7"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Egh-17-epb" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="6c3-JG-Vtt"/>
+                            <constraint firstItem="B7U-kA-jdL" firstAttribute="leading" secondItem="Fcv-km-Lv7" secondAttribute="leading" constant="10" id="GAE-QU-JlQ"/>
+                            <constraint firstItem="Xyo-NR-dGw" firstAttribute="top" secondItem="Egh-17-epb" secondAttribute="bottom" constant="10" id="QzG-IB-nSp"/>
+                            <constraint firstItem="9Xx-ci-zfT" firstAttribute="top" secondItem="B7U-kA-jdL" secondAttribute="bottom" constant="10" id="TTh-ZT-IAN"/>
+                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="Zrx-M7-VAe"/>
+                            <constraint firstItem="Egh-17-epb" firstAttribute="leading" secondItem="ZCw-nH-9Sn" secondAttribute="trailing" constant="10" id="hQi-3I-LVq"/>
+                            <constraint firstItem="9Xx-ci-zfT" firstAttribute="leading" secondItem="Fcv-km-Lv7" secondAttribute="leading" constant="10" id="i1s-pE-WoX"/>
+                            <constraint firstItem="b3B-AH-Rjv" firstAttribute="centerY" secondItem="vn8-Hc-Kf6" secondAttribute="centerY" id="mci-vK-47p"/>
+                            <constraint firstItem="B7U-kA-jdL" firstAttribute="top" secondItem="ZCw-nH-9Sn" secondAttribute="bottom" constant="10" id="oH5-LZ-kRb"/>
+                            <constraint firstItem="b3B-AH-Rjv" firstAttribute="centerX" secondItem="vn8-Hc-Kf6" secondAttribute="centerX" id="sLM-Mv-Lf8"/>
+                            <constraint firstItem="Xyo-NR-dGw" firstAttribute="leading" secondItem="B7U-kA-jdL" secondAttribute="trailing" constant="10" id="v3C-Em-CbG"/>
+                            <constraint firstItem="ZCw-nH-9Sn" firstAttribute="leading" secondItem="Fcv-km-Lv7" secondAttribute="leading" constant="10" id="wux-3p-dPq"/>
+                            <constraint firstItem="bgn-M2-Q7O" firstAttribute="top" secondItem="Fcv-km-Lv7" secondAttribute="top" constant="10" id="xdn-tA-7et"/>
+                            <constraint firstItem="bgn-M2-Q7O" firstAttribute="leading" secondItem="Egh-17-epb" secondAttribute="trailing" constant="10" id="xxW-0R-svz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="b3B-AH-Rjv" id="UKL-w1-AeJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nbb-ng-81L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="975" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

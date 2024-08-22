@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/BitLabs/BitLabs-Unit-UnitTests-frameworks.sh
+${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Mocker/Mocker.framework

@@ -15,6 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        
+        let storyboard = UIStoryboard(name: ProcessInfo.processInfo.arguments.contains("UITestingEnvironment") ? "Testing" : "Main", bundle: .main)
+        let viewController = storyboard.instantiateInitialViewController()
+        
+        window?.rootViewController = viewController
+        window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }
