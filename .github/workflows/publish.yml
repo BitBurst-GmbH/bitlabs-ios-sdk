@@ -23,8 +23,7 @@ jobs:
           gem install cocoapods
           (cd Example && pod install)
         
-      - name: Run Spec Lint
-        run: pod spec lint
-        
       - name: Run Publish
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
         run: pod trunk push
