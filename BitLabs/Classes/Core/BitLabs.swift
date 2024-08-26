@@ -113,7 +113,7 @@ public class BitLabs: WebViewDelegate {
     public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
             switch result {
-            case .success(let surveys): completionHandler(.success(surveys.isEmpty ? randomSurveys() : surveys))
+            case .success(let surveys): completionHandler(.success(surveys))
             case .failure(let error): completionHandler(.failure(error))
             }}}
     }

@@ -125,7 +125,7 @@ import AppTrackingTransparency
             case .failure(let error):
                 print("[Example] Get Surveys \(error)")
             case .success(let surveys):
-                completionHandler(surveys.isEmpty ? randomSurveys() : surveys)
+                completionHandler(surveys)
             }
         }}
     }
