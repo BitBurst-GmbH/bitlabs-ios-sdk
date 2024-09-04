@@ -50,7 +50,6 @@ class BitLabsAPI {
         session
             .request(BitLabsRouter.getSurveys(sdk: sdk))
             .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { response in
-                print(response.request?.headers)
                 switch response.result {
                 case .success(let blResponse):
                     if let restriction = blResponse.data?.restrictionReason {

@@ -28,7 +28,7 @@ class BitLabsRequestInterceptor: RequestInterceptor {
             return modelCode ?? UIDevice.current.model
         }
         
-        return "BitLabs (iOS \(systemVersion); \(modelIdentifier()); \(deviceType))"
+        return "BitLabs/\(appVersion) (iOS \(systemVersion); \(modelIdentifier()); \(deviceType))"
     }
 	
 	init(_ token: String, _ userId: String) {
