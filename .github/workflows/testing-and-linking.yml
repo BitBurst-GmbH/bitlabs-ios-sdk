@@ -2,8 +2,6 @@ name: Testing and Linting
 
 on:
   push:
-  pull_request:
-  
   
 jobs:
   build:
