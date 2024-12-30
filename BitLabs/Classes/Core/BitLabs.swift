@@ -43,6 +43,8 @@ public class BitLabs: WebViewDelegate {
         self.token = token
         self.uid = uid
         
+        SentryManager.shared.configure(token: token, uid: uid)
+        
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         
         getAppSettings()
