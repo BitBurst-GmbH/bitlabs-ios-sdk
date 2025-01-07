@@ -13,10 +13,12 @@ class SentryManager {
     
     let dsn: SentryDSN
     
+    var url: String
+    var publicKey: String
+    var projectID: String
+    
     private var host: String
     private var scheme: String
-    private var publicKey: String
-    private var url: String
     private var sentryService: SentryService? = nil
     
     private init() {
@@ -24,6 +26,7 @@ class SentryManager {
         
         self.host = dsn.host
         self.scheme = dsn.scheme
+        self.projectID = dsn.projectID
         self.publicKey = dsn.publicKey
         self.url = "\(scheme)://\(host)/"
     }
@@ -34,6 +37,7 @@ class SentryManager {
     }
     
     func captureException(exception: Exception) {
-        sentryService?.sendEnvelope(withException: exception) { }
+        print("capturing Exception")
+        sentryService?.sendEnvelope(withException: exception)
     }
 }

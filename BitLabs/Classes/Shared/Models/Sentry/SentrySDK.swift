@@ -8,6 +8,11 @@
 import Foundation
 
 struct SentrySDK: Encodable {
-    let name: String = "bitlabs.swift.ios"
+    let name: String
     let version: String
+    
+    init(name: String = "bitlabs.swift.ios", version: String) {
+        self.name = name
+        self.version = version
+    }
 }

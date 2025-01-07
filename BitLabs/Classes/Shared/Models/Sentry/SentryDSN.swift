@@ -34,4 +34,8 @@ class SentryDSN {
         self.host = String(dsn[hostRange])
         self.projectID = String(dsn[projectIDRange])
     }
+    
+    func asString() -> String {
+        return dsn
+    }
 }

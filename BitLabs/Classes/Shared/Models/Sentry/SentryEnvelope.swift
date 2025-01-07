@@ -7,28 +7,28 @@
 
 import Foundation
 
-struct SentryEnvelope: Encodable {
+struct SentryEnvelope {
     let headers: SentryEnvelopeHeaders
     let items: [SentryEnvelopeItem]
     
-    func encode(to encoder: any Encoder) throws {
-        var container = encoder.singleValueContainer()
-        
+    func toData() throws -> Data {
         let jsonEncoder =  JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         
         let headersJson = String(data: try! jsonEncoder.encode(headers), encoding: .utf8) ?? ""
         let itemsJson = items.map {
-            try! String(data: jsonEncoder.encode($0), encoding: .utf8) ?? ""
+            try! String(data: $0.toData(), encoding: .utf8) ?? ""
         }.joined(separator: "\n")
         
-        let envelopeJson = """
+        let envelope = """
         \(headersJson)
         \(itemsJson)
         """
         
-        try! container.encode(envelopeJson)
+        return Data(envelope.utf8)
     }
 }
 
-protocol SentryEnvelopeItem: Encodable {}
+protocol SentryEnvelopeItem {
+    func toData() throws -> Data
+}

@@ -45,6 +45,8 @@ public class BitLabs: WebViewDelegate {
         
         SentryManager.shared.configure(token: token, uid: uid)
         
+        SentryManager.shared.captureException(exception: Exception("message"))
+        
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         
         getAppSettings()

@@ -7,12 +7,10 @@
 
 import Foundation
 
-struct SentryEventItem: SentryEnvelopeItem, Encodable {
+struct SentryEventItem: SentryEnvelopeItem {
     let event: SentryEvent
     
-    func encode(to encoder: any Encoder) throws {
-        var container = encoder.singleValueContainer()
-        
+    func toData() throws -> Data {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.keyEncodingStrategy = .convertToSnakeCase
         let eventData = try jsonEncoder.encode(event)
@@ -22,11 +20,11 @@ struct SentryEventItem: SentryEnvelopeItem, Encodable {
         {"type": "event", "length": \(eventJson.count)}
         """
         
-        let fullJson = """
+        let item = """
         \(itemHeadersJson)
         \(eventJson)
         """
         
-        try container.encode(fullJson)
+        return Data(item.utf8)
     }
 }

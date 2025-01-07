@@ -9,6 +9,12 @@ import Foundation
 
 struct SentryMessage: Encodable {
     let formatted: String
-    let message: String? = nil
-    let params: [String]? = nil
+    let message: String?
+    let params: [String]?
+    
+    init(formatted: String, message: String? = nil, params: [String]? = nil) {
+        self.formatted = formatted
+        self.message = message
+        self.params = params
+    }
 }
