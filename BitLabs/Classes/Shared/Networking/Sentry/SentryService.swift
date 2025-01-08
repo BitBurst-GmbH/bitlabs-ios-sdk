@@ -11,28 +11,35 @@ import Alamofire
 class SentryService {
     private let decoder = JSONDecoder()
     
-    private let session: Session
-    
-    init(_ session: Session) {
+    private let token: String
+    private let uid: String
+        
+    init(_ token: String, _ uid: String) {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
-        self.session = session
+        self.token = token
+        self.uid = uid
     }
     
-    func sendEnvelope(withException exception: Exception) {
-        print("sending Envelope")
-        let envelope = createEnvelope(fromException: exception)
+    func sendEnvelope(withException exception: Any, in stacktrace: [String], isHandled: Bool, _ completionHandler: @escaping () -> ()) {
+        let envelope = createEnvelope(fromException: exception, andStackSymbols: stacktrace, isHandled: isHandled)
         
         do {
             let encodedEnvelope = try envelope.toData()
-            print(String(data: encodedEnvelope, encoding: .utf8) ?? "")
             
             let url = try createURL(body: encodedEnvelope)
             
-            session.request(url).responseString { response in
-                print(response.result)
+            AF.request(url).responseDecodable(of: SendEnvelopeResponse.self) { response in
+                switch(response.result) {
+                case .success(let sendEnvelopeResponse):
+                    print("[BitLabs] Sent Envelope(#\(sendEnvelopeResponse.id)) to Sentry.")
+                case .failure(let error):
+                    print("[BitLabs] Error Sending envelope: " + error.localizedDescription)
+                }
+                
+                completionHandler()
             }
         } catch(let e) {
-            print("Error Sending envelope: " + e.localizedDescription)
+            print("[BitLabs] Error Sending envelope: " + e.localizedDescription)
         }
     }
     
@@ -49,9 +56,13 @@ class SentryService {
         return request
     }
     
-    func createEnvelope(fromException error: Error) -> SentryEnvelope {
-        let errorType = String(describing: type(of: error))
-        let errorMessage = error.localizedDescription.isEmpty ? "Unlabelled exception" : error.localizedDescription
+    func createEnvelope(fromException exception: Any, andStackSymbols stackSymbols: [String], isHandled: Bool) -> SentryEnvelope {
+        let errorType = String(describing: type(of: exception))
+        let errorMessage = switch exception {
+        case let nsException as NSException: nsException.reason ?? "Unlabeled Error"
+        case let error as Error: error.localizedDescription.isEmpty ? "Unlabeled Error" : error.localizedDescription
+        default: "Unlabeled Error"
+        }
         
         let eventID = UUID().uuidString.lowercased()
         let now = ISO8601DateFormatter().string(from: Date())
@@ -60,21 +71,21 @@ class SentryService {
             type: errorType,
             value: errorMessage,
             module: errorType,
-            stacktrace: SentryStackTrace(frames: Thread.callStackSymbols.map { symbol in
-                return SentryStackFrame(function: symbol, lineno: 0, inApp: true)
+            stacktrace: SentryStackTrace(frames: stackSymbols.map { symbol in
+                return SentryStackFrame(function: symbol, lineno: 0, inApp: symbol.contains(" BitLabs "))
             }),
-            mechanism: SentryExceptionMechanism(handled: true)
+            mechanism: SentryExceptionMechanism(handled: isHandled)
         )
         
         let event = SentryEvent(
             eventId: eventID,
             timestamp: now,
             logentry: SentryMessage(formatted: errorMessage),
-            level: "error",
-            tags: ["token": "testToken"],
-            user: SentryUser(id: eventID),
+            level: isHandled ? "error" : "fatal",
+            tags: ["token": self.token],
+            user: SentryUser(id: self.uid),
             sdk: SentrySDK(version: "0.1.0"),
-            exception: nil
+            exception: [exception]
         )
         
         let eventItem = SentryEventItem(event: event)

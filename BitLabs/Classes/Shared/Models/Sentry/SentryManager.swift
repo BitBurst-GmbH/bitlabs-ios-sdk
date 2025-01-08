@@ -32,12 +32,10 @@ class SentryManager {
     }
     
     func configure(token: String, uid: String) {
-        let session = Session()
-        self.sentryService = SentryService(session)
+        self.sentryService = SentryService(token, uid)
     }
     
-    func captureException(exception: Exception) {
-        print("capturing Exception")
-        sentryService?.sendEnvelope(withException: exception)
+    func captureException(exception: Any, stacktrace: [String], isHandled: Bool = true, completionHandler: @escaping () -> () = {}) {
+        sentryService?.sendEnvelope(withException: exception, in: stacktrace, isHandled: isHandled, completionHandler)
     }
 }

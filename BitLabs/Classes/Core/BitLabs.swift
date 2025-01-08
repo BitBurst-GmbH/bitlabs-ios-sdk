@@ -45,7 +45,24 @@ public class BitLabs: WebViewDelegate {
         
         SentryManager.shared.configure(token: token, uid: uid)
         
-        SentryManager.shared.captureException(exception: Exception("message"))
+        NSSetUncaughtExceptionHandler { exception in
+            if exception.callStackSymbols.contains(where: {$0.contains(" BitLabs ")}) {
+                var isCaptureCompleted = false
+                SentryManager.shared.captureException(exception: exception, stacktrace: Thread.callStackSymbols, isHandled: false) {
+                    isCaptureCompleted = true
+                }
+                
+                while true {
+                    if isCaptureCompleted { break }
+                }
+            }
+        }
+        
+        // SentryManager.shared.captureException(exception: Exception("A new test Exception"), stacktrace: Thread.callStackSymbols)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            NSException(name: .genericException, reason: "Test Uncaught Excception").raise()
+        }
         
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         

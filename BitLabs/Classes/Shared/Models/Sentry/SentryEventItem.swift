@@ -17,7 +17,7 @@ struct SentryEventItem: SentryEnvelopeItem {
         
         let eventJson = String(data: eventData, encoding: .utf8) ?? ""
         let itemHeadersJson = """
-        {"type": "event", "length": \(eventJson.count)}
+        {"type": "event", "length": \(eventJson.utf8.count)}
         """
         
         let item = """
