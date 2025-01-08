@@ -43,6 +43,21 @@ import AppTrackingTransparency
         self.token = token
         self.uid = uid
         
+        SentryManager.shared.configure(token: token, uid: uid)
+        
+        NSSetUncaughtExceptionHandler { exception in
+            if exception.callStackSymbols.contains(where: {$0.contains(" BitLabs ")}) {
+                var isCaptureCompleted = false
+                SentryManager.shared.captureException(exception: exception, stacktrace: Thread.callStackSymbols, isHandled: false) {
+                    isCaptureCompleted = true
+                }
+                
+                while true {
+                    if isCaptureCompleted { break }
+                }
+            }
+        }
+        
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
 
         getWidgetColor()
