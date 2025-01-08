@@ -58,12 +58,6 @@ public class BitLabs: WebViewDelegate {
             }
         }
         
-        // SentryManager.shared.captureException(exception: Exception("A new test Exception"), stacktrace: Thread.callStackSymbols)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            NSException(name: .genericException, reason: "Test Uncaught Excception").raise()
-        }
-        
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
         
         getAppSettings()
