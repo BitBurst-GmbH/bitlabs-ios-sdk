@@ -32,6 +32,9 @@ class SentryManager {
     }
     
     func configure(token: String, uid: String) {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            return
+        }
         self.sentryService = SentryService(token, uid)
     }
     
