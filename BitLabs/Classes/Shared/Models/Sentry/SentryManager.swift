@@ -32,10 +32,13 @@ class SentryManager {
     }
     
     func configure(token: String, uid: String) {
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            return
+        }
         self.sentryService = SentryService(token, uid)
     }
     
-    func captureException(exception: Any, stacktrace: [String], isHandled: Bool = true, completionHandler: @escaping () -> () = {}) {
-        sentryService?.sendEnvelope(withException: exception, in: stacktrace, isHandled: isHandled, completionHandler)
+    func captureException(error: Error, stacktrace: [String], isHandled: Bool = true) {
+        sentryService?.sendEnvelope(withError: error, in: stacktrace, isHandled: isHandled)
     }
 }

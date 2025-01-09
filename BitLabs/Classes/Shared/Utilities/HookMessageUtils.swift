@@ -20,7 +20,9 @@ extension String {
         } catch DecodingError.dataCorrupted(let context) where context.codingPath.contains(where: { $0.stringValue == "name" }) {
             return nil
         } catch {
-            print("[BitLabs] Decoding failed: \(error)")
+            let errString = "[BitLabs] Decoding failed: \(error)"
+            print(errString)
+            SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
             return nil
         }
     }

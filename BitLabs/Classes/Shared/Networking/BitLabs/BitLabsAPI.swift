@@ -36,11 +36,15 @@ class BitLabsAPI {
                         print("[BitLabs] Left survey successfully.")
                         completion()
                     } else {
-                        print("[BitLabs] Leave Survey \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                        let errString = "[BitLabs] Leave Survey \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")"
+                        print(errString)
+                        SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                         completion()
                     }
                 case .failure(let error):
-                    print("[BitLabs] Leave Survey Failure: \(error)")
+                    let errString = "[BitLabs] Leave Survey Failure: \(error)"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                     completion()
                 }
             }
@@ -53,7 +57,9 @@ class BitLabsAPI {
                 switch response.result {
                 case .success(let blResponse):
                     if let restriction = blResponse.data?.restrictionReason {
-                        completion(.failure(Exception(restriction.prettyPrint())))
+                        let exception = Exception(restriction.prettyPrint())
+                        SentryManager.shared.captureException(error: exception, stacktrace: Thread.callStackSymbols)
+                        completion(.failure(exception))
                         return
                     }
                     
@@ -63,9 +69,12 @@ class BitLabsAPI {
                         return
                     }
                     
-                    completion(.failure(Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")))
+                    let exception = Exception("\(blResponse.error!.details.http) - \(blResponse.error!.details.msg)")
+                    SentryManager.shared.captureException(error: exception, stacktrace: Thread.callStackSymbols)
+                    completion(.failure(exception))
                     
                 case .failure(let error):
+                    SentryManager.shared.captureException(error: error, stacktrace: Thread.callStackSymbols)
                     completion(.failure(error))
                 }
             }.resume()
@@ -81,11 +90,14 @@ class BitLabsAPI {
                         completion(visual, blResponse.data?.currency, blResponse.data?.promotion)
                         return
                     }
-                    
-                    print("[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    let errString = "[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                     
                 case .failure(let error):
-                    print("[BitLabs] Get App Settings Failure: \(error)")
+                    let errString = "[BitLabs] Get App Settings Failure: \(error)"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                 }
             }
     }
@@ -101,10 +113,14 @@ class BitLabsAPI {
                         return
                     }
                     
-                    print("[BitLabs] Get Leaderboard \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")")
+                    let errString = "[BitLabs] Get Leaderboard \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                     
                 case .failure(let error):
-                    print("[BitLabs] Get Leaderboard Failure: \(error)")
+                    let errString = "[BitLabs] Get Leaderboard Failure: \(error)"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                 }
             }
     }
@@ -119,7 +135,9 @@ class BitLabsAPI {
                 }
                 
                 guard let image = SVG(data)?.image() else {
-                    print("[BitLabs] Failed converting SVG to UIImage")
+                    let errString = "[BitLabs] Failed converting SVG to UIImage"
+                    print(errString)
+                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                     completion(nil)
                     return
                 }
@@ -127,7 +145,9 @@ class BitLabsAPI {
                 completion(image)
                 
             case .failure(let error):
-                print("[BitLabs] Get Currency Icon Failure: \(error)")
+                let errString = "[BitLabs] Get Currency Icon Failure: \(error)"
+                print(errString)
+                SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                 completion(nil)
             }
         }
