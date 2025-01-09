@@ -20,8 +20,8 @@ class SentryService {
         self.uid = uid
     }
     
-    func sendEnvelope(withException exception: Any, in stacktrace: [String], isHandled: Bool, _ completionHandler: @escaping () -> ()) {
-        let envelope = createEnvelope(fromException: exception, andStackSymbols: stacktrace, isHandled: isHandled)
+    func sendEnvelope(withError error: Error, in stacktrace: [String], isHandled: Bool) {
+        let envelope = createEnvelope(fromError: error, andStackSymbols: stacktrace, isHandled: isHandled)
         
         do {
             let encodedEnvelope = try envelope.toData()
@@ -35,8 +35,6 @@ class SentryService {
                 case .failure(let error):
                     print("[BitLabs] Error Sending envelope: " + error.localizedDescription)
                 }
-                
-                completionHandler()
             }
         } catch(let e) {
             print("[BitLabs] Error Sending envelope: " + e.localizedDescription)
@@ -56,13 +54,11 @@ class SentryService {
         return request
     }
     
-    func createEnvelope(fromException exception: Any, andStackSymbols stackSymbols: [String], isHandled: Bool) -> SentryEnvelope {
-        let errorType = String(describing: type(of: exception))
-        let errorMessage = switch exception {
+    func createEnvelope(fromError error: Error, andStackSymbols stackSymbols: [String], isHandled: Bool) -> SentryEnvelope {
+        let errorType = String(describing: type(of: error))
+        let errorMessage = switch error {
         case let bitlabsException as Exception: bitlabsException.message
-        case let nsException as NSException: nsException.reason ?? "Unlabeled Error"
-        case let error as Error: error.localizedDescription.isEmpty ? "Unlabeled Error": error.localizedDescription
-        default: "Unlabeled Error"
+        default: error.localizedDescription.isEmpty ? "Unlabeled Error": error.localizedDescription
         }
         
         let eventID = UUID().uuidString.lowercased()
