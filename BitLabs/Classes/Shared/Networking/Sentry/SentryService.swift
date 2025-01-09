@@ -59,8 +59,9 @@ class SentryService {
     func createEnvelope(fromException exception: Any, andStackSymbols stackSymbols: [String], isHandled: Bool) -> SentryEnvelope {
         let errorType = String(describing: type(of: exception))
         let errorMessage = switch exception {
+        case let bitlabsException as Exception: bitlabsException.message
         case let nsException as NSException: nsException.reason ?? "Unlabeled Error"
-        case let error as Error: error.localizedDescription.isEmpty ? "Unlabeled Error" : error.localizedDescription
+        case let error as Error: error.localizedDescription.isEmpty ? "Unlabeled Error": error.localizedDescription
         default: "Unlabeled Error"
         }
         
