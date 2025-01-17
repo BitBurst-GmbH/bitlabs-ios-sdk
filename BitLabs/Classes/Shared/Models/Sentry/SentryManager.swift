@@ -22,7 +22,7 @@ class SentryManager {
     private var sentryService: SentryService? = nil
     
     private init() {
-        self.dsn = SentryDSN("https://6dab398ce6543c556092f90cc8510974@o494432.ingest.us.sentry.io/4508551901806593")
+        self.dsn = SentryDSN(SubspecConfig.DSN)
         
         self.host = dsn.host
         self.scheme = dsn.scheme
