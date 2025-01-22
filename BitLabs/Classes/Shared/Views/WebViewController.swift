@@ -81,12 +81,6 @@ class WebViewController: UIViewController {
         webView.uiDelegate = self
         webView.navigationDelegate = self
         webView.scrollView.bounces = false
-        observer = webView.observe(\.url, options: .new) { [self] _, change in
-            guard let newValue = change.newValue, let url = newValue else { return }
-            
-            let isPageOfferwall = url.absoluteString.starts(with: "https://web.bitlabs.ai")
-            configureUI(isPageOfferwall)
-        }
         
         configurePostMessageAPI()
     }
@@ -132,9 +126,9 @@ class WebViewController: UIViewController {
     /// Applies UI changes according to the data it has.
     ///
     /// If the page is the Offerwall, the `topBarView` will be hidden. Otherwise, it will be visible.
-    private func configureUI(_ isPageOfferwall: Bool) {
-        topBarView.isHidden = isPageOfferwall
-        webTopSafeTopConstraint.constant = isPageOfferwall ? 0 : topBarView.frame.height
+    private func configureUI(shouldShowHeader: Bool) {
+        topBarView.isHidden = !shouldShowHeader
+        webTopSafeTopConstraint.constant = shouldShowHeader ? topBarView.frame.height : 0
     }
 }
 
@@ -200,10 +194,9 @@ extension WebViewController: WKScriptMessageHandler {
         case .sdkClose:
             dismiss(animated: true)
         case .initOfferwall:
+            self.webView.evaluateJavaScript("window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });")
             print("[BitLabs] Sent showCloseButton event")
-            self.webView.evaluateJavaScript("""
-            window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });
-            """)
+            configureUI(shouldShowHeader: false)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return
@@ -223,6 +216,7 @@ extension WebViewController: WKScriptMessageHandler {
             
             reward += rewardArg.reward
         case .surveyStart:
+            configureUI(shouldShowHeader: true)
             guard case .surveyStart(let surveyStartArgument) = hookMessage.args.first else {
                 return
             }
