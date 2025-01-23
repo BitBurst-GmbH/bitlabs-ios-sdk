@@ -18,185 +18,123 @@ class WebViewControllerTest: XCTestCase {
         app.launch()
     }
     
-    func test_NoURL_WebViewClosed() {
-        let button = app.buttons["No URL"]
-        XCTAssertTrue(button.exists)
-        
-        button.tap()
-        sleep(2)
-        
-        let wv = app.webViews.firstMatch
-        XCTAssertFalse(wv.exists)
-    }
-    
-    func test_EmptyURL_WebViewClosed() {
-        let button = app.buttons["Empty URL"]
-        XCTAssertTrue(button.exists)
-        
-        button.tap()
-        sleep(2)
-        
-        let wv = app.webViews.firstMatch
-        XCTAssertFalse(wv.exists)
+    /// Helper function to wait for an element to exist
+    private func waitFor(element: XCUIElement, timeout: TimeInterval = 5) -> Bool {
+        let exists = NSPredicate(format: "exists == true")
+        let expectation = XCTNSPredicateExpectation(predicate: exists, object: element)
+        return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
 
-    func test_CorrectFormURL_WebViewExists() {
-        let button = app.buttons["Correct Form URL"]
-        XCTAssertTrue(button.exists)
+    func test_NoURL_WebViewClosed() {
+        let button = app.buttons["No URL"]
+        XCTAssertTrue(button.exists, "No URL button should exist")
         
         button.tap()
-        sleep(2)
         
         let wv = app.webViews.firstMatch
-        XCTAssertTrue(wv.exists)
+        XCTAssertFalse(waitFor(element: wv), "WebView should not exist for 'No URL' scenario")
     }
-   
-    func test_TopBar_OfferwallURL_NotExists() {
-        let button = app.buttons["Offerwall URL"]
-        XCTAssertTrue(button.exists)
+
+    func test_EmptyURL_WebViewClosed() {
+        let button = app.buttons["Empty URL"]
+        XCTAssertTrue(button.exists, "Empty URL button should exist")
         
         button.tap()
-        sleep(2)
         
-        let topBarView = app.otherElements["topBarView"]
-        XCTAssertFalse(topBarView.exists)
+        let wv = app.webViews.firstMatch
+        XCTAssertFalse(waitFor(element: wv), "WebView should not exist for 'Empty URL' scenario")
     }
     
-    func test_TopBar_NotOfferwallURL_Exists() {
-        let button = app.buttons["Not Offerwall URL"]
+    func test_CorrectFormURL_WebViewExists() {
+        let button = app.buttons["Correct Form URL"]
+        XCTAssertTrue(button.exists, "Correct Form URL button should exist")
+        
+        button.tap()
+        
+        let wv = app.webViews.firstMatch
+        XCTAssertTrue(waitFor(element: wv), "WebView should exist for 'Correct Form URL' scenario")
+    }
+    
+    func test_SdkCloseEvent_WebViewClosed() {
+        let button = app.buttons["SDK Close"]
         XCTAssertTrue(button.exists)
         
         button.tap()
-        sleep(2)
+        
+        let wv = app.webViews.firstMatch
+        XCTAssertFalse(waitFor(element: wv), "WebView should not exist after an SDK Close hook is triggered")
+    }
+    
+    func test_TopBar_SurveyStartEvent_Exists() {
+        let button = app.buttons["Survey Start"]
+        XCTAssertTrue(button.exists)
+        
+        button.tap()
         
         let topBarView = app.otherElements["topBarView"]
-        XCTAssertTrue(topBarView.exists)
+        XCTAssertTrue(waitFor(element: topBarView), "TopBarView should exist when Survey Start Event is triggered")
     }
     
     func test_TopBarViewBackButton_ShowLeaveSurveyDialog() {
-        let button = app.buttons["Not Offerwall URL"]
+        let button = app.buttons["Survey Start"]
         XCTAssertTrue(button.exists)
         button.tap()
-        
-        sleep(2)
-        
+                
         let backButton = app.buttons["circle chevron left regular"]
-        XCTAssertTrue(backButton.exists)
+        XCTAssertTrue(waitFor(element: backButton), "Back button should appear")
         backButton.tap()
-        
-        sleep(2)
-        
+                
         let alert = app.alerts["Leave Survey"]
-        XCTAssertTrue(alert.exists)
+        XCTAssertTrue(waitFor(element: alert), "Leave Survey alert should appear when back button is pressed")
     }
     
     func test_LeaveSurveyDialog_AnyOptionClicked_LeaveSurveyCalled() {
-        let button = app.buttons["Not Offerwall URL"]
+        let button = app.buttons["Survey Start"]
         XCTAssertTrue(button.exists)
         button.tap()
         
-        sleep(1)
+        func tapBackButtonAndVerify() {
+            let backButton = app.buttons["circle chevron left regular"]
+            XCTAssertTrue(waitFor(element: backButton), "Back button should appear")
+            backButton.tap()
+        }
         
-        let backButton = app.buttons["circle chevron left regular"]
-        XCTAssertTrue(backButton.exists)
-        backButton.tap()
+        func verifyAlertAndTap(option: String) {
+            let alert = app.alerts["Leave Survey"]
+            XCTAssertTrue(waitFor(element: alert), "Leave Survey alert should appear")
+            
+            let optionButton = alert.scrollViews.otherElements.buttons[option]
+            XCTAssertTrue(optionButton.exists, "\(option) option should exist")
+            optionButton.tap()
+        }
         
-        sleep(1)
+        func verifyLabel(_ labelName: String) {
+            let label = app.staticTexts[labelName]
+            XCTAssertTrue(waitFor(element: label), "Label '\(labelName)' should exist")
+        }
         
-        let alert = app.alerts["Leave Survey"]
-        XCTAssertTrue(alert.exists)
+        let options = [
+            "Too sensitive",
+            "Uninteresting",
+            "Technical issues",
+            "Too long",
+            "Other Reason"
+        ]
         
-        let sensitive = alert.scrollViews.otherElements.buttons["Too sensitive"]
-        XCTAssertTrue(sensitive.exists)
-        sensitive.tap()
-        
-        sleep(1)
-        
-        var label = app.staticTexts["Too sensitive"]
-        XCTAssertTrue(label.exists)
-
-        XCTAssertTrue(button.exists)
-        button.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(backButton.exists)
-        backButton.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(alert.exists)
-        
-        let uninsteresting = alert.scrollViews.otherElements.buttons["Uninteresting"]
-        XCTAssertTrue(uninsteresting.exists)
-        uninsteresting.tap()
-        
-        sleep(1)
-        
-        label = app.staticTexts["Uninteresting"]
-        XCTAssertTrue(label.exists)
-        
-        XCTAssertTrue(button.exists)
-        button.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(backButton.exists)
-        backButton.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(alert.exists)
-        
-        let techinicalIssues = alert.scrollViews.otherElements.buttons["Technical issues"]
-        XCTAssertTrue(techinicalIssues.exists)
-        techinicalIssues.tap()
-        
-        sleep(1)
-        
-        label = app.staticTexts["Technical issues"]
-        XCTAssertTrue(label.exists)
-        
-        XCTAssertTrue(button.exists)
-        button.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(backButton.exists)
-        backButton.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(alert.exists)
-        
-        let tooLong = alert.scrollViews.otherElements.buttons["Too long"]
-        XCTAssertTrue(tooLong.exists)
-        tooLong.tap()
-        
-        sleep(1)
-        
-        label = app.staticTexts["Too long"]
-        XCTAssertTrue(label.exists)
-        
-        XCTAssertTrue(button.exists)
-        button.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(backButton.exists)
-        backButton.tap()
-        
-        sleep(1)
-        
-        XCTAssertTrue(alert.exists)
-        
-        let other = alert.scrollViews.otherElements.buttons["Other Reason"]
-        XCTAssertTrue(other.exists)
-        other.tap()
-        
-        sleep(1)
-        
-        label = app.staticTexts["Other Reason"]
-        XCTAssertTrue(label.exists)
+        for option in options {
+            
+            // Tap the back button and verify its appearance
+            tapBackButtonAndVerify()
+            
+            // Verify the alert is present and tap the specific survey option
+            verifyAlertAndTap(option: option)
+            
+            // Verify that the appropriate label is displayed after the selection
+            verifyLabel(option)
+            
+            // Re-tap the "Not Offerwall URL" button to reset the state for the next iteration
+            XCTAssertTrue(button.exists, "Not Offerwall URL button should exist")
+            button.tap()
+        }
     }
 }
