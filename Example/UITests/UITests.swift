@@ -24,20 +24,20 @@ class WebViewControllerTest: XCTestCase {
         let expectation = XCTNSPredicateExpectation(predicate: exists, object: element)
         return XCTWaiter().wait(for: [expectation], timeout: timeout) == .completed
     }
-    
+
     func test_NoURL_WebViewClosed() {
         let button = app.buttons["No URL"]
-        XCTAssertTrue(button.exists)
+        XCTAssertTrue(button.exists, "No URL button should exist")
         
         button.tap()
         
         let wv = app.webViews.firstMatch
         XCTAssertFalse(waitFor(element: wv), "WebView should not exist for 'No URL' scenario")
     }
-    
+
     func test_EmptyURL_WebViewClosed() {
         let button = app.buttons["Empty URL"]
-        XCTAssertTrue(button.exists)
+        XCTAssertTrue(button.exists, "Empty URL button should exist")
         
         button.tap()
         
@@ -47,7 +47,7 @@ class WebViewControllerTest: XCTestCase {
     
     func test_CorrectFormURL_WebViewExists() {
         let button = app.buttons["Correct Form URL"]
-        XCTAssertTrue(button.exists)
+        XCTAssertTrue(button.exists, "Correct Form URL button should exist")
         
         button.tap()
         
@@ -55,28 +55,28 @@ class WebViewControllerTest: XCTestCase {
         XCTAssertTrue(waitFor(element: wv), "WebView should exist for 'Correct Form URL' scenario")
     }
     
-    func test_TopBar_OfferwallURL_NotExists() {
-        let button = app.buttons["Offerwall URL"]
+    func test_SdkCloseEvent_WebViewClosed() {
+        let button = app.buttons["SDK Close"]
         XCTAssertTrue(button.exists)
         
         button.tap()
         
-        let topBarView = app.otherElements["topBarView"]
-        XCTAssertFalse(waitFor(element: topBarView), "TopBarView should not exist when URL is OfferWall")
+        let wv = app.webViews.firstMatch
+        XCTAssertFalse(waitFor(element: wv), "WebView should not exist after an SDK Close hook is triggered")
     }
     
-    func test_TopBar_NotOfferwallURL_Exists() {
-        let button = app.buttons["Not Offerwall URL"]
+    func test_TopBar_SurveyStartEvent_Exists() {
+        let button = app.buttons["Survey Start"]
         XCTAssertTrue(button.exists)
         
         button.tap()
         
         let topBarView = app.otherElements["topBarView"]
-        XCTAssertTrue(waitFor(element: topBarView), "TopBarView should exist when URL is not OfferWall")
+        XCTAssertTrue(waitFor(element: topBarView), "TopBarView should exist when Survey Start Event is triggered")
     }
     
     func test_TopBarViewBackButton_ShowLeaveSurveyDialog() {
-        let button = app.buttons["Not Offerwall URL"]
+        let button = app.buttons["Survey Start"]
         XCTAssertTrue(button.exists)
         button.tap()
                 
@@ -85,12 +85,12 @@ class WebViewControllerTest: XCTestCase {
         backButton.tap()
                 
         let alert = app.alerts["Leave Survey"]
-        XCTAssertTrue(waitFor(element: alert), "Leave Survey alert should appear")
+        XCTAssertTrue(waitFor(element: alert), "Leave Survey alert should appear when back button is pressed")
     }
     
     func test_LeaveSurveyDialog_AnyOptionClicked_LeaveSurveyCalled() {
-        let button = app.buttons["Not Offerwall URL"]
-        XCTAssertTrue(button.exists, "Not Offerwall URL button should exist")
+        let button = app.buttons["Survey Start"]
+        XCTAssertTrue(button.exists)
         button.tap()
         
         func tapBackButtonAndVerify() {

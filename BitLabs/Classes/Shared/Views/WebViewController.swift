@@ -41,7 +41,6 @@ class WebViewController: UIViewController {
     var clickId = ""
     
     var delegate: WebViewDelegate?
-    var observer: NSKeyValueObservation?
     
     private var didCallViewDidAppear = false
     

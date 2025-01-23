@@ -12,7 +12,7 @@
         <!--Testing View Controller-->
         <scene sceneID="AeS-MY-dzV">
             <objects>
-                <viewController id="823-AY-0jH" customClass="TestingViewController" customModule="BitLabs_AppHost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="823-AY-0jH" customClass="TestingViewController" customModule="BitLabs_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vn8-Hc-Kf6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,21 +54,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyo-NR-dGw">
-                                <rect key="frame" x="182" y="102.5" width="129" height="34.5"/>
+                                <rect key="frame" x="182" y="102.5" width="104.5" height="35"/>
                                 <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Offerwall URL"/>
+                                <buttonConfiguration key="configuration" style="plain" title="SDK Close"/>
                                 <connections>
-                                    <action selector="offerwalURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="SUT-Ku-cIb"/>
+                                    <action selector="sdkCloseEventButton:" destination="823-AY-0jH" eventType="touchUpInside" id="SUT-Ku-cIb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Xx-ci-zfT">
-                                <rect key="frame" x="10" y="147" width="160.5" height="34.5"/>
+                                <rect key="frame" x="10" y="147" width="118" height="35"/>
                                 <accessibility key="accessibilityConfiguration" identifier="OpenWebview"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Not Offerwall URL"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Survey Start"/>
                                 <connections>
-                                    <action selector="notOfferwallURLButton:" destination="823-AY-0jH" eventType="touchUpInside" id="lIL-Yj-sjB"/>
+                                    <action selector="surveyStartEventButton:" destination="823-AY-0jH" eventType="touchUpInside" id="lIL-Yj-sjB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3B-AH-Rjv">

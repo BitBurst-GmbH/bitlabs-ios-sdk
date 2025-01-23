@@ -13,58 +13,62 @@ import UIKit
 class TestingViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     
-    let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+    let wvc = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
 
     
     @IBAction func noURLButton(_ sender: Any) {
-        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true)
     }
     
     @IBAction func emptyURLButton(_ sender: Any) {
-        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        wvc.initialURL = URL(string: "")
         
-        wv.initialURL = URL(string: "")
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true)
     }
     
     @IBAction func incorrectURLButton(_ sender: Any) {
-        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        wvc.initialURL = URL(string: "Random String not a URL")
         
-        wv.initialURL = URL(string: "Random String not a URL")
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true)
     }
     
     @IBAction func correctFormURLButton(_ sender: Any) {
-        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        wvc.initialURL = URL(string: "https://www.google.com")
         
-        wv.initialURL = URL(string: "https://www.google.com")
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true)
     }
     
-    @IBAction func offerwalURLButton(_ sender: Any) {
-        let wv = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+    @IBAction func sdkCloseEventButton(_ sender: Any) {
+        wvc.initialURL = URL(string: "https://www.google.com")
         
-        wv.initialURL = URL(string: "https://web.bitlabs.ai?token=678c564f-62a3-4331-a018-0bf7ee2c885b&uid=fasdf")
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true) {
+            let sdkCloseEvent = """
+            {type: 'hook', name: 'offerwall-core:sdk.close', args: []}
+            """
+            self.wvc.webView.evaluateJavaScript("""
+            window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(\(sdkCloseEvent)));
+            """)
+        }
     }
     
-    @IBAction func notOfferwallURLButton(_ sender: Any) {
-        wv.initialURL = URL(string: "https://www.google.com")
-        wv.delegate = self
-        
-        wv.modalPresentationStyle = .overFullScreen
-        present(wv, animated: true)
+    @IBAction func surveyStartEventButton(_ sender: Any) {
+        wvc.initialURL = URL(string: "https://www.google.com")
+        wvc.delegate = self
+                
+        wvc.modalPresentationStyle = .overFullScreen
+        present(wvc, animated: true) {
+            let surveyEvent = """
+            {type: 'hook', name: 'offerwall-surveys:survey.start', args: [{clickId: 'arbitrary', link: ''}]}
+            """
+            self.wvc.webView.evaluateJavaScript("""
+            window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(\(surveyEvent)));
+            """)
+        }
     }
 }
 
@@ -75,6 +79,6 @@ extension TestingViewController: WebViewDelegate {
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         print("LeaveSurveyRequest")
         label.text = reason.rawValue.localized
-        wv.dismiss(animated: true)
+        wvc.dismiss(animated: true)
     }
 }
