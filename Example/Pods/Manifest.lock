@@ -1,9 +1,9 @@
 PODS:
   - Alamofire (5.9.1)
-  - BitLabs (3.2.8):
+  - BitLabs (3.2.9):
     - Alamofire (~> 5.9.0)
-    - BitLabs/Core (= 3.2.8)
-  - BitLabs/Core (3.2.8):
+    - BitLabs/Core (= 3.2.9)
+  - BitLabs/Core (3.2.9):
     - Alamofire (~> 5.9.0)
   - Mocker (2.5.5)
 
@@ -22,7 +22,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
-  BitLabs: 967c7e3712cb28507384887468bacee8bc1b0b6f
+  BitLabs: 8959bbd5262bcafbf686cab1102e896ddbc4289d
   Mocker: 8c731a8104962f246cadf2b02556218e9edc1390
 
 PODFILE CHECKSUM: 5f517403d2cd870bdc4c82c6cf681e86ef6881c6
