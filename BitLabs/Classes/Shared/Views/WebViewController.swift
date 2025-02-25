@@ -42,6 +42,7 @@ class WebViewController: UIViewController {
     
     var delegate: WebViewDelegate?
     
+    private var isRotatable: Bool = false
     private var didCallViewDidAppear = false
     
     private var reward: Float = 0.0
@@ -52,8 +53,6 @@ class WebViewController: UIViewController {
         var isColorBright = false
         backButton.tintColor = isColorBright ? .black : .white
         color.forEach { isColorBright = isColorBright || $0.luminance > 0.729 }
-        
-        changeGradient(of: topBarView, withColors: color)
         
         setupWebView()
     }
@@ -67,8 +66,22 @@ class WebViewController: UIViewController {
         didCallViewDidAppear = true
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        print("viewWillLayoutSubviews")
+        DispatchQueue.main.async { changeGradient(of: self.topBarView, withColors: self.color) }
+    }
+    
     override var prefersHomeIndicatorAutoHidden: Bool {
         return true
+    }
+    
+    override var shouldAutorotate: Bool {
+        return isRotatable
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return isRotatable ? .all : .portrait
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -125,9 +138,13 @@ class WebViewController: UIViewController {
     /// Applies UI changes according to the data it has.
     ///
     /// If the page is the Offerwall, the `topBarView` will be hidden. Otherwise, it will be visible.
-    private func configureUI(shouldShowHeader: Bool) {
-        topBarView.isHidden = !shouldShowHeader
-        webTopSafeTopConstraint.constant = shouldShowHeader ? topBarView.frame.height : 0
+    private func configureUI(isPageSurvey: Bool) {
+        topBarView.isHidden = !isPageSurvey
+        webTopSafeTopConstraint.constant = isPageSurvey ? topBarView.frame.height : 0
+        isRotatable = isPageSurvey
+        UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation") // Reset orientation
+        UIViewController.attemptRotationToDeviceOrientation()
+        topBarView.setNeedsLayout()
     }
 }
 
@@ -188,14 +205,14 @@ extension WebViewController: WKScriptMessageHandler {
         guard let hookMessage = (message.body as! String).asHookMessage() else {
             return
         }
-
+        
         switch hookMessage.name {
         case .sdkClose:
             dismiss(animated: true)
         case .initOfferwall:
             self.webView.evaluateJavaScript("window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });")
             print("[BitLabs] Sent showCloseButton event")
-            configureUI(shouldShowHeader: false)
+            configureUI(isPageSurvey: false)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return
@@ -215,7 +232,7 @@ extension WebViewController: WKScriptMessageHandler {
             
             reward += rewardArg.reward
         case .surveyStart:
-            configureUI(shouldShowHeader: true)
+            configureUI(isPageSurvey: true)
             guard case .surveyStart(let surveyStartArgument) = hookMessage.args.first else {
                 return
             }
