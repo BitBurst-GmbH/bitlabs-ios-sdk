@@ -20,12 +20,14 @@ class Exception: Error, CustomStringConvertible {
 }
 
 func changeGradient(of view: UIView, withColors colors: [UIColor]) {
+    view.layer.sublayers?.forEach { if $0 is CAGradientLayer { $0.removeFromSuperlayer() } }
+
     let gradient = CAGradientLayer()
     gradient.colors = colors.map { $0.cgColor }
     gradient.cornerRadius = view.layer.cornerRadius
-    gradient.frame = view.bounds
     gradient.startPoint = CGPoint(x: 0, y: 1)
     gradient.endPoint = CGPoint(x: 1, y: 0)
+    gradient.frame = view.bounds
     view.layer.insertSublayer(gradient, at: 0)
 }
 
