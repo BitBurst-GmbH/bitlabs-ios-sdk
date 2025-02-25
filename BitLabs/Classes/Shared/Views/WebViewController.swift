@@ -68,7 +68,6 @@ class WebViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("viewWillLayoutSubviews")
         DispatchQueue.main.async { changeGradient(of: self.topBarView, withColors: self.color) }
     }
     
@@ -144,7 +143,6 @@ class WebViewController: UIViewController {
         isRotatable = isPageSurvey
         UIDevice.current.setValue(UIInterfaceOrientation.unknown.rawValue, forKey: "orientation") // Reset orientation
         UIViewController.attemptRotationToDeviceOrientation()
-        topBarView.setNeedsLayout()
     }
 }
 
