@@ -56,16 +56,18 @@ public class BitLabs: WebViewDelegate {
     }
     
     private func getAppSettings() {
-        bitlabsAPI?.getAppSettings { visual, currency, promotion in
-            self.widgetColor = visual.surveyIconColor.extractColors
-            self.headerColor = visual.navigationColor.extractColors
-
-            guard let currency = currency, currency.symbol.isImage else { return }
-            self.currencyIcon = currency.symbol.content
-            self.bonusPercentage += Double(currency.bonusPercentage) / 100.0
+        bitlabsAPI?.getAppSettings(token: token) { configuration in
+            let theme = "light"
             
-            guard let bonus = promotion?.bonusPercentage else { return }
-            self.bonusPercentage += Double(bonus) / 100.0 + Double(bonus) * self.bonusPercentage / 100.0
+            let surveyIconColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).survey_icon_color"}?.value ?? ""
+            self.widgetColor = surveyIconColor.extractColors
+            
+            let navigationColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
+            self.headerColor = navigationColor.extractColors
+            
+            let isImage = configuration.first { $0.internalIdentifier == "general.currency.symbol.is_image" }?.value ?? "0"
+            let content = configuration.first { $0.internalIdentifier == "general.currency.symbol.content"}?.value ?? ""
+            self.currencyIcon = isImage == "1" ? content : ""
         }
     }
     

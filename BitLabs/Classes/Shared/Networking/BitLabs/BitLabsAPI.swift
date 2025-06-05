@@ -80,19 +80,12 @@ class BitLabsAPI {
             }.resume()
     }
     
-    func getAppSettings(_ completion: @escaping (Visual, Currency?, Promotion?) -> ()) {
-        session
-            .request(BitLabsRouter.getAppSettings)
-            .responseDecodable(of: BitLabsResponse<GetAppSettingsResponse>.self, decoder: decoder) { response in
+    func getAppSettings(token: String, _ completion: @escaping ([Configuration]) -> ()) {
+        AF.request("https://dashboard.bitlabs.ai/api/public/v1/apps/\(token)")
+            .responseDecodable(of: GetAppSettingsResponse.self, decoder: decoder) { response in
                 switch response.result {
                 case .success(let blResponse):
-                    if let visual = blResponse.data?.visual {
-                        completion(visual, blResponse.data?.currency, blResponse.data?.promotion)
-                        return
-                    }
-                    let errString = "[BitLabs] Get App Settings \(blResponse.error?.details.http ?? "Error"): \(blResponse.error?.details.msg ?? "Couldn't retrieve error info... Trace ID: \(blResponse.traceId)")"
-                    print(errString)
-                    SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
+                    completion(blResponse.configuration)
                     
                 case .failure(let error):
                     let errString = "[BitLabs] Get App Settings Failure: \(error)"
