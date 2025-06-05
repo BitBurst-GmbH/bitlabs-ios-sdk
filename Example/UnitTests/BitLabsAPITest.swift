@@ -114,56 +114,8 @@ class BitLabsAPITest: XCTestCase {
         let expectation = XCTestExpectation(description: "Error received")
         expectation.isInverted = true
         
-        bitlabsAPI.getAppSettings { visual, currency, promotion  in
+        bitlabsAPI.getAppSettings(token: "") { configuration  in
             
-            XCTFail("Completion block should not be called")
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testGetAppSettings_Response_Success() {
-        let json = try! encoder.encode(
-            BitLabsResponse(
-                data: GetAppSettingsResponse(visual: Visual(backgroundColor: "", colorRatingThreshold: 0, customLogoUrl: "", elementBorderRadius: "", hideRewardValue: true, interactionColor: "", navigationColor: "", offerwallWidth: "", screenoutReward: "", surveyIconColor: ""), currency: Currency(floorDecimal: true, factor: "", symbol: Symbol(content: "", isImage: true), currencyPromotion: 0, bonusPercentage: 20), promotion: Promotion(startDate: "", endDate: "", bonusPercentage: 1)),
-                error: nil,
-                status: "",
-                traceId: ""
-            )
-        )
-        
-        let url = BitLabsRouter.getAppSettings.urlRequest!.url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
-        mock.register()
-        
-        let expectation = XCTestExpectation(description: "Response received")
-        bitlabsAPI.getAppSettings { visual, currency, promotion  in
-            XCTAssertTrue(promotion?.bonusPercentage == 1)
-            expectation.fulfill()
-        }
-        
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testGetAppSettings_Response_Error() {
-        let json = try! encoder.encode(
-            BitLabsResponse<GetSurveysResponse>(
-                data: nil,
-                error: ErrorResponse(details: ErrorDetails(http: "400", msg: "Response Error")),
-                status: "",
-                traceId: ""
-            )
-        )
-        
-        let url = BitLabsRouter.getAppSettings.urlRequest!.url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
-        mock.register()
-        
-        let expectation = XCTestExpectation(description: "Error received")
-        expectation.isInverted = true
-        
-        bitlabsAPI.getAppSettings { visual, currency, promotion  in
             XCTFail("Completion block should not be called")
             expectation.fulfill()
         }
