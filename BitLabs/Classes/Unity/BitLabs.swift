@@ -46,9 +46,9 @@ import AppTrackingTransparency
         SentryManager.shared.configure(token: token, uid: uid)
         
         bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
-
+        
         getWidgetColor()
-                
+        
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
         else { return }
         
@@ -56,21 +56,18 @@ import AppTrackingTransparency
     }
     
     private func getWidgetColor() {
-        bitlabsAPI?.getAppSettings { visual, currency, promotion in
-            self.widgetColor = visual.surveyIconColor.extractColors
-            self.headerColor = visual.navigationColor.extractColors
+        bitlabsAPI?.getAppSettings(token: token) { configuration in
+            let theme = "light"
             
-            guard let currency = currency, currency.symbol.isImage else { return }
-            self.currencyIconUrl = currency.symbol.content
-            let currencyBonus = Double(currency.bonusPercentage) / 100.0
+            let surveyIconColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).survey_icon_color"}?.value ?? ""
+            self.widgetColor = surveyIconColor.extractColors
             
-            guard let bonus = promotion?.bonusPercentage else {
-                self.bonusPercentage = currencyBonus
-                print("bonus percentage: \(self.bonusPercentage)")
-                return
-            }
-            self.bonusPercentage = currencyBonus + Double(bonus) / 100.0 + Double(bonus) * currencyBonus / 100.0
-            print("bonus percentage: \(self.bonusPercentage)")
+            let navigationColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
+            self.headerColor = navigationColor.extractColors
+            
+            let isImage = configuration.first { $0.internalIdentifier == "general.currency.symbol.is_image" }?.value ?? "0"
+            let content = configuration.first { $0.internalIdentifier == "general.currency.symbol.content"}?.value ?? ""
+            self.currencyIconUrl = isImage == "1" ? content : ""
         }
     }
     
@@ -154,7 +151,7 @@ import AppTrackingTransparency
             
             webViewController.uid = uid
             webViewController.initialURL = generateURL(uid: uid, token: token, sdk: "UNITY", adId: adId, tags: tags)
-
+            
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
             
