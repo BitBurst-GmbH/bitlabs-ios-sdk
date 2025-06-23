@@ -28,8 +28,6 @@ public class BitLabs: WebViewDelegate {
     
     private var onReward: ((Float) -> ())?
     
-    private var surveyDataSource: SurveyDataSource?
-    
     var bitlabsAPI: BitLabsAPI? = nil
     public var isDebugMode = false
     
@@ -130,49 +128,12 @@ public class BitLabs: WebViewDelegate {
         }
     }
     
-    @available(*, deprecated, message: "Use showSurveyWidget(in:type:) instead.")
-    public func getSurveyWidgets(surveys: [Survey], parent: UIViewController, type: WidgetType = .compact) -> UICollectionView {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.itemSize = {
-            switch type {
-            case .simple: return CGSize(width: 310, height: 150)
-            case .compact: return CGSize(width: 310, height: 85)
-            case .full_width: return CGSize(width: 450, height: 50)
-            default: return CGSize(width: 310, height: 150)
-            }
-        }()
-        layout.minimumLineSpacing = CGFloat(4)
-        layout.scrollDirection = .horizontal
-        
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        surveyDataSource = SurveyDataSource(surveys: surveys, parent: parent, color: widgetColor.map { $0.toUIColor ?? .black }, currencyUrl: currencyIcon, bonus: bonusPercentage, type: type)
-        collectionView.dataSource = surveyDataSource
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "UICollectionViewCell")
-        
-        return collectionView
-    }
-    
     /// Shows the Leaderboard in the specified container.
     public func showLeaderboard(in container: UIView) {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: .leaderboard)
             container.replaceSubView(widget)
         }
-    }
-    
-    @available(*, deprecated, message: "Use showLeaderboard(in:) instead.")
-    public func getLeaderboardView(_ completionHandler: @escaping (LeaderboardView?) -> ()) {
-        ifConfigured { bitlabsAPI?.getLeaderboard { response in
-            guard let topUsers = response.topUsers, !topUsers.isEmpty else { return completionHandler(nil) }
-            
-            let leaderboardView = LeaderboardView(currencyIconUrl: self.currencyIcon, color: self.widgetColor.first?.toUIColor, frame: CGRect())
-            leaderboardView.ownUser = response.ownUser
-            leaderboardView.rankings = topUsers
-            
-            completionHandler(leaderboardView)
-        }}
     }
     
     /// Stores the reward completion closure to use on every reward completion.
@@ -205,10 +166,6 @@ public class BitLabs: WebViewDelegate {
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
-    }
-    
-    func getCurrencyIcon(currencyIconUrl: String, _ completion: @escaping (UIImage?) -> ()) {
-        bitlabsAPI?.getCurrencyIcon(url: currencyIconUrl, completion)
     }
     
     private func ifConfigured(block: () -> ()) {

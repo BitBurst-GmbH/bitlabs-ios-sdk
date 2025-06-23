@@ -28,33 +28,6 @@ class GlobalTests: XCTestCase {
         XCTAssertEqual(luminance, expected)
     }
     
-    func testRounded_TwoOrMoreDecimalPoints_TwoDecimalPoints() {
-        let num = 1.23456789
-        let expected = 1.23
-        
-        let rounded = num.rounded(toPlaces: 2)
-        
-        XCTAssertEqual(rounded, expected)
-    }
-    
-    func testRounded_OneDecimalPoints_OneDecimalPoints() {
-        let num = 1.2
-        let expected = 1.2
-        
-        let rounded = num.rounded(toPlaces: 2)
-        
-        XCTAssertEqual(rounded, expected)
-    }
-    
-    func testRounded_NoDecimalPoints_NoDecimalPoints() {
-        let numStr = 1.0
-        let expected = 1.0
-        
-        let rounded = numStr.rounded(toPlaces: 2)
-        
-        XCTAssertEqual(rounded, expected)
-    }
-    
     func testExtractColors_SingleHexColor_TwoColors() {
         let color = "#FFFFFF"
         let expected = [color, color]
