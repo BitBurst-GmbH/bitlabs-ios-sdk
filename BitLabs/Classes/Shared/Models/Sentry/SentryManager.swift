@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 class SentryManager {
     static let shared = SentryManager()

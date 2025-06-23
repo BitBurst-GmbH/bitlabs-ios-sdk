@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 enum BitLabsRouter {
 	case updateClick(clickId: String, reason: LeaveReason)
@@ -25,14 +24,14 @@ enum BitLabsRouter {
 		}
 	}
 	
-	var method: HTTPMethod {
+	var method: String {
         switch self {
-		case .updateClick: return .post
-        case .getSurveys: return .get
+		case .updateClick: return "POST"
+        case .getSurveys: return "GET"
 		}
 	}
 	
-	var parameters: Parameters {
+    var parameters: [String: Any] {
 		switch self {
 		case .updateClick(_, let reason):
             return ["leave_survey": ["reason": reason.rawValue]]
@@ -40,34 +39,31 @@ enum BitLabsRouter {
             return ["platform": getPlatform(), "os": "ios", "sdk": sdk]
 		}
 	}
-}
-
-// MARK: - URLRequestConvertible
-extension BitLabsRouter: URLRequestConvertible {
-	func asURLRequest() throws -> URLRequest {
-		let url = try baseURL.asURL().appendingPathComponent(path)
-		var request = URLRequest(url: url)
-		request.method = method
-		        
-		if method == .get {
+    
+    func asURLRequest() -> URLRequest {
+        let url = URL(string: baseURL)!.appendingPathComponent(path)
+        var request = URLRequest(url: url)
+        request.httpMethod = method
+                
+        if method == "GET" {
             let queryItems = parameters.map { URLQueryItem(name: $0, value: "\($1)") }
             var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
             urlComponents?.queryItems = queryItems
             request.url = urlComponents?.url
-		} else if method == .post {
-            request.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-			request.setValue("application/json", forHTTPHeaderField: "Accept")
-		}
-	
-		return request
-	}
-	
-	func getPlatform() -> String {
-		switch UIDevice.current.userInterfaceIdiom {
-		case .pad:
-			return "TABLET"
-		default:
-			return "MOBILE"
-		}
-	}
+        } else if method == "POST" {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: [])
+            request.setValue("application/json", forHTTPHeaderField: "Accept")
+        }
+    
+        return request
+    }
+    
+    func getPlatform() -> String {
+        switch UIDevice.current.userInterfaceIdiom {
+        case .pad:
+            return "TABLET"
+        default:
+            return "MOBILE"
+        }
+    }
 }

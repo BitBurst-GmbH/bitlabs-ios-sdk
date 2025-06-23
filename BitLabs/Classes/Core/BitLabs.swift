@@ -7,7 +7,6 @@
 
 import UIKit
 import AdSupport
-import Alamofire
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -43,7 +42,14 @@ public class BitLabs: WebViewDelegate {
         
         SentryManager.shared.configure(token: token, uid: uid)
         
-        bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "User-Agent": createUserAgent(),
+            "X-Api-Token": token,
+            "X-User-Id": uid
+        ]
+        
+        bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
         
         getAppSettings()
                 

@@ -6,15 +6,14 @@
 //
 
 import Foundation
-import Alamofire
 
 /// A class to manage connection with the BitLabs API.
 class BitLabsAPI {
     private let decoder = JSONDecoder()
     
-    private let session: Session
+    private let session: URLSession
     
-    init(_ session: Session) {
+    init(_ session: URLSession) {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         self.session = session
     }
@@ -28,9 +27,9 @@ class BitLabsAPI {
     ///   - completion: The closure to execute after a response for this request is received.
     func leaveSurvey(clickId: String, reason: LeaveReason, completion: @escaping () -> ()) {
         session
-            .request(BitLabsRouter.updateClick(clickId: clickId, reason: reason))
-            .responseDecodable(of: BitLabsResponse<UpdateClickResponse>.self, decoder: decoder) { response in
-                switch response.result {
+            .request(BitLabsRouter.updateClick(clickId: clickId, reason: reason).asURLRequest())
+            .responseDecodable(of: BitLabsResponse<UpdateClickResponse>.self, decoder: decoder) { result in
+                switch result {
                 case .success(let blResponse):
                     if blResponse.status == "success" {
                         print("[BitLabs] Left survey successfully.")
@@ -51,10 +50,12 @@ class BitLabsAPI {
     }
     
     func getSurveys(sdk: String, _ completion: @escaping (Result<[Survey], Error>) -> ()) {
+        let request = BitLabsRouter.getSurveys(sdk: sdk).asURLRequest()
+        
         session
-            .request(BitLabsRouter.getSurveys(sdk: sdk))
-            .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { response in
-                switch response.result {
+            .request(request)
+            .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { result in
+                switch result {
                 case .success(let blResponse):
                     if let restriction = blResponse.data?.restrictionReason {
                         let exception = Exception(restriction.prettyPrint())
@@ -77,13 +78,15 @@ class BitLabsAPI {
                     SentryManager.shared.captureException(error: error, stacktrace: Thread.callStackSymbols)
                     completion(.failure(error))
                 }
-            }.resume()
+            }
     }
     
     func getAppSettings(token: String, _ completion: @escaping ([Configuration]) -> ()) {
-        AF.request("https://dashboard.bitlabs.ai/api/public/v1/apps/\(token)")
-            .responseDecodable(of: GetAppSettingsResponse.self, decoder: decoder) { response in
-                switch response.result {
+        let url = URL(string: "https://dashboard.bitlabs.ai/api/public/v1/apps/\(token)")!
+        URLSession.shared
+            .request(URLRequest(url: url))
+            .responseDecodable(of: GetAppSettingsResponse.self, decoder: decoder) { result in
+                switch result {
                 case .success(let blResponse):
                     completion(blResponse.configuration)
                     
@@ -93,5 +96,11 @@ class BitLabsAPI {
                     SentryManager.shared.captureException(error: Exception(errString), stacktrace: Thread.callStackSymbols)
                 }
             }
+    }
+}
+
+extension URLSession {
+    func request(_ request: URLRequest) -> BLSessionRequest {
+        return BLSessionRequest(session: self, request: request)
     }
 }

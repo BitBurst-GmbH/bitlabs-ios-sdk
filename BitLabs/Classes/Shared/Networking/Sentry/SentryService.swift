@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Alamofire
 
 class SentryService {
     private let decoder = JSONDecoder()
@@ -28,8 +27,10 @@ class SentryService {
             
             let url = try createURL(body: encodedEnvelope)
             
-            AF.request(url).responseDecodable(of: SendEnvelopeResponse.self) { response in
-                switch(response.result) {
+            URLSession.shared
+                .request(url)
+                .responseDecodable(of: SendEnvelopeResponse.self) { result in
+                switch(result) {
                 case .success(let sendEnvelopeResponse):
                     print("[BitLabs] Sent Envelope(#\(sendEnvelopeResponse.id)) to Sentry.")
                 case .failure(let error):
@@ -42,14 +43,16 @@ class SentryService {
     }
     
     func createURL(body: Data) throws -> URLRequest {
-        let headers = HTTPHeaders([
+        let url = URL(string: "https://api.sentry.io/")!.appendingPathComponent("api/\(SentryManager.shared.projectID)/envelope/")
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = body
+        
+        request.allHTTPHeaderFields = [
             "X-Sentry-Auth": "Sentry sentry_version=7, sentry_key=\(SentryManager.shared.publicKey), sentry_client=bitlabs-sdk/0.1.0",
             "User-Agent": "bitlabs-sdk/0.1.0",
             "Content-Type": "application/x-sentry-envelope"
-        ])
-        
-        var request = try URLRequest(url: SentryManager.shared.url + "api/\(SentryManager.shared.projectID)/envelope/", method: .post, headers: headers)
-        request.httpBody = body
+        ]
         
         return request
     }
