@@ -7,7 +7,6 @@
 
 import UIKit
 import AdSupport
-import Alamofire
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -20,8 +19,6 @@ import AppTrackingTransparency
     private var uid = ""
     private var adId = ""
     private var token = ""
-    private var currencyIconUrl = ""
-    private var bonusPercentage = 0.0
     
     private var widgetColor = ["", ""]
     private var headerColor = ["", ""]
@@ -45,8 +42,14 @@ import AppTrackingTransparency
         
         SentryManager.shared.configure(token: token, uid: uid)
         
-        bitlabsAPI = BitLabsAPI(Session(interceptor: BitLabsRequestInterceptor(token, uid)))
+        let config = URLSessionConfiguration.default
+        config.httpAdditionalHeaders = [
+            "User-Agent": createUserAgent(),
+            "X-Api-Token": token,
+            "X-User-Id": uid
+        ]
         
+        bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
         getWidgetColor()
         
         guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
@@ -64,10 +67,6 @@ import AppTrackingTransparency
             
             let navigationColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
             self.headerColor = navigationColor.extractColors
-            
-            let isImage = configuration.first { $0.internalIdentifier == "general.currency.symbol.is_image" }?.value ?? "0"
-            let content = configuration.first { $0.internalIdentifier == "general.currency.symbol.content"}?.value ?? ""
-            self.currencyIconUrl = isImage == "1" ? content : ""
         }
     }
     
@@ -129,10 +128,6 @@ import AppTrackingTransparency
         }}
     }
     
-    @objc public func getLeaderboard(_ completionHandler: @escaping (GetLeaderboardResponse) -> ()) {
-        ifConfigured { bitlabsAPI?.getLeaderboard(completionHandler) }
-    }
-    
     /// Stores the reward completion closure to use on every reward completion.
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
     @objc public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {
@@ -159,18 +154,6 @@ import AppTrackingTransparency
             
             parent.present(webViewController, animated: true)
         }
-    }
-    
-    @objc public func getColor() -> [String] {
-        return widgetColor
-    }
-    
-    @objc public func getCurrencyIconUrl() -> String {
-        return currencyIconUrl
-    }
-    
-    @objc public func getBonusPercentage() -> Double {
-        return bonusPercentage
     }
     
     func rewardCompleted(_ value: Float) {
