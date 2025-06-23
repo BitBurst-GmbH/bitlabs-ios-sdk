@@ -5,7 +5,6 @@
 //  Created by Omar Raad on 11.10.23.
 //
 
-@testable import Alamofire
 @testable import BitLabs
 import Foundation
 import XCTest
@@ -13,15 +12,15 @@ import Mocker
 
 class BitLabsAPITest: XCTestCase {
     
-    var session: Session!
+    var session: URLSession!
     var bitlabsAPI: BitLabsAPI!
     var encoder = JSONEncoder() { didSet { encoder.keyEncodingStrategy = .convertToSnakeCase } }
     
     override func setUp() {
         super.setUp()
-        let configuration = URLSessionConfiguration.af.default
+        let configuration = URLSessionConfiguration.default
         configuration.protocolClasses = [MockingURLProtocol.self]
-        session = Session(configuration: configuration)
+        session = URLSession(configuration: configuration)
         bitlabsAPI = BitLabsAPI(session)
     }
     
@@ -33,7 +32,7 @@ class BitLabsAPITest: XCTestCase {
     }
     
     func testGetSurveys_Failure() {
-        let url = BitLabsRouter.getSurveys(sdk: "").urlRequest!.url!
+        let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
         let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 500, data: [.get: Data()], requestError: Exception("Error"))
         mock.register()
         
@@ -60,7 +59,7 @@ class BitLabsAPITest: XCTestCase {
             )
         )
         
-        let url = BitLabsRouter.getSurveys(sdk: "").urlRequest!.url!
+        let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
         let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
@@ -88,7 +87,7 @@ class BitLabsAPITest: XCTestCase {
             )
         )
         
-        let url = BitLabsRouter.getSurveys(sdk: "").urlRequest!.url!
+        let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
         let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
