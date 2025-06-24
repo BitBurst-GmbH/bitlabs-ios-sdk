@@ -14,7 +14,6 @@ public class Offerwall: WebViewDelegate {
     private let bitlabsAPI: BitLabsAPI
     
     private var adId = ""
-    private var widgetColor = ["000000", "000000"]
     private var headerColor = ["000000", "000000"]
     
     public var tags: [String: Any] = [:]
@@ -37,6 +36,11 @@ public class Offerwall: WebViewDelegate {
         bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
         
         getAppSettings()
+        
+        guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
+        else { return }
+        
+        adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
     }
     
     private func getAppSettings() {
@@ -44,9 +48,6 @@ public class Offerwall: WebViewDelegate {
             guard let self = self else { return }
             
             let theme = "light"
-            
-            let surveyIconColor = config.first { $0.internalIdentifier == "app.visual.\(theme).survey_icon_color"}?.value ?? ""
-            self.widgetColor = surveyIconColor.extractColors
             
             let navigationColor = config.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
             self.headerColor = navigationColor.extractColors

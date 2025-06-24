@@ -19,8 +19,6 @@ import AppTrackingTransparency
     private var uid = ""
     private var adId = ""
     private var token = ""
-    
-    private var widgetColor = ["", ""]
     private var headerColor = ["", ""]
     
     private var tags: [String: Any] = [:]
@@ -61,9 +59,6 @@ import AppTrackingTransparency
     private func getWidgetColor() {
         bitlabsAPI?.getAppSettings(token: token) { configuration in
             let theme = "light"
-            
-            let surveyIconColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).survey_icon_color"}?.value ?? ""
-            self.widgetColor = surveyIconColor.extractColors
             
             let navigationColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
             self.headerColor = navigationColor.extractColors

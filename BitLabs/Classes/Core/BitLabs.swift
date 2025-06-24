@@ -19,10 +19,7 @@ public class BitLabs: WebViewDelegate {
     private var uid = ""
     private var adId = ""
     private var token = ""
-    private var currencyIcon = ""
-    private var bonusPercentage = 0.0
     private var tags: [String: Any] = [:]
-    private var widgetColor = ["000000", "000000"]
     private var headerColor = ["000000", "000000"]
     
     private var onReward: ((Float) -> ())?
@@ -36,6 +33,7 @@ public class BitLabs: WebViewDelegate {
     /// So make sure you call it before using the library's functions
     /// - parameter token Your App Token, found in your [BitLabs Dashboard](https://dashboard.bitlabs.ai/).
     /// - parameter uid The id of the current user, this id is for you to keep track of which user got what.
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func configure(token: String, uid: String) {
         self.token = token
         self.uid = uid
@@ -63,18 +61,12 @@ public class BitLabs: WebViewDelegate {
         bitlabsAPI?.getAppSettings(token: token) { configuration in
             let theme = "light"
             
-            let surveyIconColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).survey_icon_color"}?.value ?? ""
-            self.widgetColor = surveyIconColor.extractColors
-            
             let navigationColor = configuration.first { $0.internalIdentifier == "app.visual.\(theme).navigation_color"}?.value ?? ""
             self.headerColor = navigationColor.extractColors
-            
-            let isImage = configuration.first { $0.internalIdentifier == "general.currency.symbol.is_image" }?.value ?? "0"
-            let content = configuration.first { $0.internalIdentifier == "general.currency.symbol.content"}?.value ?? ""
-            self.currencyIcon = isImage == "1" ? content : ""
         }
     }
     
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func requestTrackingAuthorization() {
         guard #available(iOS 14, *) else { return }
         
@@ -92,6 +84,7 @@ public class BitLabs: WebViewDelegate {
     ///
     /// - Warning: This will replace the currently stored tags with the newly input ones.
     /// - Parameter tags: The dictionary of tags to store in the [BitLabs](x-source-tag://BitLabs) Class
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func setTags(_ tags: [String: Any]) {
         self.tags = tags
     }
@@ -100,6 +93,7 @@ public class BitLabs: WebViewDelegate {
     /// - Parameters:
     ///   - key: The key of the tag.
     ///   - value: The value of the tag.
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func addTag(key: String, value: String) {
         tags[key] = value
     }
@@ -135,6 +129,7 @@ public class BitLabs: WebViewDelegate {
     }
     
     /// Shows the Leaderboard in the specified container.
+    @available(*, deprecated, message: "Will be removed in the next major release")
     public func showLeaderboard(in container: UIView) {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: .leaderboard)
@@ -144,12 +139,14 @@ public class BitLabs: WebViewDelegate {
     
     /// Stores the reward completion closure to use on every reward completion.
     /// - Parameter rewardCompletionHandler: The closure to execute on Reward completions.
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func setRewardCompletionHandler(_ rewardCompletionHandler: @escaping (Float)-> ()) {
         onReward = rewardCompletionHandler
     }
     
     /// Presents a ViewController with a WebKitViewController to show the Offerwall.
     /// - Parameter parent: The presenting ViewController
+    @available(*, deprecated, message: "Use OFFERWALL instead")
     public func launchOfferWall(parent: UIViewController) {
         ifConfigured {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)

@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
         offerwall.tags["user_type"] = "New"
         offerwall.tags["is_premium"] = false
         
+        
 //        offerwall.options["display_mode"] = "offers"
         
         offerwall.offerwallClosedHandler = { totalReward in
