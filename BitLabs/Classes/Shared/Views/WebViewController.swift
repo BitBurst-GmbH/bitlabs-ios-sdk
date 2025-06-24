@@ -12,7 +12,7 @@ import WebKit
 protocol WebViewDelegate {
     /// The completion handler that will execute immediately after the user is rewarded.
     ///  - Parameter value: The amount of the reward.
-    func rewardCompleted(_ value: Float)
+    func rewardCompleted(_ value: Double)
     
     /// Sends the leave reason to the BitLabs API
     ///
@@ -45,7 +45,7 @@ class WebViewController: UIViewController {
     private var isRotatable: Bool = false
     private var didCallViewDidAppear = false
     
-    private var reward: Float = 0.0
+    private var reward: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()

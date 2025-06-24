@@ -73,7 +73,7 @@ class TestingViewController: UIViewController {
 }
 
 extension TestingViewController: WebViewDelegate {
-    func rewardCompleted(_ value: Float) {
+    func rewardCompleted(_ value: Double) {
     }
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {

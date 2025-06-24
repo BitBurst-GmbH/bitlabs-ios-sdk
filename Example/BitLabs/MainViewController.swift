@@ -14,6 +14,8 @@ class MainViewController: UIViewController {
     private let uid = "oblivatevariegata"
     private var token = "YOUR_APP_TOKEN"
     
+    private var offerwall: Offerwall!
+    
     @IBOutlet weak var surveysContainer: UIView!
     @IBOutlet weak var leaderboardContainer: UIView!
     
@@ -26,16 +28,19 @@ class MainViewController: UIViewController {
             token = plist["APP_TOKEN"] ?? token
         }
         
-        BitLabs.shared.configure(token: token, uid: uid)
+        offerwall = BitLabs.OFFERWALL.create(token: token, uid: uid)
         
-        BitLabs.shared.setTags(["userType": "New", "isPremium": false])
-        BitLabs.shared.setRewardCompletionHandler { reward in
-            print("[Example] You earned: \(reward)")
-        }        
+        
+        offerwall.tags["user_type"] = "New"
+        offerwall.tags["is_premium"] = false
+        
+        offerwall.offerwallClosedHandler = { totalReward in
+            print("[Example] You earned: \(totalReward)")
+        }
     }
     
     @IBAction func requestTrackingAuthorization(_ sender: UIButton) {
-        BitLabs.shared.requestTrackingAuthorization()
+        offerwall.requestTrackingAuthorization()
     }
     
     @IBAction func checkForSurveys(_ sender: UIButton ) {
@@ -55,7 +60,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func showOfferWall(_ sender: UIButton) {
-        BitLabs.shared.launchOfferWall(parent: self)
+        offerwall.launch(parent: self)
     }
     
     @IBAction func getSurveys(_ sender: UIButton) {

@@ -155,7 +155,7 @@ public class BitLabs: WebViewDelegate {
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.initialURL = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, tags: tags)
+            webViewController.initialURL = generateURL(uid: uid, token: token, sdk: "NATIVE", adId: adId, options: [:], tags: tags)
             
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
@@ -166,8 +166,8 @@ public class BitLabs: WebViewDelegate {
         }
     }
     
-    func rewardCompleted(_ value: Float) {
-        onReward?(value)
+    func rewardCompleted(_ value: Double) {
+        onReward?(Float(value))
     }
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
@@ -180,5 +180,11 @@ public class BitLabs: WebViewDelegate {
             return
         }
         block()
+    }
+    
+    public class OFFERWALL {
+        public static func create(token: String, uid: String) -> Offerwall {
+            return Offerwall(token: token, uid: uid)
+        }
     }
 }

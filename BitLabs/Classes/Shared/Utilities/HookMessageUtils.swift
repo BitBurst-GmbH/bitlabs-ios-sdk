@@ -45,7 +45,7 @@ struct HookMessage: Codable {
 }
 
 struct RewardArgument: Codable {
-    let reward: Float
+    let reward: Double
 }
 
 struct SurveyStartArgument: Codable {
