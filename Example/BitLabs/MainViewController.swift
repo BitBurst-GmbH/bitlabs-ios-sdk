@@ -34,8 +34,14 @@ class MainViewController: UIViewController {
         offerwall.tags["user_type"] = "New"
         offerwall.tags["is_premium"] = false
         
+//        offerwall.options["display_mode"] = "offers"
+        
         offerwall.offerwallClosedHandler = { totalReward in
-            print("[Example] You earned: \(totalReward)")
+            print("[Example] You earned totally: \(totalReward)")
+        }
+        
+        offerwall.surveyRewardHandler = { reward in
+            print("[Example] You earned: \(reward)")
         }
     }
     

@@ -166,9 +166,11 @@ public class BitLabs: WebViewDelegate {
         }
     }
     
-    func rewardCompleted(_ value: Double) {
+    func offerwallClosed(_ value: Double) {
         onReward?(Float(value))
     }
+    
+    func rewardEarned(_ reward: Double) {}
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)

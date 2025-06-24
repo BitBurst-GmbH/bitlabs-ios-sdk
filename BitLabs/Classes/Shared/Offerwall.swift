@@ -86,10 +86,13 @@ public class Offerwall: WebViewDelegate {
         parent.present(webViewController, animated: true)
     }
     
-    func rewardCompleted(_ value: Double) {
+    func offerwallClosed(_ value: Double) {
         offerwallClosedHandler(value)
     }
-
+    
+    func rewardEarned(_ reward: Double) {
+        surveyRewardHandler(reward)
+    }
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI.leaveSurvey(clickId: clickId, reason: reason, completion: completion)

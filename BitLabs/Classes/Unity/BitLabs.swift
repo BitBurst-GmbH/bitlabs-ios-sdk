@@ -145,7 +145,13 @@ import AppTrackingTransparency
             let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
             
             webViewController.uid = uid
-            webViewController.initialURL = generateURL(uid: uid, token: token, sdk: "UNITY", adId: adId, tags: tags)
+            webViewController.initialURL = generateURL(
+                uid: uid,
+                token: token,
+                sdk: SubspecConfig.SDK,
+                adId: adId,
+                options: [:],
+                tags: tags)
             
             webViewController.delegate = self
             webViewController.color = headerColor.map { $0.toUIColor ?? .black }
@@ -156,9 +162,11 @@ import AppTrackingTransparency
         }
     }
     
-    func rewardCompleted(_ value: Float) {
-        onReward?(value)
+    func offerwallClosed(_ totalReward: Double) {
+        onReward?(Float(totalReward))
     }
+    
+    func rewardEarned(_ reward: Double) {}
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)

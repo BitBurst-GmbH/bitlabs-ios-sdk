@@ -10,9 +10,9 @@ import WebKit
 
 /// This delegate is to help a class execute some functions to which it doesn't have access
 protocol WebViewDelegate {
-    /// The completion handler that will execute immediately after the user is rewarded.
-    ///  - Parameter value: The amount of the reward.
-    func rewardCompleted(_ value: Double)
+    func offerwallClosed(_ totalReward: Double)
+    
+    func rewardEarned(_ reward: Double)
     
     /// Sends the leave reason to the BitLabs API
     ///
@@ -45,7 +45,7 @@ class WebViewController: UIViewController {
     private var isRotatable: Bool = false
     private var didCallViewDidAppear = false
     
-    private var reward: Double = 0.0
+    private var totalReward: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,7 +85,7 @@ class WebViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        delegate?.rewardCompleted(reward)
+        delegate?.offerwallClosed(totalReward)
     }
     
     private func setupWebView() {
@@ -216,19 +216,22 @@ extension WebViewController: WKScriptMessageHandler {
                 return
             }
             
-            reward += rewardArg.reward
+            delegate?.rewardEarned(rewardArg.reward)
+            totalReward += rewardArg.reward
         case .surveyScreentout:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return
             }
             
-            reward += rewardArg.reward
+            delegate?.rewardEarned(rewardArg.reward)
+            totalReward += rewardArg.reward
         case .surveyStartBonus:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return
             }
             
-            reward += rewardArg.reward
+            delegate?.rewardEarned(rewardArg.reward)
+            totalReward += rewardArg.reward
         case .surveyStart:
             configureUI(isPageSurvey: true)
             guard case .surveyStart(let surveyStartArgument) = hookMessage.args.first else {

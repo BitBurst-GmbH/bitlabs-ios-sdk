@@ -73,8 +73,9 @@ class TestingViewController: UIViewController {
 }
 
 extension TestingViewController: WebViewDelegate {
-    func rewardCompleted(_ value: Double) {
-    }
+    func rewardEarned(_ reward: Double) {}
+    
+    func offerwallClosed(_ value: Double) {}
     
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         print("LeaveSurveyRequest")
