@@ -28,6 +28,8 @@ class MainViewController: UIViewController {
             token = plist["APP_TOKEN"] ?? token
         }
         
+        BitLabs.API.configure(token: token, uid: uid)
+        
         offerwall = BitLabs.OFFERWALL.create(token: token, uid: uid)
         
         
@@ -51,7 +53,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func checkForSurveys(_ sender: UIButton ) {
-        BitLabs.shared.checkSurveys { result in
+        BitLabs.API.checkSurveys { result in
             switch result {
             case .failure(let error):
                 print("[Example] Check For Surveys \(error)")
@@ -71,7 +73,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func getSurveys(_ sender: UIButton) {
-        BitLabs.shared.getSurveys { result in
+        BitLabs.API.getSurveys { result in
             switch result {
             case .failure(let error):
                 print("[Example] Get Surveys \(error)")

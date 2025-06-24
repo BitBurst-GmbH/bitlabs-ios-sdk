@@ -15,6 +15,7 @@ import AppTrackingTransparency
 /// - Tag: BitLabs
 public class BitLabs: WebViewDelegate {
     public static let shared = BitLabs()
+    public static let API = BLAPI()
     
     private var uid = ""
     private var adId = ""
@@ -120,6 +121,7 @@ public class BitLabs: WebViewDelegate {
             }}}
     }
     
+    @available(*, deprecated, message: "Will be removed in the next major release")
     public func showSurveyWidget(in container: UIView, type: WidgetType = .simple) {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: type)
@@ -184,6 +186,52 @@ public class BitLabs: WebViewDelegate {
     public class OFFERWALL {
         public static func create(token: String, uid: String) -> Offerwall {
             return Offerwall(token: token, uid: uid)
+        }
+    }
+    
+    public class BLAPI {
+        private var uid = ""
+        private var token = ""
+        private var bitlabsAPI: BitLabsAPI? = nil
+        
+        init() {}
+        
+        public func configure(token: String, uid: String) {
+            self.token = token
+            self.uid = uid
+            
+            let config = URLSessionConfiguration.default
+            config.httpAdditionalHeaders = [
+                "User-Agent": createUserAgent(),
+                "X-Api-Token": token,
+                "X-User-Id": uid
+            ]
+
+            self.bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
+        }
+        
+        public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
+            ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+                switch result {
+                case .success(let surveys): completionHandler(.success(surveys))
+                case .failure(let error): completionHandler(.failure(error))
+                }}}
+        }
+        
+        public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
+            ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+                switch result {
+                case .success(let surveys): completionHandler(.success(!surveys.isEmpty))
+                case .failure(let error): completionHandler(.failure(error))
+                }}}
+        }
+        
+        private func ifConfigured(block: () -> ()) {
+            guard !token.isEmpty, !uid.isEmpty, bitlabsAPI != nil else {
+                print("[BitLabs] You should configure BitLabs first! Call BitLabs::configure(token:uid:)")
+                return
+            }
+            block()
         }
     }
 }
