@@ -7,7 +7,18 @@
 
 import Foundation
 
-let bundle = Bundle(for: WebViewController.self)
+let bundle = {
+    let bundle = Bundle(for: WebViewController.self)
+    
+    // TODO: Support SPM resource bundling alongside Cocoapods
+    guard let resourceBundleURL = bundle.url(forResource: "BitLabs", withExtension: "bundle"),
+          let resourceBundle = Bundle(url: resourceBundleURL) else {
+        print("[BitLabs] Failed to load resource bundle")
+        return bundle
+    }
+    
+    return resourceBundle
+}()
 
 class Exception: Error, CustomStringConvertible {
     let message: String

@@ -25,16 +25,22 @@ Pod::Spec.new do |spec|
     spec.swift_version = '5.0'
     spec.ios.deployment_target = '12.0'
     
+    spec.resource_bundles = {
+        'BitLabs' => [
+            'BitLabs/Resources/Shared/**/*.xib',
+            'BitLabs/Localizations/**/*.strings',
+            'BitLabs/Resources/Shared/**/*.xcassets'
+        ]
+    }
+    
     spec.default_subspec = 'Core'
     
     spec.subspec 'Core' do |core|
         core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
-        core.resources = ['BitLabs/Resources/{Shared,Core}/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/{Shared,Core}/**/*.xcassets']
     end
     
     spec.subspec 'Unity' do |unity|
         unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
-        unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
     end
 end
 
