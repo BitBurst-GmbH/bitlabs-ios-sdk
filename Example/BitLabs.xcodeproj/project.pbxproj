@@ -144,7 +144,7 @@
 				C74C27B229ED4E8A0089EA26 /* Keys.plist */,
 			);
 			name = "Example for BitLabs";
-			path = BitLabs;
+			path = Example_BitLabs;
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {

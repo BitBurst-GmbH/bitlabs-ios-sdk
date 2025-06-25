@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APP_TOKEN</key>
+	<string>46d31e1e-315a-4b52-b0de-eca6062163af</string>
+	<key>Test</key>
+	<string>46d31e1e-315a-4b52-b0de-eca6062163af</string>
+	<key>Magic Receipts</key>
+	<string>a7a7d6a1-dd8e-4bbd-9e80-292ab196575a</string>
+	<key>PollPay</key>
+	<string>7afbdd12-1a97-4496-bcbe-1d0a7376427e</string>
+</dict>
+</plist>
