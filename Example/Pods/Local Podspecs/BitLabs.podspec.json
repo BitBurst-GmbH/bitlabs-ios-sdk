@@ -18,9 +18,7 @@
   },
   "resource_bundles": {
     "BitLabs": [
-      "BitLabs/Resources/Shared/**/*.xib",
-      "BitLabs/Localizations/**/*.strings",
-      "BitLabs/Resources/Shared/**/*.xcassets"
+      "BitLabs/Resources/**/*.{xib,strings,xcassets}"
     ]
   },
   "default_subspecs": "Core",

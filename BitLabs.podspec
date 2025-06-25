@@ -26,11 +26,7 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = '12.0'
     
     spec.resource_bundles = {
-        'BitLabs' => [
-            'BitLabs/Resources/Shared/**/*.xib',
-            'BitLabs/Localizations/**/*.strings',
-            'BitLabs/Resources/Shared/**/*.xcassets'
-        ]
+        'BitLabs' => ['BitLabs/Resources/**/*.{xib,strings,xcassets}']
     }
     
     spec.default_subspec = 'Core'
