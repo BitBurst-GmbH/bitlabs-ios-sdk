@@ -5,7 +5,7 @@
 //  Created by Omar Raad on 28.04.22.
 //
 
-import Foundation
+import UIKit
 
 public struct Survey: Codable {
     public let id: String

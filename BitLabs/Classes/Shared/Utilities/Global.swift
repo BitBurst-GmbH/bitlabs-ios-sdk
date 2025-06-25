@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 #if SWIFT_PACKAGE
 let bundle = Bundle.module

@@ -210,7 +210,7 @@ extension WebViewController: WKScriptMessageHandler {
         case .initOfferwall:
             self.webView.evaluateJavaScript("window.parent.postMessage({ target: 'app.behaviour.close_button_visible', value: true });")
             print("[BitLabs] Sent showCloseButton event")
-            configureUI(isPageSurvey: true)
+            configureUI(isPageSurvey: false)
         case .surveyComplete:
             guard case .reward(let rewardArg) = hookMessage.args.first else {
                 return

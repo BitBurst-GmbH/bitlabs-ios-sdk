@@ -6,8 +6,8 @@
 //  Copyright (c) 2021 BitBurst GmbH. All rights reserved.
 //
 
-import BitLabs
 import UIKit
+import BitLabs
 
 class MainViewController: UIViewController {
     

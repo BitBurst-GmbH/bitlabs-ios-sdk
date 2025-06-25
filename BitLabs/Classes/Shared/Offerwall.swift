@@ -7,6 +7,7 @@
 
 import AdSupport
 import AppTrackingTransparency
+import UIKit
 
 public class Offerwall: WebViewDelegate {
     private let uid: String

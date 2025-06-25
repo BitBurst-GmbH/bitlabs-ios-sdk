@@ -9,7 +9,6 @@
 import UIKit
 @testable import BitLabs
 
-
 class TestingViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
     

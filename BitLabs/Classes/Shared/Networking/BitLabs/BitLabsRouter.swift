@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum BitLabsRouter {
 	case updateClick(clickId: String, reason: LeaveReason)

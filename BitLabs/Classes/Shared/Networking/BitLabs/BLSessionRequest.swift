@@ -5,6 +5,7 @@
 //  Created by Omar Raad on 23.06.25.
 //
 
+import Foundation
 
 class BLSessionRequest {
     private let session: URLSession
