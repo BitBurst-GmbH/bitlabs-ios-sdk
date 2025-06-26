@@ -63,7 +63,11 @@
 		BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UnitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C27B229ED4E8A0089EA26 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		D7249AAE2E0D373E00C78EB6 /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A0A8332C76262800D7B45B /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = ../.github/workflows; sourceTree = "<group>"; };
+		D7A644FF2E0C41690092C5FF /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A645032E0C417B0092C5FF /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7A645072E0C418B0092C5FF /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AC24502C73968500DF6E8C /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7AC24522C73968500DF6E8C /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		D7AC245B2C74A35900DF6E8C /* Testing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Testing.storyboard; sourceTree = "<group>"; };
@@ -72,7 +76,7 @@
 		D7ED59EA2C736F05008C9923 /* GlobalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTests.swift; sourceTree = "<group>"; };
 		D7ED59EC2C736F91008C9923 /* BitLabsAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsAPITest.swift; sourceTree = "<group>"; };
 		F3E519E7BE4D051F0C6E9B13 /* Pods-BitLabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +145,7 @@
 				C74C27B229ED4E8A0089EA26 /* Keys.plist */,
 			);
 			name = "Example for BitLabs";
-			path = BitLabs;
+			path = Example_BitLabs;
 			sourceTree = "<group>";
 		};
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
@@ -197,6 +201,10 @@
 		EFE0FC111D86049531B8AB51 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7249AAE2E0D373E00C78EB6 /* BitLabs.framework */,
+				D7A645072E0C418B0092C5FF /* BitLabs.framework */,
+				D7A645032E0C417B0092C5FF /* BitLabs.framework */,
+				D7A644FF2E0C41690092C5FF /* BitLabs.framework */,
 				C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */,
 				BD9D0F617ECBEF578BBF8F61 /* Pods_UnitTests.framework */,
 				607C007595DCCADE4A279867 /* Pods_BitLabs_Example_UITests.framework */,
@@ -215,7 +223,7 @@
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				02674327C433DDDA74673974 /* [CP] Embed Pods Frameworks */,
+				97BD2532BEB558EB5FE249F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -234,7 +242,7 @@
 				D7AC244C2C73968500DF6E8C /* Sources */,
 				D7AC244D2C73968500DF6E8C /* Frameworks */,
 				D7AC244E2C73968500DF6E8C /* Resources */,
-				552D556571EC2BCCAD86D72A /* [CP] Embed Pods Frameworks */,
+				D7551F7D41C8CA725B33FD83 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -274,7 +282,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1630;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
@@ -345,26 +353,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02674327C433DDDA74673974 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabs.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1B50A09A53750818A15ECBD7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -431,24 +419,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		552D556571EC2BCCAD86D72A /* [CP] Embed Pods Frameworks */ = {
+		97BD2532BEB558EB5FE249F7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabs.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C5C8F05A6B95C7BB0C962130 /* [CP] Embed Pods Frameworks */ = {
@@ -467,6 +453,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UnitTests/Pods-UnitTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D7551F7D41C8CA725B33FD83 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BitLabs/BitLabs.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BitLabs.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BitLabs_Example-UITests/Pods-BitLabs_Example-UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -567,6 +571,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -625,6 +630,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -654,9 +660,8 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				EXCLUDED_ARCHS = "";
-				INFOPLIST_FILE = BitLabs/Info.plist;
+				INFOPLIST_FILE = Example_BitLabs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -680,9 +685,8 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				EXCLUDED_ARCHS = "";
-				INFOPLIST_FILE = BitLabs/Info.plist;
+				INFOPLIST_FILE = Example_BitLabs/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -702,7 +706,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 03B1535722BF8D5A93872D2F /* Pods-BitLabs_Example-UITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -713,7 +716,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -737,7 +739,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 284B55409E17A57918C5F84D /* Pods-BitLabs_Example-UITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -747,7 +748,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -779,7 +779,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -813,7 +812,6 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = PMQSAFYSYK;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GENERATE_INFOPLIST_FILE = YES;

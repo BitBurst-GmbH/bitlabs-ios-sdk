@@ -6,7 +6,7 @@
 # To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
 
-info_plist_path = 'Example/BitLabs/Info.plist'
+info_plist_path = 'Example/Example_BitLabs/Info.plist'
 plist = Xcodeproj::Plist.read_from_path(info_plist_path)
 version = plist['CFBundleShortVersionString']
 
@@ -24,18 +24,19 @@ Pod::Spec.new do |spec|
     
     spec.swift_version = '5.0'
     spec.ios.deployment_target = '12.0'
-    spec.dependency 'Alamofire', '~> 5.9.0'
+    
+    spec.resource_bundles = {
+        'BitLabs' => ['BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}']
+    }
     
     spec.default_subspec = 'Core'
     
     spec.subspec 'Core' do |core|
-        core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
-        core.resources = ['BitLabs/Resources/{Shared,Core}/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/{Shared,Core}/**/*.xcassets']
+        core.source_files = 'BitLabs/{Shared,Core}/**/*.swift'
     end
     
     spec.subspec 'Unity' do |unity|
-        unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
-        unity.resources = ['BitLabs/Resources/Shared/**/*.xib', 'BitLabs/Localizations/**/*.strings', 'BitLabs/Resources/Shared/**/*.xcassets']
+        unity.source_files = 'BitLabs/{Shared,Unity}/**/*.swift'
     end
 end
 
