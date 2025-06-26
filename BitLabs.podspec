@@ -6,7 +6,7 @@
 # To learn more about a Podspec see https://guides.cocoapods.org/syntax/podspec.html
 #
 
-info_plist_path = 'Example/BitLabs/Info.plist'
+info_plist_path = 'Example/Example_BitLabs/Info.plist'
 plist = Xcodeproj::Plist.read_from_path(info_plist_path)
 version = plist['CFBundleShortVersionString']
 
@@ -26,17 +26,17 @@ Pod::Spec.new do |spec|
     spec.ios.deployment_target = '12.0'
     
     spec.resource_bundles = {
-        'BitLabs' => ['BitLabs/Resources/**/*.{xib,strings,xcassets}']
+        'BitLabs' => ['BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}']
     }
     
     spec.default_subspec = 'Core'
     
     spec.subspec 'Core' do |core|
-        core.source_files = 'BitLabs/Classes/{Shared,Core}/**/*.swift'
+        core.source_files = 'BitLabs/{Shared,Core}/**/*.swift'
     end
     
     spec.subspec 'Unity' do |unity|
-        unity.source_files = 'BitLabs/Classes/{Shared,Unity}/**/*.swift'
+        unity.source_files = 'BitLabs/{Shared,Unity}/**/*.swift'
     end
 end
 

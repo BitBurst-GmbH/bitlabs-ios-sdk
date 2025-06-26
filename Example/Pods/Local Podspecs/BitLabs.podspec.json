@@ -18,18 +18,18 @@
   },
   "resource_bundles": {
     "BitLabs": [
-      "BitLabs/Resources/**/*.{xib,strings,xcassets}"
+      "BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}"
     ]
   },
   "default_subspecs": "Core",
   "subspecs": [
     {
       "name": "Core",
-      "source_files": "BitLabs/Classes/{Shared,Core}/**/*.swift"
+      "source_files": "BitLabs/{Shared,Core}/**/*.swift"
     },
     {
       "name": "Unity",
-      "source_files": "BitLabs/Classes/{Shared,Unity}/**/*.swift"
+      "source_files": "BitLabs/{Shared,Unity}/**/*.swift"
     }
   ],
   "swift_version": "5.0"

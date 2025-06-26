@@ -5,16 +5,11 @@ let package = Package(
     name: "BitLabs",
     defaultLocalization: "en",
     platforms: [ .iOS(.v12) ],
-    products: [
-        .library(
-            name: "BitLabs",
-            targets: ["BitLabs"]),
-    ],
-    dependencies: [],
+    products: [.library(name: "BitLabs",targets: ["BitLabs"])],
     targets: [
         .target(
             name: "BitLabs",
             path: "BitLabs",
-            exclude: ["Classes/Unity"]),
+            exclude: ["Unity"]),
     ]
 )
