@@ -23,7 +23,12 @@ jobs:
           gem install cocoapods
           (cd Example && pod install)
         
-      - name: Run Publish
+      - name: Publish BitLabs
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
-        run: pod trunk push
+        run: pod trunk push BitLabs.podspec
+        
+      - name: Publish BLCustom
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: pod trunk push BLCustom.podspec
