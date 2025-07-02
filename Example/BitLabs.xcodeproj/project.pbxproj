@@ -64,6 +64,7 @@
 		C1A7F2871ECC0A4BB0FE43BE /* Pods_BitLabs_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitLabs_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74C27B229ED4E8A0089EA26 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		D7249AAE2E0D373E00C78EB6 /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D759AE792E152F9700D32394 /* BLCustom.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = BLCustom.podspec; path = ../BLCustom.podspec; sourceTree = SOURCE_ROOT; };
 		D7A0A8332C76262800D7B45B /* workflows */ = {isa = PBXFileReference; lastKnownFileType = folder; name = workflows; path = ../.github/workflows; sourceTree = "<group>"; };
 		D7A644FF2E0C41690092C5FF /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A645032E0C417B0092C5FF /* BitLabs.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BitLabs.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +160,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				D759AE792E152F9700D32394 /* BLCustom.podspec */,
 				FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */,
 				0A63A087A1680888EAADB8AC /* README.md */,
 				310B2E7BCEC2EC87A0646B51 /* LICENSE */,
