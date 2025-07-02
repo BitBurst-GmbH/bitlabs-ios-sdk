@@ -14,7 +14,7 @@ let bundle = Bundle.module
 let bundle = {
     let bundle = Bundle(for: WebViewController.self)
     
-    guard let resourceBundleURL = bundle.url(forResource: "BitLabs", withExtension: "bundle"),
+    guard let resourceBundleURL = bundle.url(forResource: "BitLabsResources", withExtension: "bundle"),
           let resourceBundle = Bundle(url: resourceBundleURL) else {
         print("[BitLabs] Failed to load resource bundle")
         return bundle

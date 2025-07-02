@@ -16,17 +16,15 @@ Pod::Spec.new do |spec|
     spec.summary          = 'BitLabs - monetize your app with rewarded surveys.'
     spec.description      = 'BitLabs offers the opportunity to monetize your app with rewarded surveys easily.'
     spec.homepage         = 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk'
-    # s.screenshots       = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
     spec.license          = 'Commercial'
     spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
     spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
-    # s.social_media_url  = 'https://twitter.com/<TWITTER_USERNAME>'
     
     spec.swift_version = '5.0'
     spec.ios.deployment_target = '12.0'
     
     spec.resource_bundles = {
-        'BitLabs' => ['BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}']
+        'BitLabsResources' => ['BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}']
     }
     
     spec.default_subspec = 'Core'

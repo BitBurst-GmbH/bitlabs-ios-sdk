@@ -76,7 +76,7 @@
 		D7ED59EA2C736F05008C9923 /* GlobalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTests.swift; sourceTree = "<group>"; };
 		D7ED59EC2C736F91008C9923 /* BitLabsAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BitLabsAPITest.swift; sourceTree = "<group>"; };
 		F3E519E7BE4D051F0C6E9B13 /* Pods-BitLabs_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitLabs_Example.debug.xcconfig"; path = "Target Support Files/Pods-BitLabs_Example/Pods-BitLabs_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; };
+		FE274F2C9DC8CAD206EC0C89 /* BitLabs.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = BitLabs.podspec; path = ../BitLabs.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
