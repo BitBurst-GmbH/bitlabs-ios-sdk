@@ -68,17 +68,22 @@ public class Offerwall: WebViewDelegate {
         }
     }
     
+    public func openOffer(withId offerId: String, parent: UIViewController) {
+        
+    }
+    
     public func launch(parent: UIViewController) {
         let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
         
         webViewController.uid = uid
-        webViewController.initialURL = generateURL(
+        webViewController.initialURL = OfferwallURL(
             uid: uid,
             token: token,
             sdk: SubspecConfig.SDK,
             adId: adId,
             options: options,
-            tags: tags)
+            tags: tags
+        ).url
         
         webViewController.delegate = self
         webViewController.color = headerColor.map { $0.toUIColor ?? .black }
