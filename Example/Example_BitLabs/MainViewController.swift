@@ -69,7 +69,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func showOfferWall(_ sender: UIButton) {
-        offerwall.launch(parent: self)
+        offerwall.openOffer(withId: "1671605", parent: self)
     }
     
     @IBAction func getSurveys(_ sender: UIButton) {

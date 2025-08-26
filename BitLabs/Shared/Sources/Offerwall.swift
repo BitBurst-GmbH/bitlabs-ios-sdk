@@ -69,14 +69,20 @@ public class Offerwall: WebViewDelegate {
     }
     
     public func openOffer(withId offerId: String, parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).offerUrl(forOfferId: offerId)
         
+        launchWithURL(url, parent: parent)
     }
     
     public func launch(parent: UIViewController) {
-        let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
-        
-        webViewController.uid = uid
-        webViewController.initialURL = OfferwallURL(
+        let url = OfferwallURL(
             uid: uid,
             token: token,
             sdk: SubspecConfig.SDK,
@@ -85,14 +91,24 @@ public class Offerwall: WebViewDelegate {
             tags: tags
         ).url
         
-        webViewController.delegate = self
-        webViewController.color = headerColor.map { $0.toUIColor ?? .black }
-        
-        webViewController.modalPresentationStyle = .overFullScreen
-        
-        parent.present(webViewController, animated: true)
+        launchWithURL(url, parent: parent)
     }
     
+    private func launchWithURL(_ url: URL?, parent: UIViewController) {
+        let vc = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        
+        vc.uid = uid
+        vc.initialURL = url
+        
+        vc.delegate = self
+        vc.color = headerColor.map { $0.toUIColor ?? .black }
+
+        vc.modalPresentationStyle = .overFullScreen
+        
+        parent.present(vc, animated: true)
+    }
+    
+    // MARK: - Delegate functions
     func offerwallClosed(_ value: Double) {
         offerwallClosedHandler(value)
     }
