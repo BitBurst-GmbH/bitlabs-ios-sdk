@@ -8,12 +8,17 @@
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
-![](/overview.gif)
-
 ## Installation
 
-BitLabs is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Swift Packcage Manager (Recommended)
+
+- File > Swift Packages > Add Package Dependency
+- Add https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git
+- Select "Up to Next Major" with "4.1.0"
+
+### Cocoapods (No recommended)
+
+Add the following line to your Podfile:
 
 ```ruby
 pod 'BitLabs'
