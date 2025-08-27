@@ -1,7 +1,7 @@
 PODS:
-  - BitLabs (4.0.0):
-    - BitLabs/Core (= 4.0.0)
-  - BitLabs/Core (4.0.0)
+  - BitLabs (4.1.0):
+    - BitLabs/Core (= 4.1.0)
+  - BitLabs/Core (4.1.0)
   - Mocker (2.5.5)
 
 DEPENDENCIES:
@@ -17,7 +17,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BitLabs: dacc06374cfd95062313a8de56100524edbb175e
+  BitLabs: 3bfdd407baaf0c70b6942f2c653a6785b5f221bd
   Mocker: 8c731a8104962f246cadf2b02556218e9edc1390
 
 PODFILE CHECKSUM: 5f517403d2cd870bdc4c82c6cf681e86ef6881c6

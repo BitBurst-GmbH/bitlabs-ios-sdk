@@ -68,26 +68,73 @@ public class Offerwall: WebViewDelegate {
         }
     }
     
-    public func launch(parent: UIViewController) {
-        let webViewController = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
-        
-        webViewController.uid = uid
-        webViewController.initialURL = generateURL(
+    public func openOffer(withId offerId: String, parent: UIViewController) {
+        let url = OfferwallURL(
             uid: uid,
             token: token,
             sdk: SubspecConfig.SDK,
             adId: adId,
             options: options,
-            tags: tags)
+            tags: tags
+        ).offerUrl(forOfferId: offerId)
         
-        webViewController.delegate = self
-        webViewController.color = headerColor.map { $0.toUIColor ?? .black }
-        
-        webViewController.modalPresentationStyle = .overFullScreen
-        
-        parent.present(webViewController, animated: true)
+        launchWithURL(url, parent: parent)
     }
     
+    public func openMagicReceiptsOffer(withId offerId: String, parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).magicReceiptsOfferURL(forOfferId: offerId)
+        
+        launchWithURL(url, parent: parent)
+    }
+    
+    public func openMagicReceiptsMerchant(withId merchantId: String, parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).magicReceiptsMerchantURL(forMerchantId: merchantId)
+        
+        launchWithURL(url, parent: parent)
+    }
+    
+    public func launch(parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).url
+        
+        launchWithURL(url, parent: parent)
+    }
+    
+    private func launchWithURL(_ url: URL?, parent: UIViewController) {
+        let vc = WebViewController(nibName: String(describing: WebViewController.self), bundle: bundle)
+        
+        vc.uid = uid
+        vc.initialURL = url
+        
+        vc.delegate = self
+        vc.color = headerColor.map { $0.toUIColor ?? .black }
+
+        vc.modalPresentationStyle = .overFullScreen
+        
+        parent.present(vc, animated: true)
+    }
+    
+    // MARK: - Delegate functions
     func offerwallClosed(_ value: Double) {
         offerwallClosedHandler(value)
     }
