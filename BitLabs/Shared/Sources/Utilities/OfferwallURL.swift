@@ -5,6 +5,8 @@
 //  Created by Omar Raad on 26.08.25.
 //
 
+import Foundation
+
 internal struct OfferwallURL {
     private let uid: String
     private let token: String
