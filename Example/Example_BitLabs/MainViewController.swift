@@ -15,10 +15,7 @@ class MainViewController: UIViewController {
     private var token = "YOUR_APP_TOKEN"
     
     private var offerwall: Offerwall!
-    
-    @IBOutlet weak var surveysContainer: UIView!
-    @IBOutlet weak var leaderboardContainer: UIView!
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -64,12 +61,16 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func showLeaderboard(_ sender: Any) {
-        BitLabs.shared.showLeaderboard(in: leaderboardContainer)
+    @IBAction func openShoppingOffer(_ sender: Any) {
+        offerwall.openMagicReceiptsOffer(withId: "311768", parent: self)
+    }
+    
+    @IBAction func openShoppingMerchant(_ sender: Any) {
+        offerwall.openMagicReceiptsMerchant(withId: "7", parent: self)
     }
     
     @IBAction func showOfferWall(_ sender: UIButton) {
-        offerwall.openOffer(withId: "1671605", parent: self)
+        offerwall.launch(parent: self)
     }
     
     @IBAction func getSurveys(_ sender: UIButton) {
@@ -84,7 +85,7 @@ class MainViewController: UIViewController {
         }
     }
     
-    @IBAction func showSurveyWidget(_ sender: Any) {
-        BitLabs.shared.showSurveyWidget(in: surveysContainer, type: .simple)
+    @IBAction func openOffer(_ sender: Any) {
+        offerwall.openOffer(withId: "1671485", parent: self)
     }
 }

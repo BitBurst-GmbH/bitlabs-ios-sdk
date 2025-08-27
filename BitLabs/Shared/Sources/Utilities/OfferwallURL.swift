@@ -33,6 +33,18 @@ internal struct OfferwallURL {
         return components.url
     }
     
+    func magicReceiptsOfferURL(forOfferId offerId: String) -> URL? {
+        var components = baseURLComponents()
+        components.path += "/magic-receipts/offer/\(offerId)"
+        return components.url
+    }
+    
+    func magicReceiptsMerchantURL(forMerchantId merchantId: String) -> URL? {
+        var components = baseURLComponents()
+        components.path += "/magic-receipts/merchant/\(merchantId)"
+        return components.url
+    }
+    
     private func baseURLComponents() -> URLComponents {
         var components = URLComponents(string: "https://web.bitlabs.ai")!
         

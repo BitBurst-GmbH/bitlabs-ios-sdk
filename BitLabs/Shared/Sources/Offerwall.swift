@@ -81,6 +81,32 @@ public class Offerwall: WebViewDelegate {
         launchWithURL(url, parent: parent)
     }
     
+    public func openMagicReceiptsOffer(withId offerId: String, parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).magicReceiptsOfferURL(forOfferId: offerId)
+        
+        launchWithURL(url, parent: parent)
+    }
+    
+    public func openMagicReceiptsMerchant(withId merchantId: String, parent: UIViewController) {
+        let url = OfferwallURL(
+            uid: uid,
+            token: token,
+            sdk: SubspecConfig.SDK,
+            adId: adId,
+            options: options,
+            tags: tags
+        ).magicReceiptsMerchantURL(forMerchantId: merchantId)
+        
+        launchWithURL(url, parent: parent)
+    }
+    
     public func launch(parent: UIViewController) {
         let url = OfferwallURL(
             uid: uid,
