@@ -35,7 +35,7 @@ Pod::Spec.new do |spec|
 
     spec.subspec 'Unity' do |unity|
         unity.source_files = 'BitLabs/{Shared,Unity}/**/*.swift'
-        unity.resources = 'BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}'
+        unity.resources = 'BitLabs/{Shared,Unity}/Resources/**/*.{xib,strings,xcassets}'
     end
 end
 
