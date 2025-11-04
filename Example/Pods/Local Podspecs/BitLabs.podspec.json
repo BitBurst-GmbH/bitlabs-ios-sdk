@@ -29,7 +29,8 @@
     },
     {
       "name": "Unity",
-      "source_files": "BitLabs/{Shared,Unity}/**/*.swift"
+      "source_files": "BitLabs/{Shared,Unity}/**/*.swift",
+      "resources": "BitLabs/{Shared,Unity}/Resources/**/*.{xib,strings,xcassets}"
     }
   ],
   "swift_version": "5.0"
