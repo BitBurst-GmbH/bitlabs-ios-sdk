@@ -34,26 +34,40 @@ import AppTrackingTransparency
     /// So make sure you call it before using the library's functions
     /// - parameter token Your App Token, found in your [BitLabs Dashboard](https://dashboard.bitlabs.ai/).
     /// - parameter uid The id of the current user, this id is for you to keep track of which user got what.
-    @objc public func configure(token: String, uid: String) {
-        self.token = token
-        self.uid = uid
-        
-        SentryManager.shared.configure(token: token, uid: uid)
-        
-        let config = URLSessionConfiguration.default
-        config.httpAdditionalHeaders = [
-            "User-Agent": createUserAgent(),
-            "X-Api-Token": token,
-            "X-User-Id": uid
-        ]
-        
-        bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
-        getWidgetColor()
-        
-        guard #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus
-        else { return }
-        
-        adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+    /// - parameter onSuccess Callback executed when initialization succeeds
+    /// - parameter onError Callback executed when initialization fails with error message
+    @objc public func configure(token: String, uid: String, onSuccess: @escaping () -> (), onError: @escaping (String) -> ()) {
+        do {
+            guard !token.isEmpty else {
+                throw NSError(domain: "BitLabs", code: 1, userInfo: [NSLocalizedDescriptionKey: "Token cannot be empty"])
+            }
+            guard !uid.isEmpty else {
+                throw NSError(domain: "BitLabs", code: 2, userInfo: [NSLocalizedDescriptionKey: "UID cannot be empty"])
+            }
+
+            self.token = token
+            self.uid = uid
+
+            SentryManager.shared.configure(token: token, uid: uid)
+
+            let config = URLSessionConfiguration.default
+            config.httpAdditionalHeaders = [
+                "User-Agent": createUserAgent(),
+                "X-Api-Token": token,
+                "X-User-Id": uid
+            ]
+
+            bitlabsAPI = BitLabsAPI(URLSession(configuration: config))
+            getWidgetColor()
+
+            if #available(iOS 14, *), case .authorized = ATTrackingManager.trackingAuthorizationStatus {
+                adId = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+            }
+
+            onSuccess()
+        } catch {
+            onError(error.localizedDescription)
+        }
     }
     
     private func getWidgetColor() {
@@ -98,27 +112,22 @@ import AppTrackingTransparency
     ///
     ///  If you want to perform background checks if surveys are available, this is the best option.
     ///
-    /// - Parameter completionHandler: A closure which executes after a result is recieve
-    /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
-    @objc public func checkSurveys(_ completionHandler: @escaping (_ hasSurveys: Bool) -> ()) {
+    /// - Parameter onSuccess: A closure which executes with a Bool indicating whether surveys are available
+    /// - Parameter onError: A closure which executes when an error occurs with the error message
+    @objc public func checkSurveys(onSuccess: @escaping (_ hasSurveys: Bool) -> (), onError: @escaping (_ error: String) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
             switch result {
-            case .failure(let error):
-                print("[BitLabs] Check For Surveys \(error)")
-                completionHandler(false)
-            case .success(let surveys):
-                completionHandler(!surveys.isEmpty)
+            case .success(let surveys): onSuccess(!surveys.isEmpty)
+            case .failure(let error): onError(error.localizedDescription)
             }
         } }
     }
     
-    @objc public func getSurveys(_ completionHandler: @escaping ([Survey]) -> ()) {
+    @objc public func getSurveys(onSuccess: @escaping (_ surveys: [Survey]) -> (), onError: @escaping (_ error: String) -> ()) {
         ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
             switch result {
-            case .failure(let error):
-                print("[Example] Get Surveys \(error)")
-            case .success(let surveys):
-                completionHandler(surveys)
+            case .success(let surveys): onSuccess(surveys)
+            case .failure(let error): onError(error.localizedDescription)
             }
         }}
     }

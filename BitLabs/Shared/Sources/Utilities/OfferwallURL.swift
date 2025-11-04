@@ -48,7 +48,7 @@ internal struct OfferwallURL {
     }
     
     private func baseURLComponents() -> URLComponents {
-        var components = URLComponents(string: "https://web.bitlabs.ai")!
+        var components = URLComponents(string: "https://332a77dd.bitlabs-web.pages.dev")!
         
         var queryItems = [
             URLQueryItem(name: "uid", value: uid),

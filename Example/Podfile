@@ -3,7 +3,7 @@ platform :ios, "12.0"
 
 target 'BitLabs_Example' do
   
-  pod 'BitLabs', :path => '../'
+  pod 'BitLabs/Unity', :path => '../'
   
   target 'UnitTests' do
     inherit! :search_paths

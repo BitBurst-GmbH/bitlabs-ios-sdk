@@ -12,15 +12,21 @@ import UIKit
 let bundle = Bundle.module
 #else
 let bundle = {
-    let bundle = Bundle(for: WebViewController.self)
-    
-    guard let resourceBundleURL = bundle.url(forResource: "BitLabsResources", withExtension: "bundle"),
-          let resourceBundle = Bundle(url: resourceBundleURL) else {
-        print("[BitLabs] Failed to load resource bundle")
-        return bundle
+    let frameworkBundle = Bundle(for: WebViewController.self)
+
+    // Try resource bundle first (React Native, other CocoaPods users)
+    if let resourceBundleURL = frameworkBundle.url(forResource: "BitLabsResources", withExtension: "bundle"),
+       let resourceBundle = Bundle(url: resourceBundleURL) {
+        return resourceBundle
     }
-    
-    return resourceBundle
+
+    // Check if XIB exists directly in framework (Unity dynamic frameworks where CocoaPods doesn't create bundle)
+    if frameworkBundle.path(forResource: "WebViewController", ofType: "xib") != nil {
+        return frameworkBundle
+    }
+
+    // Last resort: return framework bundle and let it fail with proper error
+    return frameworkBundle
 }()
 #endif
 

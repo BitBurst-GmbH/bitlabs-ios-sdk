@@ -1,11 +1,9 @@
 PODS:
-  - BitLabs (4.1.0):
-    - BitLabs/Core (= 4.1.0)
-  - BitLabs/Core (4.1.0)
+  - BitLabs/Unity (4.1.0)
   - Mocker (2.5.5)
 
 DEPENDENCIES:
-  - BitLabs (from `../`)
+  - BitLabs/Unity (from `../`)
   - Mocker
 
 SPEC REPOS:
@@ -20,6 +18,6 @@ SPEC CHECKSUMS:
   BitLabs: 3bfdd407baaf0c70b6942f2c653a6785b5f221bd
   Mocker: 8c731a8104962f246cadf2b02556218e9edc1390
 
-PODFILE CHECKSUM: 5f517403d2cd870bdc4c82c6cf681e86ef6881c6
+PODFILE CHECKSUM: ad2c612574deba11b0a8046977e2b67d5dade84e
 
 COCOAPODS: 1.16.2
