@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 
 /// This delegate is to help a class execute some functions to which it doesn't have access
-protocol WebViewDelegate {
+protocol WebViewDelegate: AnyObject {
     func offerwallClosed(_ totalReward: Double)
     
     func rewardEarned(_ reward: Double)
@@ -40,7 +40,7 @@ class WebViewController: UIViewController {
     
     var clickId = ""
     
-    var delegate: WebViewDelegate?
+    weak var delegate: WebViewDelegate?
     
     private var isRotatable: Bool = false
     private var didCallViewDidAppear = false
