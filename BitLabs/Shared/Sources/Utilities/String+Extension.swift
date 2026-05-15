@@ -13,7 +13,7 @@ extension String {
         return bundle.localizedString(forKey: self, value: nil, table: nil)
     }
     
-    var toUIColor: UIColor? {
+    package var toUIColor: UIColor? {
         let regex = try! NSRegularExpression(pattern: #"#([0-9a-fA-F]{6})"#)
         
         if regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).isEmpty {
@@ -39,7 +39,7 @@ extension String {
     
     /// This method assumes that the string is a either a hex color or the linear gradient in the form 'linear-gradient(angle, color1, color2)'.
     /// It then extracts and returns color1 and color2. Otherwise, it will return the hex color as a UIColor twice in an array.
-    var extractColors: [String] {
+    package var extractColors: [String] {
         let regex = try! NSRegularExpression(pattern: #"linear-gradient\((\d+)deg,\s*(.+)\)"#)
         
         guard let match = regex.matches(in: self, range: NSRange(self.startIndex..., in: self)).first else {

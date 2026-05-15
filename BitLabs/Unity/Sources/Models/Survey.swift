@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc public class Survey: NSObject, Codable {
     let id: String

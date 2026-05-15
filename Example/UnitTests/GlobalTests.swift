@@ -7,6 +7,8 @@
 
 import XCTest
 @testable import BitLabs
+// the following is only used when BitLabs is imported via SPM not Cocoapods
+//@testable import BitLabsShared
 
 class GlobalTests: XCTestCase {
     

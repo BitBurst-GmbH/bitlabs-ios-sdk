@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetSurveysResponse: Codable {
+struct GetSurveysResponse<T: Codable>: Codable {
     let restrictionReason: RestrictionReason?
-    let surveys: [Survey]
+    let surveys: [T]
 }

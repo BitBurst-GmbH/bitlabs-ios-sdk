@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 #if SWIFT_PACKAGE
-let bundle = Bundle.module
+package let bundle = Bundle.module
 #else
-let bundle = {
+package let bundle = {
     let frameworkBundle = Bundle(for: WebViewController.self)
 
     // Try resource bundle first
@@ -65,7 +65,7 @@ func generateQRCode(from string: String) -> UIImage? {
     return UIImage(ciImage: output);
 }
 
-func createUserAgent() -> String {
+package func createUserAgent() -> String {
     let deviceType = UIDevice.current.userInterfaceIdiom == .pad ? "Tablet" : "Phone"
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     let systemVersion = UIDevice.current.systemVersion

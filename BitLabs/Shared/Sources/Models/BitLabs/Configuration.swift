@@ -5,7 +5,7 @@
 //  Created by Omar Raad on 05.06.25.
 //
 
-struct Configuration: Codable {
-    let internalIdentifier: String
-    let value: String?
+package struct Configuration: Codable {
+    package let internalIdentifier: String
+    package let value: String?
 }

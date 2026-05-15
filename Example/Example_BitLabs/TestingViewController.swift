@@ -8,6 +8,8 @@
 
 import UIKit
 @testable import BitLabs
+// the following is only used when BitLabs is imported via SPM not Cocoapods
+//@testable import BitLabsShared
 
 class TestingViewController: UIViewController {
     @IBOutlet weak var label: UILabel!
@@ -72,6 +74,8 @@ class TestingViewController: UIViewController {
 }
 
 extension TestingViewController: WebViewDelegate {
+    var isDebugMode: Bool { true }
+    
     func rewardEarned(_ reward: Double) {}
     
     func offerwallClosed(_ value: Double) {}

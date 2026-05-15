@@ -7,21 +7,21 @@
 
 import Foundation
 
-class SentryManager {
-    static let shared = SentryManager()
+package class SentryManager {
+    package static let shared = SentryManager()
     
     private init() {}
     
     private var sentryService: SentryService?
     
-    func configure(token: String, uid: String, dsnStr: String) {
+    package func configure(token: String, uid: String, dsnStr: String) {
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil { return }
         let dsn = SentryDSN(dsnStr)
         
         self.sentryService = SentryService(token, uid, dsn)
     }
     
-    func captureException(error: Error, stacktrace: [String], isHandled: Bool = true) {
+    package func captureException(error: Error, stacktrace: [String], isHandled: Bool = true) {
         sentryService?.sendEnvelope(withError: error, in: stacktrace, isHandled: isHandled)
     }
 }
