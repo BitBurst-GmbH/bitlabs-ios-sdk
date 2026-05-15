@@ -39,7 +39,7 @@ public class BitLabs: WebViewDelegate {
         self.token = token
         self.uid = uid
         
-        SentryManager.shared.configure(token: token, uid: uid)
+        SentryManager.shared.configure(token: token, uid: uid, dsnStr: SubspecConfig.DSN)
         
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
