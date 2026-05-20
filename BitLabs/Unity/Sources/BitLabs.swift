@@ -7,6 +7,9 @@
 
 import UIKit
 import AdSupport
+#if SWIFT_PACKAGE
+@_exported import BitLabsShared
+#endif
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -25,7 +28,7 @@ import AppTrackingTransparency
     
     private var onReward: ((Float) -> ())?
     
-    var isDebugMode = false
+    public var isDebugMode = false
     var bitlabsAPI: BitLabsAPI? = nil
     
     private override init() {}
@@ -48,7 +51,7 @@ import AppTrackingTransparency
             self.token = token
             self.uid = uid
 
-            SentryManager.shared.configure(token: token, uid: uid)
+            SentryManager.shared.configure(token: token, uid: uid, dsnStr: SubspecConfig.DSN)
 
             let config = URLSessionConfiguration.default
             config.httpAdditionalHeaders = [
@@ -115,7 +118,7 @@ import AppTrackingTransparency
     /// - Parameter onSuccess: A closure which executes with a Bool indicating whether surveys are available
     /// - Parameter onError: A closure which executes when an error occurs with the error message
     @objc public func checkSurveys(onSuccess: @escaping (_ hasSurveys: Bool) -> (), onError: @escaping (_ error: String) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys): onSuccess(!surveys.isEmpty)
             case .failure(let error): onError(error.localizedDescription)
@@ -124,7 +127,7 @@ import AppTrackingTransparency
     }
     
     @objc public func getSurveys(onSuccess: @escaping (_ surveys: [Survey]) -> (), onError: @escaping (_ error: String) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(sdk: "UNITY") { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys): onSuccess(surveys)
             case .failure(let error): onError(error.localizedDescription)
@@ -167,13 +170,13 @@ import AppTrackingTransparency
         }
     }
     
-    func offerwallClosed(_ totalReward: Double) {
+    package func offerwallClosed(_ totalReward: Double) {
         onReward?(Float(totalReward))
     }
     
-    func rewardEarned(_ reward: Double) {}
+    package func rewardEarned(_ reward: Double) {}
     
-    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
+    package func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
     }
     

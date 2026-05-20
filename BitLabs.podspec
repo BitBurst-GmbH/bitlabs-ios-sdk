@@ -20,8 +20,9 @@ Pod::Spec.new do |spec|
     spec.author           = { 'BitBurst GmbH' => 'bitlabs@bitburst.net' }
     spec.source           = { :git => 'https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git', :tag => spec.version.to_s }
     
-    spec.swift_version = '5.0'
+    spec.swift_version = '5.9'
     spec.ios.deployment_target = '12.0'
+    spec.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => '-package-name BitLabs' }
     
     spec.resource_bundles = {
         'BitLabsResources' => ['BitLabs/Shared/Resources/**/*.{xib,strings,xcassets}']

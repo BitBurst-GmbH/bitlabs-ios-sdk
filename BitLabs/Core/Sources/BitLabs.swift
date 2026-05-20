@@ -7,6 +7,9 @@
 
 import UIKit
 import AdSupport
+#if SWIFT_PACKAGE
+@_exported import BitLabsShared
+#endif
 import AppTrackingTransparency
 
 /// The main class including all the tools available to add SDK features into your code.
@@ -39,7 +42,7 @@ public class BitLabs: WebViewDelegate {
         self.token = token
         self.uid = uid
         
-        SentryManager.shared.configure(token: token, uid: uid)
+        SentryManager.shared.configure(token: token, uid: uid, dsnStr: SubspecConfig.DSN)
         
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
@@ -106,7 +109,7 @@ public class BitLabs: WebViewDelegate {
     /// - Parameter completionHandler: A closure which executes after a result is recieve
     /// - Parameter hasSurveys: A Bool which indicates whether an action can be performed by the user or not.
     public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys): completionHandler(.success(!surveys.isEmpty))
             case .failure(let error): completionHandler(.failure(error))
@@ -114,7 +117,7 @@ public class BitLabs: WebViewDelegate {
     }
     
     public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
-        ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+        ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys): completionHandler(.success(surveys))
             case .failure(let error): completionHandler(.failure(error))
@@ -125,6 +128,9 @@ public class BitLabs: WebViewDelegate {
     public func showSurveyWidget(in container: UIView, type: WidgetType = .simple) {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: type)
+            widget.launchOfferwall = { [weak self] parent in
+                self?.launchOfferWall(parent: parent)
+            }
             container.replaceSubView(widget)
             widget.center.x = container.center.x
         }
@@ -135,6 +141,9 @@ public class BitLabs: WebViewDelegate {
     public func showLeaderboard(in container: UIView) {
         ifConfigured {
             let widget = WidgetView(frame: container.bounds, token: token, uid: uid, type: .leaderboard)
+            widget.launchOfferwall = { [weak self] parent in
+                self?.launchOfferWall(parent: parent)
+            }
             container.replaceSubView(widget)
         }
     }
@@ -172,13 +181,13 @@ public class BitLabs: WebViewDelegate {
         }
     }
     
-    func offerwallClosed(_ value: Double) {
+    package func offerwallClosed(_ value: Double) {
         onReward?(Float(value))
     }
     
-    func rewardEarned(_ reward: Double) {}
+    package func rewardEarned(_ reward: Double) {}
     
-    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
+    package func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI?.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
     }
     
@@ -192,7 +201,7 @@ public class BitLabs: WebViewDelegate {
     
     public class OFFERWALL {
         public static func create(token: String, uid: String) -> Offerwall {
-            return Offerwall(token: token, uid: uid)
+            return Offerwall(token: token, uid: uid, sdk: SubspecConfig.SDK)
         }
     }
     
@@ -218,7 +227,7 @@ public class BitLabs: WebViewDelegate {
         }
         
         public func getSurveys(_ completionHandler: @escaping (Result<[Survey], Error>) -> ()) {
-            ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+            ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
                 switch result {
                 case .success(let surveys): completionHandler(.success(surveys))
                 case .failure(let error): completionHandler(.failure(error))
@@ -226,7 +235,7 @@ public class BitLabs: WebViewDelegate {
         }
         
         public func checkSurveys(_ completionHandler: @escaping (Result<Bool, Error>) -> ()) {
-            ifConfigured { bitlabsAPI?.getSurveys(sdk: "NATIVE") { result in
+            ifConfigured { bitlabsAPI?.getSurveys(sdk: SubspecConfig.SDK) { (result: Result<[Survey], Error>) in
                 switch result {
                 case .success(let surveys): completionHandler(.success(!surveys.isEmpty))
                 case .failure(let error): completionHandler(.failure(error))

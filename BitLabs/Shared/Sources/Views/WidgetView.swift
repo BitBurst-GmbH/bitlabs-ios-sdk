@@ -8,16 +8,17 @@
 import Foundation
 import WebKit
 
-
 @objc public class WidgetView: UIView, UIGestureRecognizerDelegate {
     
     let webview = WKWebView()
+    
+    package var launchOfferwall: ((UIViewController) -> Void)?
     
     var type = WidgetType.leaderboard
     var token = ""
     var uid = ""
     
-    init(frame: CGRect, token: String, uid: String, type: WidgetType) {
+    package init(frame: CGRect, token: String, uid: String, type: WidgetType) {
         super.init(frame: frame)
         self.token = token
         self.uid = uid
@@ -145,6 +146,6 @@ import WebKit
             return
         }
         
-        BitLabs.shared.launchOfferWall(parent: parent)
+        launchOfferwall?(parent)
     }
 }

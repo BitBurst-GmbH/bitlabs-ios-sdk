@@ -9,7 +9,9 @@ import UIKit
 import WebKit
 
 /// This delegate is to help a class execute some functions to which it doesn't have access
-protocol WebViewDelegate: AnyObject {
+package protocol WebViewDelegate: AnyObject {
+    var isDebugMode: Bool { get }
+    
     func offerwallClosed(_ totalReward: Double)
     
     func rewardEarned(_ reward: Double)
@@ -24,7 +26,7 @@ protocol WebViewDelegate: AnyObject {
     func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ())
 }
 
-class WebViewController: UIViewController {
+package class WebViewController: UIViewController {
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var backButton: UIButton!
@@ -33,21 +35,21 @@ class WebViewController: UIViewController {
     @IBOutlet weak var webTopSafeTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var errorView: UIStackView!
     
-    var initialURL: URL?
+    package var initialURL: URL?
     
-    var uid = "" // Recorded for error tracking in debug mode
-    var color: [UIColor] = [.black, .black]
+    package var uid = "" // Recorded for error tracking in debug mode
+    package var color: [UIColor] = [.black, .black]
     
     var clickId = ""
     
-    weak var delegate: WebViewDelegate?
+    package weak var delegate: WebViewDelegate?
     
     private var isRotatable: Bool = false
     private var didCallViewDidAppear = false
     
     private var totalReward: Double = 0.0
     
-    override func viewDidLoad() {
+    package override func viewDidLoad() {
         super.viewDidLoad()
         
         var isColorBright = false
@@ -57,7 +59,7 @@ class WebViewController: UIViewController {
         setupWebView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    package override func viewDidAppear(_ animated: Bool) {
         if didCallViewDidAppear {
             return
         }
@@ -66,24 +68,24 @@ class WebViewController: UIViewController {
         didCallViewDidAppear = true
     }
     
-    override func viewWillLayoutSubviews() {
+    package override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         DispatchQueue.main.async { changeGradient(of: self.topBarView, withColors: self.color) }
     }
     
-    override var prefersHomeIndicatorAutoHidden: Bool {
+    package override var prefersHomeIndicatorAutoHidden: Bool {
         return true
     }
     
-    override var shouldAutorotate: Bool {
+    package override var shouldAutorotate: Bool {
         return isRotatable
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    package override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return isRotatable ? .all : .portrait
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    package override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         delegate?.offerwallClosed(totalReward)
     }
@@ -147,7 +149,7 @@ class WebViewController: UIViewController {
 }
 
 extension WebViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    package func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let js = """
             window.addEventListener('message', function(event) {
                 window.webkit.messageHandlers.iOSWebView.postMessage(JSON.stringify(event.data));
@@ -157,18 +159,16 @@ extension WebViewController: WKNavigationDelegate {
         self.webView.evaluateJavaScript(js)
     }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    package func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         presentFail()
     }
     
-    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+    package func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         presentFail()
     }
     
     func presentFail() {
-        guard (BitLabs.shared.isDebugMode) else {
-            return
-        }
+        guard (delegate?.isDebugMode == true) else { return }
         
         errorView.isHidden = false
         
@@ -186,7 +186,7 @@ extension WebViewController: WKNavigationDelegate {
 }
 
 extension WebViewController: WKUIDelegate {
-    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+    package func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         if navigationAction.targetFrame == nil, let url = navigationAction.request.url {
             UIApplication.shared.open(url)
         }
@@ -199,7 +199,7 @@ extension WebViewController: WKScriptMessageHandler {
         webView.configuration.userContentController.add(self, name: "iOSWebView")
     }
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    package func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         guard let hookMessage = (message.body as! String).asHookMessage() else {
             return
         }
