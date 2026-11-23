@@ -5,7 +5,7 @@ on:
   
 jobs:
   build:
-    runs-on: macos-14
+    runs-on: macos-26
     
     steps:
       - name: Checkout code
@@ -28,6 +28,6 @@ jobs:
           xcodebuild test \
           -project Example/BitLabs.xcodeproj \
           -scheme BitLabs_Example \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.4' \
+          -destination 'platform=iOS Simulator,name=iPhone 17' \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO
