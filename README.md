@@ -1,28 +1,18 @@
 # BitLabs iOS v3
 
-[![Version](https://img.shields.io/cocoapods/v/BitLabs.svg?style=flat)](https://cocoapods.org/pods/BitLabs)
-[![License](https://img.shields.io/cocoapods/l/BitLabs.svg?style=flat)](https://cocoapods.org/pods/BitLabs)
-[![Platform](https://img.shields.io/cocoapods/p/BitLabs.svg?style=flat)](https://cocoapods.org/pods/BitLabs)
-
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repo and open `Example/BitLabs.xcodeproj`.
 
 ## Installation
 
-### Swift Packcage Manager (Recommended)
+### Swift Package Manager
 
-- File > Swift Packages > Add Package Dependency
+- File > Add Package Dependencies
 - Add https://github.com/BitBurst-GmbH/bitlabs-ios-sdk.git
-- Select "Up to Next Major" with "4.1.0"
+- Select "Up to Next Major" with "4.2.0"
 
-### Cocoapods (No recommended)
-
-Add the following line to your Podfile:
-
-```ruby
-pod 'BitLabs'
-```
+CocoaPods is no longer supported: the trunk becomes read-only on December 2, 2026, so new versions are not published as pods.
 
 ## Guide
 

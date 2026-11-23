@@ -9,7 +9,7 @@
 import UIKit
 @testable import BitLabs
 // the following is only used when BitLabs is imported via SPM not Cocoapods
-//@testable import BitLabsShared
+@testable import BitLabsShared
 
 class TestingViewController: UIViewController {
     @IBOutlet weak var label: UILabel!

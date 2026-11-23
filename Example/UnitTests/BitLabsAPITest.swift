@@ -9,8 +9,7 @@ import Foundation
 import XCTest
 import Mocker
 @testable import BitLabs
-// the following is only used when BitLabs is imported via SPM not Cocoapods
-//@testable import BitLabsShared
+@testable import BitLabsShared
 
 class BitLabsAPITest: XCTestCase {
     
@@ -35,7 +34,7 @@ class BitLabsAPITest: XCTestCase {
     
     func testGetSurveys_Failure() {
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 500, data: [.get: Data()], requestError: Exception("Error"))
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 500, data: [.get: Data()], requestError: Exception("Error"))
         mock.register()
         
         let expectation = XCTestExpectation(description: "Error received")
@@ -62,7 +61,7 @@ class BitLabsAPITest: XCTestCase {
         )
         
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
         let expectation = XCTestExpectation(description: "Response received")
@@ -90,7 +89,7 @@ class BitLabsAPITest: XCTestCase {
         )
         
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
         
