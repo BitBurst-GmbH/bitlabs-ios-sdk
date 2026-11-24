@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import BitLabs
+@testable import BitLabsShared
 
 class GlobalTests: XCTestCase {
     

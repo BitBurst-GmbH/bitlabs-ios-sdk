@@ -20,7 +20,7 @@ extension UIView {
         return nil
     }
     
-    func replaceSubView(_ subview: UIView) {
+    package func replaceSubView(_ subview: UIView) {
         subviews.forEach { $0.removeFromSuperview() } // Remove older subviews
         
         addSubview(subview)

@@ -8,7 +8,7 @@
 import Foundation
 
 /// - Tag: LeaveReason
-enum LeaveReason: String, CaseIterable {
+public enum LeaveReason: String, CaseIterable {
     case tooSensitive = "SENSITIVE"
     case uninteresting = "UNINTERESTING"
     case technical = "TECHNICAL"

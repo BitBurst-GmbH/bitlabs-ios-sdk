@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal struct OfferwallURL {
+package struct OfferwallURL {
     private let uid: String
     private let token: String
     private let sdk: String
@@ -15,7 +15,7 @@ internal struct OfferwallURL {
     private let options: [String: Any]
     private let tags: [String: Any]
     
-    init(uid: String, token: String, sdk: String, adId: String, options: [String : Any], tags: [String : Any]) {
+    package init(uid: String, token: String, sdk: String, adId: String, options: [String : Any], tags: [String : Any]) {
         self.uid = uid
         self.token = token
         self.sdk = sdk
@@ -24,7 +24,7 @@ internal struct OfferwallURL {
         self.tags = tags
     }
     
-    var url: URL? {
+    package var url: URL? {
         baseURLComponents().url
     }
     

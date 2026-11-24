@@ -10,6 +10,7 @@ import AppTrackingTransparency
 import UIKit
 
 public class Offerwall: WebViewDelegate {
+    private let sdk: String
     private let uid: String
     private let token: String
     private let bitlabsAPI: BitLabsAPI
@@ -17,15 +18,18 @@ public class Offerwall: WebViewDelegate {
     private var adId = ""
     private var headerColor = ["000000", "000000"]
     
+    public var isDebugMode: Bool = false
+    
     public var tags: [String: Any] = [:]
     public var options: [String: Any] = [:]
     
     public var surveyRewardHandler: ((_ reward: Double) -> Void) = { _ in }
     public var offerwallClosedHandler: ((_ totalReward: Double) -> Void) = {_ in }
     
-    init(token: String, uid: String) {
+    package init(token: String, uid: String, sdk: String) {
         self.token = token
         self.uid = uid
+        self.sdk = sdk
         
         let config = URLSessionConfiguration.default
         config.httpAdditionalHeaders = [
@@ -72,7 +76,7 @@ public class Offerwall: WebViewDelegate {
         let url = OfferwallURL(
             uid: uid,
             token: token,
-            sdk: SubspecConfig.SDK,
+            sdk: sdk,
             adId: adId,
             options: options,
             tags: tags
@@ -85,7 +89,7 @@ public class Offerwall: WebViewDelegate {
         let url = OfferwallURL(
             uid: uid,
             token: token,
-            sdk: SubspecConfig.SDK,
+            sdk: sdk,
             adId: adId,
             options: options,
             tags: tags
@@ -98,7 +102,7 @@ public class Offerwall: WebViewDelegate {
         let url = OfferwallURL(
             uid: uid,
             token: token,
-            sdk: SubspecConfig.SDK,
+            sdk: sdk,
             adId: adId,
             options: options,
             tags: tags
@@ -111,7 +115,7 @@ public class Offerwall: WebViewDelegate {
         let url = OfferwallURL(
             uid: uid,
             token: token,
-            sdk: SubspecConfig.SDK,
+            sdk: sdk,
             adId: adId,
             options: options,
             tags: tags
@@ -135,15 +139,15 @@ public class Offerwall: WebViewDelegate {
     }
     
     // MARK: - Delegate functions
-    func offerwallClosed(_ value: Double) {
+    package func offerwallClosed(_ value: Double) {
         offerwallClosedHandler(value)
     }
     
-    func rewardEarned(_ reward: Double) {
+    package func rewardEarned(_ reward: Double) {
         surveyRewardHandler(reward)
     }
     
-    func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
+    package func sendLeaveSurveyRequest(clickId: String, reason: LeaveReason, _ completion: @escaping () -> ()) {
         bitlabsAPI.leaveSurvey(clickId: clickId, reason: reason, completion: completion)
     }
 }

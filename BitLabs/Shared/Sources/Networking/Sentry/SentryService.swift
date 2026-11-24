@@ -12,11 +12,13 @@ class SentryService {
     
     private let token: String
     private let uid: String
+    private let dsn: SentryDSN
         
-    init(_ token: String, _ uid: String) {
+    init(_ token: String, _ uid: String, _ dsn: SentryDSN) {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         self.token = token
         self.uid = uid
+        self.dsn = dsn
     }
     
     func sendEnvelope(withError error: Error, in stacktrace: [String], isHandled: Bool) {
@@ -43,13 +45,13 @@ class SentryService {
     }
     
     func createURL(body: Data) throws -> URLRequest {
-        let url = URL(string: "https://api.sentry.io/")!.appendingPathComponent("api/\(SentryManager.shared.projectID)/envelope/")
+        let url = URL(string: "https://api.sentry.io/")!.appendingPathComponent("api/\(dsn.projectID)/envelope/")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = body
         
         request.allHTTPHeaderFields = [
-            "X-Sentry-Auth": "Sentry sentry_version=7, sentry_key=\(SentryManager.shared.publicKey), sentry_client=bitlabs-sdk/0.1.0",
+            "X-Sentry-Auth": "Sentry sentry_version=7, sentry_key=\(dsn.publicKey), sentry_client=bitlabs-sdk/0.1.0",
             "User-Agent": "bitlabs-sdk/0.1.0",
             "Content-Type": "application/x-sentry-envelope"
         ]
@@ -90,7 +92,7 @@ class SentryService {
         
         let eventItem = SentryEventItem(event: event)
         
-        let envelope = SentryEnvelope(headers: SentryEnvelopeHeaders(eventId: eventID, sentAt: now, dsn: SentryManager.shared.dsn.asString()), items: [eventItem])
+        let envelope = SentryEnvelope(headers: SentryEnvelopeHeaders(eventId: eventID, sentAt: now, dsn: dsn.asString()), items: [eventItem])
         
         return envelope
     }

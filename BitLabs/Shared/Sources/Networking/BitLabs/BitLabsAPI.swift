@@ -8,12 +8,12 @@
 import Foundation
 
 /// A class to manage connection with the BitLabs API.
-class BitLabsAPI {
+package class BitLabsAPI {
     private let decoder = JSONDecoder()
     
     private let session: URLSession
     
-    init(_ session: URLSession) {
+    package init(_ session: URLSession) {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         self.session = session
     }
@@ -25,7 +25,7 @@ class BitLabsAPI {
     ///   - clickId: The click id of the terminated Survey.
     ///   - reason: The reason given by the user. See [LeaveReason](x-source-tag://LeaveReason).
     ///   - completion: The closure to execute after a response for this request is received.
-    func leaveSurvey(clickId: String, reason: LeaveReason, completion: @escaping () -> ()) {
+    package func leaveSurvey(clickId: String, reason: LeaveReason, completion: @escaping () -> ()) {
         session
             .request(BitLabsRouter.updateClick(clickId: clickId, reason: reason).asURLRequest())
             .responseDecodable(of: BitLabsResponse<UpdateClickResponse>.self, decoder: decoder) { result in
@@ -49,12 +49,12 @@ class BitLabsAPI {
             }
     }
     
-    func getSurveys(sdk: String, _ completion: @escaping (Result<[Survey], Error>) -> ()) {
+    package func getSurveys<T: Codable>(sdk: String, _ completion: @escaping (Result<[T], Error>) -> ()) {
         let request = BitLabsRouter.getSurveys(sdk: sdk).asURLRequest()
         
         session
             .request(request)
-            .responseDecodable(of: BitLabsResponse<GetSurveysResponse>.self, decoder: decoder) { result in
+            .responseDecodable(of: BitLabsResponse<GetSurveysResponse<T>>.self, decoder: decoder) { result in
                 switch result {
                 case .success(let blResponse):
                     if let restriction = blResponse.data?.restrictionReason {
@@ -81,7 +81,7 @@ class BitLabsAPI {
             }
     }
     
-    func getAppSettings(token: String, _ completion: @escaping ([Configuration]) -> ()) {
+    package func getAppSettings(token: String, _ completion: @escaping ([Configuration]) -> ()) {
         let url = URL(string: "https://dashboard.bitlabs.ai/api/public/v1/apps/\(token)")!
         URLSession.shared
             .request(URLRequest(url: url))

@@ -5,10 +5,11 @@
 //  Created by Omar Raad on 11.10.23.
 //
 
-@testable import BitLabs
 import Foundation
 import XCTest
 import Mocker
+@testable import BitLabs
+@testable import BitLabsShared
 
 class BitLabsAPITest: XCTestCase {
     
@@ -33,11 +34,11 @@ class BitLabsAPITest: XCTestCase {
     
     func testGetSurveys_Failure() {
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 500, data: [.get: Data()], requestError: Exception("Error"))
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 500, data: [.get: Data()], requestError: Exception("Error"))
         mock.register()
         
         let expectation = XCTestExpectation(description: "Error received")
-        bitlabsAPI.getSurveys(sdk: "") { result in
+        bitlabsAPI.getSurveys(sdk: "") { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys):
                 XCTFail("Request succeeded: \(surveys)")
@@ -60,11 +61,11 @@ class BitLabsAPITest: XCTestCase {
         )
         
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
         let expectation = XCTestExpectation(description: "Response received")
-        bitlabsAPI.getSurveys(sdk: "") { result in
+        bitlabsAPI.getSurveys(sdk: "") { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys):
                 XCTAssertTrue(surveys.first?.id == "1")
@@ -79,7 +80,7 @@ class BitLabsAPITest: XCTestCase {
     
     func testGetSurveys_Response_Error() {
         let json = try! encoder.encode(
-            BitLabsResponse<GetSurveysResponse>(
+            BitLabsResponse<GetSurveysResponse<Survey>>(
                 data: nil,
                 error: ErrorResponse(details: ErrorDetails(http: "400", msg: "Response Error")),
                 status: "",
@@ -88,12 +89,12 @@ class BitLabsAPITest: XCTestCase {
         )
         
         let url = BitLabsRouter.getSurveys(sdk: "").asURLRequest().url!
-        let mock = Mock(url: url, ignoreQuery: true, dataType: .json, statusCode: 200, data: [.get: json])
+        let mock = Mock(url: url, ignoreQuery: true, contentType: .json, statusCode: 200, data: [.get: json])
         mock.register()
         
         
         let expectation = XCTestExpectation(description: "Error received")
-        bitlabsAPI.getSurveys(sdk: "") { result in
+        bitlabsAPI.getSurveys(sdk: "") { (result: Result<[Survey], Error>) in
             switch result {
             case .success(let surveys):
                 XCTFail("Request succeeded: \(surveys)")

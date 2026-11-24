@@ -17,8 +17,8 @@ struct RestrictionReason: Codable {
     func prettyPrint() -> String {
         if notVerified == true { return "The publisher account that owns this app has not been verified and therefore cannot receive surveys." }
         if usingVpn == true { return "The user is using a VPN and cannot access surveys." }
-        if bannedUntil != nil { return "The user is banned until $bannedUntil" }
-        if unsupportedCountry != nil { return "Unsupported Country: $unsupportedCountry" }
+        if bannedUntil != nil { return "The user is banned until \(String(describing: bannedUntil))" }
+        if unsupportedCountry != nil { return "Unsupported Country: \(String(describing: unsupportedCountry))" }
         return reason ?? "Unknown Reason"
     }
 }

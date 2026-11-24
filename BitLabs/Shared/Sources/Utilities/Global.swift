@@ -9,18 +9,24 @@ import Foundation
 import UIKit
 
 #if SWIFT_PACKAGE
-let bundle = Bundle.module
+package let bundle = Bundle.module
 #else
-let bundle = {
-    let bundle = Bundle(for: WebViewController.self)
-    
-    guard let resourceBundleURL = bundle.url(forResource: "BitLabsResources", withExtension: "bundle"),
-          let resourceBundle = Bundle(url: resourceBundleURL) else {
-        print("[BitLabs] Failed to load resource bundle")
-        return bundle
+package let bundle = {
+    let frameworkBundle = Bundle(for: WebViewController.self)
+
+    // Try resource bundle first
+    if let resourceBundleURL = frameworkBundle.url(forResource: "BitLabsResources", withExtension: "bundle"),
+       let resourceBundle = Bundle(url: resourceBundleURL) {
+        return resourceBundle
     }
-    
-    return resourceBundle
+
+    // If failed, check if the XIB exists directly in framework (needed in Unity where CocoaPods doesn't create bundle)
+    if frameworkBundle.path(forResource: "WebViewController", ofType: "xib") != nil {
+        return frameworkBundle
+    }
+
+    // Last resort: return framework bundle and let it fail with proper error
+    return frameworkBundle
 }()
 #endif
 
@@ -59,7 +65,7 @@ func generateQRCode(from string: String) -> UIImage? {
     return UIImage(ciImage: output);
 }
 
-func createUserAgent() -> String {
+package func createUserAgent() -> String {
     let deviceType = UIDevice.current.userInterfaceIdiom == .pad ? "Tablet" : "Phone"
     let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
     let systemVersion = UIDevice.current.systemVersion

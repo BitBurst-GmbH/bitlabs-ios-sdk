@@ -1,4 +1,4 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.9
 import PackageDescription
 
 let package = Package(
@@ -7,9 +7,12 @@ let package = Package(
     platforms: [ .iOS(.v12) ],
     products: [.library(name: "BLCustom", targets: ["BLCustom"])],
     targets: [
+        .target(
+            name: "BitLabsShared",
+            path: "BitLabs/Shared"),
         .target( // This Target is for RN and Flutter use only. Do not use it
             name: "BLCustom",
-            path: "BitLabs",
-            exclude: ["Unity"]) ,
+            dependencies: ["BitLabsShared"],
+            path: "BitLabs/Core"),
     ]
 )
